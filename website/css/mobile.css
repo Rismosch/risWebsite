@@ -1,0 +1,52 @@
+/* GLOBAL */
+body{
+	font-size: 2.4em;
+}
+
+/* BANNER */
+.banner{
+	transform: scale(10);
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 94px;
+	margin-bottom: 94px;
+}
+
+/* SELECTOR_TAB */
+li.selector_tab{
+	width: 200px;
+}
+
+/* ABOUT */
+img.profile_picture{
+	width: 150px;
+	height:150px;
+	border: 10px solid var(--pico-8-white);
+	margin-right: 40px;
+}
+
+img.about_picture{
+	width: 160px;
+	height:160px;
+	margin-left: 40px;
+}
+
+/* SOCIAL */
+img.social_icon{
+	width: 123px;
+	height:123px;
+	margin: 5px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+/* CONTACT*/
+button.contact_send_button{
+	width: 144px;
+	height: 56px;
+}
+
+/* CONTACT */
+#contact-form input, textarea{
+	width: 100%;
+}
