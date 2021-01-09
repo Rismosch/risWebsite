@@ -18,7 +18,8 @@ CREATE TABLE `Articles` (
   `category_id` int(11) NOT NULL DEFAULT '0',
   `title` varchar(256) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `link` varchar(256) DEFAULT NULL
+  `link` varchar(256) DEFAULT NULL,
+  `thumbnail_path` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS `Article_Categories`;

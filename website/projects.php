@@ -46,12 +46,13 @@ $offset = ($page - 1) * $show;
 
 $sql ="
 SELECT
-	Articles.id AS ID,
-	Article_Types.name AS Type,
-	Article_Categories.name AS Category,
-	Articles.title AS Title,
-	Articles.timestamp AS Timestamp,
-	Articles.link AS Link
+	Articles.id AS id,
+	Article_Types.name AS type,
+	Article_Categories.name AS category,
+	Articles.title AS title,
+	Articles.timestamp AS timestamp,
+	Articles.link AS link,
+	Articles.thumbnail_path AS thumbnail_path
 FROM
 	Articles,
 	Article_Categories,
@@ -150,10 +151,38 @@ WHERE
 					$numRows = mysqli_num_rows($result);
 					if($numRows > 0)
 					{
+						echo "<table style=\"width: 100%;\"><tr class=\"row_empty row_devider\"><td></td></tr>";
 						while($row = mysqli_fetch_assoc($result))
 						{
-							echo $row['ID'] . " " . $row['Type'] . " " . $row['Category'] . " " . $row['Title'] . " " . $row['Timestamp'] . " " . $row['Link'] . "<br>";
+							$timestamp = strtotime($row['timestamp']);
+							$newTimestampFormat = date('M jS, Y',$timestamp);
+							
+							echo "
+								<tr>
+									<td>
+										<table>
+											<tr>
+												<td>
+													<a href=\"{$row['link']}\">
+														<img class=\"articles_thumbnail\" src=\"{$row['thumbnail_path']}\">
+													</a>
+												</td>
+												<td>
+													<a href=\"{$row['link']}\" class=\"articles_entry_link\">
+														<h3>{$row['title']}</h3>
+														<p>{$row['category']}</p>
+													</a>
+													<p>{$newTimestampFormat}</p>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+								<tr class=\"row_empty\"><td></td></tr>
+								<tr class=\"row_empty row_devider\"><td></td></tr>
+							";
 						}
+						echo "</table>";
 					}
 					
 					echo "<div class=\"page_selector\">";
