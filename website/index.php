@@ -74,18 +74,6 @@ $isMobile = $detect->isMobile() && !$detect->isTablet();
 		
 		<div class="content" id="content">
 			<h1>Under construction...</h1>
-			
-			<?php
-				if( $isMobile )
-				{
-					echo "MOBILE";
-				}
-				else
-				{
-					echo "DESKTOP";
-				}
-			?>
-			
 		</div>
 		
 		<div class="foot" id="foot">

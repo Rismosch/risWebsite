@@ -146,9 +146,45 @@ div.content{
 	padding-top: 10px;
 	padding-left: 50px;
 	padding-right: 50px;
-	padding-bottom: 50px;
+	padding-bottom: 30px;
 }
 
+/* PAGE SELECTOR (BLOG AND PROJECTS) */
+div.page_selector{
+	width: -moz-fit-content;
+	width: fit-content;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.page_selector > a{
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	width: 25px;
+	margin: 5px;
+	border: 5px solid var(--pico-8-white);
+	background-color: var(--pico-8-light-grey);
+}
+
+div.page_selector > a:hover{
+	border: 5px solid var(--pico-8-cyan);
+	background-color: var(--pico-8-white);
+}
+
+div.page_selector > a:link{
+	color: var(--pico-8-black);
+}
+
+div.page_selector > a:visited{
+	color: var(--pico-8-black);
+}
+
+div.page_selector > a.page_selector_button_invisible{
+	border: 5px solid var(--pico-8-light-grey);
+	background-color: var(--pico-8-light-grey);
+}
 
 /* ABOUT */
 table.resume_table{

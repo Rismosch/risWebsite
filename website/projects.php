@@ -10,17 +10,23 @@ $isMobile = $detect->isMobile() && !$detect->isTablet();
 
 
 $categoryFilterStringDefault = "true";
+$categoryDefault = 0;
 $showDefault = 10;
 $pageDefault = 1;
 
-if(isset($_GET["category"]))
-	$categoryFilterString = "Article_Categories.id = " . intval($_GET["category"]);
+if(isset($_GET["ct"]))
+	$category = intval($_GET["ct"]);
+else
+	$category = $categoryDefault;
+
+if($category >= 1 && $category <= 3)
+	$categoryFilterString = "Article_Categories.id = " . $category;
 else
 	$categoryFilterString = "true";
 
 
-if(isset($_GET["show"]))
-	$show = intval($_GET["show"]);
+if(isset($_GET["ls"]))
+	$show = intval($_GET["ls"]);
 else
 	$show = $showDefault;
 
@@ -28,15 +34,15 @@ if($show <= 0)
 	$show = $showDefault;
 
 
-if(isset($_GET["page"]))
-	$page = intval($_GET["page"]);
+if(isset($_GET["pg"]))
+	$page = intval($_GET["pg"]);
 else
 	$page = $pageDefault;
 
 if($page <= 0)
 	$page = $pageDefault;
 
-$offset = --$page * $show;
+$offset = ($page - 1) * $show;
 
 $sql ="
 SELECT
@@ -53,13 +59,22 @@ FROM
 WHERE
 	Articles.type_id = Article_Types.id AND
 	Articles.category_id = Article_Categories.id AND
-	Article_Types.id = 1 AND
-	$categoryFilterString
+	Articles.type_id = 1 AND
+	{$categoryFilterString}
 ORDER BY
 	Articles.timestamp
 LIMIT
 	{$offset},
 	{$show}
+";
+
+$countSql ="
+SELECT
+	COUNT(id) as COUNT
+FROM
+	Articles
+WHERE
+	Articles.type_id = 1
 ";
 
 ?>
@@ -130,16 +145,64 @@ LIMIT
 			<h1>Projects</h1>
 			<?php
 				if($dbConn){
+					
 					$result = mysqli_query($dbConn,$sql);
 					$numRows = mysqli_num_rows($result);
-					
-					echo $numRows . " " . $page . " " . $offset. "<br>";
-					
-					if($numRows > 0){
-						while($row = mysqli_fetch_assoc($result)){
+					if($numRows > 0)
+					{
+						while($row = mysqli_fetch_assoc($result))
+						{
 							echo $row['ID'] . " " . $row['Type'] . " " . $row['Category'] . " " . $row['Title'] . " " . $row['Timestamp'] . " " . $row['Link'] . "<br>";
 						}
 					}
+					
+					echo "<div class=\"page_selector\">";
+					
+					$countResult = mysqli_query($dbConn,$countSql);
+					$countNumRows = mysqli_num_rows($countResult);
+					if($countNumRows > 0)
+					{
+						$countRow = mysqli_fetch_assoc($countResult);
+						$totalCount = $countRow['COUNT'];
+						$pageCount = intdiv($totalCount,$show);
+						
+						if($totalCount % $show != 0)
+							++$pageCount;
+						
+						if($page > 1)
+						{
+							$previousPage = $page - 1;
+							echo "<a title=\"{$previousPage}\" href=\"https://www.rismosch.com/projects?ct={$category}&ls={$show}&pg={$previousPage}\">&lt;</a>";
+						}
+						else
+						{
+							echo "<a class=\"page_selector_button_invisible\"></a>";
+						}
+						
+						for($i = 1; $i <= $pageCount; ++$i)
+						{
+							echo "<a title=\"{$i}\" href=\"https://www.rismosch.com/projects?ct={$category}&ls={$show}&pg={$i}\">";
+							
+							if($page == $i)
+								echo "<b>{$i}</b>";
+							else
+								echo $i;
+							
+							echo"</a>";
+						}
+						
+						if($page < $pageCount)
+						{
+							$nextPage = $page + 1;
+							echo "<a title=\"{$nextPage}\" href=\"https://www.rismosch.com/projects?ct={$category}&ls={$show}&pg={$nextPage}\">&gt;</a>";
+						}
+						else
+						{
+							echo "<a class=\"page_selector_button_invisible\"></a>";
+						}
+					}
+					
+					echo "</div>";
 				}
 				else{
 					echo "<p>ERROR: Could not connect to database.</p>";

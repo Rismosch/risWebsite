@@ -73,40 +73,7 @@ $isMobile = $detect->isMobile() && !$detect->isTablet();
 		</div>
 		
 		<div class="content" id="content">
-			<p>Database Test:<br></p>
-			<?php
-				if($dbConn){
-					echo "connected <br><br>";
-					
-					$sql =
-						"SELECT
-							Articles.id AS ID,
-							Article_Types.name AS Type,
-							Article_Categories.name AS Category,
-							Articles.title AS Title,
-							Articles.timestamp AS Timestamp
-						FROM
-							Articles,
-							Article_Categories,
-							Article_Types
-						WHERE
-							Articles.type_id = Article_Types.id AND
-							Articles.category_id = Article_Categories.id
-						ORDER BY Articles.timestamp";
-
-					$result = mysqli_query($dbConn,$sql);
-					$resultCheck = mysqli_num_rows($result);
-					
-					if($resultCheck > 0){
-						while($row = mysqli_fetch_assoc($result)){
-							echo $row['ID'] . " " . $row['Type'] . " " . $row['Category'] . " " . $row['Title'] . " " . $row['Timestamp'] . "<br>";
-						}
-					}
-				}
-				else{
-					echo "not connected";
-				}
-			?>
+			<h1>stuff comming soon...</h1>
 		</div>
 		
 		<div class="foot" id="foot">
