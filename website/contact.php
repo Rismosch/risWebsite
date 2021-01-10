@@ -167,7 +167,7 @@ if(!empty($_POST)) {
 					<p><span class="contact_error"><?php if(isset($errorContact)) echo $errorContact; ?></span></p>
 					<p>
 						<button
-							class="g-recaptcha contact_send_button"
+							class="g-recaptcha"
 							type="submit"
 							data-sitekey="<?php echo $reCAPTCHA_web_key;?>"
 							data-callback='onRecaptchaSuccess'

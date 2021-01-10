@@ -279,23 +279,23 @@ WHERE
 						{
 							$previousPage = $page - 1;
 							echo "
-								<a title=\"{$previousPage}\" href=\"https://www.rismosch.com/projects?ct={$category}&ls={$show}&pg={$previousPage}\">&lt;</a>
+								<a title=\"{$previousPage}\" href=\"https://www.rismosch.com/projects?ct={$category}&ls={$show}&pg={$previousPage}\" class=\"button\">&lt;</a>
 							";
 						}
 						else
 						{
 							echo "
-								<a class=\"page_selector_button_invisible\"></a>
+								<a class=\"button button_inactive\">&lt;</a>
 							";
 						}
 						
 						for($i = 1; $i <= $pageCount; ++$i)
 						{
 							echo "
-								<a title=\"{$i}\" href=\"https://www.rismosch.com/projects?ct={$category}&ls={$show}&pg={$i}\">";
+								<a title=\"{$i}\" href=\"https://www.rismosch.com/projects?ct={$category}&ls={$show}&pg={$i}\" class=\"button\">";
 							
 							if($page == $i)
-								echo "<b>{$i}</b>";
+								echo "<u><b>{$i}</b></u>";
 							else
 								echo $i;
 							
@@ -306,13 +306,13 @@ WHERE
 						{
 							$nextPage = $page + 1;
 							echo "
-								<a title=\"{$nextPage}\" href=\"https://www.rismosch.com/projects?ct={$category}&ls={$show}&pg={$nextPage}\">&gt;</a>
+								<a title=\"{$nextPage}\" href=\"https://www.rismosch.com/projects?ct={$category}&ls={$show}&pg={$nextPage}\" class=\"button\">&gt;</a>
 							";
 						}
 						else
 						{
 							echo "
-								<a class=\"page_selector_button_invisible\"></a>
+								<a class=\"button button_inactive\">&gt;</a>
 							";
 						}
 					}
