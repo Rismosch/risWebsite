@@ -19,7 +19,10 @@ if(isset($_GET["ct"]))
 else
 	$category = $categoryDefault;
 
-if($category >= 1 && $category <= 3)
+if($category < 1 || $category > 3)
+	$category = $categoryDefault;
+
+if($category != $categoryDefault)
 	$categoryFilterString = "Article_Categories.id = " . $category;
 else
 	$categoryFilterString = "true";
@@ -44,7 +47,26 @@ if($page <= 0)
 
 $offset = ($page - 1) * $show;
 
-$sql ="
+
+$sqlCategories ="
+SELECT
+	id,
+	name
+FROM
+	Article_Categories
+";
+
+$sqlSelectedCategory ="
+SELECT
+	id,
+	name
+FROM
+	Article_Categories
+WHERE
+	id = {$category}
+";
+
+$sqlArticles ="
 SELECT
 	Articles.id AS id,
 	Article_Types.name AS type,
@@ -69,7 +91,7 @@ LIMIT
 	{$show}
 ";
 
-$countSql ="
+$sqlCount ="
 SELECT
 	COUNT(id) as COUNT
 FROM
@@ -105,6 +127,47 @@ WHERE
 	<script src="scripts/continuousSession.js"></script>
 	<script src="scripts/cookie.js"></script>
 	<script src="scripts/util.js"></script>
+	
+	<style>
+		.dropdownButton {
+			background-color: #3498DB;
+			color: white;
+			padding: 16px;
+			font-size: 16px;
+			border: none;
+			cursor: pointer;
+		}
+		
+		.dropdownButton:hover {
+			background-color: #2980B9;
+		}
+		
+		.dropdown {
+			position: relative;
+			display: inline-block;
+		}
+		
+		.dropdownContent {
+			display: none;
+			position: absolute;
+			background-color: #f1f1f1;
+			min-width: 160px;
+			overflow: auto;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			z-index: 1;
+		}
+		
+		.dropdownContent a {
+			color: black;
+			padding: 12px 16px;
+			text-decoration: none;
+			display: block;
+		}
+		
+		.dropdown a:hover {background-color: #ddd;}
+		
+		.show {display: block;}
+	</style>
 </head>
 <body>
 	<div class="background">
@@ -147,7 +210,42 @@ WHERE
 			<?php
 				if($dbConn){
 					
-					$result = mysqli_query($dbConn,$sql);
+					// Category Dropdown
+					$selectedCategoryResult = mysqli_query($dbConn,$sqlSelectedCategory);
+					$selectedCategoryNumRows = mysqli_num_rows($selectedCategoryResult);
+					if($selectedCategoryNumRows > 0)
+					{
+						$selectedCategoryRow = mysqli_fetch_assoc($selectedCategoryResult);
+						$selectedCategoryName = $selectedCategoryRow['name'];
+					}
+					else
+					{
+						$selectedCategoryName = "Show All";
+					}
+					echo "
+						<div class=\"dropdown\">
+							<button onclick=\"showDropdown()\" class=\"dropdownButton\" id=\"dropdownButton\">{$selectedCategoryName}</button>
+							<div id=\"dropdownList\" class=\"dropdownContent\">
+								<a href=\"https://www.rismosch.com/projects?ct=0&ls={$show}&pg=0\">Show All</a>
+					";
+					$categoriesResult = mysqli_query($dbConn,$sqlCategories);
+					$categoriesNumRows = mysqli_num_rows($categoriesResult);
+					if($categoriesNumRows > 0)
+					{
+						while($categoryRow = mysqli_fetch_assoc($categoriesResult))
+						{
+							echo "
+								<a href=\"https://www.rismosch.com/projects?ct={$categoryRow['id']}&ls={$show}&pg=0\">{$categoryRow['name']}</a>
+							";
+						}
+					}
+					echo "
+							</div>
+						</div>
+					";
+					
+					// Articles Visualisation
+					$result = mysqli_query($dbConn,$sqlArticles);
 					$numRows = mysqli_num_rows($result);
 					if($numRows > 0)
 					{
@@ -184,10 +282,14 @@ WHERE
 						}
 						echo "</table>";
 					}
+					else
+					{
+						echo "<p>no articles found ¯\_(&#12484;)_/¯</p>";
+					}
 					
+					// Page Selector
 					echo "<div class=\"page_selector\">";
-					
-					$countResult = mysqli_query($dbConn,$countSql);
+					$countResult = mysqli_query($dbConn,$sqlCount);
 					$countNumRows = mysqli_num_rows($countResult);
 					if($countNumRows > 0)
 					{
@@ -230,8 +332,8 @@ WHERE
 							echo "<a class=\"page_selector_button_invisible\"></a>";
 						}
 					}
-					
 					echo "</div>";
+					
 				}
 				else{
 					echo "<p>ERROR: Could not connect to database.</p>";
@@ -271,5 +373,26 @@ WHERE
 		
 		<button onclick="scrollToTop()" id="scroll_to_top" class="scroll_to_top">Top</button>
 	</div>
+	
+<script>
+
+function showDropdown() {
+	document.getElementById("dropdownList").classList.toggle("show");
+}
+
+window.onclick = function(event) {
+	if (!event.target.matches('.dropdownButton'))
+	{
+		var dropdowns = document.getElementsByClassName("dropdownContent");
+		for (var i = 0; i < dropdowns.length; ++i)
+		{
+			var openDropdown = dropdowns[i];
+			if (openDropdown.classList.contains('show')) {
+				openDropdown.classList.remove('show');
+			}
+		}
+	}
+}
+</script>
 </body>
 </html>
