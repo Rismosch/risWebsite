@@ -91,13 +91,19 @@ LIMIT
 	{$show}
 ";
 
+if($category != $categoryDefault)
+	$selectedCategoryFilterString = "Articles.category_id = " . $category;
+else
+	$selectedCategoryFilterString = "true";
+
 $sqlCount ="
 SELECT
 	COUNT(id) as COUNT
 FROM
 	Articles
 WHERE
-	Articles.type_id = 1
+	Articles.type_id = 1 AND
+	{$selectedCategoryFilterString}
 ";
 
 ?>
@@ -127,47 +133,6 @@ WHERE
 	<script src="scripts/continuousSession.js"></script>
 	<script src="scripts/cookie.js"></script>
 	<script src="scripts/util.js"></script>
-	
-	<style>
-		.dropdownButton {
-			background-color: #3498DB;
-			color: white;
-			padding: 16px;
-			font-size: 16px;
-			border: none;
-			cursor: pointer;
-		}
-		
-		.dropdownButton:hover {
-			background-color: #2980B9;
-		}
-		
-		.dropdown {
-			position: relative;
-			display: inline-block;
-		}
-		
-		.dropdownContent {
-			display: none;
-			position: absolute;
-			background-color: #f1f1f1;
-			min-width: 160px;
-			overflow: auto;
-			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-			z-index: 1;
-		}
-		
-		.dropdownContent a {
-			color: black;
-			padding: 12px 16px;
-			text-decoration: none;
-			display: block;
-		}
-		
-		.dropdown a:hover {background-color: #ddd;}
-		
-		.show {display: block;}
-	</style>
 </head>
 <body>
 	<div class="background">
@@ -216,18 +181,20 @@ WHERE
 					if($selectedCategoryNumRows > 0)
 					{
 						$selectedCategoryRow = mysqli_fetch_assoc($selectedCategoryResult);
-						$selectedCategoryName = $selectedCategoryRow['name'];
+						$selectedCategoryId = $selectedCategoryRow['id'];
 					}
 					else
 					{
-						$selectedCategoryName = "Show All";
+						$selectedCategoryId = 0;
 					}
 					echo "
 						<div class=\"dropdown\">
-							<button onclick=\"showDropdown()\" class=\"dropdownButton\" id=\"dropdownButton\">{$selectedCategoryName}</button>
+							<button onclick=\"showDropdown()\" class=\"dropdownButton\" id=\"dropdownButton\">Filter</button>
 							<div id=\"dropdownList\" class=\"dropdownContent\">
-								<a href=\"https://www.rismosch.com/projects?ct=0&ls={$show}&pg=0\">Show All</a>
-					";
+								<a href=\"https://www.rismosch.com/projects?ct=0&ls={$show}&pg=0\" ";
+					if ($selectedCategoryId == 0)
+						echo "class=\"dropdown_selected\"";
+					echo ">Show All</a>\n";
 					$categoriesResult = mysqli_query($dbConn,$sqlCategories);
 					$categoriesNumRows = mysqli_num_rows($categoriesResult);
 					if($categoriesNumRows > 0)
@@ -235,8 +202,10 @@ WHERE
 						while($categoryRow = mysqli_fetch_assoc($categoriesResult))
 						{
 							echo "
-								<a href=\"https://www.rismosch.com/projects?ct={$categoryRow['id']}&ls={$show}&pg=0\">{$categoryRow['name']}</a>
-							";
+								<a href=\"https://www.rismosch.com/projects?ct={$categoryRow['id']}&ls={$show}&pg=0\" ";
+							if ($selectedCategoryId == $categoryRow['id'])
+								echo "class=\"dropdown_selected\"";
+							echo ">{$categoryRow['name']}</a>\n";
 						}
 					}
 					echo "
@@ -249,7 +218,9 @@ WHERE
 					$numRows = mysqli_num_rows($result);
 					if($numRows > 0)
 					{
-						echo "<table style=\"width: 100%;\"><tr class=\"row_empty row_devider\"><td></td></tr>";
+						echo "
+							<table style=\"width: 100%;\"><tr class=\"row_empty row_devider\"><td></td></tr>
+						";
 						while($row = mysqli_fetch_assoc($result))
 						{
 							$timestamp = strtotime($row['timestamp']);
@@ -280,15 +251,19 @@ WHERE
 								<tr class=\"row_empty row_devider\"><td></td></tr>
 							";
 						}
-						echo "</table>";
+						echo "
+							</table>
+						";
 					}
 					else
 					{
-						echo "<p>no articles found ¯\_(&#12484;)_/¯</p>";
+						echo "<p>no articles found &#175;&#92;&#95;&#40;&#12484;&#41;&#95;&#47;&#175;</p>";
 					}
 					
 					// Page Selector
-					echo "<div class=\"page_selector\">";
+					echo "
+						<div class=\"page_selector\">
+					";
 					$countResult = mysqli_query($dbConn,$sqlCount);
 					$countNumRows = mysqli_num_rows($countResult);
 					if($countNumRows > 0)
@@ -300,39 +275,50 @@ WHERE
 						if($totalCount % $show != 0)
 							++$pageCount;
 						
-						if($page > 1)
+						if($page > 1 && $page < $pageCount + 1)
 						{
 							$previousPage = $page - 1;
-							echo "<a title=\"{$previousPage}\" href=\"https://www.rismosch.com/projects?ct={$category}&ls={$show}&pg={$previousPage}\">&lt;</a>";
+							echo "
+								<a title=\"{$previousPage}\" href=\"https://www.rismosch.com/projects?ct={$category}&ls={$show}&pg={$previousPage}\">&lt;</a>
+							";
 						}
 						else
 						{
-							echo "<a class=\"page_selector_button_invisible\"></a>";
+							echo "
+								<a class=\"page_selector_button_invisible\"></a>
+							";
 						}
 						
 						for($i = 1; $i <= $pageCount; ++$i)
 						{
-							echo "<a title=\"{$i}\" href=\"https://www.rismosch.com/projects?ct={$category}&ls={$show}&pg={$i}\">";
+							echo "
+								<a title=\"{$i}\" href=\"https://www.rismosch.com/projects?ct={$category}&ls={$show}&pg={$i}\">";
 							
 							if($page == $i)
 								echo "<b>{$i}</b>";
 							else
 								echo $i;
 							
-							echo"</a>";
+							echo "</a>\n";
 						}
 						
-						if($page < $pageCount)
+						if($page < $pageCount && $page > 0)
 						{
 							$nextPage = $page + 1;
-							echo "<a title=\"{$nextPage}\" href=\"https://www.rismosch.com/projects?ct={$category}&ls={$show}&pg={$nextPage}\">&gt;</a>";
+							echo "
+								<a title=\"{$nextPage}\" href=\"https://www.rismosch.com/projects?ct={$category}&ls={$show}&pg={$nextPage}\">&gt;</a>
+							";
 						}
 						else
 						{
-							echo "<a class=\"page_selector_button_invisible\"></a>";
+							echo "
+								<a class=\"page_selector_button_invisible\"></a>
+							";
 						}
 					}
-					echo "</div>";
+					echo "
+						</div>
+					";
 					
 				}
 				else{
