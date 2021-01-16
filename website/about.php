@@ -1,39 +1,10 @@
-<?php include 'php/head.php' ?>
+<?php include 'php/head.php'; ?>
 <body>
 	<div class="background">
-		<a href="https://www.rismosch.com/">
-			<img
-				id="banner"
-				class="banner pixel_image"
-				src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-				onmouseover="playHoverAnimation()"
-			>
-		</a>
 		
-		<div class="selector" id="selector">
-			<ul class="selector_tabs" id="selector_tabs">
-				<li class="selector_tab" id="selector_tab">
-					<a href="https://www.rismosch.com/">
-						<div><b>Home</b></div>
-					</a>
-				</li>
-				<li class="selector_tab" id="selector_tab">
-					<a href="https://www.rismosch.com/blog">
-						<div><b>Blog</b></div>
-					</a>
-				</li>
-				<li class="selector_tab" id="selector_tab">
-					<a href="https://www.rismosch.com/projects">
-						<div><b>Projects</b></div>
-					</a>
-				</li>
-				<li class="selector_tab active_tab" id="selector_tab active_tab">
-					<a href="https://www.rismosch.com/about">
-						<div><b>About</b></div>
-					</a>
-				</li>
-			</ul>
-		</div>
+		<?php include 'php/banner.php'; ?>
+		
+		<?php $active_tab = 3; include 'php/selector.php'; ?>
 		
 		<div class="content" id="content">
 			<h1>About</h1>
@@ -143,7 +114,7 @@
 			</table>
 		</div>
 		
-		<?php include 'php/foot.php'?>
+		<?php include 'php/foot.php'; ?>
 		
 	</div>
 </body>
