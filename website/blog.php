@@ -1,112 +1,19 @@
-<?php
-
-include_once 'secret/contactEmail.php';
-include_once 'secret/dbConn.php';
-include_once 'secret/reCAPTCHA.php';
-
-include_once 'Mobile-Detect-2.8.34/Mobile_Detect.php';
-$detect = new Mobile_Detect;
-$isMobile = $detect->isMobile() && !$detect->isTablet();
-
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8"/>
-	<title>Rismosch</title>
-	
-	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-	<link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
-	<link rel="shortcut icon" href="favicon.ico">
-	<meta name="msapplication-TileImage" content="mstile-144x144.png">
-	<meta name="msapplication-TileColor" content="#00aba9">
-	
-	<link rel="stylesheet" href="css/colors.css">
-	<link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="css/<?php
-		if( $isMobile )
-			echo "mobile";
-		else
-			echo "desktop";
-	?>.css">
-	
-	<script src="scripts/jquery-3.5.1.min.js"></script>
-	<script src="scripts/banner.js"></script>
-	<script src="scripts/continuousSession.js"></script>
-	<script src="scripts/cookie.js"></script>
-	<script src="scripts/util.js"></script>
+<?php include 'php/head.php'; ?>
 </head>
 <body>
 	<div class="background">
-		<a href="https://www.rismosch.com/">
-			<img
-				id="banner"
-				class="banner pixel_image"
-				src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-				onmouseover="playHoverAnimation()"
-			>
-		</a>
+		<?php include 'php/banner.php'; ?>
 		
-		<div class="selector" id="selector">
-			<ul class="selector_tabs" id="selector_tabs">
-				<li class="selector_tab" id="selector_tab">
-					<a href="https://www.rismosch.com/">
-						<div><b>Home</b></div>
-					</a>
-				</li>
-				<li class="selector_tab active_tab" id="selector_tab active_tab">
-					<a href="https://www.rismosch.com/blog">
-						<div><b>Blog</b></div>
-					</a>
-				</li>
-				<li class="selector_tab" id="selector_tab">
-					<a href="https://www.rismosch.com/projects">
-						<div><b>Projects</b></div>
-					</a>
-				</li>
-				<li class="selector_tab" id="selector_tab">
-					<a href="https://www.rismosch.com/about">
-						<div><b>About</b></div>
-					</a>
-				</li>
-			</ul>
-		</div>
+		<?php $active_tab = 1; include 'php/selector.php'; ?>
 		
 		<div class="content" id="content">
 			<h1>stuff comming soon...</h1>
 		</div>
 		
-		<div class="foot" id="foot">
-			
-			<div class="socials" id="socials">
-				<a title="YouTube" href="https://www.youtube.com/channel/UCrWSfmTaXTN_LzEsVRKNJTw">
-					<img class="social_icon" src="assets/icon_social/youtube.png">
-				</a>
-				<a title="Bandcamp" href="https://rismosch.bandcamp.com">
-					<img class="social_icon" src="assets/icon_social/bandcamp.png">
-				</a>
-				<a title="itch.io" href="https://rismosch.itch.io/">
-					<img class="social_icon" src="assets/icon_social/itch_io.png">
-				</a>
-				<a title="GitHub" href="https://github.com/Rismosch">
-					<img class="social_icon" src="assets/icon_social/github.png">
-				</a>
-				<a title="Twitter" href="https://twitter.com/Rismosch">
-					<img class="social_icon" src="assets/icon_social/twitter.png">
-				</a>
-			</div>
-			
-			<div class="foot_links">
-				<p><a href="https://www.rismosch.com/privacy">Privacy Policy</a> &nbsp; | &nbsp; <a href="https://www.rismosch.com/licenses">Licenses</a> &nbsp; | &nbsp; <a href="https://www.rismosch.com/contact">Contact</a></p>
-			</div>
-			
-			<div class="foot_links">
-				<p>Copyright &#169; 2020 Simon Sutoris</p>
-			</div>
-			
-		</div>
+		<?php include 'php/foot.php'; ?>
 		
 		<button onclick="scrollToTop()" id="scroll_to_top" class="scroll_to_top">Top</button>
+		
 	</div>
 </body>
 </html>

@@ -225,7 +225,7 @@ div.content{
 
 .dropdownContent a.dropdown_selected{
 	color: var(--pico-8-white);
-	background-color: var(--pico-8-red);
+	background-color: var(--pico-8-cyan);
 }
 
 .dropdown a:hover{

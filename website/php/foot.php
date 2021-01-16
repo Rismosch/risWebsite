@@ -30,8 +30,6 @@ echo '
 	</div>
 	
 </div>
-
-<button onclick="scrollToTop()" id="scroll_to_top" class="scroll_to_top">Top</button>
 ';
 
 ?>

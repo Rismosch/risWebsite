@@ -35,7 +35,9 @@ echo '
 	<script src="scripts/continuousSession.js"></script>
 	<script src="scripts/cookie.js"></script>
 	<script src="scripts/util.js"></script>
-</head>
+	<script src="scripts/validate.js"></script>
+	
+	<script src="https://www.google.com/recaptcha/api.js"></script>
 ';
 
 ?>
