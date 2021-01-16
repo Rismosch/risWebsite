@@ -91,8 +91,8 @@ a.button:visited{
 a.button_inactive,
 a.button_inactive:hover,
 a.button_inactive:active{
-	background-color: var(--pico-8-blue);
-	color: var(--pico-8-light-grey);
+	background-color: var(--pico-8-light-grey);
+	color: var(--pico-8-black);
 	cursor: default;
 }
 

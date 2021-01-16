@@ -163,14 +163,24 @@ WHERE
 							$timestamp = strtotime($row['timestamp']);
 							$newTimestampFormat = date('M jS, Y',$timestamp);
 							
+							if(!is_null($row['link']))
+								$link = $row['link'];
+							else
+								$link = "https://www.rismosch.com/article?id={$row['id']}";
+							
+							if(!is_null($row['thumbnail_path']))
+								$thumbnail = $row['thumbnail_path'];
+							else
+								$thumbnail = "https://www.rismosch.com/articles/{$row['id']}/thumbnail.png";
+							
 							echo "
 								<tr>
 									<td>
-										<a href=\"{$row['link']}\" class=\"articles_entry_link\">
+										<a href=\"{$link}\" class=\"articles_entry_link\">
 											<table class=\"articles_entry clickable\">
 												<tr>
 													<td>
-														<img class=\"articles_thumbnail\" src=\"{$row['thumbnail_path']}\">
+														<img class=\"articles_thumbnail\" src=\"{$thumbnail}\">
 													</td>
 													<td>
 														<div>
@@ -269,25 +279,24 @@ WHERE
 		<button onclick="scrollToTop()" id="scroll_to_top" class="scroll_to_top">Top</button>
 	</div>
 	
-<script>
+	<script>
+	function showDropdown() {
+		document.getElementById("dropdownList").classList.toggle("show");
+	}
 
-function showDropdown() {
-	document.getElementById("dropdownList").classList.toggle("show");
-}
-
-window.onclick = function(event) {
-	if (!event.target.matches('.dropdownButton'))
-	{
-		var dropdowns = document.getElementsByClassName("dropdownContent");
-		for (var i = 0; i < dropdowns.length; ++i)
+	window.onclick = function(event) {
+		if (!event.target.matches('.dropdownButton'))
 		{
-			var openDropdown = dropdowns[i];
-			if (openDropdown.classList.contains('show')) {
-				openDropdown.classList.remove('show');
+			var dropdowns = document.getElementsByClassName("dropdownContent");
+			for (var i = 0; i < dropdowns.length; ++i)
+			{
+				var openDropdown = dropdowns[i];
+				if (openDropdown.classList.contains('show')) {
+					openDropdown.classList.remove('show');
+				}
 			}
 		}
 	}
-}
-</script>
+	</script>
 </body>
 </html>
