@@ -95,7 +95,7 @@
 			
 			<br>
 			
-			<p>All other non mentioned resources, such as images, music, code, and any other files that are viewable or downloadable found on rismosch.com, were created by me or used with permission.</p>
+			<p>All other non mentioned resources, such as images, music, code, and any other files that are found on rismosch.com, were created by me or used with permission.</p>
 		</div>
 		
 		<?php include 'php/foot.php'; ?>
