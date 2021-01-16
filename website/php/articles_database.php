@@ -180,8 +180,8 @@ function printArticles($pageName)
 			echo "
 				<tr>
 					<td>
-						<a href=\"{$link}\" class=\"articles_entry_link\">
-							<table class=\"articles_entry clickable\">
+						<a title=\"{$row['title']}\" href=\"{$link}\" class=\"articles_entry_link\">
+							<table class=\"articles_entry\">
 								<tr>
 									<td>
 										<img class=\"articles_thumbnail\" src=\"{$thumbnail}\">

@@ -3,7 +3,7 @@
 include 'php/head.php';
 
 $article_type_id = 1;
-include 'php/articles.php';
+include 'php/articles_database.php';
 
 ?>
 </head>

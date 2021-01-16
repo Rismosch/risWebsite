@@ -96,14 +96,6 @@ a.button_inactive:active{
 	cursor: default;
 }
 
-.clickable:hover{
-	background-color: var(--pico-8-pink);
-}
-
-.clickable:active{
-	background-color: var(--pico-8-red);
-}
-
 /* BANNER */
 .banner{
 	background-image: url('../assets/banner_spritesheet.png');
