@@ -29,7 +29,7 @@
 			
 			<table>
 				<tr>
-					<td>My music is very synth-heavy, with fast and crazy drum breaks. I describe my music as an amalgamation of early Drum and Bass/Jungle and Punk Rock. I use FL Studio and a small collection of external synthesizers.</td>
+					<td>My music is very synth-heavy, with fast and crazy drum breaks. I describe my music as an amalgamation of early Drum and Bass/Jungle and Punk Rock. Also, I love distortion.</td>
 					<td><img class="about_picture pixel_image" id="about_picture" src="assets/icon_8bit/synth.png"></td>
 				</tr>
 			</table>
@@ -38,7 +38,7 @@
 			
 			<table>
 				<tr>
-					<td>I have good experience with Microsoft Office products and use them on an almost daily basis, most notably Microsoft Excel. I dabbed a bit in Video Editing.</td>
+					<td>I have good experience with Microsoft Office products and use them on an almost daily basis, most notably Microsoft Excel. I also dabbed a bit in Video Editing.</td>
 					<td><img class="about_picture pixel_image" id="about_picture" src="assets/icon_8bit/video.png"></td>
 				</tr>
 			</table>
@@ -47,7 +47,7 @@
 			
 			<p></p>
 			<br>
-			<p>German is my mother language, and I can understand and write English fairly well.</p>
+			<p>German is my mother language, and my english English is fairly decent.</p>
 			
 			<br>
 			<br>
@@ -65,8 +65,7 @@
 						<p>
 							C#, <br>
 							Unity, <br>
-							XAML (WPF), <br>
-							PowerShell <br>
+							XAML (WPF) <br>
 						</p>
 					</td>
 				</tr>
