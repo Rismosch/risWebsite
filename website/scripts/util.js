@@ -19,6 +19,11 @@ window.onscroll = function()
 		scrollToTopButton.style.display = "none";
 }
 
+window.onclick = function(event)
+{
+	closeDropdown(event);
+}
+
 function getScrollToTopButton()
 {
 	if(scrollToTopButton == null)

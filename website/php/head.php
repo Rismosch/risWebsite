@@ -30,10 +30,11 @@ echo '
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/' . $cssName . '.css">
 	
-	<script src="scripts/jquery-3.5.1.min.js"></script>
 	<script src="scripts/banner.js"></script>
 	<script src="scripts/continuousSession.js"></script>
 	<script src="scripts/cookie.js"></script>
+	<script src="scripts/dropdown.js"></script>
+	<script src="scripts/jquery-3.5.1.min.js"></script>
 	<script src="scripts/util.js"></script>
 	<script src="scripts/validate.js"></script>
 	

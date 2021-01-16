@@ -35,25 +35,5 @@ include 'php/articles.php';
 		<button onclick="scrollToTop()" id="scroll_to_top" class="scroll_to_top">Top</button>
 		
 	</div>
-	
-	<script>
-	function showDropdown() {
-		document.getElementById("dropdownList").classList.toggle("show");
-	}
-
-	window.onclick = function(event) {
-		if (!event.target.matches('.dropdownButton'))
-		{
-			var dropdowns = document.getElementsByClassName("dropdownContent");
-			for (var i = 0; i < dropdowns.length; ++i)
-			{
-				var openDropdown = dropdowns[i];
-				if (openDropdown.classList.contains('show')) {
-					openDropdown.classList.remove('show');
-				}
-			}
-		}
-	}
-	</script>
 </body>
 </html>
