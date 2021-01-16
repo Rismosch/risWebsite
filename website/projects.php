@@ -229,22 +229,22 @@ WHERE
 							echo "
 								<tr>
 									<td>
-										<table>
-											<tr>
-												<td>
-													<a href=\"{$row['link']}\">
+										<a href=\"{$row['link']}\" class=\"articles_entry_link\">
+											<table class=\"articles_entry clickable\">
+												<tr>
+													<td>
 														<img class=\"articles_thumbnail\" src=\"{$row['thumbnail_path']}\">
-													</a>
-												</td>
-												<td>
-													<a href=\"{$row['link']}\" class=\"articles_entry_link\">
-														<h3>{$row['title']}</h3>
-														<p>{$row['category']}</p>
-													</a>
-													<p>{$newTimestampFormat}</p>
-												</td>
-											</tr>
-										</table>
+													</td>
+													<td>
+														<div>
+															<h3>{$row['title']}</h3>
+															<p>{$row['category']}</p>
+															<p>{$newTimestampFormat}</p>
+														</div>
+													</td>
+												</tr>
+											</table>
+										</a>
 									</td>
 								</tr>
 								<tr class=\"row_empty\"><td></td></tr>

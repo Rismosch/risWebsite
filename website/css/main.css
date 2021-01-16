@@ -74,7 +74,12 @@ a.button{
 
 button:hover,
 a.button:hover{
-	background-color: var(--pico-8-blue);
+	background-color: var(--pico-8-pink);
+}
+
+button:active,
+a.button:active{
+	background-color: var(--pico-8-red);
 }
 
 a.button:link,
@@ -84,10 +89,19 @@ a.button:visited{
 }
 
 a.button_inactive,
+a.button_inactive:hover,
 a.button_inactive:active{
 	background-color: var(--pico-8-blue);
 	color: var(--pico-8-light-grey);
 	cursor: default;
+}
+
+.clickable:hover{
+	background-color: var(--pico-8-pink);
+}
+
+.clickable:active{
+	background-color: var(--pico-8-red);
 }
 
 /* BANNER */
@@ -181,7 +195,7 @@ div.content{
 	padding-bottom: 20px;
 }
 
-/* CATEGORY DROPDOWN */
+/* DROPDOWN */
 .dropdownButton{
 	margin-bottom: 25px;
 }
@@ -211,12 +225,12 @@ div.content{
 
 .dropdownContent a.dropdown_selected{
 	color: var(--pico-8-white);
-	background-color: var(--pico-8-dark-grey);
+	background-color: var(--pico-8-red);
 }
 
 .dropdown a:hover{
-	color: var(--pico-8-black);
-	background-color: var(--pico-8-light-grey);
+	color: var(--pico-8-white);
+	background-color: var(--pico-8-pink);
 }
 
 .show{
@@ -225,14 +239,30 @@ div.content{
 
 /* ARTICLES SELECTION */
 img.articles_thumbnail{
-	width: 120px;
-	height: 120px;
-	margin-right: 20px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	height: 100%;
 }
 
 a.articles_entry_link{
 	text-decoration: none;
 	color: var(--pico-8-black);
+}
+
+table.articles_entry{
+	width: 100%;
+	text-align: left;
+}
+
+table.articles_entry td{
+	height: 128px;
+}
+
+table.articles_entry p,
+table.articles_entry h3{
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 /* PAGE SELECTOR */
@@ -243,11 +273,6 @@ div.page_selector{
 	margin-left: auto;
 	margin-right: auto;
 }
-
-/*div.page_selector > a.page_selector_button_invisible{
-	border: 5px solid var(--pico-8-light-grey);
-	background-color: var(--pico-8-light-grey);
-}*/
 
 /* ABOUT */
 table.resume_table{
