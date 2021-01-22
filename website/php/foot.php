@@ -22,7 +22,7 @@ echo '
 	</div>
 	
 	<div class="foot_links">
-		<p><a href="https://www.rismosch.com/privacy">Privacy Policy</a> &nbsp; | &nbsp; <a href="https://www.rismosch.com/licenses">Licenses</a> &nbsp; | &nbsp; <a href="https://www.rismosch.com/contact">Contact</a></p>
+		<p><a href="https://www.rismosch.com/privacy">Privacy Policy</a> &nbsp; | &nbsp; <a href="https://www.rismosch.com/references">References</a> &nbsp; | &nbsp; <a href="https://www.rismosch.com/contact">Contact</a></p>
 	</div>
 	
 	<div class="foot_links">

@@ -16,16 +16,18 @@ include 'php/articles_database.php';
 		<div class="content" id="content">
 			<h1>Blog</h1>
 			<?php
-				if($dbConn){
+				$dbSelectConnection = mysqli_connect($dbHost, $dbSelectUsername, $dbSelectPassword, $dbName);
+				
+				if($dbSelectConnection){
 					
 					$pageName = "blog";
-					printDropdown($pageName);
-					printArticles($pageName);
-					printSelector($pageName);
+					printDropdown($dbSelectConnection, $pageName);
+					printArticles($dbSelectConnection, $pageName);
+					printSelector($dbSelectConnection, $pageName);
 					
 				}
 				else{
-					echo "<p>ERROR: Could not connect to database.</p>";
+					echo "<h1>:(</h1><p>Error while loading articles.</p>";
 				}
 			?>
 		</div>

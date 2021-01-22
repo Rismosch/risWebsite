@@ -7,7 +7,7 @@
 		<?php include 'php/selector.php'; ?>
 		
 		<div class="content" id="content">
-			<h1>Licenses</h1>
+			<h1>References</h1>
 			
 			<h2>Used Logos</h2>
 			

@@ -21,7 +21,7 @@ else
 				if(file_exists($content))
 					include $content;
 				else
-					echo "<h1>:(</h1><p>Could not find article with id={$article_id} </p>";
+					echo "<h1>:(</h1><p>Could not find article with id={$article_id}</p>";
 				
 				echo "\n";
 			?>

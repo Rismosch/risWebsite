@@ -103,10 +103,9 @@ WHERE
 ";
 
 // Functions
-function printDropdown($pageName)
+function printDropdown($dbConn, $pageName)
 {
 	global
-		$dbConn,
 		$sqlSelectedCategory,
 		$show,
 		$sqlCategories;
@@ -149,10 +148,9 @@ function printDropdown($pageName)
 	";
 }
 
-function printArticles($pageName)
+function printArticles($dbConn, $pageName)
 {
 	global
-		$dbConn,
 		$sqlArticles;
 	
 	$result = mysqli_query($dbConn,$sqlArticles);
@@ -212,10 +210,9 @@ function printArticles($pageName)
 	}
 }
 
-function printSelector($pageName)
+function printSelector($dbConn, $pageName)
 {
 	global
-		$dbConn,
 		$sqlCount,
 		$show,
 		$page,
