@@ -1,11 +1,23 @@
 <?php
 
 include 'php/head.php';
+include 'php/articles_database.php';
 
 if(isset($_GET["id"]))
 	$article_id = intval($_GET["id"]);
 else
 	$article_id = 0;
+
+$dbSelectConnection = mysqli_connect($dbHost, $dbSelectUsername, $dbSelectPassword, $dbName);
+
+if($dbSelectConnection){
+	$typeId = GetArticleType($dbSelectConnection, $article_id);
+	
+	if($typeId == 0)
+		$active_tab = 1;
+	else if($typeId == 1)
+		$active_tab = 2;
+}
 
 ?>
 </head>

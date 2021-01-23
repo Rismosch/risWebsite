@@ -59,6 +59,7 @@ WHERE
 	id = {$category}
 ";
 
+
 if(!isset($article_type_id))
 	$article_type_id = 0;
 
@@ -86,6 +87,7 @@ LIMIT
 	{$offset},
 	{$show}
 ";
+
 
 if($category != $categoryDefault)
 	$selectedCategoryFilterString = "Articles.category_id = " . $category;
@@ -276,6 +278,29 @@ function printSelector($dbConn, $pageName)
 	echo "
 		</div>
 	";
+}
+
+function GetArticleType($dbConn, $articleId)
+{
+	$sqlSelectArticleType = "
+		SELECT
+			type_id
+		FROM
+			Articles
+		WHERE
+			id = {$articleId};
+	";
+	
+	$result = mysqli_query($dbConn,$sqlSelectArticleType);
+	$numRows = mysqli_num_rows($result);
+	if($numRows > 0)
+	{
+		$row = mysqli_fetch_assoc($result);
+		
+		return $row['type_id'];
+	}
+	
+	return -1;
 }
 
 ?>
