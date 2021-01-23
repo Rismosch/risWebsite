@@ -64,28 +64,28 @@
 				
 				<tr><td><b>jQuery v3.5.1</b></td></tr>
 				<tr><td>by JS Foundation and other contributors</td></tr>
-				<tr><td><a href="https://jquery.com/">source</a> last referenced 13th DEC, 2020</td></tr>
-				
-				<tr class="row_empty"><td></td></tr>
-				<tr class="row_empty row_devider"><td></td></tr>
-				
-				<tr><td><b>reCAPTCHA v2</b></td></tr>
-				<tr><td>by Google</td></tr>
-				<tr><td><a href="https://www.google.com/recaptcha/about/">source</a> last referenced 13th DEC, 2020</td></tr>
-				
-				<tr class="row_empty"><td></td></tr>
-				<tr class="row_empty row_devider"><td></td></tr>
-				
-				<tr><td><b>validate.js 0.13.1</b></td></tr>
-				<tr><td>by Nicklas Ansman, Wrapp</td></tr>
-				<tr><td><a href="https://cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js">source</a> last referenced 13th DEC, 2020</td></tr>
+				<tr><td><a href="https://jquery.com/">source</a> last referenced 23th JAN, 2021; <a href="https://www.rismosch.com/licenses/jQuery">license</a></td></tr>
 				
 				<tr class="row_empty"><td></td></tr>
 				<tr class="row_empty row_devider"><td></td></tr>
 				
 				<tr><td><b>Mobile-Detect-2.8.34</b></td></tr>
 				<tr><td>by Serban Ghita, Nick Ilyin and contributors</td></tr>
-				<tr><td><a href="http://mobiledetect.net/">source</a> last referenced 04th JAN, 2021</td></tr>
+				<tr><td><a href="http://mobiledetect.net/">source</a> last referenced 23th JAN, 2021; <a href="https://www.rismosch.com/licenses/Mobile-Detect">license</a></td></tr>
+				
+				<tr class="row_empty"><td></td></tr>
+				<tr class="row_empty row_devider"><td></td></tr>
+				
+				<tr><td><b>reCAPTCHA v2</b></td></tr>
+				<tr><td>by Google</td></tr>
+				<tr><td><a href="https://www.google.com/recaptcha/about/">source</a> last referenced 23th JAN, 2021; <a href="https://www.rismosch.com/licenses/reCAPTCHA">license</a></td></tr>
+				
+				<tr class="row_empty"><td></td></tr>
+				<tr class="row_empty row_devider"><td></td></tr>
+				
+				<tr><td><b>validate.js 0.13.1</b></td></tr>
+				<tr><td>by Nicklas Ansman, Wrapp</td></tr>
+				<tr><td><a href="https://cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js">source</a> last referenced 23th JAN, 2021; <a href="https://www.rismosch.com/licenses/validatejs">license</a></td></tr>
 				
 				<tr class="row_empty"><td></td></tr>
 				<tr class="row_empty row_devider"><td></td></tr>
