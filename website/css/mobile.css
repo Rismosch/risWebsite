@@ -3,6 +3,12 @@ body{
 	font-size: 2.4em;
 }
 
+button,
+a.button{
+	min-width: 40px;
+	padding: 20px;
+}
+
 /* BANNER */
 .banner{
 	transform: scale(10);
@@ -15,6 +21,26 @@ body{
 /* SELECTOR_TAB */
 li.selector_tab{
 	width: 200px;
+}
+
+li.selector_tab > a > div{
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+li.selector_tab:hover > a > div{
+	padding-top: 20px;
+	padding-bottom: 25px;
+}
+
+li.active_tab > a > div{
+	background-color: var(--pico-8-light-grey);
+	padding-bottom: 25px;
+}
+
+/* DROPDOWN */
+.dropdownContent{
+	top: 84px;
 }
 
 /* ABOUT */

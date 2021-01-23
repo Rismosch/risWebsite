@@ -66,8 +66,6 @@ a.button{
 	text-align: center;
 	background-color: var(--pico-8-cyan);
 	color: var(--pico-8-white);
-	min-width: 20px;
-	padding: 10px;
 	border: none;
 	cursor: pointer;
 }
@@ -134,16 +132,6 @@ li.selector_tab:hover{
 	margin-top: 0px;
 }
 
-li.selector_tab > a > div{
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-
-li.selector_tab:hover > a > div{
-	padding-top: 5px;
-	padding-bottom: 10px;
-}
-
 li.selector_tab > a{
 	text-align: center;
 	text-decoration: none;
@@ -200,7 +188,6 @@ div.content{
 .dropdownContent{
 	display: none;
 	position: absolute;
-	top: 42px;
 	background-color: var(--pico-8-white);
 	min-width: 160px;
 	overflow: auto;
@@ -255,7 +242,7 @@ table.articles_entry td.absorbing_column {
 }
 
 div.articles_thumbnail_frame{
-	background-color: var(--pico-8-black);
+	background-color: var(--pico-8-white);
 	width: 228px;
 	height: 128px;
 	margin-right: 10px;
@@ -357,6 +344,7 @@ div.contact > p{
 .contact_input{
 	font-family: Arial, sans-serif;
 	font-size: 1em;
+	background-color: var(--pico-8-white);
 }
 
 /* FOOT LINKS*/
