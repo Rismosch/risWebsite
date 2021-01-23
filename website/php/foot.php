@@ -32,4 +32,9 @@ echo '
 </div>
 ';
 
+if(isset($uses_captcha) && $uses_captcha == true)
+	echo '<button onclick="scrollToTop()" id="scroll_to_top" class="scroll_to_top scroll_captcha_offset">Top</button>';
+else
+	echo '<button onclick="scrollToTop()" id="scroll_to_top" class="scroll_to_top">Top</button>';
+
 ?>

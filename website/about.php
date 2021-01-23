@@ -116,8 +116,6 @@
 		
 		<?php include 'php/foot.php'; ?>
 		
-		<button onclick="scrollToTop()" id="scroll_to_top" class="scroll_to_top">Top</button>
-		
 	</div>
 </body>
 </html>
