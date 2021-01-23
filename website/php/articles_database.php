@@ -184,14 +184,18 @@ function printArticles($dbConn, $pageName)
 							<table class=\"articles_entry\">
 								<tr>
 									<td>
-										<img class=\"articles_thumbnail\" src=\"{$thumbnail}\">
+										<div class=\"articles_thumbnail_frame\">
+											<img class=\"articles_thumbnail\" src=\"{$thumbnail}\">
+										</div>
 									</td>
 									<td>
-										<div>
+										<div class=\"articles_thumbnail_information\">
 											<h3>{$row['title']}</h3>
 											<p>{$row['category']}</p>
 											<p>{$newTimestampFormat}</p>
 										</div>
+									</td>
+									<td class=\"absorbing_column\">
 									</td>
 								</tr>
 							</table>
