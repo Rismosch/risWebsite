@@ -8,7 +8,7 @@ include_once 'Mobile-Detect-2.8.34/Mobile_Detect.php';
 $detect = new Mobile_Detect;
 $isMobile = $detect->isMobile() && !$detect->isTablet();
 
-if( $isMobile )
+if ($isMobile)
 	$cssName = "mobile";
 else
 	$cssName = "desktop";

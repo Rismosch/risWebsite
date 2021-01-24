@@ -153,6 +153,7 @@ function printDropdown($dbConn, $pageName)
 function printArticles($dbConn, $pageName)
 {
 	global
+		$isMobile,
 		$sqlArticles;
 	
 	$result = mysqli_query($dbConn,$sqlArticles);
@@ -177,39 +178,67 @@ function printArticles($dbConn, $pageName)
 			else
 				$thumbnail = "https://www.rismosch.com/articles/{$row['id']}/thumbnail.png";
 			
-			echo "
-				<tr>
-					<td>
-						<a title=\"{$row['title']}\" href=\"{$link}\" class=\"articles_entry_link\">
-							<table class=\"articles_entry\">
-								<tr>
-									<td>
-										<div class=\"articles_thumbnail_frame\">
-											<img
-												class=\"articles_thumbnail\"
-												src=\"{$thumbnail}\"
-												onerror=\"this.onerror=null; this.src='assets/thumbnails/default.png'\"
-												alt=\"\"
-												\">
-										</div>
-									</td>
-									<td>
-										<div class=\"articles_thumbnail_information\">
-											<h3>{$row['title']}</h3>
-											<p>{$row['category']}</p>
-											<p>{$newTimestampFormat}</p>
-										</div>
-									</td>
-									<td class=\"absorbing_column\">
-									</td>
-								</tr>
-							</table>
-						</a>
-					</td>
-				</tr>
-				<tr class=\"row_empty\"><td></td></tr>
-				<tr class=\"row_empty row_devider\"><td></td></tr>
-			";
+			echo "<tr><td><a title=\"{$row['title']}\" href=\"{$link}\" class=\"articles_entry_link\">";
+			
+			if ($isMobile)
+				echo "
+					<table class=\"articles_entry\">
+						<tr>
+							<td>
+								<div class=\"articles_thumbnail_frame_mobile_wrapper\">
+									<div class=\"articles_thumbnail_frame_mobile\">
+										<img
+											class=\"articles_thumbnail\"
+											src=\"{$thumbnail}\"
+											onerror=\"this.onerror=null; this.src='assets/thumbnails/default.png'\"
+											alt=\"\"
+											\">
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class=\"articles_thumbnail_information\">
+									<h3>{$row['title']}</h3>
+									<p>{$row['category']} &#183; {$newTimestampFormat}</p>
+								</div>
+							</td>
+						</tr>
+					</table>
+				";
+			else
+				echo "
+					<table class=\"articles_entry\">
+						<tr>
+							<td>
+								<div class=\"articles_thumbnail_frame\">
+									<img
+										class=\"articles_thumbnail\"
+										src=\"{$thumbnail}\"
+										onerror=\"this.onerror=null; this.src='assets/thumbnails/default.png'\"
+										alt=\"\"
+										\">
+								</div>
+							</td>
+							<td>
+								<div class=\"articles_thumbnail_information\">
+									<h3>{$row['title']}</h3>
+									<br>
+									<p>{$row['category']} &#183; {$newTimestampFormat}</p>
+								</div>
+							</td>
+							<td class=\"absorbing_column\">
+							</td>
+						</tr>
+					</table>
+				";
+				
+				echo "
+					</a></td></tr>
+					<tr class=\"row_empty\"><td></td></tr>
+					<tr class=\"row_empty row_devider\"><td></td></tr>
+				";
 		}
 		echo "
 			</table>
