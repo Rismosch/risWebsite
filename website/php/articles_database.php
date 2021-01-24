@@ -185,7 +185,12 @@ function printArticles($dbConn, $pageName)
 								<tr>
 									<td>
 										<div class=\"articles_thumbnail_frame\">
-											<img class=\"articles_thumbnail\" src=\"{$thumbnail}\">
+											<img
+												class=\"articles_thumbnail\"
+												src=\"{$thumbnail}\"
+												onerror=\"this.onerror=null; this.src='assets/thumbnails/default.png'\"
+												alt=\"\"
+												\">
 										</div>
 									</td>
 									<td>

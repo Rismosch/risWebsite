@@ -242,8 +242,8 @@ table.articles_entry td.absorbing_column {
 }
 
 div.articles_thumbnail_frame{
-	background-color: var(--pico-8-white);
-	width: 228px;
+	background-color: var(--pico-8-dark-grey);
+	width: 227px;
 	height: 128px;
 	margin-right: 10px;
 }
