@@ -43,6 +43,19 @@ li.active_tab > a > div{
 	top: 84px;
 }
 
+/* ARTICLES SELECTION */
+div.articles_thumbnail_wrapper_outside{
+	background-color: var(--pico-8-dark-grey);
+	width: 100%;
+	padding-bottom: 56.25%;
+	position: relative;
+}
+
+div.articles_thumbnail_wrapper_inside{
+	position: absolute;
+	top: 0; bottom: 0; left: 0; right: 0;
+}
+
 /* ABOUT */
 img.profile_picture{
 	width: 150px;

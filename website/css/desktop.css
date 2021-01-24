@@ -43,6 +43,14 @@ li.active_tab > a > div{
 	top: 42px;
 }
 
+/* ARTICLES SELECTION */
+div.articles_thumbnail_wrapper{
+	background-color: var(--pico-8-dark-grey);
+	width: 227px;
+	height: 128px;
+	margin-right: 10px;
+}
+
 /* ABOUT */
 img.profile_picture{
 	width: 75px;

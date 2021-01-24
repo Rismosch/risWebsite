@@ -241,29 +241,9 @@ table.articles_entry td.absorbing_column {
 	width: 100% !important;
 }
 
-div.articles_thumbnail_frame_mobile_wrapper{
-	background-color: var(--pico-8-dark-grey);
-	width: 100%;
-	padding-bottom: 56.25%;
-	position: relative;
-}
-
-div.articles_thumbnail_frame_mobile{
-	position: absolute;
-	top: 0; bottom: 0; left: 0; right: 0;
-}
-
-div.articles_thumbnail_frame{
-	background-color: var(--pico-8-dark-grey);
-	width: 227px;
-	height: 128px;
-	margin-right: 10px;
-}
-
 img.articles_thumbnail{
 	display: block;
-	margin-left: auto;
-	margin-right: auto;
+	margin: auto;
 	max-width: 100%;
 	max-height: 100%;
 }

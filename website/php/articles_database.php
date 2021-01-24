@@ -185,8 +185,8 @@ function printArticles($dbConn, $pageName)
 					<table class=\"articles_entry\">
 						<tr>
 							<td>
-								<div class=\"articles_thumbnail_frame_mobile_wrapper\">
-									<div class=\"articles_thumbnail_frame_mobile\">
+								<div class=\"articles_thumbnail_wrapper_outside\">
+									<div class=\"articles_thumbnail_wrapper_inside\">
 										<img
 											class=\"articles_thumbnail\"
 											src=\"{$thumbnail}\"
@@ -212,7 +212,7 @@ function printArticles($dbConn, $pageName)
 					<table class=\"articles_entry\">
 						<tr>
 							<td>
-								<div class=\"articles_thumbnail_frame\">
+								<div class=\"articles_thumbnail_wrapper\">
 									<img
 										class=\"articles_thumbnail\"
 										src=\"{$thumbnail}\"
