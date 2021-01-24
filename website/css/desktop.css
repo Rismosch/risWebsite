@@ -3,10 +3,25 @@ body{
 	font-size: 1.2em;
 }
 
+tr.row_devider td{
+	border-width: 5px;
+}
+
 button,
 a.button{
 	min-width: 20px;
 	padding: 10px;
+}
+
+button:hover,
+a.button:hover{
+	background-color: var(--pico-8-pink);
+}
+
+a.button_inactive:hover{
+	background-color: var(--pico-8-light-grey);
+	color: var(--pico-8-black);
+	cursor: default;
 }
 
 /* BANNER */
@@ -21,6 +36,16 @@ a.button{
 /* SELECTOR_TAB */
 li.selector_tab{
 	width: 100px;
+	
+	margin-right: -5px;
+	
+	border-top-width: 5px;
+	border-left-width: 5px;
+	border-right-width: 5px;
+}
+
+li.selector_tab:hover{
+	margin-top: 0px;
 }
 
 li.selector_tab > a > div{
@@ -38,9 +63,20 @@ li.active_tab > a > div{
 	padding-bottom: 10px;
 }
 
+/* CONTENT */
+div.content{
+	margin: 5px;
+	border-width: 5px;
+}
+
 /* DROPDOWN */
 .dropdownContent{
 	top: 42px;
+}
+
+.dropdown a:hover{
+	color: var(--pico-8-white);
+	background-color: var(--pico-8-pink);
 }
 
 /* ARTICLES SELECTION */
@@ -49,6 +85,10 @@ div.articles_thumbnail_wrapper{
 	width: 227px;
 	height: 128px;
 	margin-right: 10px;
+}
+
+table.articles_entry:hover h3{
+	text-decoration: underline;
 }
 
 /* ABOUT */
@@ -83,4 +123,14 @@ button.contact_send_button{
 /* CONTACT */
 #contact-form input, textarea{
 	width: 50%;
+}
+
+/* FOOT LINKS */
+div.foot_links > p:hover{
+	cursor: default;
+}
+
+div.foot_links > p > a:hover{
+	color: var(--pico-8-white);
+	cursor: pointer;
 }

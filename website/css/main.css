@@ -55,7 +55,8 @@ tr.row_empty td{
 }
 
 tr.row_devider td{
-	border-top: 5px dashed var(--pico-8-white);
+	border-top-style: dashed;
+	border-top-color: var(--pico-8-white);
 }
 
 button,
@@ -70,11 +71,6 @@ a.button{
 	cursor: pointer;
 }
 
-button:hover,
-a.button:hover{
-	background-color: var(--pico-8-pink);
-}
-
 button:active,
 a.button:active{
 	background-color: var(--pico-8-red);
@@ -87,7 +83,6 @@ a.button:visited{
 }
 
 a.button_inactive,
-a.button_inactive:hover,
 a.button_inactive:active{
 	background-color: var(--pico-8-light-grey);
 	color: var(--pico-8-black);
@@ -118,18 +113,17 @@ ul.selector_tabs{
 
 /* SELECTOR_TAB */
 li.selector_tab{
+	background-color: var(--pico-8-dark-grey);
 	float: left;
-	margin-right: -5px;
+	
 	margin-top: 5px;
 	
-	background-color: var(--pico-8-dark-grey);
-	border-top: 5px solid var(--pico-8-white);
-	border-left: 5px solid var(--pico-8-white);
-	border-right: 5px solid var(--pico-8-white);
-}
-
-li.selector_tab:hover{
-	margin-top: 0px;
+	border-top-style: solid;
+	border-top-color: var(--pico-8-white);
+	border-left-style: solid;
+	border-left-color: var(--pico-8-white);
+	border-right-style: solid;
+	border-right-color: var(--pico-8-white);
 }
 
 li.selector_tab > a{
@@ -150,11 +144,6 @@ li.active_tab{
 	margin-top: 0px;
 }
 
-li.active_tab > a > div{
-	background-color: var(--pico-8-light-grey);
-	padding-bottom: 10px;
-}
-
 li.active_tab > a:link{
 	color: var(--pico-8-black);
 }
@@ -166,9 +155,9 @@ li.active_tab > a:visited{
 /* CONTENT */
 div.content{
 	width: auto;
-	margin: 5px;
 	background-color: var(--pico-8-light-grey);
-	border: 5px solid var(--pico-8-white);
+	border-style: solid;
+	border-color: var(--pico-8-white);
 	padding-top: 10px;
 	padding-left: 50px;
 	padding-right: 50px;
@@ -207,11 +196,6 @@ div.content{
 	background-color: var(--pico-8-cyan);
 }
 
-.dropdown a:hover{
-	color: var(--pico-8-white);
-	background-color: var(--pico-8-pink);
-}
-
 .show{
 	display: block;
 }
@@ -246,10 +230,6 @@ img.articles_thumbnail{
 	margin: auto;
 	max-width: 100%;
 	max-height: 100%;
-}
-
-table.articles_entry:hover h3{
-	text-decoration: underline;
 }
 
 /* PAGE SELECTOR */
@@ -354,10 +334,6 @@ div.foot_links{
 	color: var(--pico-8-light-grey);
 }
 
-div.foot_links > p:hover{
-	cursor: default;
-}
-
 div.foot_links > p > a{
 	text-decoration: none;
 	color: var(--pico-8-light-grey);
@@ -369,11 +345,6 @@ div.foot_links > p > a:link{
 
 div.foot_links > p > a:visited{
 	color: var(--pico-8-light-grey);
-}
-
-div.foot_links > p > a:hover{
-	color: var(--pico-8-white);
-	cursor: pointer;
 }
 
 /* SCROLL TO TOP BUTTON*/
