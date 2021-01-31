@@ -27,6 +27,7 @@ li.selector_tab{
 	width: 200px;
 	
 	margin-right: -15px;
+	margin-top: 15px;
 	
 	border-top-width: 15px;
 	border-left-width: 15px;
@@ -40,7 +41,12 @@ li.selector_tab > a > div{
 
 li.active_tab > a > div{
 	background-color: var(--pico-8-light-grey);
-	padding-bottom: 25px;
+	padding-bottom: 35px;
+}
+
+/* ACTIVE SELECTOR_TAB */
+li.active_tab{
+	margin-top: 0px;
 }
 
 /* CONTENT */

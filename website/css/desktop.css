@@ -38,6 +38,7 @@ li.selector_tab{
 	width: 100px;
 	
 	margin-right: -5px;
+	margin-top: 5px;
 	
 	border-top-width: 5px;
 	border-left-width: 5px;
@@ -61,6 +62,11 @@ li.selector_tab:hover > a > div{
 li.active_tab > a > div{
 	background-color: var(--pico-8-light-grey);
 	padding-bottom: 10px;
+}
+
+/* ACTIVE SELECTOR_TAB */
+li.active_tab{
+	margin-top: 0px;
 }
 
 /* CONTENT */

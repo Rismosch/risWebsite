@@ -116,8 +116,6 @@ li.selector_tab{
 	background-color: var(--pico-8-dark-grey);
 	float: left;
 	
-	margin-top: 5px;
-	
 	border-top-style: solid;
 	border-top-color: var(--pico-8-white);
 	border-left-style: solid;
@@ -140,10 +138,6 @@ li.selector_tab > a:visited{
 }
 
 /* ACTIVE SELECTOR_TAB */
-li.active_tab{
-	margin-top: 0px;
-}
-
 li.active_tab > a:link{
 	color: var(--pico-8-black);
 }
