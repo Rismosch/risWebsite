@@ -45,28 +45,9 @@ echo "<title>{$title}</title>";
 					echo "<p>Could not find article with id={$article_id}</p>";
 					$article_id = 0;
 				}
-				
-				/*
-				echo "
-				<div id=\"disqus_thread\"></div>
-				<script>
-					var disqus_config = function () {
-						this.page.identifier 	= \"{$article_id}\";
-						this.page.url			= \"https://www.rismosch.com/article?id={$article_id}\";
-						this.page.title			= \"{$title}\";
-					};
-					
-					(function() {
-						var d = document, s = d.createElement('script');
-						s.src = 'https://rismosch.disqus.com/embed.js';
-						s.setAttribute('data-timestamp', +new Date());
-						(d.head || d.body).appendChild(s);
-					})();
-				</script>
-				<noscript>Please enable JavaScript to view the <a href=\"https://disqus.com/?ref_noscript\">comments powered by Disqus.</a></noscript>\n";
-				*/
 			?>
 			
+			<div class="disqus-loading">Loading comments&hellip;</div>
 			<div class="disqus"></div>
 			
 		</div>
@@ -85,6 +66,14 @@ echo "<title>{$title}</title>";
 				this.page.identifier 	= <?php echo "'{$article_id}'"; ?>;
 				this.page.url			= <?php echo "'https://www.rismosch.com/article?id={$article_id}'"; ?>;
 				this.page.title			= <?php echo "'{$title}'"; ?>;
+				this.callbacks.onReady	= [function()
+				{
+					var el = document.querySelector( '.disqus-loading' );
+					if( el.classList )
+						el.classList.add( 'is-hidden' ); // IE 10+
+					else
+						el.className += ' ' + 'is-hidden'; // IE 8-9
+				}];
 			}
 		});
 

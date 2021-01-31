@@ -353,3 +353,14 @@ button.scroll_to_top{
 button.scroll_captcha_offset{
 	bottom: 80px;
 }
+
+/* DISQUS */
+.disqus-loading
+{
+	text-align: center;
+}
+
+.disqus-loading.is-hidden
+{
+	display: none;
+}

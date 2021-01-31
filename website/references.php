@@ -90,6 +90,13 @@
 				
 				<tr class="row_empty"><td></td></tr>
 				<tr class="row_empty row_devider"><td></td></tr>
+				
+				<tr><td><b>disqusLoader.js</b></td></tr>
+				<tr><td>by Osvaldas Valutis</td></tr>
+				<tr><td><a href="https://github.com/osvaldasvalutis/disqusLoader.js">source</a> last referenced 31th JAN, 2021; <a href="https://www.rismosch.com/licenses/discusLoader">license</a></td></tr>
+				
+				<tr class="row_empty"><td></td></tr>
+				<tr class="row_empty row_devider"><td></td></tr>
 			</table>
 			
 			<p>Everything else has been created by me. The source code is public and can be found <a href="https://github.com/Rismosch/risWebsite">here</a>.</p>
