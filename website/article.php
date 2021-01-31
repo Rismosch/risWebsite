@@ -46,7 +46,7 @@ echo "<title>{$title}</title>";
 					$article_id = 0;
 				}
 				
-				
+				/*
 				echo "
 				<div id=\"disqus_thread\"></div>
 				<script>
@@ -64,15 +64,19 @@ echo "<title>{$title}</title>";
 					})();
 				</script>
 				<noscript>Please enable JavaScript to view the <a href=\"https://disqus.com/?ref_noscript\">comments powered by Disqus.</a></noscript>\n";
-				
+				*/
 			?>
-			<div id="disqus"></div>
+			
+			<div class="disqus"></div>
+			
 		</div>
 		
 		<?php include 'php/foot.php'; ?>
 	</div>
 	
 	<script>
+
+		
 		disqusLoader( '.disqus',
 		{
 			scriptUrl:		'//rismosch.disqus.com/embed.js',
@@ -83,6 +87,8 @@ echo "<title>{$title}</title>";
 				this.page.title			= <?php echo "'{$title}'"; ?>;
 			}
 		});
+
+		
 	</script>
 </body>
 </html>

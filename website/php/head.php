@@ -32,6 +32,7 @@ echo '
 	<script src="scripts/banner.js"></script>
 	<script src="scripts/continuousSession.js"></script>
 	<script src="scripts/cookie.js"></script>
+	<script src="scripts/disqusloader.js"></script>
 	<script src="scripts/dropdown.js"></script>
 	<script src="scripts/jquery-3.5.1.min.js"></script>
 	<script src="scripts/util.js"></script>
