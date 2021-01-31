@@ -1,5 +1,6 @@
 <?php include 'php/head.php'; ?>
 </head>
+<title>Contact</title>
 <body>
 	<div class="background">
 		<?php include 'php/banner.php'; ?>

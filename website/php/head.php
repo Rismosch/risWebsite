@@ -18,7 +18,6 @@ echo '
 <html lang="en">
 <head>
 	<meta charset="utf-8"/>
-	<title>Rismosch</title>
 	
 	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 	<link rel="icon" type="image/png" href="favicon.png" sizes="32x32">

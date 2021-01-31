@@ -1,5 +1,6 @@
 <?php include 'php/head.php'; ?>
 </head>
+<title>Privacy Policy</title>
 <body>
 	<div class="background">
 		<?php include 'php/banner.php'; ?>

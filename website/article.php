@@ -8,16 +8,22 @@ if(isset($_GET["id"]))
 else
 	$article_id = 0;
 
-$dbSelectConnection = mysqli_connect($dbHost, $dbSelectUsername, $dbSelectPassword, $dbName);
+$dbConn = mysqli_connect($dbHost, $dbSelectUsername, $dbSelectPassword, $dbName);
 
-if($dbSelectConnection){
-	$typeId = GetArticleType($dbSelectConnection, $article_id);
+$title = ":(";
+
+if($dbConn){
+	$typeId = GetArticleType($dbConn, $article_id);
 	
 	if($typeId == 0)
 		$active_tab = 1;
 	else if($typeId == 1)
 		$active_tab = 2;
+
+	$title = GetArticleTitle($dbConn, $article_id);
 }
+
+echo "<title>{$title}</title>";
 
 ?>
 </head>
@@ -29,22 +35,25 @@ if($dbSelectConnection){
 		
 		<div class="content" id="content">
 			<?php
+				echo "<h1>{$title}</h1>";
+				
 				$content = "articles/{$article_id}/content.php";
 				if(file_exists($content))
 					include $content;
 				else
 				{
-					echo "<h1>:(</h1><p>Could not find article with id={$article_id}</p>";
+					echo "<p>Could not find article with id={$article_id}</p>";
 					$article_id = 0;
 				}
 				
-				/*
+				
 				echo "
 				<div id=\"disqus_thread\"></div>
 				<script>
 					var disqus_config = function () {
-						this.page.url = \"https://www.rismosch.com/article?id={$article_id}\";
-						this.page.identifier = {$article_id};
+						this.page.identifier 	= \"{$article_id}\";
+						this.page.url			= \"https://www.rismosch.com/article?id={$article_id}\";
+						this.page.title			= \"{$title}\";
 					};
 					
 					(function() {
@@ -55,11 +64,25 @@ if($dbSelectConnection){
 					})();
 				</script>
 				<noscript>Please enable JavaScript to view the <a href=\"https://disqus.com/?ref_noscript\">comments powered by Disqus.</a></noscript>\n";
-				*/
+				
 			?>
+			<div id="disqus"></div>
 		</div>
 		
 		<?php include 'php/foot.php'; ?>
 	</div>
+	
+	<script>
+		disqusLoader( '.disqus',
+		{
+			scriptUrl:		'//rismosch.disqus.com/embed.js',
+			disqusConfig:	function()
+			{
+				this.page.identifier 	= <?php echo "'{$article_id}'"; ?>;
+				this.page.url			= <?php echo "'https://www.rismosch.com/article?id={$article_id}'"; ?>;
+				this.page.title			= <?php echo "'{$title}'"; ?>;
+			}
+		});
+	</script>
 </body>
 </html>

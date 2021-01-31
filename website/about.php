@@ -1,5 +1,6 @@
 <?php include 'php/head.php'; ?>
 </head>
+<title>About</title>
 <body>
 	<div class="background">
 		

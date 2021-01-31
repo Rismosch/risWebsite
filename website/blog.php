@@ -6,6 +6,7 @@ $article_type_id = 0;
 include 'php/articles_database.php';
 
 ?>
+<title>Blog</title>
 </head>
 <body>
 	<div class="background">

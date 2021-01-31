@@ -341,4 +341,27 @@ function GetArticleType($dbConn, $articleId)
 	return -1;
 }
 
+function GetArticleTitle($dbConn, $articleId)
+{
+	$sqlSelectArticleTitle = "
+		SELECT
+			title
+		FROM
+			Articles
+		WHERE
+			id = {$articleId};
+	";
+	
+	$result = mysqli_query($dbConn,$sqlSelectArticleTitle);
+	$numRows = mysqli_num_rows($result);
+	if($numRows > 0)
+	{
+		$row = mysqli_fetch_assoc($result);
+		
+		return $row['title'];
+	}
+	
+	return ":(";
+}
+
 ?>

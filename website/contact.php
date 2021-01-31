@@ -76,6 +76,7 @@ if(!empty($_POST)) {
 }
 
 ?>
+<title>Contact</title>
 </head>
 <body>
 	<div class="background">
