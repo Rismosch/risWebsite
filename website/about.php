@@ -48,7 +48,7 @@
 			
 			<p></p>
 			<br>
-			<p>German is my mother language, and my english English is fairly decent.</p>
+			<p>German is my mother language, and my English is fairly decent.</p>
 			
 			<br>
 			<br>

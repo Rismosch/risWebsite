@@ -1,18 +1,4 @@
 /* GLOBAL */
-body{
-	font-size: 1.2em;
-}
-
-tr.row_devider td{
-	border-width: 5px;
-}
-
-button,
-a.button{
-	min-width: 20px;
-	padding: 10px;
-}
-
 button:hover,
 a.button:hover{
 	background-color: var(--pico-8-pink);
@@ -24,62 +10,15 @@ a.button_inactive:hover{
 	cursor: default;
 }
 
-/* BANNER */
-.banner{
-	transform: scale(5);
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 47px;
-	margin-bottom: 47px;
-}
-
-/* SELECTOR_TAB */
-li.selector_tab{
-	width: 100px;
-	
-	margin-right: -5px;
-	margin-top: 5px;
-	
-	border-top-width: 5px;
-	border-left-width: 5px;
-	border-right-width: 5px;
-}
-
-li.selector_tab:hover{
-	margin-top: 0px;
-}
-
-li.selector_tab > a > div{
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-
-li.selector_tab:hover > a > div{
-	padding-top: 5px;
-	padding-bottom: 10px;
-}
-
-li.active_tab > a > div{
-	background-color: var(--pico-8-light-grey);
-	padding-bottom: 10px;
-}
-
-/* ACTIVE SELECTOR_TAB */
-li.active_tab{
-	margin-top: 0px;
-}
-
 /* CONTENT */
 div.content{
-	margin: 5px;
-	border-width: 5px;
+	padding-top: 10px;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-bottom: 20px;
 }
 
 /* DROPDOWN */
-.dropdownContent{
-	top: 42px;
-}
-
 .dropdown a:hover{
 	color: var(--pico-8-white);
 	background-color: var(--pico-8-pink);
@@ -97,38 +36,9 @@ table.articles_entry:hover h3{
 	text-decoration: underline;
 }
 
-/* ABOUT */
-img.profile_picture{
-	width: 75px;
-	height:75px;
-	border: 5px solid var(--pico-8-white);
-	margin-right: 20px;
-}
-
-img.about_picture{
-	width: 80px;
-	height:80px;
-	margin-left: 20px;
-}
-
-/* SOCIAL */
-img.social_icon{
-	width: 84px;
-	height:84px;
-	margin: 5px;
-	margin-left: 30px;
-	margin-right: 30px;
-}
-
-/* CONTACT*/
-button.contact_send_button{
-	width: 72px;
-	height: 28px;
-}
-
 /* CONTACT */
 #contact-form input, textarea{
-	width: 50%;
+	width: 500px;
 }
 
 /* FOOT LINKS */
