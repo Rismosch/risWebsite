@@ -24,14 +24,17 @@ if($dbConn){
 }
 
 echo "
-<title>{$title}</title>
 
-<meta name=\"robots\" content=\"all\">
+	<title>{$title}</title>
 
-<meta property=\"og:title\" content=\"{$title}\" />
-<meta property=\"og:type\" content=\"article\" />
-<meta property=\"og:url\" content=\"https://www.rismosch.com/article?id={$article_id}\" />
-<meta property=\"og:image\" content=\"https://www.rismosch.com/assets/meta_image_x20.png\" />
+	<meta name=\"robots\" content=\"all\">
+
+	<meta property=\"og:title\" content=\"{$title}\" />
+	<meta property=\"og:type\" content=\"article\" />
+	<meta property=\"og:url\" content=\"https://www.rismosch.com/article?id={$article_id}\" />
+	<meta property=\"og:image\" content=\"https://www.rismosch.com/assets/meta_image_x20.png\" />
+
+	<meta name=\"author\" content=\"Simon Sutoris\">
 ";
 
 ?>

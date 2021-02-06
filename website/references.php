@@ -1,13 +1,17 @@
 <?php include 'php/head.php'; ?>
-<title>References</title>
-<description>Complete list of external sources, used for rismosch.com</description>
 
-<meta name="robots" content="all">
+	<title>References</title>
+	<meta name="description" content="Complete list of external sources, used for rismosch.com">
+	<meta name="keywords" content="external, resources, licenses">
 
-<meta property="og:title" content="References" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.rismosch.com/references" />
-<meta property="og:image" content="https://www.rismosch.com/assets/meta_image_x20.png" />
+	<meta name="robots" content="all">
+
+	<meta property="og:title" content="References" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="https://www.rismosch.com/references" />
+	<meta property="og:image" content="https://www.rismosch.com/assets/meta_image_x20.png" />
+
+	<meta name="author" content="Simon Sutoris">
 
 </head>
 <body>

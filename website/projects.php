@@ -6,15 +6,19 @@ $article_type_id = 1;
 include 'php/articles_database.php';
 
 ?>
-<title>Projects</title>
-<description>Projects of Simon Sutoris</description>
 
-<meta name="robots" content="all">
+	<title>Projects</title>
+	<meta name="description" content="Projects of Simon Sutoris">
+	<meta name="keywords" content="projects">
 
-<meta property="og:title" content="Projects" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.rismosch.com/projects" />
-<meta property="og:image" content="https://www.rismosch.com/assets/meta_image_x20.png" />
+	<meta name="robots" content="all">
+
+	<meta property="og:title" content="Projects" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.rismosch.com/projects" />
+	<meta property="og:image" content="https://www.rismosch.com/assets/meta_image_x20.png" />
+
+	<meta name="author" content="Simon Sutoris">
 
 </head>
 <body>

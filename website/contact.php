@@ -76,15 +76,19 @@ if(!empty($_POST)) {
 }
 
 ?>
-<title>Contact</title>
-<description>Contact Simon Sutoris</description>
 
-<meta name="robots" content="all">
+	<title>Contact</title>
+	<meta name="description" content="Contact Simon Sutoris">
+	<meta name="keywords" content="contact, email">
 
-<meta property="og:title" content="Contact" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.rismosch.com/contact" />
-<meta property="og:image" content="https://www.rismosch.com/assets/meta_image_x20.png" />
+	<meta name="robots" content="all">
+
+	<meta property="og:title" content="Contact" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.rismosch.com/contact" />
+	<meta property="og:image" content="https://www.rismosch.com/assets/meta_image_x20.png" />
+
+	<meta name="author" content="Simon Sutoris">
 
 </head>
 <body>

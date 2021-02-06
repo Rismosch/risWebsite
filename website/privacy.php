@@ -1,13 +1,17 @@
 <?php include 'php/head.php'; ?>
-<title>Privacy Policy</title>
-<description>Privacy Policy of rismosch.com</description>
 
-<meta name="robots" content="all">
+	<title>Privacy Policy</title>
+	<meta name="description" content="Privacy Policy of rismosch.com">
+	<meta name="keywords" content="privacy, legal, cookies">
 
-<meta property="og:title" content="Privacy Policy" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.rismosch.com/privacy" />
-<meta property="og:image" content="https://www.rismosch.com/assets/meta_image_x20.png" />
+	<meta name="robots" content="all">
+
+	<meta property="og:title" content="Privacy Policy" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="https://www.rismosch.com/privacy" />
+	<meta property="og:image" content="https://www.rismosch.com/assets/meta_image_x20.png" />
+
+	<meta name="author" content="Simon Sutoris">
 
 </head>
 <body>

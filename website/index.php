@@ -1,13 +1,17 @@
 <?php include 'php/head.php'; ?>
-<title>Rismosch</title>
-<description>Blog and Project-Collection of Simon Sutoris</description>
 
-<meta name="robots" content="all">
+	<title>Rismosch</title>
+	<meta name="description" content="Blog and Project-Collection of Simon Sutoris">
+	<meta name="keywords" content="home, resumee, cv, curriculum vitae, blog, projects, programming, music, gamedev">
 
-<meta property="og:title" content="Rismosch" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.rismosch.com/" />
-<meta property="og:image" content="https://www.rismosch.com/assets/meta_image_x20.png" />
+	<meta name="robots" content="all">
+
+	<meta property="og:title" content="Rismosch" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.rismosch.com/" />
+	<meta property="og:image" content="https://www.rismosch.com/assets/meta_image_x20.png" />
+
+	<meta name="author" content="Simon Sutoris">
 
 </head>
 <body>
