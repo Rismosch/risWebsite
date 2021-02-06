@@ -27,8 +27,8 @@ echo '
 	<meta name="msapplication-TileColor" content="#00aba9">
 	
 	<link rel="stylesheet" href="css/colors.css">
-	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/' . $cssName . '.css">
+	<link rel="stylesheet" href="css/main.css">
 	
 	<script src="scripts/banner.js"></script>
 	<script src="scripts/continuousSession.js"></script>

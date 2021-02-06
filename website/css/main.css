@@ -182,10 +182,6 @@ div.content{
 	background-color: var(--pico-8-light-grey);
 	border-style: solid;
 	border-color: var(--pico-8-white);
-	padding-top: 10px;
-	padding-left: 50px;
-	padding-right: 50px;
-	padding-bottom: 20px;
 	
 	margin: 5px;
 	border-width: 5px;
