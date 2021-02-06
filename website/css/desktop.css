@@ -26,7 +26,7 @@ div.content{
 
 /* ARTICLES SELECTION */
 div.articles_thumbnail_wrapper{
-	background-color: var(--pico-8-dark-grey);
+	background-color: var(--pico-8-black);
 	width: 227px;
 	height: 128px;
 	margin-right: 10px;

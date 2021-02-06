@@ -429,9 +429,6 @@ button.scroll_captcha_offset{
 
 /* DESKTOP GENERAL */
 @media only screen and (min-width: 481px) {
-	.banner{
-		transform: scale(5);
-	}
 	
 	div.foot_links{
 		text-align: center;
@@ -447,6 +444,12 @@ button.scroll_captcha_offset{
 	}
 }
 
+@media only screen and (min-width: 401px) {
+	.banner{
+		transform: scale(5);
+	}
+}
+
 /* MOBILE */
 @media only screen and (max-width: 480px) {
 	div.background{
@@ -454,7 +457,7 @@ button.scroll_captcha_offset{
 	}
 	
 	.banner{
-		transform: scale(4);
+		transform: scale(5);
 	}
 	
 	div.foot_links{
@@ -471,5 +474,11 @@ button.scroll_captcha_offset{
 	
 	div.foot_copyright{
 		text-align: left;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	.banner{
+		transform: scale(4);
 	}
 }
