@@ -22,10 +22,16 @@ echo '
 	</div>
 	
 	<div class="foot_links">
-		<p><a href="https://www.rismosch.com/privacy">Privacy Policy</a> &nbsp; | &nbsp; <a href="https://www.rismosch.com/references">References</a> &nbsp; | &nbsp; <a href="https://www.rismosch.com/contact">Contact</a></p>
+		<p>
+			<a class="foot_link" href="https://www.rismosch.com/privacy">Privacy Policy</a>
+			<a class="foot_link_divider">&nbsp; | &nbsp;</a>
+			<a class="foot_link" href="https://www.rismosch.com/references">References</a>
+			<a class="foot_link_divider">&nbsp; | &nbsp;</a>
+			<a class="foot_link" href="https://www.rismosch.com/contact">Contact</a>
+		</p>
 	</div>
 	
-	<div class="foot_links">
+	<div class="foot_copyright">
 		<p>Copyright &#169; 2020 Simon Sutoris</p>
 	</div>
 	
