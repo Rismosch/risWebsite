@@ -7,6 +7,15 @@ include 'php/articles_database.php';
 
 ?>
 <title>Projects</title>
+<description>Projects of Simon Sutoris</description>
+
+<meta name="robots" content="all">
+
+<meta property="og:title" content="Projects" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.rismosch.com/projects" />
+<meta property="og:image" content="https://www.rismosch.com/assets/meta_image_x20.png" />
+
 </head>
 <body>
 	<div class="background">

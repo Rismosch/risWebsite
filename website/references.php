@@ -1,6 +1,15 @@
 <?php include 'php/head.php'; ?>
-</head>
 <title>References</title>
+<description>Complete list of external sources, used for rismosch.com</description>
+
+<meta name="robots" content="all">
+
+<meta property="og:title" content="References" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.rismosch.com/references" />
+<meta property="og:image" content="https://www.rismosch.com/assets/meta_image_x20.png" />
+
+</head>
 <body>
 	<div class="background">
 		<?php include 'php/banner.php'; ?>

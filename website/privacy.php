@@ -1,6 +1,15 @@
 <?php include 'php/head.php'; ?>
-</head>
 <title>Privacy Policy</title>
+<description>Privacy Policy of rismosch.com</description>
+
+<meta name="robots" content="all">
+
+<meta property="og:title" content="Privacy Policy" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.rismosch.com/privacy" />
+<meta property="og:image" content="https://www.rismosch.com/assets/meta_image_x20.png" />
+
+</head>
 <body>
 	<div class="background">
 		<?php include 'php/banner.php'; ?>

@@ -23,7 +23,16 @@ if($dbConn){
 	$title = GetArticleTitle($dbConn, $article_id);
 }
 
-echo "<title>{$title}</title>";
+echo "
+<title>{$title}</title>
+
+<meta name=\"robots\" content=\"all\">
+
+<meta property=\"og:title\" content=\"{$title}\" />
+<meta property=\"og:type\" content=\"article\" />
+<meta property=\"og:url\" content=\"https://www.rismosch.com/article?id={$article_id}\" />
+<meta property=\"og:image\" content=\"https://www.rismosch.com/assets/meta_image_x20.png\" />
+";
 
 ?>
 </head>

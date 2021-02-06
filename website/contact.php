@@ -77,6 +77,15 @@ if(!empty($_POST)) {
 
 ?>
 <title>Contact</title>
+<description>Contact Simon Sutoris</description>
+
+<meta name="robots" content="all">
+
+<meta property="og:title" content="Contact" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.rismosch.com/contact" />
+<meta property="og:image" content="https://www.rismosch.com/assets/meta_image_x20.png" />
+
 </head>
 <body>
 	<div class="background">

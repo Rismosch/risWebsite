@@ -1,6 +1,15 @@
 <?php include 'php/head.php'; ?>
-</head>
 <title>About</title>
+<description>Resumee of Simon Sutoris</description>
+
+<meta name="robots" content="all">
+
+<meta property="og:title" content="About" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.rismosch.com/about" />
+<meta property="og:image" content="https://www.rismosch.com/assets/meta_image_x20.png" />
+
+</head>
 <body>
 	<div class="background">
 		
