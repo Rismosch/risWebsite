@@ -3,6 +3,11 @@ function showDropdown()
 	document.getElementById("dropdownList").classList.toggle("show");
 }
 
+function showDropdownSelector()
+{
+	console.log("hello world");
+}
+
 function closeDropdown(event)
 {
 	if (!event.target.matches('.dropdownButton'))

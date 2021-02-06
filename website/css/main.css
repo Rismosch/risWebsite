@@ -97,12 +97,12 @@ a.button_inactive:active{
 }
 
 /* SELECTOR */
-div.selector{
+.selector{
 	margin: 5px;
 	margin-bottom: -5px;
 }
 
-ul.selector_tabs{
+.selector_tabs{
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -110,70 +110,96 @@ ul.selector_tabs{
 }
 
 /* SELECTOR_TAB */
-li.selector_tab{
+.selector_tab{
 	background-color: var(--pico-8-dark-grey);
 	float: left;
 	
-	border-top-style: solid;
-	border-top-color: var(--pico-8-white);
-	border-left-style: solid;
-	border-left-color: var(--pico-8-white);
-	border-right-style: solid;
-	border-right-color: var(--pico-8-white);
+	border-top: 5px solid var(--pico-8-white);
+	border-left: 5px solid var(--pico-8-white);
+	border-right: 5px solid var(--pico-8-white);
 	
 	width: 100px;
 	
 	margin-right: -5px;
 	margin-top: 5px;
-	
-	border-top-width: 5px;
-	border-left-width: 5px;
-	border-right-width: 5px;
 }
 
-li.selector_tab:hover{
+.selector_tab:hover{
 	margin-top: 0px;
 }
 
-li.selector_tab > a{
+.selector_tab > a{
 	text-align: center;
 	text-decoration: none;
 }
 
-li.selector_tab > a:link{
+.selector_tab > a:link{
 	color: var(--pico-8-white);
 }
 
-li.selector_tab > a:visited{
+.selector_tab > a:visited{
 	color: var(--pico-8-white);
 }
 
-li.selector_tab > a > div{
+.selector_tab > a > div{
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
 
-li.selector_tab:hover > a > div{
+.selector_tab:hover > a > div{
 	padding-top: 5px;
 	padding-bottom: 10px;
 }
 
-li.active_tab > a > div{
+.active_tab > a > div{
 	background-color: var(--pico-8-light-grey);
 	padding-bottom: 10px;
 }
 
 /* ACTIVE SELECTOR_TAB */
-li.active_tab{
+.active_tab{
 	margin-top: 0px;
 }
 
-li.active_tab > a:link{
+.active_tab > a:link{
 	color: var(--pico-8-black);
 }
 
-li.active_tab > a:visited{
+.active_tab > a:visited{
 	color: var(--pico-8-black);
+}
+
+/* SELECTOR MENU*/
+.selector_menu{
+	display: block;
+	cursor: pointer;
+	
+	border-top: 5px solid var(--pico-8-white);
+	border-left: 5px solid var(--pico-8-white);
+	border-right: 5px solid var(--pico-8-white);
+	
+	background-color: var(--pico-8-dark-grey);
+	
+	width: 135px;
+}
+
+.selector_menu > div{
+	display: inline-block;
+	
+	margin-top: auto;
+	margin-bottom : auto;
+	
+	color: var(--pico-8-white);
+}
+
+.selector_menu > div > img{
+	width: 45px;
+	height:45px;
+}
+
+.selector_menu > div > b{
+	position: relative;
+	top:-13px;
 }
 
 /* CONTENT */
@@ -442,11 +468,13 @@ button.scroll_captcha_offset{
 	div.foot_copyright{
 		text-align: center;
 	}
-}
-
-@media only screen and (min-width: 401px) {
-	.banner{
-		transform: scale(5);
+	
+	.desktop{
+		display: block;
+	}
+	
+	.mobile{
+		display: none;
 	}
 }
 
@@ -474,6 +502,20 @@ button.scroll_captcha_offset{
 	
 	div.foot_copyright{
 		text-align: left;
+	}
+	
+	.desktop{
+		display: none;
+	}
+	
+	.mobile{
+		display: block;
+	}
+}
+
+@media only screen and (min-width: 401px) {
+	.banner{
+		transform: scale(5);
 	}
 }
 
