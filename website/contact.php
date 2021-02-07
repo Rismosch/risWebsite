@@ -62,7 +62,7 @@ if(!empty($_POST)) {
 	
 	if (empty($errors)) {
 		$emailSubject = 'Contact Form';
-		$headers = ['From' => $filteredEmail, 'Reply-To' => $filteredEmail, 'Content-type' => 'text/plain; charset=utf-8'];
+		$headers = ['From' => $noreplyEmail, 'Content-type' => 'text/plain; charset=utf-8'];
 		
 		$body = "Name: {$filteredName}\nEmail: {$filteredEmail}\nMessage:\n\n{$filteredMessage}";
 		
