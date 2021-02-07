@@ -1,12 +1,13 @@
 # Visit my website here: [rismosch.com](https://www.rismosch.com/)
 
-This website will serve as my personal portfolio and personal blog, in which like minded people can leave comments under posts and discuss them.
+Blog and Project-Collection of Simon Sutoris
 
-**The website is still WIP**
+**Feature List:**
 
-This git-repository is the source code of the website. Since it is still in development, many features are still missing. Following features are planned:
-
-- a blog,
-- a collection of all my finished projects,
-- a newsletter,
-- a comment section, powered by Disqus.
+- Animated Banner
+- Article Database, for blog and projects,
+- Article Selection Rendering, with thumbnails and titles
+- Article can be _any_ HTML
+- Resumee
+- Contact Form
+- Newsletter **(WIP)**
