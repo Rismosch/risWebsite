@@ -3,28 +3,16 @@
 $tab_count = 4;
 
 $tab_selection = array_fill(0,$tab_count,"");
-if(isset($active_tab) && $active_tab >= 0 && $active_tab < $tab_count)
-	$tab_selection[$active_tab] = "active_tab";
-else
-	$active_tab = -1;
+$tab_selection_dropdown = array_fill(0,$tab_count,"");
 
-switch($active_tab)
+if(isset($active_tab) && $active_tab >= 0 && $active_tab < $tab_count)
 {
-	case 0:
-		$selectorText = "Home";
-		break;
-	case 1:
-		$selectorText = "Blog";
-		break;
-	case 2:
-		$selectorText = "Projects";
-		break;
-	case 3:
-		$selectorText = "About";
-		break;
-	default:
-		$selectorText = "Other";
-		break;
+	$tab_selection[$active_tab] = "active_tab";
+	$tab_selection_dropdown[$active_tab] = "class=\"dropdown_selected\" ";
+}
+else
+{
+	$active_tab = -1;
 }
 
 echo '
@@ -54,14 +42,13 @@ echo '
 	</ul>
 	
 	<div class="mobile">
-		<a class="selector_menu" onclick="showDropdownSelector()">
-			<div>
-				<img class="pixel_image" src="assets/icon_8bit/menu.png">
-			</div>
-			<div>
-				<b>'. $selectorText .'</b>
-			</div>
-		</a>
+		<div onclick="showDropdown(\'dropdownSelector\')" class="dropdownButton dropdownSelector selector_menu pixel_image" id="dropdownButton"/>
+		<div class="dropdownContent dropdownSelector">
+			<a '.$tab_selection_dropdown[0].'href="https://www.rismosch.com/">Home</a>
+			<a '.$tab_selection_dropdown[1].'href="https://www.rismosch.com/blog">Blog</a>
+			<a '.$tab_selection_dropdown[2].'href="https://www.rismosch.com/projects">Projects</a>
+			<a '.$tab_selection_dropdown[3].'href="https://www.rismosch.com/about">About</a>
+		</div>
 	</div>
 	
 </div>

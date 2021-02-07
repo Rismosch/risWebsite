@@ -125,8 +125,8 @@ function printDropdown($dbConn, $pageName)
 	}
 	echo "
 		<div class=\"dropdown\">
-			<button onclick=\"showDropdown()\" class=\"dropdownButton\" id=\"dropdownButton\">Filter</button>
-			<div id=\"dropdownList\" class=\"dropdownContent\">
+			<button onclick=\"showDropdown('dropdownCategory')\" class=\"dropdownButton dropdownCategory\" id=\"dropdownButton\">Filter</button>
+			<div class=\"dropdownContent dropdownCategory\">
 				<a href=\"https://www.rismosch.com/{$pageName}?ct=0&ls={$show}&pg=0\" ";
 	if ($selectedCategoryId == 0)
 		echo "class=\"dropdown_selected\"";
@@ -161,7 +161,9 @@ function printArticles($dbConn, $pageName)
 	if($numRows > 0)
 	{
 		echo "
-			<table style=\"width: 100%;\"><tr class=\"row_empty row_devider\"><td></td></tr>
+			<table style=\"width: 100%;\">
+				<tr class=\"row_empty\"><td></td></tr>
+				<tr class=\"row_empty row_devider\"><td></td></tr>
 		";
 		while($row = mysqli_fetch_assoc($result))
 		{

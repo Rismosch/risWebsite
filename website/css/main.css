@@ -169,8 +169,11 @@ a.button_inactive:active{
 	color: var(--pico-8-black);
 }
 
-/* SELECTOR MENU*/
+/* SELECTOR DROPDOWN*/
 .selector_menu{
+	background: url(../assets/icon_8bit/menu.png);
+	background-size: 45px;
+	
 	display: block;
 	cursor: pointer;
 	
@@ -180,26 +183,13 @@ a.button_inactive:active{
 	
 	background-color: var(--pico-8-dark-grey);
 	
-	width: 135px;
-}
-
-.selector_menu > div{
-	display: inline-block;
-	
-	margin-top: auto;
-	margin-bottom : auto;
-	
-	color: var(--pico-8-white);
-}
-
-.selector_menu > div > img{
 	width: 45px;
 	height:45px;
 }
 
-.selector_menu > div > b{
-	position: relative;
-	top:-13px;
+.dropdownSelector{
+	top: 128px;
+	left: 73px;
 }
 
 /* CONTENT */
@@ -209,13 +199,7 @@ div.content{
 	border-style: solid;
 	border-color: var(--pico-8-white);
 	
-	margin: 5px;
 	border-width: 5px;
-}
-
-/* DROPDOWN */
-.dropdownButton{
-	margin-bottom: 25px;
 }
 
 /* DROPDOWN */
@@ -232,8 +216,6 @@ div.content{
 	overflow: auto;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	z-index: 1;
-	
-	top: 42px;
 }
 
 .dropdownContent a{
@@ -250,6 +232,10 @@ div.content{
 
 .show{
 	display: block;
+}
+
+.dropdownCategory{
+	top: 42px;
 }
 
 /* ARTICLES SELECTION */
