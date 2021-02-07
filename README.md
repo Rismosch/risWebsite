@@ -1,8 +1,8 @@
-# Visit my website here: [rismosch.com](https://www.rismosch.com/)
+#Visit my website here: [rismosch.com](https://www.rismosch.com/)
 
 Blog and Project-Collection of Simon Sutoris
 
-**Feature List:**
+##Feature List:
 
 - Animated Banner
 - Article Database, for blog and projects,
@@ -11,3 +11,5 @@ Blog and Project-Collection of Simon Sutoris
 - Resumee
 - Contact Form
 - Newsletter **(WIP)**
+
+##!!!Repository does not contain any Articles
