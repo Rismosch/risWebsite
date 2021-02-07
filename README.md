@@ -10,6 +10,6 @@ Blog and Project-Collection of Simon Sutoris
 - Article can be _any_ HTML
 - Resumee
 - Contact Form
-- Newsletter **(WIP)**
+- _Newsletter_ **(WIP)**
 
 **Repository does not contain any Articles**
