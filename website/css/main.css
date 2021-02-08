@@ -1,4 +1,4 @@
-/* GLOBAL */
+/* GLOBAL --------------------------------------------------------------------------------------------------------------------------------*/
 html {
 	overflow-y: scroll;
 	font-size: 1.2em;
@@ -82,7 +82,7 @@ a.button_inactive:active{
 	cursor: default;
 }
 
-/* BANNER */
+/* BANNER --------------------------------------------------------------------------------------------------------------------------------*/
 .banner{
 	background-image: url('../assets/banner_spritesheet.png');
 	background-position: 0px 0px;
@@ -96,7 +96,17 @@ a.button_inactive:active{
 	margin-bottom: 47px;
 }
 
-/* SELECTOR */
+/* CONTENT -------------------------------------------------------------------------------------------------------------------------------*/
+div.content{
+	width: auto;
+	background-color: var(--pico-8-light-grey);
+	border-style: solid;
+	border-color: var(--pico-8-white);
+	
+	border-width: 5px;
+}
+
+/* SELECTOR ------------------------------------------------------------------------------------------------------------------------------*/
 .selector{
 	margin: 5px;
 	margin-bottom: -5px;
@@ -169,39 +179,7 @@ a.button_inactive:active{
 	color: var(--pico-8-black);
 }
 
-/* SELECTOR DROPDOWN*/
-.selector_menu{
-	background: url(../assets/icon_8bit/menu.png);
-	background-size: 45px;
-	
-	display: block;
-	float: right;
-	cursor: pointer;
-	
-	border: 5px solid var(--pico-8-white);
-	
-	background-color: var(--pico-8-dark-grey);
-	
-	width: 45px;
-	height:45px;
-}
-
-.dropdownSelector{
-	top: 133px;
-	right: 73px;
-}
-
-/* CONTENT */
-div.content{
-	width: auto;
-	background-color: var(--pico-8-light-grey);
-	border-style: solid;
-	border-color: var(--pico-8-white);
-	
-	border-width: 5px;
-}
-
-/* DROPDOWN */
+/* DROPDOWN ------------------------------------------------------------------------------------------------------------------------------*/
 .dropdown{
 	position: relative;
 	display: block;
@@ -237,7 +215,29 @@ div.content{
 	top: 42px;
 }
 
-/* ARTICLES SELECTION */
+/* selector */
+.selector_menu{
+	background: url(../assets/icon_8bit/menu.png);
+	background-size: 45px;
+	
+	display: block;
+	float: right;
+	cursor: pointer;
+	
+	border: 5px solid var(--pico-8-white);
+	
+	background-color: var(--pico-8-dark-grey);
+	
+	width: 45px;
+	height:45px;
+}
+
+.dropdownSelector{
+	top: 133px;
+	right: 73px;
+}
+
+/* ARTICLES SELECTION --------------------------------------------------------------------------------------------------------------------*/
 a.articles_entry_link{
 	text-decoration: none;
 	color: var(--pico-8-black);
@@ -296,7 +296,7 @@ div.page_selector{
 	margin-right: auto;
 }
 
-/* ABOUT */
+/* ABOUT ---------------------------------------------------------------------------------------------------------------------------------*/
 img.profile_picture{
 	width: 75px;
 	height:75px;
@@ -321,7 +321,7 @@ table.resume_table td, table.resume_table td *{
 	margin-bottom: 0px;
 }
 
-/* COPYRIGHT */
+/* COPYRIGHT -----------------------------------------------------------------------------------------------------------------------------*/
 div.copyright_text > p, div.copyright_text > a, div.copyright_text > ul > li{
 	font-family: "Times New Roman", Times, Georgia, serif;
 }
@@ -330,7 +330,7 @@ div.copyright_text > h1, h2{
 	font-family: Helvetica, Arial, sans-serif;
 }
 
-/* LICENSES */
+/* LICENSES ------------------------------------------------------------------------------------------------------------------------------*/
 table.licenses_table{
 	margin: auto;
 	text-align: left;
@@ -340,7 +340,7 @@ table.licenses_table th{
 	text-align: center;
 }
 
-/* CONTACT */
+/* CONTACT -------------------------------------------------------------------------------------------------------------------------------*/
 span.contact_error{
 	color: var(--pico-8-red);
 	margin: 0px;
@@ -350,7 +350,21 @@ span.contact_error{
 	margin-bottom: 0px;
 }
 
-/* SOCIAL */
+div.contact{
+	text-align: center;
+}
+
+div.contact > p{
+	color: var(--pico-8-light-grey);
+}
+
+.contact_input{
+	font-family: Arial, sans-serif;
+	font-size: 1em;
+	background-color: var(--pico-8-white);
+}
+
+/* SOCIAL --------------------------------------------------------------------------------------------------------------------------------*/
 table.social_table{
 	margin-left: auto;
 	margin-right: auto;
@@ -371,22 +385,7 @@ img.social_icon{
 	margin: auto;
 }
 
-/* CONTACT*/
-div.contact{
-	text-align: center;
-}
-
-div.contact > p{
-	color: var(--pico-8-light-grey);
-}
-
-.contact_input{
-	font-family: Arial, sans-serif;
-	font-size: 1em;
-	background-color: var(--pico-8-white);
-}
-
-/* FOOT LINKS*/
+/* FOOT LINKS ----------------------------------------------------------------------------------------------------------------------------*/
 div.foot{
 	width: auto;
 	margin: 5px;
@@ -417,7 +416,7 @@ div.foot_copyright{
 	color: var(--pico-8-light-grey);
 }
 
-/* SCROLL TO TOP BUTTON*/
+/* SCROLL TO TOP BUTTON ------------------------------------------------------------------------------------------------------------------*/
 button.scroll_to_top{
 	display: none;
 	position: fixed;
@@ -430,7 +429,7 @@ button.scroll_captcha_offset{
 	bottom: 80px;
 }
 
-/* DISQUS */
+/* DISQUS --------------------------------------------------------------------------------------------------------------------------------*/
 .disqus-loading
 {
 	text-align: center;
@@ -441,7 +440,7 @@ button.scroll_captcha_offset{
 	display: none;
 }
 
-/* MEDIA QUERIES */
+/* MEDIA QUERIES -------------------------------------------------------------------------------------------------------------------------*/
 /* DESKTOP WIDE */
 @media only screen and (min-width:1046px) {
 	div.background{
