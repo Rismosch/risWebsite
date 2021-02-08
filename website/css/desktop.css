@@ -24,14 +24,6 @@ div.content{
 	background-color: var(--pico-8-pink);
 }
 
-/* ARTICLES SELECTION */
-div.articles_thumbnail_wrapper{
-	background-color: var(--pico-8-black);
-	width: 227px;
-	height: 128px;
-	margin-right: 10px;
-}
-
 table.articles_entry:hover h3{
 	text-decoration: underline;
 }

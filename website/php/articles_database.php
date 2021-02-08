@@ -180,10 +180,9 @@ function printArticles($dbConn, $pageName)
 			else
 				$thumbnail = "https://www.rismosch.com/articles/{$row['id']}/thumbnail.png";
 			
-			echo "<tr><td><a title=\"{$row['title']}\" href=\"{$link}\" class=\"articles_entry_link\">";
-			
-			if ($isMobile)
-				echo "
+			echo
+			"<tr><td><a title=\"{$row['title']}\" href=\"{$link}\" class=\"articles_entry_link\">
+				<div class=\"mobile\">
 					<table class=\"articles_entry\">
 						<tr>
 							<td>
@@ -208,9 +207,8 @@ function printArticles($dbConn, $pageName)
 							</td>
 						</tr>
 					</table>
-				";
-			else
-				echo "
+				</div>
+				<div class=\"desktop\">
 					<table class=\"articles_entry\">
 						<tr>
 							<td>
@@ -234,12 +232,10 @@ function printArticles($dbConn, $pageName)
 							</td>
 						</tr>
 					</table>
-				";
-				
-				echo "
-					</a></td></tr>
-					<tr class=\"row_empty\"><td></td></tr>
-					<tr class=\"row_empty row_devider\"><td></td></tr>
+				</div>
+				</a></td></tr>
+				<tr class=\"row_empty\"><td></td></tr>
+				<tr class=\"row_empty row_devider\"><td></td></tr>
 				";
 		}
 		echo "
