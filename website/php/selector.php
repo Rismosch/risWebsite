@@ -43,7 +43,7 @@ echo '
 	
 	<div class="mobile">
 		<div onclick="showDropdown(\'dropdownSelector\')" class="dropdownButton dropdownSelector selector_menu pixel_image" id="dropdownButton"/>
-		<div class="dropdownContent dropdownSelector">
+		<div class="dropdownContent dropdownSelector dropdown">
 			<a '.$tab_selection_dropdown[0].'href="https://www.rismosch.com/">Home</a>
 			<a '.$tab_selection_dropdown[1].'href="https://www.rismosch.com/blog">Blog</a>
 			<a '.$tab_selection_dropdown[2].'href="https://www.rismosch.com/projects">Projects</a>
