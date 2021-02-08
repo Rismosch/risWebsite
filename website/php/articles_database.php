@@ -182,7 +182,7 @@ function printArticles($dbConn, $pageName)
 			
 			echo
 			"<tr><td><a title=\"{$row['title']}\" href=\"{$link}\" class=\"articles_entry_link\">
-				<div class=\"mobile\">
+				<div class=\"articles_mobile\">
 					<table class=\"articles_entry\">
 						<tr>
 							<td>
@@ -208,10 +208,10 @@ function printArticles($dbConn, $pageName)
 						</tr>
 					</table>
 				</div>
-				<div class=\"desktop\">
+				<div class=\"articles_desktop\">
 					<table class=\"articles_entry\">
 						<tr>
-							<td>
+							<td class=\"articles_thumbnail_row_desktop\">
 								<div class=\"articles_thumbnail_wrapper\">
 									<img
 										class=\"articles_thumbnail\"
@@ -227,8 +227,6 @@ function printArticles($dbConn, $pageName)
 									<br>
 									<p>{$row['category']} &#183; {$newTimestampFormat}</p>
 								</div>
-							</td>
-							<td class=\"absorbing_column\">
 							</td>
 						</tr>
 					</table>

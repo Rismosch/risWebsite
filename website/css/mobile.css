@@ -6,6 +6,27 @@ div.content{
 	padding-bottom: 20px;
 }
 
+/* ARTICLE SELECTION*/
+@media only screen and (min-width: 513px) {
+	.articles_desktop{
+		display: block;
+	}
+	
+	.articles_mobile{
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 512px) {
+	.articles_desktop{
+		display: none;
+	}
+	
+	.articles_mobile{
+		display: block;
+	}
+}
+
 /* CONTACT */
 #contact-form input, textarea{
 	width: 98%;

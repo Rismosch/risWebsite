@@ -244,22 +244,15 @@ a.articles_entry_link{
 }
 
 table.articles_entry{
-	width: 100%;
+	table-layout: fixed;
 	text-align: left;
+	width: 100%;
 }
 
 table.articles_entry p,
 table.articles_entry h3{
 	margin-top: 0px;
 	margin-bottom: 0px;
-}
-
-table.articles_entry td{
-	white-space: nowrap;
-}
-
-table.articles_entry td.absorbing_column {
-	width: 100% !important;
 }
 
 img.articles_thumbnail{
@@ -275,6 +268,10 @@ div.articles_thumbnail_wrapper{
 	width: 227px;
 	height: 128px;
 	margin-right: 10px;
+}
+
+.articles_thumbnail_row_desktop{
+	width: 240px;
 }
 
 /* mobile */

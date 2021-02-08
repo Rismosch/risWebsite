@@ -18,6 +18,27 @@ div.content{
 	padding-bottom: 20px;
 }
 
+/* ARTICLE SELECTION*/
+@media only screen and (min-width: 613px) {
+	.articles_desktop{
+		display: block;
+	}
+	
+	.articles_mobile{
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 612px) {
+	.articles_desktop{
+		display: none;
+	}
+	
+	.articles_mobile{
+		display: block;
+	}
+}
+
 /* DROPDOWN */
 .dropdown a:hover{
 	color: var(--pico-8-white);
