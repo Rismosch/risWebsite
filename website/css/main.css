@@ -117,6 +117,9 @@ div.content{
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
+	
+	margin-left: -5px;
+	margin-bottom: 5px;
 }
 
 /* SELECTOR_TAB */
@@ -225,6 +228,8 @@ div.content{
 	cursor: pointer;
 	
 	border: 5px solid var(--pico-8-white);
+	border-top-width: 0px;
+	border-right-width: 0px;
 	
 	background-color: var(--pico-8-dark-grey);
 	
@@ -232,9 +237,14 @@ div.content{
 	height:45px;
 }
 
+.selector_menu:hover{
+	background: url(../assets/icon_8bit/menu_active.png);
+	background-size: 45px;
+}
+
 .dropdownSelector{
-	top: 133px;
-	right: 73px;
+	top: 127px;
+	right: 68px;
 }
 
 /* ARTICLES SELECTION --------------------------------------------------------------------------------------------------------------------*/
