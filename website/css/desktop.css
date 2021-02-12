@@ -10,35 +10,6 @@ a.button_inactive:hover{
 	cursor: default;
 }
 
-/* CONTENT */
-div.content{
-	padding-top: 10px;
-	padding-left: 50px;
-	padding-right: 50px;
-	padding-bottom: 20px;
-}
-
-/* ARTICLE SELECTION*/
-@media only screen and (min-width: 613px) {
-	.articles_desktop{
-		display: block;
-	}
-	
-	.articles_mobile{
-		display: none;
-	}
-}
-
-@media only screen and (max-width: 612px) {
-	.articles_desktop{
-		display: none;
-	}
-	
-	.articles_mobile{
-		display: block;
-	}
-}
-
 /* DROPDOWN */
 .dropdown a:hover{
 	color: var(--pico-8-white);
@@ -47,11 +18,6 @@ div.content{
 
 table.articles_entry:hover h3{
 	text-decoration: underline;
-}
-
-/* CONTACT */
-#contact-form input, textarea{
-	width: 500px;
 }
 
 /* FOOT LINKS */

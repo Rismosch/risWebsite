@@ -16,9 +16,6 @@ echo '
 		<a title="GitHub" href="https://github.com/Rismosch">
 			<img class="social_icon" src="assets/icon_social/github.png">
 		</a>
-		<a title="Twitter" href="https://twitter.com/Rismosch">
-			<img class="social_icon" src="assets/icon_social/twitter.png">
-		</a>
 	</div>
 	
 	<div class="foot_links">
@@ -32,7 +29,7 @@ echo '
 	</div>
 	
 	<div class="foot_copyright">
-		<p>Copyright &#169; 2020 Simon Sutoris</p>
+		<p>Copyright &#169; 2020 <a class="simon_sutoris">Simon Sutoris</a></p>
 	</div>
 	
 </div>

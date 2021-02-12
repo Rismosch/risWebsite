@@ -380,8 +380,8 @@ div.socials > a{
 }
 
 img.social_icon{
-	width: 48px;
-	height:48px;
+	width: 64px;
+	height:64px;
 	margin: auto;
 }
 
@@ -402,6 +402,7 @@ div.foot_links > p{
 div.foot_links > p > a{
 	text-decoration: none;
 	color: var(--pico-8-light-grey);
+	margin-bottom: 0.2em;
 }
 
 div.foot_links > p > a:link{
@@ -414,6 +415,16 @@ div.foot_links > p > a:visited{
 
 div.foot_copyright{
 	color: var(--pico-8-light-grey);
+}
+
+@media only screen and (max-width:360px) {
+	div.foot_copyright{
+		margin-bottom: 6.0em;
+	}
+}
+
+a.simon_sutoris{
+	display:inline-block;
 }
 
 /* SCROLL TO TOP BUTTON ------------------------------------------------------------------------------------------------------------------*/
@@ -458,6 +469,13 @@ button.scroll_captcha_offset{
 /* DESKTOP GENERAL */
 @media only screen and (min-width: 481px) {
 	
+	div.content{
+		padding-top: 10px;
+		padding-left: 50px;
+		padding-right: 50px;
+		padding-bottom: 20px;
+	}
+	
 	div.foot_links{
 		text-align: center;
 	}
@@ -478,16 +496,39 @@ button.scroll_captcha_offset{
 	.mobile{
 		display: none;
 	}
+	
+	.articles_desktop{
+		display: block;
+	}
+	
+	.articles_mobile{
+		display: none;
+	}
+}
+
+@media only screen and (min-width: 681px) {
+	
+	#contact-form input, textarea{
+		width: 500px;
+	}
 }
 
 /* MOBILE */
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 680px) {
+	
 	div.background{
 		width: auto;
 	}
 	
 	.banner{
 		transform: scale(5);
+	}
+	
+	div.content{
+		padding-top: 0px;
+		padding-left: 5px;
+		padding-right: 5px;
+		padding-bottom: 20px;
 	}
 	
 	div.foot_links{
@@ -512,6 +553,18 @@ button.scroll_captcha_offset{
 	
 	.mobile{
 		display: block;
+	}
+	
+	.articles_desktop{
+		display: none;
+	}
+	
+	.articles_mobile{
+		display: block;
+	}
+	
+	#contact-form input, textarea{
+		width: 98%;
 	}
 }
 

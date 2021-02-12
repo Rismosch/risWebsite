@@ -105,25 +105,6 @@
 				</tr>
 				<tr class="row_empty"><td colspan="2"></td></tr>
 				<tr class="row_empty row_devider"><td colspan="2"></td></tr>
-				<tr><td colspan="2"><b>Personal Projects</b></td></tr>
-				<tr class="row_empty"><td colspan="2"></td></tr>
-				<tr>
-					<td>Programming Languages:</td>
-					<td>
-						<p>
-							C/C++, <br>
-							OpenGL, <br>
-							Minecraft Redstone, <br>
-							HTML, <br>
-							CSS, <br>
-							JavaScript, <br>
-							PHP, <br>
-							SQL <br>
-						</p>
-					</td>
-				</tr>
-				<tr class="row_empty"><td colspan="2"></td></tr>
-				<tr class="row_empty row_devider"><td colspan="2"></td></tr>
 			</table>
 		</div>
 		
