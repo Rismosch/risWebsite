@@ -10,12 +10,19 @@ a.button_inactive:hover{
 	cursor: default;
 }
 
+/* SELECTOR */
+.selector_menu:hover{
+	background: url(../assets/icon_8bit/menu_active.png);
+	background-size: 45px;
+}
+
 /* DROPDOWN */
 .dropdown a:hover{
 	color: var(--pico-8-white);
 	background-color: var(--pico-8-pink);
 }
 
+/* ARTICLES */
 table.articles_entry:hover h3{
 	text-decoration: underline;
 }

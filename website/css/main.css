@@ -237,11 +237,6 @@ div.content{
 	height:45px;
 }
 
-.selector_menu:hover{
-	background: url(../assets/icon_8bit/menu_active.png);
-	background-size: 45px;
-}
-
 .dropdownSelector{
 	top: 127px;
 	right: 68px;
