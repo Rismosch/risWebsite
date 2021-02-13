@@ -25,9 +25,6 @@ CREATE TABLE IF NOT EXISTS `Articles` (
   KEY `category_id` (`category_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
-INSERT INTO `Articles` (`id`, `type_id`, `category_id`, `title`, `timestamp`, `link`, `thumbnail_path`) VALUES
-(9, 1, 1, 'The Land Behind The Waves', '2019-08-09 07:00:00', 'https://rismosch.bandcamp.com/album/the-land-behind-the-waves', 'assets/thumbnails/the_land_behind_the_waves.jpg');
-
 DROP TABLE IF EXISTS `Article_Categories`;
 CREATE TABLE IF NOT EXISTS `Article_Categories` (
   `id` int(11) NOT NULL,
@@ -50,6 +47,14 @@ CREATE TABLE IF NOT EXISTS `Article_Types` (
 INSERT INTO `Article_Types` (`id`, `name`) VALUES
 (0, 'Blog'),
 (1, 'Project');
+
+DROP TABLE IF EXISTS `Emails`;
+CREATE TABLE IF NOT EXISTS `Emails` (
+  `id` varchar(32) NOT NULL,
+  `email` varchar(320) NOT NULL,
+  `confirmed` int(11) NOT NULL DEFAULT '0',
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 ALTER TABLE `Articles`

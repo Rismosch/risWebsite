@@ -40,7 +40,7 @@ if(!empty($_POST))
 		$errorEmail = 'Email is invalid';
 		$errors[] = $errorEmail;
 	}
-	else if (strlen($emailSanitized) > 99){
+	else if (strlen($emailSanitized) > 320){
 		$errorEmail = "Email is too long";
 		$errors[] = $errorEmail;
 	}
