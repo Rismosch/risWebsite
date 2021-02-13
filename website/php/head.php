@@ -4,7 +4,7 @@ include_once 'secret/contactEmail.php';
 include_once 'secret/dbConn.php';
 include_once 'secret/reCAPTCHA.php';
 
-include_once 'Mobile-Detect-2.8.34/Mobile_Detect.php';
+include_once '3rd_party_libraries/Mobile-Detect-2.8.34/Mobile_Detect.php';
 $detect = new Mobile_Detect;
 $isMobile = $detect->isMobile() && !$detect->isTablet();
 
