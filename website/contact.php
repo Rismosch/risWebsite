@@ -1,8 +1,20 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 include 'php/head.php';
 
+require '3rd_party_libraries/PHPMailer/Exception.php';
+require '3rd_party_libraries/PHPMailer/OAuth.php';
+require '3rd_party_libraries/PHPMailer/PHPMailer.php';
+require '3rd_party_libraries/PHPMailer/POP3.php';
+require '3rd_party_libraries/PHPMailer/SMTP.php';
+
 $errors = [];
+
+$contact_successful = false;
 
 if(!empty($_POST))
 {
@@ -62,16 +74,37 @@ if(!empty($_POST))
 	}
 	
 	if (empty($errors)) {
-		$emailSubject = 'Contact Form';
-		$headers = ['From' => $noreplyEmail, 'Content-type' => 'text/plain; charset=utf-8'];
+		$mail = new PHPMailer(true);
 		
-		$body = "Name: {$nameSanitized}\nEmail: {$emailSanitized}\nMessage:\n\n{$messageSanitized}";
-		
-		if (mail($contactEmail, $emailSubject, $body, $headers)) {
-			header('Location: contact_successful');
-		}
-		else {
-			$errorContact = 'Oops, something went wrong. Please try again later';
+		try {
+			// Server settings
+			//$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+			$mail->isSMTP();
+			$mail->Host = 'localhost';
+			$mail->SMTPAuth = false;
+			$mail->SMTPAutoTLS = false;
+			$mail->Port = 25;
+			
+			// Recipients
+			$mail->setFrom($contactEmail, 'Rismosch');
+			$mail->addAddress($contactEmail, 'Rismosch');
+			
+			// Content
+			$mail->isHTML(true);
+			$mail->Subject = 'Contact Form';
+			$mail->Body    = "Name: {$nameSanitized}<br>Email: {$emailSanitized}<br>Message:<br><br>{$messageSanitized}";
+			$mail->AltBody = "Name: {$nameSanitized}\nEmail: {$emailSanitized}\nMessage:\n\n{$messageSanitized}";
+			
+			$mail->send();
+			
+			// Success
+			$contact_successful = true;
+			$nameUnsafe = "";
+			$emailUnsafe = "";
+			$messageUnsafe = "";
+			
+		} catch (Exception $e) {
+			$errorContact = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 		}
 	}
 }
@@ -102,31 +135,39 @@ if(!empty($_POST))
 			
 			<h1>Contact me</h1>
 			
-			<form action="contact" method="POST" id="contact-form">
-				<div>
-					<p>Name <span class="contact_error" id="display_error_name"><?php if(isset($errorName)) echo $errorName; ?></span></p>
-					<input name="name" class="contact_input" id="contact_namefield" type="text" value = "<?php if(isset($nameUnsafe)) echo $nameUnsafe; ?>">
-					
-					<p>Email <span class="contact_error" id="display_error_email"><?php if(isset($errorEmail)) echo $errorEmail; ?></span></p>
-					<input name="email" class="contact_input" id="contact_emailfield" type="text" value = "<?php if(isset($emailUnsafe)) echo $emailUnsafe; ?>">
-					
-					<p>Message <span class="contact_error" id="display_error_message"><?php if(isset($errorMessage)) echo $errorMessage; ?></span></p>
-					<textarea name="message" class="contact_input" id="contact_textarea" rows="10" cols="35"><?php if(isset($messageSanitized)) echo $messageSanitized; ?></textarea>
-					<p id="contact_textarea_count">0/999</p>
-					
-					<p><span class="contact_error"><?php if(isset($errorContact)) echo $errorContact; ?></span></p>
-					<p>
-						<button
-							class="g-recaptcha"
-							type="submit"
-							data-sitekey="<?php echo $reCAPTCHA_web_key;?>"
-							data-callback='onRecaptchaSuccess'
-						>
-						Send
-						</button>
-					</p>
-				</div>
-			</form>
+			<div style="display:<?php if($contact_successful) echo "block"; else echo "none"?>;">
+				<p style="color: var(--pico-8-green);">Success &#10003;</p>
+				
+				<p>I have received your message! I will try to come back too you as soon as possible :)</p>
+			</div>
+			
+			<div style="display:<?php if($contact_successful) echo "none"; else echo "block"?>;">
+				<form action="contact" method="POST" id="contact-form">
+					<div>
+						<p>Name <span class="contact_error" id="display_error_name"><?php if(isset($errorName)) echo $errorName; ?></span></p>
+						<input name="name" class="contact_input" id="contact_namefield" type="text" value = "<?php if(isset($nameUnsafe)) echo $nameUnsafe; ?>">
+						
+						<p>Email <span class="contact_error" id="display_error_email"><?php if(isset($errorEmail)) echo $errorEmail; ?></span></p>
+						<input name="email" class="contact_input" id="contact_emailfield" type="text" value = "<?php if(isset($emailUnsafe)) echo $emailUnsafe; ?>">
+						
+						<p>Message <span class="contact_error" id="display_error_message"><?php if(isset($errorMessage)) echo $errorMessage; ?></span></p>
+						<textarea name="message" class="contact_input" id="contact_textarea" rows="10" cols="35"><?php if(isset($messageUnsafe)) echo $messageUnsafe; ?></textarea>
+						<p id="contact_textarea_count">0/999</p>
+						
+						<p><span class="contact_error"><?php if(isset($errorContact)) echo $errorContact; ?></span></p>
+						<p>
+							<button
+								class="g-recaptcha"
+								type="submit"
+								data-sitekey="<?php echo $reCAPTCHA_web_key;?>"
+								data-callback='onRecaptchaSuccess'
+							>
+							Send
+							</button>
+						</p>
+					</div>
+				</form>
+			</div>
 			
 		</div>
 		
