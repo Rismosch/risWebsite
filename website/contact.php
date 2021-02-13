@@ -104,7 +104,8 @@ if(!empty($_POST))
 			$messageUnsafe = "";
 			
 		} catch (Exception $e) {
-			$errorContact = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+			//$errorContact = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+			$errorContact = "Something went wrong. Please try again later.";
 		}
 	}
 }
