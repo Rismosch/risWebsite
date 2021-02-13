@@ -4,14 +4,46 @@ include 'php/head.php';
 
 $errors = [];
 
-if(!empty($_POST)) {
-	$name = $_POST['name'];
-	$email = $_POST['email'];
-	$message = $_POST['message'];
+if(!empty($_POST))
+{
+	$nameUnsafe = $_POST['name'];
+	$nameSanitized = filter_var(utf8_decode($nameUnsafe),FILTER_SANITIZE_ENCODED);
+	if(empty($nameSanitized)) {
+		$errorName = 'Name is empty';
+		$errors[] = $errorName;
+	}
+	else if (strlen($nameSanitized) > 99){
+		$errorName = "Name is too long (max 99 characters)";
+		$errors[] = $errorName;
+	}
 	
-	$filteredName = filter_var($name,FILTER_SANITIZE_ENCODED, FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_STRIP_HIGH);
-	$filteredEmail = filter_var($email,FILTER_SANITIZE_EMAIL);
-	$filteredMessage = filter_var($message,FILTER_SANITIZE_ENCODED, FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_STRIP_HIGH);
+	
+	$emailUnsafe = $_POST['email'];
+	$emailSanitized = filter_var($emailUnsafe,FILTER_SANITIZE_EMAIL);
+	if (empty($emailSanitized)) {
+		$errorEmail = 'Email is empty';
+		$errors[] = $errorEmail;
+	}
+	else if (!filter_var(utf8_decode($emailSanitized), FILTER_VALIDATE_EMAIL)) {
+		$errorEmail = 'Email is invalid';
+		$errors[] = $errorEmail;
+	}
+	else if (strlen($emailSanitized) > 99){
+		$errorEmail = "Email is too long";
+		$errors[] = $errorEmail;
+	}
+	
+	
+	$messageUnsafe = $_POST['message'];
+	$messageSanitized = filter_var($messageUnsafe,FILTER_SANITIZE_ENCODED);
+	if (empty($messageSanitized)) {
+		$errorMessage = 'Message is empty';
+		$errors[] = $errorMessage;
+	}
+	else if (strlen($messageSanitized) > 999){
+		$errorMessage = "Message is too long";
+		$errors[] = $errorMessage;
+	}
 	
 	
 	if (isset($_POST['g-recaptcha-response']))
@@ -29,42 +61,11 @@ if(!empty($_POST)) {
 		$errors[] = 'Recaptcha failed';
 	}
 	
-	if(empty($name)) {
-		$errorName = 'Name is empty';
-		$errors[] = $errorName;
-	}
-	else if (strlen($name) > 99){
-		$errorName = "Name is too long (max 99 characters)";
-		$errors[] = $errorName;
-	}
-	
-	if (empty($email)) {
-		$errorEmail = 'Email is empty';
-		$errors[] = $errorEmail;
-	}
-	else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-		$errorEmail = 'Email is invalid';
-		$errors[] = $errorEmail;
-	}
-	else if (strlen($email) > 99){
-		$errorEmail = "Email is too long";
-		$errors[] = $errorEmail;
-	}
-	
-	if (empty($message)) {
-		$errorMessage = 'Message is empty';
-		$errors[] = $errorMessage;
-	}
-	else if (strlen($message) > 999){
-		$errorMessage = "Message is too long";
-		$errors[] = $errorMessage;
-	}
-	
 	if (empty($errors)) {
 		$emailSubject = 'Contact Form';
 		$headers = ['From' => $noreplyEmail, 'Content-type' => 'text/plain; charset=utf-8'];
 		
-		$body = "Name: {$filteredName}\nEmail: {$filteredEmail}\nMessage:\n\n{$filteredMessage}";
+		$body = "Name: {$nameSanitized}\nEmail: {$emailSanitized}\nMessage:\n\n{$messageSanitized}";
 		
 		if (mail($contactEmail, $emailSubject, $body, $headers)) {
 			header('Location: contact_successful');
@@ -104,13 +105,13 @@ if(!empty($_POST)) {
 			<form action="contact" method="POST" id="contact-form">
 				<div>
 					<p>Name <span class="contact_error" id="display_error_name"><?php if(isset($errorName)) echo $errorName; ?></span></p>
-					<input name="name" class="contact_input" id="contact_namefield" type="text" value = "<?php if(isset($name)) echo $name; ?>">
+					<input name="name" class="contact_input" id="contact_namefield" type="text" value = "<?php if(isset($nameUnsafe)) echo $nameUnsafe; ?>">
 					
 					<p>Email <span class="contact_error" id="display_error_email"><?php if(isset($errorEmail)) echo $errorEmail; ?></span></p>
-					<input name="email" class="contact_input" id="contact_emailfield" type="text" value = "<?php if(isset($email)) echo $email; ?>">
+					<input name="email" class="contact_input" id="contact_emailfield" type="text" value = "<?php if(isset($emailUnsafe)) echo $emailUnsafe; ?>">
 					
 					<p>Message <span class="contact_error" id="display_error_message"><?php if(isset($errorMessage)) echo $errorMessage; ?></span></p>
-					<textarea name="message" class="contact_input" id="contact_textarea" rows="10" cols="35"><?php if(isset($message)) echo $message; ?></textarea>
+					<textarea name="message" class="contact_input" id="contact_textarea" rows="10" cols="35"><?php if(isset($messageSanitized)) echo $messageSanitized; ?></textarea>
 					<p id="contact_textarea_count">0/999</p>
 					
 					<p><span class="contact_error"><?php if(isset($errorContact)) echo $errorContact; ?></span></p>
