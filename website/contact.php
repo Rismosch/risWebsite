@@ -176,53 +176,6 @@ if(!empty($_POST))
 	</div>
 	
 	<script>
-		const constraints = {
-			name: {
-				presence: { allowEmpty: false }
-			},
-			email: {
-				presence: { allowEmpty: false },
-				email: true
-			},
-			message: {
-				presence: { allowEmpty: false }
-			}
-		}
-		
-		const form = document.getElementById("contact-form");
-		const display_error_name = document.getElementById("display_error_name");
-		const display_error_email = document.getElementById("display_error_email");
-		const display_error_message = document.getElementById("display_error_message");
-		
-		form.addEventListener('submit', function(event) {
-			const formValues = {
-				name: form.elements.name.value,
-				email: form.elements.email.value,
-				message: form.elements.message.value
-			}
-			
-			const errors = validate(formValues, constraints);
-			
-			if(errors) {
-				event.preventDefault();
-				
-				if(errors.name)
-					display_error_name.innerHTML = errors.name[0];
-				else
-					display_error_name.innerHTML = "";
-				
-				if(errors.email)
-					display_error_email.innerHTML = errors.email[0];
-				else
-					display_error_email.innerHTML = "";
-				
-				if(errors.message)
-					display_error_message.innerHTML = errors.message[0];
-				else
-					display_error_message.innerHTML = "";
-			}
-		},false);
-		
 		function onRecaptchaSuccess () {
 			document.getElementById('contact-form').submit();
 		}

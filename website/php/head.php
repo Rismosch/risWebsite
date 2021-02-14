@@ -37,7 +37,6 @@ echo '
 	<script src="scripts/dropdown.js"></script>
 	<script src="scripts/jquery-3.5.1.min.js"></script>
 	<script src="scripts/util.js"></script>
-	<script src="scripts/validate.js"></script>
 	
 	<script src="https://www.google.com/recaptcha/api.js"></script>
 ';

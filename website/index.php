@@ -53,7 +53,7 @@ include 'php/articles_database.php';
 			<!--<br><h2>Subscribe to my Newsletter</h2>-->
 		</div>
 		
-		<?php include 'php/foot.php'; ?>
+		<?php $uses_captcha = true; include 'php/foot.php'; ?>
 	</div>
 </body>
 </html>
