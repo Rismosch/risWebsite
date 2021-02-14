@@ -28,10 +28,11 @@ include 'php/articles_database.php';
 		<div class="content" id="content">
 			<h1>Home</h1>
 			
-			<h2>Music</h2>
 			<iframe style="border: 0; width: 100%; height: 406px;" src="https://bandcamp.com/EmbeddedPlayer/album=3691389739/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/" seamless><a href="https://rismosch.bandcamp.com/album/the-land-behind-the-waves">The Land Behind The Waves by Rismosch</a></iframe>
 			
-			<br><h2>Latest Post</h2>
+			<br>
+			<br>
+			<h2>Latest Post</h2>
 			<table style="width: 100%;">
 				<tr class="row_empty row_devider"><td></td></tr>
 				<tr><td>
