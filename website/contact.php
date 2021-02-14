@@ -19,7 +19,7 @@ $contact_successful = false;
 if(!empty($_POST))
 {
 	$nameUnsafe = $_POST['name'];
-	$nameSanitized = filter_var(utf8_decode($nameUnsafe),FILTER_SANITIZE_ENCODED);
+	$nameSanitized = filter_var($nameUnsafe,FILTER_SANITIZE_ENCODED);
 	if(empty($nameSanitized)) {
 		$errorName = 'Name is empty';
 		$errors[] = $errorName;
@@ -36,7 +36,7 @@ if(!empty($_POST))
 		$errorEmail = 'Email is empty';
 		$errors[] = $errorEmail;
 	}
-	else if (!filter_var(utf8_decode($emailSanitized), FILTER_VALIDATE_EMAIL)) {
+	else if (!filter_var($emailSanitized, FILTER_VALIDATE_EMAIL)) {
 		$errorEmail = 'Email is invalid';
 		$errors[] = $errorEmail;
 	}
