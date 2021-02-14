@@ -432,6 +432,29 @@ a.simon_sutoris{
 	display:inline-block;
 }
 
+
+a.newsletter_link{
+	text-decoration: underline;
+	color: var(--pico-8-white);
+}
+
+a.newsletter_link:link {
+	color: var(--pico-8-white);
+}
+
+a.newsletter_link:visited {
+	color: var(--pico-8-white);
+}
+
+a.newsletter_link img{
+	width: 24px;
+	margin-right: 5px;
+}
+
+a.newsletter_link > table{
+	margin: auto;
+}
+
 /* SCROLL TO TOP BUTTON ------------------------------------------------------------------------------------------------------------------*/
 button.scroll_to_top{
 	display: none;

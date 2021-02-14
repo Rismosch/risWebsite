@@ -3,6 +3,15 @@
 echo '
 <div class="foot" id="foot">
 	
+	<a title="Newsletter" class="newsletter_link" href="https://www.rismosch.com/newsletter">
+		<table>
+			<tr>
+				<td><img class="newsletter_icon pixel_image" src="assets/icon_8bit/mail.png"></td>
+				<td>Newsletter</td>
+			</tr>
+		</table>
+	</a>
+	
 	<div class="socials" id="socials">
 		<a title="YouTube" href="https://www.youtube.com/channel/UCrWSfmTaXTN_LzEsVRKNJTw">
 			<img class="social_icon" src="assets/icon_social/youtube.png">
