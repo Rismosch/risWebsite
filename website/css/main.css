@@ -453,6 +453,7 @@ a.newsletter_link img{
 
 a.newsletter_link > table{
 	margin: auto;
+	margin-top: 15px;
 }
 
 /* SCROLL TO TOP BUTTON ------------------------------------------------------------------------------------------------------------------*/
