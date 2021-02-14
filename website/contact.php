@@ -137,9 +137,10 @@ if(!empty($_POST))
 			<h1>Contact me</h1>
 			
 			<div style="display:<?php if($contact_successful) echo "block"; else echo "none"?>;">
+			
 				<p style="color: var(--pico-8-green);">Success &#10003;</p>
-				
 				<p>I have received your message! I will try to come back too you as soon as possible :)</p>
+				
 			</div>
 			
 			<div style="display:<?php if($contact_successful) echo "none"; else echo "block"?>;">

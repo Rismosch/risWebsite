@@ -33,6 +33,22 @@ if(!empty($_POST))
 		$errors[] = $errorEmail;
 	}
 	
+	
+	if (isset($_POST['g-recaptcha-response']))
+	{
+		$recaptchaResponse = $_POST['g-recaptcha-response'];
+		$recaptchaUrl = "https://www.google.com/recaptcha/api/siteverify?secret={$reCAPTCHA_secret_key}&response={$recaptchaResponse}";
+		$verify = json_decode(file_get_contents($recaptchaUrl));
+		
+		if (!$verify->success) {
+			$errors[] = 'Recaptcha failed';
+		}
+	}
+	else
+	{
+		$errors[] = 'Recaptcha failed';
+	}
+	
 	if (empty($errors))
 	{
 		$dbInsertConnection = mysqli_connect($dbHost, $dbInsertUserName, $dbInsertPassword, $dbName);
@@ -167,18 +183,10 @@ if(!empty($_POST))
 			<h1>Newsletter</h1>
 			
 			<div style="display:<?php if($subscribe_successful) echo "block"; else echo "none"?>;">
+			
 				<p style="color: var(--pico-8-green);">Success &#10003;</p>
-				
 				<p>Thanks for signing up! I have sent you a message to confirm your email.</p>
 				
-				<button
-					class="g-recaptcha"
-					type="submit"
-					data-sitekey="<?php echo $reCAPTCHA_web_key;?>"
-					data-callback='onRecaptchaSuccess'
-				>
-				Resend Email
-				</button>
 			</div>
 			
 			<div style="display:<?php if($subscribe_successful) echo "none"; else echo "block"?>;">
