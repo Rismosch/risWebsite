@@ -160,6 +160,7 @@ if(!empty($_POST))
 						<p>
 							<button
 								class="g-recaptcha"
+								id="submit_button"
 								type="submit"
 								data-sitekey="<?php echo $reCAPTCHA_web_key;?>"
 								data-callback='onRecaptchaSuccess'
@@ -167,6 +168,8 @@ if(!empty($_POST))
 							Send
 							</button>
 						</p>
+						
+						<img id="loading_animation" class="loading_animation pixel_image invisible" src="assets/icon_8bit/loading.gif">
 					</div>
 				</form>
 			</div>
@@ -178,7 +181,15 @@ if(!empty($_POST))
 	
 	<script>
 		function onRecaptchaSuccess () {
-			document.getElementById('contact-form').submit();
+			return new Promise(function(resolve, reject){
+				
+				document.getElementById('loading_animation').classList.remove('invisible');
+				document.getElementById('submit_button').classList.add('invisible');
+				
+				document.getElementById('contact-form').submit();
+				
+				resolve;
+			});
 		}
 		
 		messageCount($("#contact_textarea").val().length);

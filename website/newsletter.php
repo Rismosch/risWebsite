@@ -204,6 +204,7 @@ if(!empty($_POST))
 					<p>
 						<button
 							class="g-recaptcha"
+							id="submit_button"
 							type="submit"
 							data-sitekey="<?php echo $reCAPTCHA_web_key;?>"
 							data-callback='onRecaptchaSuccess'
@@ -212,6 +213,7 @@ if(!empty($_POST))
 						</button>
 					</p>
 					
+					<img id="loading_animation" class="loading_animation pixel_image invisible" src="assets/icon_8bit/loading.gif">
 				</form>
 			</div>
 		</div>
@@ -219,10 +221,18 @@ if(!empty($_POST))
 		<?php $uses_captcha = true; include 'php/foot.php'; ?>
 	</div>
 	
+	<script>
+		function onRecaptchaSuccess () {
+			return new Promise(function(resolve, reject){
+				
+				document.getElementById('loading_animation').classList.remove('invisible');
+				document.getElementById('submit_button').classList.add('invisible');
+				
+				document.getElementById('contact-form').submit();
+				
+				resolve;
+			});
+		}
+	</script>
 </body>
-<script>
-	function onRecaptchaSuccess () {
-		document.getElementById('contact-form').submit();
-	}
-</script>
 </html>

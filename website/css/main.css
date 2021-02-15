@@ -82,6 +82,10 @@ a.button_inactive:active{
 	cursor: default;
 }
 
+.invisible{
+	display: none;
+}
+
 /* BANNER --------------------------------------------------------------------------------------------------------------------------------*/
 .banner{
 	background-image: url('../assets/banner_spritesheet.png');
@@ -367,6 +371,11 @@ div.contact > p{
 	font-family: Arial, sans-serif;
 	font-size: 1em;
 	background-color: var(--pico-8-white);
+}
+
+img.loading_animation{
+	width: 80px;
+	height:80px;
 }
 
 /* SOCIAL --------------------------------------------------------------------------------------------------------------------------------*/
