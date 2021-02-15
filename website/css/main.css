@@ -441,27 +441,10 @@ a.simon_sutoris{
 }
 
 
-a.newsletter_link{
-	text-decoration: underline;
-	color: var(--pico-8-white);
-}
-
-a.newsletter_link:link {
-	color: var(--pico-8-white);
-}
-
-a.newsletter_link:visited {
-	color: var(--pico-8-white);
-}
-
-a.newsletter_link img{
-	width: 24px;
-	margin-right: 5px;
-}
-
-a.newsletter_link > table{
+img.newsletter_icon{
+	display: block;
 	margin: auto;
-	margin-top: 15px;
+	width: 267px;
 }
 
 /* SCROLL TO TOP BUTTON ------------------------------------------------------------------------------------------------------------------*/

@@ -3,13 +3,8 @@
 echo '
 <div class="foot" id="foot">
 	
-	<a title="Newsletter" class="newsletter_link" href="https://www.rismosch.com/newsletter">
-		<table>
-			<tr>
-				<td><img class="newsletter_icon pixel_image" src="assets/icon_8bit/mail.png"></td>
-				<td>Newsletter</td>
-			</tr>
-		</table>
+	<a title="Newsletter" href="https://www.rismosch.com/newsletter">
+		<img class="newsletter_icon pixel_image" src="assets/icon_8bit/newsletter.gif">
 	</a>
 	
 	<div class="socials" id="socials">
