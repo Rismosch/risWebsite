@@ -20,7 +20,9 @@ function generateEmail($id, $content)
 		<tr>
 			<td tyle=\"padding: 10px;\">
 				<p style=\"color: #fff1e8\">
-					If you have any questions, reply to this email or contact me here: <a href=\"https://www.rismosch.com/contact\" style=\"color: #29adff;\">CONTACT</a> If you don't want to receive further newsletters, unsubscribe here: <a href=\"https://www.rismosch.com/newsletter_delete?id={$id}\" style=\"color: #29adff;\">UNSUBSCRIBE</a>
+					If you have any questions, reply to this email or contact me here: <a href=\"https://www.rismosch.com/contact\" style=\"color: #29adff;\">CONTACT</a>
+					<br><br>
+					If you don't want to receive further newsletters, unsubscribe here: <a href=\"https://www.rismosch.com/newsletter_delete?id={$id}\" style=\"color: #29adff;\">UNSUBSCRIBE</a>
 				</p>
 			</td>
 		</tr>

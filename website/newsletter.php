@@ -66,8 +66,13 @@ if(!empty($_POST))
 				
 				if ($confirmed == 1)
 				{
-					$errorContact = "Something went wrong. Please try again later.";
-					$errors[] = $errorContact;
+					// pretend a confirmation email has been send
+					// to prevent malicious users to find if an
+					// email has been registered or not
+					sleep(rand(5,6));
+					$subscribe_successful = true;
+					
+					$errors[] = "Prevent Email from being send";
 				}
 				else
 				{
