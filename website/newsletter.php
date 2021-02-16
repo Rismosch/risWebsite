@@ -5,6 +5,7 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 include 'php/head.php';
+include 'php/email.php';
 
 require '3rd_party_libraries/PHPMailer/Exception.php';
 require '3rd_party_libraries/PHPMailer/OAuth.php';
@@ -140,8 +141,17 @@ if(!empty($_POST))
 				// Content
 				$mail->isHTML(true);
 				$mail->Subject = 'Rismosch: confirm your email';
-				$mail->Body    = "Hello World";
-				//$mail->AltBody = "Name: {$nameSanitized}\nEmail: {$emailSanitized}\nMessage:\n\n{$messageSanitized}";
+				$mail->Body    = generateEmail($id,"
+					Hi :)<br>
+					<br>
+					Thanks for signing up! Please go ahead and confirm your email by clicking the link below:<br>
+					<br>
+					<a href=\"https://www.rismosch.com/newsletter_confirm?id={$id}\" style=\"text-decoration: none; display: inline-block; font-family: Arial, sans-serif; font-size: 1em; text-align: center; background-color: #29adff; color: #fff1e8; border: none; cursor: pointer; min-width: 20px; padding: 10px;\">Confirm Email</a><br>
+					<br>
+					Sincerely,<br>
+					Simon Sutoris
+				");
+				$mail->AltBody = "Hi :)\n\nThanks for signing up! Please go ahead and confirm your email by visiting the link below:\n\nhttps://www.rismosch.com/newsletter_confirm?id={$id}\n\nSincerely,\nSimon Sutoris\n\n\nIf you have any questions, reply to this email or contact me here: https://www.rismosch.com/contact";
 				
 				$mail->send();
 				
