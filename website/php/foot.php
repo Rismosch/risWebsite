@@ -4,7 +4,7 @@ echo '
 <div class="foot" id="foot">
 	
 	<a title="Newsletter" href="https://www.rismosch.com/newsletter">
-		<img class="newsletter_icon pixel_image" src="assets/icon_8bit/newsletter.gif">
+		<img class="newsletter_icon pixel_image" src="assets/newsletter.gif">
 	</a>
 	
 	<div class="socials" id="socials">
