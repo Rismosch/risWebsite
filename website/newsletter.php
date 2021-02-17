@@ -25,7 +25,7 @@ if(!empty($_POST))
 		$errorEmail = 'Email is empty';
 		$errors[] = $errorEmail;
 	}
-	else if (!filter_var(utf8_decode($emailSanitized), FILTER_VALIDATE_EMAIL)) {
+	else if (!filter_var($emailSanitized, FILTER_VALIDATE_EMAIL)) {
 		$errorEmail = 'Email is invalid';
 		$errors[] = $errorEmail;
 	}
@@ -69,7 +69,7 @@ if(!empty($_POST))
 					// pretend a confirmation email has been send
 					// to prevent malicious users to find if an
 					// email has been registered or not
-					sleep(rand(5,6));
+					sleep(rand(4,6));
 					$subscribe_successful = true;
 					
 					$errors[] = "Prevent Email from being send";
@@ -182,7 +182,7 @@ if(!empty($_POST))
 	<meta property="og:title" content="Newsletter" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://www.rismosch.com/newsletter" />
-	<meta property="og:image" content="https://www.rismosch.com/assets/meta_image_x20.png" />
+	<meta property="og:image" content="https://www.rismosch.com/assets/meta_image_x10.png" />
 
 	<meta name="author" content="Simon Sutoris">
 
@@ -200,7 +200,7 @@ if(!empty($_POST))
 			<div style="display:<?php if($subscribe_successful) echo "block"; else echo "none"?>;">
 			
 				<p style="color: var(--pico-8-green);">Thanks for signing up &#10003;</p>
-				<p>I have sent you a message to confirm your email. This may take up to a minute</p>
+				<p>I have sent you a message to confirm your email. This may take up to a minute or two.</p>
 				
 			</div>
 			

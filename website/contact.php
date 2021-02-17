@@ -121,7 +121,7 @@ if(!empty($_POST))
 	<meta property="og:title" content="Contact" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://www.rismosch.com/contact" />
-	<meta property="og:image" content="https://www.rismosch.com/assets/meta_image_x20.png" />
+	<meta property="og:image" content="https://www.rismosch.com/assets/meta_image_x10.png" />
 
 	<meta name="author" content="Simon Sutoris">
 

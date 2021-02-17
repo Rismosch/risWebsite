@@ -32,7 +32,7 @@ echo "
 	<meta property=\"og:title\" content=\"{$title}\" />
 	<meta property=\"og:type\" content=\"article\" />
 	<meta property=\"og:url\" content=\"https://www.rismosch.com/article?id={$article_id}\" />
-	<meta property=\"og:image\" content=\"https://www.rismosch.com/assets/meta_image_x20.png\" />
+	<meta property=\"og:image\" content=\"https://www.rismosch.com/assets/meta_image_x10.png\" />
 
 	<meta name=\"author\" content=\"Simon Sutoris\">
 ";

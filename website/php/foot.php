@@ -33,7 +33,7 @@ echo '
 	</div>
 	
 	<div class="foot_copyright">
-		<p>Copyright &#169; 2020 <a class="simon_sutoris">Simon Sutoris</a></p>
+		<p>Copyright &#169; 2021 <a class="simon_sutoris">Simon Sutoris</a></p>
 	</div>
 	
 </div>
