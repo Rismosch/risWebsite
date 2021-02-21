@@ -63,8 +63,6 @@ else
 				{
 					$result = mysqli_query($databaseConnection,"DELETE FROM Emails WHERE id='{$safe_email_id}'");
 					
-					echo "DELETE FROM Emails WHERE id='{$safe_email_id}'";
-					
 					if($result)
 					{
 						echo $success;
