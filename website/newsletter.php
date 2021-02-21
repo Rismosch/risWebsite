@@ -156,7 +156,7 @@ if(!empty($_POST))
 					Sincerely,<br>
 					Simon Sutoris
 				");
-				$mail->AltBody = "Hi :)\n\nThanks for signing up! Please go ahead and confirm your email by visiting the link below:\n\nhttps://www.rismosch.com/newsletter_confirm?id={$id}\n\nSincerely,\nSimon Sutoris\n\n\nIf you have any questions, reply to this email or contact me here: https://www.rismosch.com/contact";
+				$mail->AltBody = generateAltEmail($id,"Hi :)\n\nThanks for signing up! Please go ahead and confirm your email by visiting the link below:\n\nhttps://www.rismosch.com/newsletter_confirm?id={$id}\n\nSincerely,\nSimon Sutoris");
 				
 				$mail->send();
 				
@@ -200,7 +200,7 @@ if(!empty($_POST))
 			<div style="display:<?php if($subscribe_successful) echo "block"; else echo "none"?>;">
 			
 				<p style="color: var(--pico-8-green);">Thanks for signing up &#10003;</p>
-				<p>I have sent you a message to confirm your email. This may take up to a minute or two.</p>
+				<p>I have sent you a message to confirm your email. This may take a minute or two.</p>
 				
 			</div>
 			

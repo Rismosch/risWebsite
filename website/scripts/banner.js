@@ -3,10 +3,10 @@ var animationID;
 var animationIsPlaying = false;
 var currentFrame = 0;
 
-const shimmerFrame = 48;
-const maxFrame = 70;
+const shimmerFrame = 50;
+const maxFrame = 77;
 const frameHeight = 21;
-const sheetHeight = 1491;
+const sheetHeight = 1638;
 const interval = 25;
 
 function onloadBanner(){

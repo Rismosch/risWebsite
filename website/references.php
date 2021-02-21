@@ -112,11 +112,7 @@
 				<tr class="row_empty row_devider"><td></td></tr>
 			</table>
 			
-			<p>Everything else has been created by me. The source code is public and can be found <a href="https://github.com/Rismosch/risWebsite">here</a>.</p>
-			
-			<br>
-			
-			<p>All other non mentioned resources, such as images, music, code, and any other files that are found on rismosch.com, were created by me or used with permission.</p>
+			<p>All other non mentioned resources, such as images, music, code, and any other files that are found on rismosch.com, were created by me or used with permission. The source code is public and can be found <a href="https://github.com/Rismosch/risWebsite">here</a>.</p>
 		</div>
 		
 		<?php include 'php/foot.php'; ?>
