@@ -10,7 +10,6 @@ if(isset($_GET["id"]))
 	
 	$unsafe_email_id = $_GET["id"];
 	$unsafe_email_id_chars = str_split($unsafe_email_id);
-	$count = 0;
 	foreach($unsafe_email_id_chars as $unsafe_email_id_char)
 	{
 		if (empty($unsafe_email_id_char))
