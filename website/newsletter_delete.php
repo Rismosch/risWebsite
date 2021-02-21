@@ -71,7 +71,7 @@ else
 					}
 					else
 					{
-						echo $error . mysqli_error($databaseConnection);
+						echo $error; //mysqli_error($databaseConnection)
 					}
 				}
 				else
