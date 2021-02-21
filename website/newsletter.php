@@ -52,11 +52,11 @@ if(!empty($_POST))
 	
 	if (empty($errors))
 	{
-		$dbInsertConnection = mysqli_connect($dbHost, $dbInsertUserName, $dbInsertPassword, $dbName);
-		if($dbInsertConnection)
+		$databaseConnection = mysqli_connect($dbHost, $dbInsertUserName, $dbInsertPassword, $dbName);
+		if($databaseConnection)
 		{
 			// check if email exists
-			$result = mysqli_query($dbInsertConnection,"SELECT id, confirmed FROM Emails WHERE email = '{$emailSanitized}'");
+			$result = mysqli_query($databaseConnection,"SELECT id, confirmed FROM Emails WHERE email = '{$emailSanitized}'");
 			$numRows = mysqli_num_rows($result);
 			if ($numRows > 0)
 			{
@@ -66,7 +66,7 @@ if(!empty($_POST))
 				
 				if ($confirmed == 1)
 				{
-					// pretend a confirmation email has been send
+					// pretend a confirmation email is being send
 					// to prevent malicious users to find if an
 					// email has been registered or not
 					sleep(rand(4,6));
@@ -76,7 +76,7 @@ if(!empty($_POST))
 				}
 				else
 				{
-					$result = mysqli_query($dbInsertConnection,"UPDATE Emails SET timestamp=CURRENT_TIMESTAMP WHERE id='{$id}'");
+					$result = mysqli_query($databaseConnection,"UPDATE Emails SET timestamp=CURRENT_TIMESTAMP WHERE id='{$id}'");
 					if(!$result)
 					{
 						$errorContact = "Something went wrong. Please try again later.";
@@ -96,7 +96,7 @@ if(!empty($_POST))
 						$id .= $characters[rand(0, strlen($characters) - 1)];
 					}
 					
-					$result = mysqli_query($dbInsertConnection,"SELECT COUNT(id) as COUNT FROM Emails WHERE id = '{$id}'");
+					$result = mysqli_query($databaseConnection,"SELECT COUNT(id) as COUNT FROM Emails WHERE id = '{$id}'");
 					$numRows = mysqli_num_rows($result);
 					if ($numRows > 0)
 					{
@@ -112,7 +112,7 @@ if(!empty($_POST))
 					
 				} while($matchingIdCount > 0);
 				
-				$result = mysqli_query($dbInsertConnection,"INSERT INTO Emails(id, email) VALUES ('{$id}','{$emailSanitized}')");
+				$result = mysqli_query($databaseConnection,"INSERT INTO Emails(id, email) VALUES ('{$id}','{$emailSanitized}')");
 				if(!$result)
 				{
 					$errorContact = "Something went wrong. Please try again later.";
