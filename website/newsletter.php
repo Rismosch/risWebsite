@@ -56,33 +56,12 @@ if(!empty($_POST))
 		if($databaseConnection)
 		{
 			// check if email exists
-			$result = mysqli_query($databaseConnection,"SELECT id, confirmed FROM Emails WHERE email = '{$emailSanitized}'");
+			$result = mysqli_query($databaseConnection,"SELECT id FROM Emails WHERE email = '{$emailSanitized}'");
 			$numRows = mysqli_num_rows($result);
 			if ($numRows > 0)
 			{
 				$row = mysqli_fetch_assoc($result);
 				$id = $row['id'];
-				$confirmed = $row['confirmed'];
-				
-				if ($confirmed == 1)
-				{
-					// pretend a confirmation email is being send
-					// to prevent malicious users to find if an
-					// email has been registered or not
-					sleep(rand(4,6));
-					$subscribe_successful = true;
-					
-					$errors[] = "Prevent Email from being send";
-				}
-				else
-				{
-					$result = mysqli_query($databaseConnection,"UPDATE Emails SET timestamp=CURRENT_TIMESTAMP WHERE id='{$id}'");
-					if(!$result)
-					{
-						$errorContact = "Something went wrong. Please try again later.";
-						$errors[] = $errorContact;
-					}
-				}
 			}
 			else
 			{
