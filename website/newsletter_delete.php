@@ -39,7 +39,7 @@ else
 
 	<meta property="og:title" content="Unsubscribe" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://www.rismosch.com/privacy" />
+	<meta property="og:url" content="https://www.rismosch.com/newsletter_delete" />
 	<meta property="og:image" content="https://www.rismosch.com/assets/meta_image_x10.png" />
 
 	<meta name="author" content="Simon Sutoris">
