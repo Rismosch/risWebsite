@@ -178,14 +178,14 @@ if(!empty($_POST))
 			
 			<div style="display:<?php if($subscribe_successful) echo "block"; else echo "none"?>;">
 			
-				<p style="color: var(--pico-8-green);">Thanks for signing up &#10003;</p>
-				<p>I have sent you a message to confirm your email. This may take a minute or two.</p>
+				<p style="color: var(--pico-8-green);">Success &#10003;</p>
+				<p>Thanks for signing up! :)<br>I have sent you a message to confirm your email. This may take a minute or two.</p>
 				
 			</div>
 			
 			<div style="display:<?php if($subscribe_successful) echo "none"; else echo "block"?>;">
 				
-				<p>Subscribe to my newsletter to be notified when I upload a new blogpost or project :)</p>
+				<p>Subscribe to my newsletter to be notified when I upload a new blogpost or project.</p>
 				<p>Newsletter can be unsubscribed at any time.</p>
 				<br>
 				
