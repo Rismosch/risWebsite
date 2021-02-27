@@ -111,7 +111,7 @@ function generateAltEmail($id, $content)
 				{
 					echo "connected to database<br>";
 					
-					$result = mysqli_query($databaseConnection,"SELECT * FROM Emails");
+					$result = mysqli_query($databaseConnection,"SELECT * FROM Emails WHERE confirmed=1");
 					$numRows = mysqli_num_rows($result);
 					
 					echo "{$numRows} emails found<br>";
