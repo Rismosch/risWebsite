@@ -12,10 +12,12 @@ require 'PHPMailer/PHPMailer.php';
 require 'PHPMailer/POP3.php';
 require 'PHPMailer/SMTP.php';
 
+$subject = '';
 $message = '';
 $messageHtml = '';
 if(!empty($_POST))
 {
+	$subject = $_POST['subject'];
 	$message = $_POST['message'];
 	
 	$message_chars = str_split($message);
@@ -79,6 +81,13 @@ function generateAltEmail($id, $content)
 	<h1>Newsletter Send Client</h1>
 	
 	<form action="newsletter_send_client.php" method="POST">
+		<table>
+			<tr>
+				<td>Subject</td><td><input name="subject" type="text" value="<?php echo $subject; ?>"></td>
+			</tr>
+		</table>
+		
+		<p>Message</p>
 		<textarea name="message" rows="10" cols="35"><?php echo $message; ?></textarea>
 		
 		<br><br>
@@ -89,9 +98,13 @@ function generateAltEmail($id, $content)
 	<br>
 	
 	<?php
-		if(!empty($message))
+		
+		if(!empty($_POST))
 		{
-			if(!empty($_POST))
+			
+			if(empty($message) || empty($subject))
+				echo "<b>Error</b>: subject or message is empty";
+			else
 			{
 				$databaseConnection = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName);
 				if($databaseConnection)
@@ -135,7 +148,7 @@ function generateAltEmail($id, $content)
 								
 								// Content
 								$mail->isHTML(true);
-								$mail->Subject = 'Rismosch: confirm your email';
+								$mail->Subject = $subject;
 								$mail->Body    = generateEmail($rowId,$messageHtml);
 								$mail->AltBody = generateAltEmail($rowId,$message);
 								
@@ -167,8 +180,6 @@ function generateAltEmail($id, $content)
 					echo "<b>Error</b>: Could not connect to database";
 			}
 		}
-		else
-			echo "<b>Error</b>: Message is empty";
 		
 	?>
 </body>
