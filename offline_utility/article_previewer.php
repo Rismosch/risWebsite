@@ -1,11 +1,5 @@
 <?php
 
-$directory = '';
-if(!empty($_POST))
-{
-	$directory = $_POST['directory'];
-}
-
 function get_source($file)
 {
 	echo "article_previewer\\{$file}";
@@ -192,6 +186,7 @@ div.content{
 	<div class="background">
 		<img style="display:block; margin: auto;" src="https://www.rismosch.com/assets/meta_image_x5.png">
 		<div class="content" id="content">
+			<h1>Some Title</h1>
 			<?php
 				$content = "article_previewer/content.php";
 				if(file_exists($content))
@@ -203,12 +198,9 @@ div.content{
 					echo "<h1>:(</h1><p>Could not find file:<br>\"{$content}\"</p>";
 				}
 			?>
-		</div>
-		<div style="margin-top: 5px;">
-			<form action="article_previewer.php" method="POST" id="reload-form">
-				<button type="submit" style="margin-right: 5px;">Reload</button>
-				<input name="directory" value="<?php echo $directory;?>" type="hidden">
-			</form>
+			<div style="border: 1px solid var(--pico-8-white); display: block; width: 100%; height: 500px;">
+				<p style="margin: auto;"> Comments</p>
+			</div>
 		</div>
 	</div>
 </body>
