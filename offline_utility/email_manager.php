@@ -8,10 +8,10 @@ include 'secret.php';
 <html lang="en">
 <head>
 	<meta charset="utf-8"/>
-	<title>Newsletter Manager</title>
+	<title>Email Manager</title>
 </head>
 <body>
-	<h1>Newsletter Send Client</h1>
+	<h1>Email Manager</h1>
 	
 	<form action="email_manager.php" method="POST" id="reload-form">
 		<input type="hidden" name="command" value="reload">
