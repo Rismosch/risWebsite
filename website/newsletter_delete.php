@@ -38,34 +38,6 @@ if(!$postIsEmpty)
 		$safe_email_id = '+';
 }
 
-/*$safe_characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_';
-
-if(isset($_GET["id"]))
-{
-	$email_id_is_safe = true;
-	
-	$unsafe_email_id = $_GET["id"];
-	$unsafe_email_id_chars = str_split($unsafe_email_id);
-	foreach($unsafe_email_id_chars as $unsafe_email_id_char)
-	{
-		if (empty($unsafe_email_id_char))
-			continue;
-		
-		if(strpos($safe_characters, $unsafe_email_id_char) !== false)
-			continue;
-		
-		$email_id_is_safe = false;
-		break;
-	}
-	
-	if($email_id_is_safe)
-		$safe_email_id = $unsafe_email_id;
-	else
-		$safe_email_id = '+';
-}
-else
-	$safe_email_id = '+';*/
-
 ?>
 
 	<title>Unsubscribe</title>
@@ -125,28 +97,6 @@ else
 						echo $error;
 					}
 				}
-				
-				/*$success = "<p style=\"color: var(--pico-8-green);\">Success &#10003;</p><p>I deleted your email from my database! You are now fully unsubscribed.</p>";
-				$error = "<p style=\"color: var(--pico-8-red);\">Error &#10007;</p><p>Could not unsubscribe. Please try again later or contact me <a href=\"https://www.rismosch.com/contact\">here</a>.</p>";
-				
-				$databaseConnection = mysqli_connect($dbHost, $dbDeleteUserName, $dbDeletePassword, $dbName);
-				if($databaseConnection)
-				{
-					$result = mysqli_query($databaseConnection,"DELETE FROM Emails WHERE id='{$safe_email_id}'");
-					
-					if($result)
-					{
-						echo $success;
-					}
-					else
-					{
-						echo $error; //mysqli_error($databaseConnection)
-					}
-				}
-				else
-				{
-					echo $error;
-				}*/
 			?>
 		</div>
 		

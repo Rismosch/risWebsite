@@ -62,7 +62,7 @@ if(!$postIsEmpty)
 		<div class="content" id="content">
 			<h1>Newsletter</h1>
 			
-			<img id="loading_animation" class="loading_animation pixel_image <?php if(!$postIsEmpty) echo 'invisible';?>" src="assets/icon_8bit/loading.gif">
+			<img id="loading_animation" class="loading_animation pixel_image <?php if($captchaSuccess) echo 'invisible';?>" src="assets/icon_8bit/loading.gif">
 			
 			<form action="newsletter_confirm" method="POST" id="contact-form">
 				<input type="hidden" name="id" value="<?php if(isset($_GET["id"])) echo $_GET["id"]; else echo "+";?>">
@@ -77,26 +77,40 @@ if(!$postIsEmpty)
 				if($captchaSuccess)
 				{
 					$success = "<p style=\"color: var(--pico-8-green);\">Success &#10003;</p><p>Your email was confirmed!</p>";
-					$error = "<p style=\"color: var(--pico-8-red);\">Error &#10007;</p><p>Could not confrim email. Please try again later or contact me <a href=\"https://www.rismosch.com/contact\">here</a>.</p>";
+					$error = "<p style=\"color: var(--pico-8-red);\">Error &#10007;</p><p>Could not confirm email. Please try again later or contact me <a href=\"https://www.rismosch.com/contact\">here</a>.</p>";
 					
 					$databaseConnection = mysqli_connect($dbHost, $dbInsertUserName, $dbInsertPassword, $dbName);
 					if($databaseConnection)
 					{
-						$result = mysqli_query($databaseConnection, "UPDATE Emails SET confirmed=true, timestamp=CURRENT_TIMESTAMP WHERE id='{$safe_email_id}'");
+						$emailNotExpiredResult = mysqli_query($databaseConnection, "SELECT * FROM Emails WHERE id='{$safe_email_id}' AND timestamp >= NOW() - INTERVAL 1 DAY");
+						$emailNotExpiredCount = mysqli_num_rows($emailNotExpiredResult);
 						
-						if($result)
+						if($emailNotExpiredCount > 0)
 						{
-							echo $success;
+							$result = mysqli_query($databaseConnection, "UPDATE Emails SET confirmed=true WHERE id='{$safe_email_id}'");
+							if($result)
+							{
+								echo $success;
+							}
+							else
+							{
+								echo $error;
+							}
 						}
 						else
 						{
-							echo $error; //mysqli_error($databaseConnection)
+							echo "<p style=\"color: var(--pico-8-red);\">Error &#10007;</p><p>Confirmation link expired or email was not found.</p>";
 						}
 					}
 					else
 					{
-						echo $error;
+						echo "<p style=\"color: var(--pico-8-red);\">Error &#10007;</p><p>Could not confirm email. Please try again later or contact me <a href=\"https://www.rismosch.com/contact\">here</a>.</p>";
 					}
+				}
+				else if(!$postIsEmpty)
+				{
+					header("Location: https://www.rismosch.com/");
+					die();
 				}
 			?>
 		</div>
