@@ -2,6 +2,11 @@
 
 function get_source($file)
 {
+	return "article_previewer\\{$file}";
+}
+
+function echo_source($file)
+{
 	echo "article_previewer\\{$file}";
 }
 

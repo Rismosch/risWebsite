@@ -41,6 +41,13 @@ function get_source($file)
 {
 	global $article_id;
 	
+	return "https://www.rismosch.com/articles/{$article_id}/{$file}";
+}
+
+function echo_source($file)
+{
+	global $article_id;
+	
 	echo "https://www.rismosch.com/articles/{$article_id}/{$file}";
 }
 
