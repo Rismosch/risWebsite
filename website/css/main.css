@@ -536,10 +536,6 @@ button.scroll_captcha_offset{
 /* MOBILE */
 @media only screen and (max-width: 680px) {
 	
-	div.background{
-		width: auto;
-	}
-	
 	.banner{
 		transform: scale(5);
 	}

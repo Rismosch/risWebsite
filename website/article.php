@@ -37,6 +37,13 @@ echo "
 	<meta name=\"author\" content=\"Simon Sutoris\">
 ";
 
+function get_source($file)
+{
+	global $article_id;
+	
+	echo "https://www.rismosch.com/articles/{$article_id}/{$file}";
+}
+
 ?>
 </head>
 <body>
