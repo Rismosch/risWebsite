@@ -100,7 +100,7 @@ if(!$postIsEmpty)
 			?>
 		</div>
 		
-		<?php include 'php/foot.php'; ?>
+		<?php $uses_captcha = true; include 'php/foot.php'; ?>
 	</div>
 	<script>
 		function ReloadPageWithPost()

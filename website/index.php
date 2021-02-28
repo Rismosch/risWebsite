@@ -50,8 +50,6 @@ include 'php/articles_database.php';
 				<tr class="row_empty"><td></td></tr>
 				<tr class="row_empty row_devider"><td></td></tr>
 			</table>
-			
-			<!--<br><h2>Subscribe to my Newsletter</h2>-->
 		</div>
 		
 		<?php include 'php/foot.php'; ?>

@@ -94,7 +94,7 @@ if(!$postIsEmpty)
 							}
 							else
 							{
-								echo $error;
+								echo $error; //mysqli_error($databaseConnection)
 							}
 						}
 						else
@@ -104,7 +104,7 @@ if(!$postIsEmpty)
 					}
 					else
 					{
-						echo "<p style=\"color: var(--pico-8-red);\">Error &#10007;</p><p>Could not confirm email. Please try again later or contact me <a href=\"https://www.rismosch.com/contact\">here</a>.</p>";
+						echo $error;
 					}
 				}
 				else if(!$postIsEmpty)
@@ -115,7 +115,7 @@ if(!$postIsEmpty)
 			?>
 		</div>
 		
-		<?php include 'php/foot.php'; ?>
+		<?php $uses_captcha = true; include 'php/foot.php'; ?>
 	</div>
 	<script>
 		function ReloadPageWithPost()
