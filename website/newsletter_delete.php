@@ -1,6 +1,7 @@
 <?php
 
-include 'php/head.php';
+include 'secret/secret.php';
+include 'php/util.php';
 
 $postIsEmpty = empty($_POST);
 $captchaSuccess = false;
@@ -38,6 +39,8 @@ if(!$postIsEmpty)
 		$safe_email_id = '+';
 }
 
+echo_head();
+
 ?>
 
 	<title>Unsubscribe</title>
@@ -55,9 +58,10 @@ if(!$postIsEmpty)
 </head>
 <body <?php if($postIsEmpty) echo 'onload="ReloadPageWithPost()"';?>>
 	<div class="background">
-		<?php include 'php/banner.php'; ?>
-		
-		<?php include 'php/selector.php'; ?>
+		<?php
+			echo_banner();
+			echo_selector(-1);
+		?>
 		
 		<div class="content" id="content">
 			<h1>Newsletter</h1>
@@ -100,7 +104,7 @@ if(!$postIsEmpty)
 			?>
 		</div>
 		
-		<?php $uses_captcha = true; include 'php/foot.php'; ?>
+		<?php echo_foot(true); ?>
 	</div>
 	<script>
 		function ReloadPageWithPost()

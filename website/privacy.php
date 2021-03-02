@@ -1,4 +1,10 @@
-<?php include 'php/head.php'; ?>
+<?php
+
+include 'php/util.php';
+
+echo_head();
+
+?>
 
 	<title>Privacy Policy</title>
 	<meta name="description" content="Privacy Policy of rismosch.com">
@@ -16,9 +22,10 @@
 </head>
 <body>
 	<div class="background">
-		<?php include 'php/banner.php'; ?>
-		
-		<?php include 'php/selector.php'; ?>
+		<?php
+			echo_banner();
+			echo_selector(-1);
+		?>
 		
 		<div class="content copyright_text" id="content copyright_text">
 			<h1>Privacy Policy for rismosch.com</h1>
@@ -99,7 +106,7 @@
 			<p>rismosch.com does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on my website, I strongly encourage you to contact me immediately and I will do my best efforts to promptly remove such information from my records.</p>
 		</div>
 		
-		<?php include 'php/foot.php'; ?>
+		<?php echo_foot(false); ?>
 	</div>
 </body>
 </html>

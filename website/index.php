@@ -1,7 +1,10 @@
 <?php
 
-include 'php/head.php';
+include 'secret/secret.php';
 include 'php/articles_database.php';
+include 'php/util.php';
+
+echo_head();
 
 ?>
 
@@ -21,9 +24,10 @@ include 'php/articles_database.php';
 </head>
 <body>
 	<div class="background">
-		<?php include 'php/banner.php'; ?>
-		
-		<?php $active_tab = 0; include 'php/selector.php'; ?>
+		<?php
+			echo_banner();
+			echo_selector(0);
+		?>
 		
 		<div class="content" id="content">
 			<h1>Home</h1>
@@ -52,7 +56,7 @@ include 'php/articles_database.php';
 			</table>
 		</div>
 		
-		<?php include 'php/foot.php'; ?>
+		<?php echo_foot(false); ?>
 	</div>
 </body>
 </html>

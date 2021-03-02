@@ -1,4 +1,10 @@
-<?php include 'php/head.php'; ?>
+<?php
+
+include 'php/util.php';
+
+echo_head();
+
+?>
 
 	<title>References</title>
 	<meta name="description" content="Complete list of external sources, used for rismosch.com">
@@ -16,9 +22,10 @@
 </head>
 <body>
 	<div class="background">
-		<?php include 'php/banner.php'; ?>
-		
-		<?php include 'php/selector.php'; ?>
+		<?php
+			echo_banner();
+			echo_selector(-1);
+		?>
 		
 		<div class="content" id="content">
 			<h1>References</h1>
@@ -108,7 +115,7 @@
 			<p>All other non mentioned resources, such as images, music, code, and any other files that are found on rismosch.com, were created by me or used with permission. The source code is public and can be found <a href="https://github.com/Rismosch/risWebsite">here</a>.</p>
 		</div>
 		
-		<?php include 'php/foot.php'; ?>
+		<?php echo_foot(false); ?>
 	</div>
 </body>
 </html>

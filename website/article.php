@@ -1,7 +1,8 @@
 <?php
 
-include 'php/head.php';
+include 'secret/secret.php';
 include 'php/articles_database.php';
+include 'php/util.php';
 
 if(isset($_GET["id"]))
 	$article_id = intval($_GET["id"]);
@@ -20,6 +21,8 @@ if($dbConn){
 			$active_tab = 1;
 		else if($articleData['type_id'] == 1)
 			$active_tab = 2;
+		else
+			$active_tab = -1;
 
 		$title = $articleData['title'];
 	}
@@ -57,13 +60,16 @@ function echo_source($file)
 	echo "https://www.rismosch.com/articles/{$article_id}/{$file}";
 }
 
+echo_head();
+
 ?>
 </head>
 <body>
 	<div class="background">
-		<?php include 'php/banner.php'; ?>
-		
-		<?php include 'php/selector.php'; ?>
+		<?php
+			echo_banner();
+			echo_selector($active_tab);
+		?>
 		
 		<div class="content" id="content">
 			<?php
@@ -93,7 +99,7 @@ function echo_source($file)
 			
 		</div>
 		
-		<?php include 'php/foot.php'; ?>
+		<?php echo_foot(false); ?>
 	</div>
 	
 	<script>

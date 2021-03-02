@@ -4,7 +4,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-include 'php/head.php';
+include 'secret/secret.php';
+include 'php/util.php';
 
 require '3rd_party_libraries/PHPMailer/Exception.php';
 require '3rd_party_libraries/PHPMailer/OAuth.php';
@@ -112,6 +113,8 @@ if(!empty($_POST))
 	}
 }
 
+echo_head();
+
 ?>
 	<title>Contact</title>
 	<meta name="description" content="Contact Simon Sutoris">
@@ -129,9 +132,10 @@ if(!empty($_POST))
 </head>
 <body>
 	<div class="background">
-		<?php include 'php/banner.php'; ?>
-		
-		<?php include 'php/selector.php'; ?>
+		<?php
+			echo_banner();
+			echo_selector(-1);
+		?>
 		
 		<div class="content" id="content">
 			
@@ -177,7 +181,7 @@ if(!empty($_POST))
 			
 		</div>
 		
-		<?php $uses_captcha = true; include 'php/foot.php'; ?>
+		<?php echo_foot(true); ?>
 	</div>
 	
 	<script>

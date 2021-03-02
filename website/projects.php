@@ -1,9 +1,12 @@
 <?php
 
-include 'php/head.php';
-
 $article_type_id = 1;
+
+include 'secret/secret.php';
 include 'php/articles_database.php';
+include 'php/util.php';
+
+echo_head();
 
 ?>
 
@@ -23,9 +26,10 @@ include 'php/articles_database.php';
 </head>
 <body>
 	<div class="background">
-		<?php include 'php/banner.php'; ?>
-		
-		<?php $active_tab = 2; include 'php/selector.php'; ?>
+		<?php
+			echo_banner();
+			echo_selector(2);
+		?>
 		
 		<div class="content" id="content">
 			<h1>Projects</h1>
@@ -46,7 +50,7 @@ include 'php/articles_database.php';
 			?>
 		</div>
 		
-		<?php include 'php/foot.php'; ?>
+		<?php echo_foot(false); ?>
 	</div>
 </body>
 </html>

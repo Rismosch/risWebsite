@@ -1,4 +1,10 @@
-<?php include 'php/head.php'; ?>
+<?php
+
+include 'php/util.php';
+
+echo_head();
+
+?>
 
 	<title>About</title>
 	<meta name="description" content="Resumee of Simon Sutoris">
@@ -15,10 +21,10 @@
 </head>
 <body>
 	<div class="background">
-		
-		<?php include 'php/banner.php'; ?>
-		
-		<?php $active_tab = 3; include 'php/selector.php'; ?>
+		<?php
+			echo_banner();
+			echo_selector(3);
+		?>
 		
 		<div class="content" id="content">
 			<h1>About</h1>
@@ -108,8 +114,7 @@
 			</table>
 		</div>
 		
-		<?php include 'php/foot.php'; ?>
-		
+		<?php echo_foot(false); ?>
 	</div>
 </body>
 </html>
