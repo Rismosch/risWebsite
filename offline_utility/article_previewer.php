@@ -192,6 +192,7 @@ div.content{
 		<img style="display:block; margin: auto;" src="https://www.rismosch.com/assets/meta_image_x5.png">
 		<div class="content" id="content">
 			<h1>Some Title</h1>
+			<p>Category &#183; Date</p>
 			<?php
 				$content = "article_previewer/content.php";
 				if(file_exists($content))

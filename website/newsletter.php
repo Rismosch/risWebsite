@@ -132,10 +132,12 @@ if(!empty($_POST))
 					<br>
 					<a href=\"https://www.rismosch.com/newsletter_confirm?id={$id}\" style=\"text-decoration: none; display: inline-block; font-family: Arial, sans-serif; font-size: 1em; text-align: center; background-color: #29adff; color: #fff1e8; border: none; cursor: pointer; min-width: 20px; padding: 10px;\">Confirm Email</a><br>
 					<br>
+					This link will expire in 24 hours. If the email is not confirmed in 24 hours, you will be automatically unsubscribed from my newsletter.
+					<br>
 					Sincerely,<br>
 					Simon Sutoris
 				");
-				$mail->AltBody = generateAltEmail($id,"Hi :)\n\nThanks for signing up! Please go ahead and confirm your email by visiting the link below:\n\nhttps://www.rismosch.com/newsletter_confirm?id={$id}\n\nSincerely,\nSimon Sutoris");
+				$mail->AltBody = generateAltEmail($id,"Hi :)\n\nThanks for signing up! Please go ahead and confirm your email by visiting the link below:\n\nhttps://www.rismosch.com/newsletter_confirm?id={$id}\n\nThis link will expire in 24 hours. If the email is not confirmed in 24 hours, you will be automatically unsubscribed from my newsletter.\n\nSincerely,\nSimon Sutoris");
 				
 				$mail->send();
 				

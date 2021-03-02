@@ -35,7 +35,7 @@ include 'secret.php';
 			
 			if($command === "delete")
 			{
-				$deleteEmailsResult = mysqli_query($databaseConnection,"DELETE FROM Emails WHERE timestamp <= NOW() - INTERVAL 1 DAY");
+				$deleteEmailsResult = mysqli_query($databaseConnection,"DELETE FROM Emails WHERE timestamp <= NOW() - INTERVAL 1 DAY AND confirmed=0");
 				if($deleteEmailsResult)
 					echo "<p style=\"color:green;\">deleted all expired emails</p>";
 				else

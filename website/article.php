@@ -13,14 +13,20 @@ $dbConn = mysqli_connect($dbHost, $dbSelectUsername, $dbSelectPassword, $dbName)
 $title = ":(";
 
 if($dbConn){
-	$typeId = GetArticleType($dbConn, $article_id);
-	
-	if($typeId == 0)
-		$active_tab = 1;
-	else if($typeId == 1)
-		$active_tab = 2;
+	$articleData = GetArticleData($dbConn, $article_id);
+	if(!is_null($articleData))
+	{
+		if($articleData['type_id'] == 0)
+			$active_tab = 1;
+		else if($articleData['type_id'] == 1)
+			$active_tab = 2;
 
-	$title = GetArticleTitle($dbConn, $article_id);
+		$title = $articleData['title'];
+	}
+	else
+	{
+		$title = ':(';
+	}
 }
 
 echo "
@@ -65,7 +71,16 @@ function echo_source($file)
 				
 				$content = "articles/{$article_id}/content.php";
 				if(file_exists($content))
+				{
+					if(!is_null($articleData))
+					{
+						$timestamp = strtotime($articleData['timestamp']);
+						$newTimestampFormat = date('M jS, Y',$timestamp);
+						
+						echo "<p>{$articleData['category']} &#183; {$newTimestampFormat}</p>";
+					}
 					include $content;
+				}
 				else
 				{
 					echo "<p>Could not find article with id={$article_id}</p>";

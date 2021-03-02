@@ -421,50 +421,37 @@ function printSelector($dbConn, $pageName)
 	";
 }
 
-function GetArticleType($dbConn, $articleId)
+function GetArticleData($dbConn, $articleId)
 {
-	$sqlSelectArticleType = "
-		SELECT
-			type_id
-		FROM
-			Articles
-		WHERE
-			id = {$articleId};
+	$sqlArticleData ="
+	SELECT
+		Articles.id AS id,
+		Articles.type_id AS type_id,
+		Article_Types.name AS type,
+		Articles.category_id AS category_id,
+		Article_Categories.name AS category,
+		Articles.title AS title,
+		Articles.timestamp AS timestamp,
+		Articles.link AS link,
+		Articles.thumbnail_path AS thumbnail_path
+	FROM
+		Articles,
+		Article_Categories,
+		Article_Types
+	WHERE
+		Articles.category_id = Article_Categories.id AND
+		Articles.type_id = Article_Types.id AND
+		Articles.id = {$articleId}
 	";
 	
-	$result = mysqli_query($dbConn,$sqlSelectArticleType);
+	$result = mysqli_query($dbConn, $sqlArticleData);
 	$numRows = mysqli_num_rows($result);
 	if($numRows > 0)
 	{
-		$row = mysqli_fetch_assoc($result);
-		
-		return $row['type_id'];
+		return mysqli_fetch_assoc($result);
 	}
 	
-	return -1;
-}
-
-function GetArticleTitle($dbConn, $articleId)
-{
-	$sqlSelectArticleTitle = "
-		SELECT
-			title
-		FROM
-			Articles
-		WHERE
-			id = {$articleId};
-	";
-	
-	$result = mysqli_query($dbConn,$sqlSelectArticleTitle);
-	$numRows = mysqli_num_rows($result);
-	if($numRows > 0)
-	{
-		$row = mysqli_fetch_assoc($result);
-		
-		return $row['title'];
-	}
-	
-	return ":(";
+	return NULL;
 }
 
 ?>
