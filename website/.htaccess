@@ -2,9 +2,5 @@ DirectoryIndex index.php
 
 RewriteEngine On
 
-# Resolve non-www to www
-RewriteCond %{HTTP_HOST} !^www\. [NC]
-RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
-
 # Resolve .php file for extensionless PHP URLs
 RewriteRule ^([^/.]+)$ $1.php [L]

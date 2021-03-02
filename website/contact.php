@@ -19,7 +19,8 @@ $contact_successful = false;
 if(!empty($_POST))
 {
 	$nameUnsafe = $_POST['name'];
-	/*$nameSanitized = filter_var($nameUnsafe,FILTER_SANITIZE_ENCODED);
+	//$nameSanitized = filter_var($nameUnsafe,FILTER_SANITIZE_ENCODED);
+	$nameSanitized = $nameUnsafe;
 	if(empty($nameSanitized)) {
 		$errorName = 'Name is empty';
 		$errors[] = $errorName;
@@ -27,7 +28,7 @@ if(!empty($_POST))
 	else if (strlen($nameSanitized) > 99){
 		$errorName = "Name is too long (max 99 characters)";
 		$errors[] = $errorName;
-	}*/
+	}
 	
 	
 	$emailUnsafe = $_POST['email'];
@@ -47,7 +48,8 @@ if(!empty($_POST))
 	
 	
 	$messageUnsafe = $_POST['message'];
-	/*$messageSanitized = filter_var($messageUnsafe,FILTER_SANITIZE_ENCODED);
+	//$messageSanitized = filter_var($messageUnsafe,FILTER_SANITIZE_ENCODED);
+	$messageSanitized = $messageUnsafe;
 	if (empty($messageSanitized)) {
 		$errorMessage = 'Message is empty';
 		$errors[] = $errorMessage;
@@ -55,7 +57,7 @@ if(!empty($_POST))
 	else if (strlen($messageSanitized) > 999){
 		$errorMessage = "Message is too long";
 		$errors[] = $errorMessage;
-	}*/
+	}
 	
 	
 	if (isset($_POST['g-recaptcha-response']))
@@ -86,15 +88,14 @@ if(!empty($_POST))
 			$mail->Port = 25;
 			
 			// Recipients
-			$mail->setFrom($emailSanitized, $nameUnsafe);
+			$mail->setFrom($emailSanitized, $nameSanitized);
 			$mail->addAddress($contactEmail, 'Rismosch');
 			
 			// Content
 			$mail->CharSet = 'UTF-8';
 			$mail->Encoding = 'base64';
 			$mail->Subject = 'Contact Rismosch';
-			//$mail->Body    = $messageSanitized;
-			$mail->Body    = $messageUnsafe;
+			$mail->Body    = $messageSanitized;
 			
 			$mail->send();
 			
@@ -112,7 +113,6 @@ if(!empty($_POST))
 }
 
 ?>
-
 	<title>Contact</title>
 	<meta name="description" content="Contact Simon Sutoris">
 	<meta name="keywords" content="contact, email">
@@ -193,19 +193,20 @@ if(!empty($_POST))
 			});
 		}
 		
-		messageCount($("#contact_textarea").val().length);
-		
-		$("#contact_textarea").keyup(function(){
-			messageCount($(this).val().length);
-		});
+		messageCount(document.getElementById('contact_textarea').value.length)
+		document.getElementById('contact_textarea').onkeyup = function()
+		{
+			messageCount(this.value.length);
+		}
 		
 		function messageCount(characterCount){
-			$("#contact_textarea_count").text("Characters: " + characterCount + "/999");
+			var contact_textarea_count = document.getElementById('contact_textarea_count');
+			contact_textarea_count.innerHTML = "Characters: " + characterCount + "/999";
 			
 			if(characterCount > 999)
-				$("#contact_textarea_count").css("color","var(--pico-8-red)");
+				contact_textarea_count.style.color = "var(--pico-8-red)";
 			else
-				$("#contact_textarea_count").css("color","var(--pico-8-black)");
+				contact_textarea_count.style.color = "var(--pico-8-black)";
 		}
 	</script>
 </body>

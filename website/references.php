@@ -70,13 +70,6 @@
 			<table class="licenses_table">
 				<tr class="row_empty row_devider"><td></td></tr>
 				
-				<tr><td><b>jQuery v3.5.1</b></td></tr>
-				<tr><td>by JS Foundation and other contributors</td></tr>
-				<tr><td><a href="https://jquery.com/">source</a> last referenced 23th JAN, 2021; <a href="https://www.rismosch.com/licenses/jQuery">license</a></td></tr>
-				
-				<tr class="row_empty"><td></td></tr>
-				<tr class="row_empty row_devider"><td></td></tr>
-				
 				<tr><td><b>Mobile-Detect-2.8.34</b></td></tr>
 				<tr><td>by Serban Ghita, Nick Ilyin and contributors</td></tr>
 				<tr><td><a href="http://mobiledetect.net/">source</a> last referenced 23th JAN, 2021; <a href="https://www.rismosch.com/licenses/Mobile-Detect">license</a></td></tr>

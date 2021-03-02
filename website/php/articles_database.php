@@ -200,7 +200,7 @@ function printArticles($dbConn, $pageName)
 			if(!is_null($row['thumbnail_path']))
 				$thumbnail = $row['thumbnail_path'];
 			else
-				$thumbnail = "https://www.rismosch.com/articles/{$row['id']}/thumbnail.png";
+				$thumbnail = "https://www.rismosch.com/articles/{$row['id']}/thumbnail.jpg";
 			
 			echo
 			"<tr><td><a title=\"{$row['title']}\" href=\"{$link}\" class=\"articles_entry_link\">
@@ -213,7 +213,7 @@ function printArticles($dbConn, $pageName)
 										<img
 											class=\"articles_thumbnail\"
 											src=\"{$thumbnail}\"
-											onerror=\"this.onerror=null; this.src='assets/thumbnails/default.png'\"
+											onerror=\"this.onerror=null; this.src='assets/thumbnails/default.jpg'\"
 											alt=\"\"
 										>
 									</div>
@@ -238,7 +238,7 @@ function printArticles($dbConn, $pageName)
 									<img
 										class=\"articles_thumbnail\"
 										src=\"{$thumbnail}\"
-										onerror=\"this.onerror=null; this.src='assets/thumbnails/default.png'\"
+										onerror=\"this.onerror=null; this.src='assets/thumbnails/default.jpg'\"
 										alt=\"\"
 									>
 								</div>
@@ -290,7 +290,7 @@ function printLatestArticle($dbConn)
 		if(!is_null($row['thumbnail_path']))
 			$thumbnail = $row['thumbnail_path'];
 		else
-			$thumbnail = "https://www.rismosch.com/articles/{$row['id']}/thumbnail.png";
+			$thumbnail = "https://www.rismosch.com/articles/{$row['id']}/thumbnail.jpg";
 		
 		echo "
 <a title=\"{$row['title']}\" href=\"{$link}\" class=\"articles_entry_link\">
@@ -303,7 +303,7 @@ function printLatestArticle($dbConn)
 							<img
 								class=\"articles_thumbnail\"
 								src=\"{$thumbnail}\"
-								onerror=\"this.onerror=null; this.src='assets/thumbnails/default.png'\"
+								onerror=\"this.onerror=null; this.src='assets/thumbnails/default.jpg'\"
 								alt=\"\"
 							>
 						</div>
@@ -328,7 +328,7 @@ function printLatestArticle($dbConn)
 						<img
 							class=\"articles_thumbnail\"
 							src=\"{$thumbnail}\"
-							onerror=\"this.onerror=null; this.src='assets/thumbnails/default.png'\"
+							onerror=\"this.onerror=null; this.src='assets/thumbnails/default.jpg'\"
 							alt=\"\"
 						>
 					</div>
