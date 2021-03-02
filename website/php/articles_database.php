@@ -7,8 +7,8 @@ $showDefault = 10;
 $pageDefault = 1;
 
 // URL Parameters
-if(isset($_GET["ct"]))
-	$category = intval($_GET["ct"]);
+if(isset($_GET["category"]))
+	$category = intval($_GET["category"]);
 else
 	$category = $categoryDefault;
 
@@ -21,8 +21,8 @@ else
 	$categoryFilterString = "true";
 
 
-if(isset($_GET["ls"]))
-	$show = intval($_GET["ls"]);
+if(isset($_GET["show"]))
+	$show = intval($_GET["show"]);
 else
 	$show = $showDefault;
 
@@ -30,8 +30,8 @@ if($show <= 0)
 	$show = $showDefault;
 
 
-if(isset($_GET["pg"]))
-	$page = intval($_GET["pg"]);
+if(isset($_GET["page"]))
+	$page = intval($_GET["page"]);
 else
 	$page = $pageDefault;
 
@@ -40,99 +40,40 @@ if($page <= 0)
 
 $offset = ($page - 1) * $show;
 
-// SQL Strings
-$sqlCategories ="
-SELECT
-	id,
-	name
-FROM
-	Article_Categories
-";
-
-$sqlSelectedCategory ="
-SELECT
-	id,
-	name
-FROM
-	Article_Categories
-WHERE
-	id = {$category}
-";
-
 
 if(!isset($article_type_id))
 	$article_type_id = 0;
 
-$sqlArticles ="
-SELECT
-	Articles.id AS id,
-	Article_Types.name AS type,
-	Article_Categories.name AS category,
-	Articles.title AS title,
-	Articles.timestamp AS timestamp,
-	Articles.link AS link,
-	Articles.thumbnail_path AS thumbnail_path
-FROM
-	Articles,
-	Article_Categories,
-	Article_Types
-WHERE
-	Articles.category_id = Article_Categories.id AND
-	Articles.type_id = Article_Types.id AND
-	Articles.type_id = {$article_type_id} AND
-	{$categoryFilterString}
-ORDER BY
-	Articles.timestamp
-LIMIT
-	{$offset},
-	{$show}
-";
-
-$sqlLatestArticle ="
-SELECT
-	Articles.id AS id,
-	Article_Types.name AS type,
-	Article_Categories.name AS category,
-	Articles.title AS title,
-	Articles.timestamp AS timestamp,
-	Articles.link AS link,
-	Articles.thumbnail_path AS thumbnail_path
-FROM
-	Articles,
-	Article_Categories,
-	Article_Types
-WHERE
-	Articles.category_id = Article_Categories.id AND
-	Articles.type_id = Article_Types.id
-ORDER BY
-	Articles.timestamp DESC
-LIMIT
-	0,
-	1
-";
 
 if($category != $categoryDefault)
 	$selectedCategoryFilterString = "Articles.category_id = " . $category;
 else
 	$selectedCategoryFilterString = "true";
 
-$sqlCount ="
-SELECT
-	COUNT(id) as COUNT
-FROM
-	Articles
-WHERE
-	Articles.type_id = {$article_type_id} AND
-	{$selectedCategoryFilterString}
-";
-
 // Functions
 function printDropdown($dbConn, $pageName)
 {
 	global
-		$sqlSelectedCategory,
-		$show,
-		$sqlCategories;
+		$category,
+		$show;
+	
+	$sqlCategories ="
+		SELECT
+			id,
+			name
+		FROM
+			Article_Categories
+	";
+	
+	$sqlSelectedCategory ="
+		SELECT
+			id,
+			name
+		FROM
+			Article_Categories
+		WHERE
+			id = {$category}
+	";
 	
 	$selectedCategoryResult = mysqli_query($dbConn,$sqlSelectedCategory);
 	$selectedCategoryNumRows = mysqli_num_rows($selectedCategoryResult);
@@ -149,7 +90,7 @@ function printDropdown($dbConn, $pageName)
 		<div class=\"dropdown\">
 			<button onclick=\"showDropdown('dropdownCategory')\" class=\"dropdownButton dropdownCategory\" id=\"dropdownButton\">Filter</button>
 			<div class=\"dropdownContent dropdownCategory\">
-				<a href=\"https://www.rismosch.com/{$pageName}?ct=0&ls={$show}&pg=0\" ";
+				<a href=\"https://www.rismosch.com/{$pageName}?category=0&show={$show}&page=0\" ";
 	if ($selectedCategoryId == 0)
 		echo "class=\"dropdown_selected\"";
 	echo ">Show All</a>\n";
@@ -160,7 +101,7 @@ function printDropdown($dbConn, $pageName)
 		while($categoryRow = mysqli_fetch_assoc($categoriesResult))
 		{
 			echo "
-				<a href=\"https://www.rismosch.com/{$pageName}?ct={$categoryRow['id']}&ls={$show}&pg=0\" ";
+				<a href=\"https://www.rismosch.com/{$pageName}?category={$categoryRow['id']}&show={$show}&page=0\" ";
 			if ($selectedCategoryId == $categoryRow['id'])
 				echo "class=\"dropdown_selected\"";
 			echo ">{$categoryRow['name']}</a>\n";
@@ -175,8 +116,36 @@ function printDropdown($dbConn, $pageName)
 function printArticles($dbConn, $pageName)
 {
 	global
-		$isMobile,
-		$sqlArticles;
+		$categoryFilterString,
+		$show,
+		$offset,
+		$article_type_id;
+		
+	
+	$sqlArticles = "
+		SELECT
+			Articles.id AS id,
+			Article_Types.name AS type,
+			Article_Categories.name AS category,
+			Articles.title AS title,
+			Articles.timestamp AS timestamp,
+			Articles.link AS link,
+			Articles.thumbnail_path AS thumbnail_path
+		FROM
+			Articles,
+			Article_Categories,
+			Article_Types
+		WHERE
+			Articles.category_id = Article_Categories.id AND
+			Articles.type_id = Article_Types.id AND
+			Articles.type_id = {$article_type_id} AND
+			{$categoryFilterString}
+		ORDER BY
+			Articles.timestamp
+		LIMIT
+			{$offset},
+			{$show}
+	";
 	
 	$result = mysqli_query($dbConn,$sqlArticles);
 	$numRows = mysqli_num_rows($result);
@@ -270,8 +239,28 @@ function printArticles($dbConn, $pageName)
 
 function printLatestArticle($dbConn)
 {
-	global
-		$sqlLatestArticle;
+	$sqlLatestArticle ="
+		SELECT
+			Articles.id AS id,
+			Article_Types.name AS type,
+			Article_Categories.name AS category,
+			Articles.title AS title,
+			Articles.timestamp AS timestamp,
+			Articles.link AS link,
+			Articles.thumbnail_path AS thumbnail_path
+		FROM
+			Articles,
+			Article_Categories,
+			Article_Types
+		WHERE
+			Articles.category_id = Article_Categories.id AND
+			Articles.type_id = Article_Types.id
+		ORDER BY
+			Articles.timestamp DESC
+		LIMIT
+			0,
+			1
+	";
 	
 	$result = mysqli_query($dbConn,$sqlLatestArticle);
 	$numRows = mysqli_num_rows($result);
@@ -356,10 +345,21 @@ function printLatestArticle($dbConn)
 function printSelector($dbConn, $pageName)
 {
 	global
-		$sqlCount,
+		$category,
+		$selectedCategoryFilterString,
 		$show,
 		$page,
-		$category;
+		$article_type_id;
+	
+	$sqlCount ="
+		SELECT
+			COUNT(id) as COUNT
+		FROM
+			Articles
+		WHERE
+			Articles.type_id = {$article_type_id} AND
+			{$selectedCategoryFilterString}
+	";
 	
 	echo "
 		<div class=\"page_selector\">
@@ -379,7 +379,7 @@ function printSelector($dbConn, $pageName)
 		{
 			$previousPage = $page - 1;
 			echo "
-				<a title=\"{$previousPage}\" href=\"https://www.rismosch.com/{$pageName}?ct={$category}&ls={$show}&pg={$previousPage}\" class=\"button\">&lt;</a>
+				<a title=\"{$previousPage}\" href=\"https://www.rismosch.com/{$pageName}?category={$category}&show={$show}&page={$previousPage}\" class=\"button\">&lt;</a>
 			";
 		}
 		else
@@ -392,7 +392,7 @@ function printSelector($dbConn, $pageName)
 		for($i = 1; $i <= $pageCount; ++$i)
 		{
 			echo "
-				<a title=\"{$i}\" href=\"https://www.rismosch.com/{$pageName}?ct={$category}&ls={$show}&pg={$i}\" class=\"button\">";
+				<a title=\"{$i}\" href=\"https://www.rismosch.com/{$pageName}?category={$category}&show={$show}&page={$i}\" class=\"button\">";
 			
 			if($page == $i)
 				echo "<u><b>{$i}</b></u>";
@@ -406,7 +406,7 @@ function printSelector($dbConn, $pageName)
 		{
 			$nextPage = $page + 1;
 			echo "
-				<a title=\"{$nextPage}\" href=\"https://www.rismosch.com/{$pageName}?ct={$category}&ls={$show}&pg={$nextPage}\" class=\"button\">&gt;</a>
+				<a title=\"{$nextPage}\" href=\"https://www.rismosch.com/{$pageName}?category={$category}&show={$show}&page={$nextPage}\" class=\"button\">&gt;</a>
 			";
 		}
 		else

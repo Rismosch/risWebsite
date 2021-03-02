@@ -1,17 +1,10 @@
 <?php
 
-include_once 'secret/contactEmail.php';
-include_once 'secret/dbConn.php';
-include_once 'secret/reCAPTCHA.php';
+include_once 'secret/secret.php';
 
 include_once '3rd_party_libraries/Mobile-Detect-2.8.34/Mobile_Detect.php';
 $detect = new Mobile_Detect;
 $isMobile = $detect->isMobile() && !$detect->isTablet();
-
-if ($isMobile)
-	$cssName = "mobile";
-else
-	$cssName = "desktop";
 
 echo '
 <!DOCTYPE html>
@@ -26,16 +19,11 @@ echo '
 	<meta name="msapplication-TileImage" content="mstile-144x144.png">
 	<meta name="msapplication-TileColor" content="#00aba9">
 	
-	<link rel="stylesheet" href="css/colors.css">
-	<link rel="stylesheet" href="css/' . $cssName . '.css">
+	'; if(!$isMobile) echo '<link rel="stylesheet" href="css/desktop.css">'; echo '
 	<link rel="stylesheet" href="css/main.css">
 	
-	<script src="scripts/banner.js"></script>
-	<script src="scripts/continuousSession.js"></script>
-	<script src="scripts/cookie.js"></script>
-	<script src="scripts/disqusloader.js"></script>
-	<script src="scripts/dropdown.js"></script>
-	<script src="scripts/util.js"></script>
+	<script src="3rd_party_libraries/disqusloader.js"></script>
+	<script src="util.js"></script>
 	
 	<script src="https://www.google.com/recaptcha/api.js"></script>
 ';
