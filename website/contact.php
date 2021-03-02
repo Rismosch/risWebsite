@@ -19,7 +19,7 @@ $contact_successful = false;
 if(!empty($_POST))
 {
 	$nameUnsafe = $_POST['name'];
-	$nameSanitized = filter_var($nameUnsafe,FILTER_SANITIZE_ENCODED);
+	/*$nameSanitized = filter_var($nameUnsafe,FILTER_SANITIZE_ENCODED);
 	if(empty($nameSanitized)) {
 		$errorName = 'Name is empty';
 		$errors[] = $errorName;
@@ -27,7 +27,7 @@ if(!empty($_POST))
 	else if (strlen($nameSanitized) > 99){
 		$errorName = "Name is too long (max 99 characters)";
 		$errors[] = $errorName;
-	}
+	}*/
 	
 	
 	$emailUnsafe = $_POST['email'];
@@ -47,7 +47,7 @@ if(!empty($_POST))
 	
 	
 	$messageUnsafe = $_POST['message'];
-	$messageSanitized = filter_var($messageUnsafe,FILTER_SANITIZE_ENCODED);
+	/*$messageSanitized = filter_var($messageUnsafe,FILTER_SANITIZE_ENCODED);
 	if (empty($messageSanitized)) {
 		$errorMessage = 'Message is empty';
 		$errors[] = $errorMessage;
@@ -55,7 +55,7 @@ if(!empty($_POST))
 	else if (strlen($messageSanitized) > 999){
 		$errorMessage = "Message is too long";
 		$errors[] = $errorMessage;
-	}
+	}*/
 	
 	
 	if (isset($_POST['g-recaptcha-response']))
@@ -86,14 +86,14 @@ if(!empty($_POST))
 			$mail->Port = 25;
 			
 			// Recipients
-			$mail->setFrom($contactEmail, 'Rismosch');
+			$mail->setFrom($emailSanitized, $nameUnsafe);
 			$mail->addAddress($contactEmail, 'Rismosch');
 			
 			// Content
-			$mail->isHTML(true);
-			$mail->Subject = 'Contact Form';
-			$mail->Body    = "Name: {$nameSanitized}<br>Email: {$emailSanitized}<br>Message:<br><br>{$messageSanitized}";
-			$mail->AltBody = "Name: {$nameSanitized}\nEmail: {$emailSanitized}\nMessage:\n\n{$messageSanitized}";
+			//$mail->isHTML(true);
+			$mail->Subject = 'Contact Rismosch';
+			//$mail->Body    = $messageSanitized;
+			$mail->Body    = $messageUnsafe;
 			
 			$mail->send();
 			
@@ -139,7 +139,7 @@ if(!empty($_POST))
 			<div style="display:<?php if($contact_successful) echo "block"; else echo "none"?>;">
 			
 				<p style="color: var(--pico-8-green);">Success &#10003;</p>
-				<p>I have received your message! I will try to come back too you as soon as possible :)</p>
+				<p>I have received your message! I will try to come back to you as soon as possible :)</p>
 				
 			</div>
 			
