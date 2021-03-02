@@ -90,7 +90,8 @@ if(!empty($_POST))
 			$mail->addAddress($contactEmail, 'Rismosch');
 			
 			// Content
-			//$mail->isHTML(true);
+			$mail->CharSet = 'UTF-8';
+			$mail->Encoding = 'base64';
 			$mail->Subject = 'Contact Rismosch';
 			//$mail->Body    = $messageSanitized;
 			$mail->Body    = $messageUnsafe;
