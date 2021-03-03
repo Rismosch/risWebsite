@@ -141,7 +141,7 @@ echo_head();
 		
 		<div class="content" id="content">
 			
-			<h1>Contact me</h1>
+			<h1>Contact Me</h1>
 			
 			<div style="display:<?php if($contact_successful) echo "block"; else echo "none"?>;">
 			

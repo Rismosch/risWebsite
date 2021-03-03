@@ -128,7 +128,7 @@ function echo_foot($uses_captcha)
 				<a class="foot_link_divider">&nbsp; | &nbsp;</a>
 				<a class="foot_link" href="https://www.rismosch.com/references">References</a>
 				<a class="foot_link_divider">&nbsp; | &nbsp;</a>
-				<a class="foot_link" href="https://www.rismosch.com/contact">Contact</a>
+				<a class="foot_link" href="https://www.rismosch.com/contact">Contact Me</a>
 			</p>
 		</div>
 		
