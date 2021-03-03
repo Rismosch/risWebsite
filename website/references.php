@@ -64,12 +64,6 @@ echo_head();
 			
 			<br>
 			
-			<h2>Privacy Policy</h2>
-			
-			<p>My Privacy Policy was created with the help of the <a href="https://www.privacypolicygenerator.info">Privacy Policy Generator</a> and the <a href="https://www.privacypolicyonline.com/privacy-policy-generator/">Online Privacy Policy Generator</a>, last referenced 24th OCT, 2020</p>
-			
-			<br>
-			
 			<h2>Source Code</h2>
 			
 			<p>I used following 3rd party code and techologies:</p>

@@ -24,8 +24,6 @@ function echo_head()
 		
 		<script src="3rd_party_libraries/disqusloader.js"></script>
 		<script src="javascript/util.js"></script>
-		
-		<script src="https://www.google.com/recaptcha/api.js"></script>
 	';
 }
 

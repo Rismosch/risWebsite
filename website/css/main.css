@@ -349,15 +349,6 @@ table.resume_table td, table.resume_table td *{
 	margin-bottom: 0px;
 }
 
-/* COPYRIGHT -----------------------------------------------------------------------------------------------------------------------------*/
-div.copyright_text > p, div.copyright_text > a, div.copyright_text > ul > li{
-	font-family: "Times New Roman", Times, Georgia, serif;
-}
-
-div.copyright_text > h1, h2{
-	font-family: Helvetica, Arial, sans-serif;
-}
-
 /* LICENSES ------------------------------------------------------------------------------------------------------------------------------*/
 table.licenses_table{
 	margin: auto;

@@ -42,7 +42,8 @@ if(!$postIsEmpty)
 echo_head();
 
 ?>
-
+	<script src="https://www.google.com/recaptcha/api.js"></script>
+	
 	<title>Unsubscribe</title>
 	<meta name="description" content="Unsubscribe from rismosch.com">
 

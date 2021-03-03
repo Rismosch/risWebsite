@@ -155,6 +155,7 @@ if(!empty($_POST))
 echo_head();
 
 ?>
+	<script src="https://www.google.com/recaptcha/api.js"></script>
 	
 	<title>Newsletter</title>
 	<meta name="description" content="Contact Simon Sutoris">

@@ -116,6 +116,8 @@ if(!empty($_POST))
 echo_head();
 
 ?>
+	<script src="https://www.google.com/recaptcha/api.js"></script>
+	
 	<title>Contact</title>
 	<meta name="description" content="Contact Simon Sutoris">
 	<meta name="keywords" content="contact, email">

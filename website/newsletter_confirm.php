@@ -42,7 +42,8 @@ if(!$postIsEmpty)
 echo_head();
 
 ?>
-
+	<script src="https://www.google.com/recaptcha/api.js"></script>
+	
 	<title>Confirm Email</title>
 	<meta name="description" content="Confirm your email on rismosch.com">
 
