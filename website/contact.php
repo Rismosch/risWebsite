@@ -153,6 +153,14 @@ echo_head();
 			<div style="display:<?php if($contact_successful) echo "none"; else echo "block"?>;">
 				<form action="contact" method="POST" id="contact-form">
 					<div>
+						
+						<p><b>
+							You are entering personal information that will be stored by my email client.<br>
+							Do NOT enter your data, if you don't agree to my privacy policy.<br>
+							By entering your data, you confirm that you have read and accept my privacy policy.<br>
+						</b></p>
+						<p style="text-align:center;"><b><a href="https://www.rismosch.com/privacy">READ PRIVACY POLICY</a></b></p>
+						
 						<p>Name <span class="contact_error" id="display_error_name"><?php if(isset($errorName)) echo $errorName; ?></span></p>
 						<input name="name" class="contact_input" id="contact_namefield" type="text" value = "<?php if(isset($nameUnsafe)) echo $nameUnsafe; ?>">
 						

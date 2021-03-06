@@ -191,9 +191,16 @@ echo_head();
 			
 			<div style="display:<?php if($subscribe_successful) echo "none"; else echo "block"?>;">
 				
-				<p>Subscribe to my newsletter to be notified when I upload a new blogpost or project.</p>
-				<p>Newsletter can be unsubscribed at any time.</p>
-				<br>
+				<p>
+					Subscribe to my newsletter to be notified when I upload a new blogpost or project.<br>
+					Newsletter can be unsubscribed at any time.
+				</p>
+				<p><b>
+					Once you enter your email here, it will be stored in my database.<br>
+					Do NOT enter your email, if you don't agree to my privacy policy.<br>
+					By entering your email, you confirm that you have read and accept my privacy policy.<br>
+				</b></p>
+				<p style="text-align:center;"><b><a href="https://www.rismosch.com/privacy">READ PRIVACY POLICY</a></b></p>
 				
 				<form action="newsletter" method="POST" id="contact-form">
 					
