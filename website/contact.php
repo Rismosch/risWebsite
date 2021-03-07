@@ -48,6 +48,19 @@ if(!empty($_POST))
 	}
 	
 	
+	$subjectUnsafe = $_POST['subject'];
+	//$subjectSanitized = filter_var($subjectUnsafe,FILTER_SANITIZE_ENCODED);
+	$subjectSanitized = $subjectUnsafe;
+	if (empty($subjectSanitized)) {
+		$errorSubject = 'Subject is empty';
+		$errors[] = $errorSubject;
+	}
+	else if (strlen($subjectSanitized) > 99){
+		$errorSubject = "Subject is too long";
+		$errors[] = $errorSubject;
+	}
+	
+	
 	$messageUnsafe = $_POST['message'];
 	//$messageSanitized = filter_var($messageUnsafe,FILTER_SANITIZE_ENCODED);
 	$messageSanitized = $messageUnsafe;
@@ -95,7 +108,7 @@ if(!empty($_POST))
 			// Content
 			$mail->CharSet = 'UTF-8';
 			$mail->Encoding = 'base64';
-			$mail->Subject = 'Contact Rismosch';
+			$mail->Subject = $subjectSanitized;
 			$mail->Body    = $messageSanitized;
 			
 			$mail->send();
@@ -166,6 +179,9 @@ echo_head();
 						
 						<p>Email <span class="contact_error" id="display_error_email"><?php if(isset($errorEmail)) echo $errorEmail; ?></span></p>
 						<input name="email" class="contact_input" id="contact_emailfield" type="text" value = "<?php if(isset($emailUnsafe)) echo $emailUnsafe; ?>">
+						
+						<p>Subject <span class="contact_error" id="display_error_subject"><?php if(isset($errorSubject)) echo $errorSubject; ?></span></p>
+						<input name="subject" class="contact_input" id="contact_subjectfield" type="text" value = "<?php if(isset($subjectUnsafe)) echo $subjectUnsafe; ?>">
 						
 						<p>Message <span class="contact_error" id="display_error_message"><?php if(isset($errorMessage)) echo $errorMessage; ?></span></p>
 						<textarea name="message" class="contact_input" id="contact_textarea" rows="10" cols="35"><?php if(isset($messageUnsafe)) echo $messageUnsafe; ?></textarea>
