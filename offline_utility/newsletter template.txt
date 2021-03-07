@@ -1,0 +1,5 @@
+{{$content}}
+
+If you have any questions, reply to this email or contact me here: https://www.rismosch.com/contact
+
+If you don't want to receive further messages, unsubscribe here: https://www.rismosch.com/newsletter_delete?id={{$id}}

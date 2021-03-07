@@ -12,7 +12,7 @@ else
 $dbConn = mysqli_connect($dbHost, $dbSelectUsername, $dbSelectPassword, $dbName);
 
 $title = ":(";
-
+$active_tab = -1;
 if($dbConn){
 	$articleData = GetArticleData($dbConn, $article_id);
 	if(!is_null($articleData))
@@ -21,8 +21,6 @@ if($dbConn){
 			$active_tab = 1;
 		else if($articleData['type_id'] == 1)
 			$active_tab = 2;
-		else
-			$active_tab = -1;
 
 		$title = $articleData['title'];
 	}
@@ -94,21 +92,44 @@ echo_head();
 				}
 			?>
 			
-			<table style="border:5px solid var(--pico-8-red); background-color:var(--pico-8-white);">
-				<tr>
-					<td><b>Comments are powered by a third party service, which may collect your data. Which data is collected is beyond my control. I strongly recommend that you read their privacy policy.</b></td>
-					<td><button>Accept</button></td>
-				</tr>
-			</table>
-			<div class="disqus-loading">Loading comments&hellip;</div>
-			<div class="disqus"></div>
-			
+			<div style="margin-top:5px;">
+				<table style="border:5px solid var(--pico-8-red); background-color:var(--pico-8-white);" id="data-collection-warning" class="invisible">
+					<tr>
+						<td><b>Comments are powered by a third party service, which may collect your data. Which data is collected is beyond my control. I strongly recommend that you read their privacy policy.</b></td>
+						<td><button onclick="AcceptDisqusDataCollection()">Accept</button></td>
+					</tr>
+				</table>
+				<div class="disqus-loading">Loading comments&hellip;</div>
+				<div class="disqus"></div>
+			</div>
 		</div>
 		
 		<?php echo_foot(false); ?>
 	</div>
 	
 	<script>
+		
+		const disqusDataCollectionCookieName = "DisqusDataCollectionWarning";
+		function AcceptDisqusDataCollection()
+		{
+			SetAcceptCookie();
+			document.getElementById("data-collection-warning").classList.add("invisible");
+		}
+		
+		ShowDisqusDataCollectionWarning();
+		function ShowDisqusDataCollectionWarning()
+		{
+			var cookie = getCookie(disqusDataCollectionCookieName);
+			if(cookie)
+				SetAcceptCookie();
+			else
+				document.getElementById("data-collection-warning").classList.remove("invisible");
+		}
+		
+		function SetAcceptCookie()
+		{
+			setCookie(disqusDataCollectionCookieName, true, 31536000000) // 365*24*60*60*1000 milliseconds
+		}
 		
 		disqusLoader( '.disqus',
 		{

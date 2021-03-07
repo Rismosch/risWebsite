@@ -195,7 +195,8 @@ echo_head();
 	</div>
 	
 	<script>
-		function onRecaptchaSuccess () {
+		
+		function onRecaptchaSuccess() {
 			return new Promise(function(resolve, reject){
 				
 				document.getElementById('loading_animation').classList.remove('invisible');
@@ -222,6 +223,7 @@ echo_head();
 			else
 				contact_textarea_count.style.color = "var(--pico-8-black)";
 		}
+		
 	</script>
 </body>
 </html>

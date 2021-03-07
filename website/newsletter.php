@@ -123,21 +123,9 @@ if(!empty($_POST))
 				$mail->addAddress($emailSanitized);
 				
 				// Content
-				$mail->isHTML(true);
+				$mail->isHTML(false);
 				$mail->Subject = 'Rismosch: confirm your email';
-				$mail->Body    = generateEmail($id,"
-					Hi :)<br>
-					<br>
-					Thanks for signing up! Please go ahead and confirm your email by clicking the link below:<br>
-					<br>
-					<a href=\"https://www.rismosch.com/newsletter_confirm?id={$id}\" style=\"text-decoration: none; display: inline-block; font-family: Arial, sans-serif; font-size: 1em; text-align: center; background-color: #29adff; color: #fff1e8; border: none; cursor: pointer; min-width: 20px; padding: 10px;\">Confirm Email</a><br>
-					<br>
-					This link will expire in 24 hours. If the email is not confirmed in 24 hours, you will be automatically unsubscribed from my newsletter.
-					<br>
-					Sincerely,<br>
-					Simon Sutoris
-				");
-				$mail->AltBody = generateAltEmail($id,"Hi :)\n\nThanks for signing up! Please go ahead and confirm your email by visiting the link below:\n\nhttps://www.rismosch.com/newsletter_confirm?id={$id}\n\nThis link will expire in 24 hours. If the email is not confirmed in 24 hours, you will be automatically unsubscribed from my newsletter.\n\nSincerely,\nSimon Sutoris");
+				$mail->Body    = "Hi :)\n\nThanks for signing up! Please go ahead and confirm your email by clicking the link below:\n\nhttps://www.rismosch.com/newsletter_confirm?id={$id}\n\nThis link will expire in 24 hours. If the email is not confirmed in 24 hours, you will be automatically unsubscribed from my newsletter.\n\nSincerely,\nSimon Sutoris\n\n\n\nIf you have any questions, reply to this email or contact me here: https://www.rismosch.com/contact\nIf you don't want to receive further messages, unsubscribe here: https://www.rismosch.com/newsletter_delete?id={$id}";
 				
 				$mail->send();
 				
