@@ -84,6 +84,11 @@ echo_head();
 						echo "<p>{$articleData['category']} &#183; {$newTimestampFormat}</p>";
 					}
 					include $content;
+					
+					if($dbConn && isset($articleData))
+					{
+						printNextPreviousPost($dbConn,$articleData);
+					}
 				}
 				else
 				{

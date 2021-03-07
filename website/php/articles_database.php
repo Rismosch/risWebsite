@@ -141,7 +141,7 @@ function printArticles($dbConn, $pageName)
 			Articles.type_id = {$article_type_id} AND
 			{$categoryFilterString}
 		ORDER BY
-			Articles.timestamp
+			Articles.timestamp DESC
 		LIMIT
 			{$offset},
 			{$show}
@@ -340,6 +340,72 @@ function printLatestArticle($dbConn)
 	{
 		echo "<h3>:(</h3><p>Error while loading latest article.</p>";
 	}
+}
+
+function printNextPreviousPost($dbConn,$articleData)
+{
+	$sqlNext = GetNextPreviousSql("> '{$articleData['timestamp']}'");
+	$sqlPrevious = GetNextPreviousSql("< '{$articleData['timestamp']}'");
+	
+	echo "<div style=\"display:block; margin-top: 5px;\">";
+	
+	// Previous Button
+	$result = mysqli_query($dbConn,$sqlPrevious);
+	$numRows = mysqli_num_rows($result);
+	if($numRows > 0)
+	{
+		$row = mysqli_fetch_assoc($result);
+		
+		echo "<a class=\"button\" href=\"https://www.rismosch.com/article?id={$row['id']}\" title=\"{$row['title']}\">Previous Post</a>";
+	}
+	else
+	{
+		echo "<a class=\"button button_inactive\">Previous Post</a>";
+	}
+	
+	// Next Button
+	$result = mysqli_query($dbConn,$sqlNext);
+	$numRows = mysqli_num_rows($result);
+	if($numRows > 0)
+	{
+		$row = mysqli_fetch_assoc($result);
+		
+		echo "<a style=\"float:right;\" class=\"button\" href=\"https://www.rismosch.com/article?id={$row['id']}\" title=\"{$row['title']}\">Next Post</a>";
+	}
+	else
+	{
+		echo "<a style=\"float:right;\" class=\"button button_inactive\">Next Post</a>";
+	}
+	
+	echo "</div>";
+}
+
+function GetNextPreviousSql($nextPreviousTimestamp)
+{
+	return "
+		SELECT
+		Articles.id AS id,
+		Article_Types.name AS type,
+		Article_Categories.name AS category,
+		Articles.title AS title,
+		Articles.timestamp AS timestamp,
+		Articles.link AS link,
+		Articles.thumbnail_path AS thumbnail_path
+	FROM
+		Articles,
+		Article_Categories,
+		Article_Types
+	WHERE
+		Articles.category_id = Article_Categories.id AND
+		Articles.type_id = Article_Types.id AND
+		Articles.link IS NULL AND
+		Articles.timestamp {$nextPreviousTimestamp}
+	ORDER BY
+		Articles.timestamp DESC
+	LIMIT
+		0,
+		1
+	";
 }
 
 function printSelector($dbConn, $pageName)
