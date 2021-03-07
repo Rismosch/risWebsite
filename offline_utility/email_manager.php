@@ -1,6 +1,7 @@
 <?php
 
 include 'secret.php';
+include 'SimpleXLSXGen.php';
 
 ?>
 
@@ -18,8 +19,18 @@ include 'secret.php';
 		<button type="submit">Reload</button>
 	</form>
 	
-	<form action="email_manager.php" method="POST" id="delete-form">
+	<form action="email_manager.php" method="POST" id="export-to-excel">
+		<input type="hidden" name="command" value="export">
+		<button type="submit">Export</button>
+	</form>
+	
+	<form action="email_manager.php" method="POST" id="form-delete-expired">
 		<input type="hidden" name="command" value="delete">
+	</form>
+	
+	<form action="email_manager.php" method="POST" id="form-delete-single">
+		<input type="hidden" name="command" value="delete-single">
+		<input type="hidden" name="email" value="+" id="delete-single-email">
 	</form>
 	
 	<?php
@@ -40,6 +51,32 @@ include 'secret.php';
 					echo "<p style=\"color:green;\">deleted all expired emails</p>";
 				else
 					echo "<p style=\"color:red;\">error while deleting emails</p>";
+			}
+			else if ($command === "delete-single")
+			{
+				$deleteEmailsResult = mysqli_query($databaseConnection,"DELETE FROM Emails WHERE email='{$_POST['email']}'");
+				if($deleteEmailsResult)
+					echo "<p style=\"color:green;\">deleted '{$_POST['email']}'</p>";
+				else
+					echo "<p style=\"color:red;\">error while deleting email</p>";
+			}
+			else if ($command === "export")
+			{
+				$exportEmailsResult = mysqli_query($databaseConnection,"SELECT * FROM Emails WHERE confirmed=1");
+				$exportEmailsRows = mysqli_num_rows($exportEmailsResult);
+				if($exportEmailsRows > 0)
+				{
+					$exportedEmails = array();
+					$exportedEmails[] = ['id','email','confirmed','timestamp'];
+					while($row = mysqli_fetch_assoc($exportEmailsResult))
+					{
+						$exportedEmails[] = $row;
+					}
+					
+					SimpleXLSXGen::fromArray($exportedEmails)->saveAs('exported_emails.xlsx');
+					
+					echo "<p style=\"color:green;\">Successfully exported Emails</p>";
+				}
 			}
 		}
 		
@@ -82,7 +119,11 @@ include 'secret.php';
 			{
 				echo "
 				<tr "; if($row['confirmed'] != 1) echo "style=\"background-color: orange;\""; echo ">
-					<td>{$row['id']}</td><td>{$row['email']}</td><td>{$row['confirmed']}</td><td>{$row['timestamp']}</td>
+					<td>{$row['id']}</td>
+					<td>{$row['email']}</td>
+					<td>{$row['confirmed']}</td>
+					<td>{$row['timestamp']}</td>
+					<td><button onclick=\"DeleteSingleEmail('{$row['email']}')\">Delete</button></td>
 				</tr>
 				";
 			}
@@ -103,7 +144,19 @@ include 'secret.php';
 	
 	function DeleteExpiredEmails()
 	{
-		document.getElementById('delete-form').submit();
+		document.getElementById('form-delete-expired').submit();
+	}
+	
+	function DeleteSingleEmail(email)
+	{
+		var confirm = prompt('Type the following email to delete it:\n\n'+email+'\n\n') == email;
+		
+		if(confirm)
+		{
+			document.getElementById('delete-single-email').value = email;;
+			
+			document.getElementById('form-delete-single').submit();
+		}
 	}
 	</script>
 </body>
