@@ -16,7 +16,7 @@ if($category < 1 || $category > 3)
 	$category = $categoryDefault;
 
 if($category != $categoryDefault)
-	$categoryFilterString = "Article_Categories.id = " . $category;
+	$categoryFilterString = "Articles.category_id = " . $category;
 else
 	$categoryFilterString = "true";
 
@@ -81,10 +81,12 @@ function printDropdown($dbConn, $pageName)
 	{
 		$selectedCategoryRow = mysqli_fetch_assoc($selectedCategoryResult);
 		$selectedCategoryId = $selectedCategoryRow['id'];
+		$selectedCategoryName = $selectedCategoryRow['name'];
 	}
 	else
 	{
 		$selectedCategoryId = 0;
+		$selectedCategoryName = "All";
 	}
 	echo "
 		<div class=\"dropdown\">
@@ -111,6 +113,8 @@ function printDropdown($dbConn, $pageName)
 			</div>
 		</div>
 	";
+	
+	echo "<p style=\"color:var(--pico-8-dark-grey);\">{$selectedCategoryName} &#183; ";
 }
 
 function printArticles($dbConn, $pageName)
@@ -120,7 +124,7 @@ function printArticles($dbConn, $pageName)
 		$show,
 		$offset,
 		$article_type_id;
-		
+	
 	
 	$sqlArticles = "
 		SELECT
@@ -149,6 +153,11 @@ function printArticles($dbConn, $pageName)
 	
 	$result = mysqli_query($dbConn,$sqlArticles);
 	$numRows = mysqli_num_rows($result);
+	
+	$totalRowsResult = mysqli_query($dbConn,"SELECT COUNT(id) as count FROM Articles WHERE type_id={$article_type_id} AND {$categoryFilterString}");
+	$row = mysqli_fetch_assoc($totalRowsResult);
+	echo "{$numRows} of total {$row['count']} Posts</p>";
+	
 	if($numRows > 0)
 	{
 		echo "
