@@ -5,10 +5,15 @@ function get_source($file)
 	return "article_previewer\\{$file}";
 }
 
-function echo_source($file)
+function get_page_url($number)
 {
-	echo "article_previewer\\{$file}";
+	return "http://localhost/article_previewer.php?page={$number}";
 }
+
+if(isset($_GET["page"]))
+	$fileToLoad = 'page_' . intval($_GET["page"]);
+else
+	$fileToLoad = 'page_0';
 
 ?>
 <!DOCTYPE html>
@@ -194,14 +199,14 @@ div.content{
 			<h1>Some Title</h1>
 			<p>Category &#183; Date</p>
 			<?php
-				$content = "article_previewer/content.php";
+				$content = "article_previewer/{$fileToLoad}.php";
 				if(file_exists($content))
 				{
 					include $content;
 				}
 				else
 				{
-					echo "<h1>:(</h1><p>Could not find file:<br>\"{$content}\"</p>";
+					echo "<p>Could not find file:<br>\"{$content}\"</p>";
 				}
 			?>
 			<div style="border: 1px solid var(--pico-8-white); display: block; width: 100%; height: 500px;">

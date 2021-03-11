@@ -9,6 +9,11 @@ if(isset($_GET["id"]))
 else
 	$article_id = 0;
 
+if(isset($_GET["page"]))
+	$fileToLoad = 'page_' . intval($_GET["page"]);
+else
+	$fileToLoad = 'page_0';
+
 $dbConn = mysqli_connect($dbHost, $dbSelectUsername, $dbSelectPassword, $dbName);
 
 $title = ":(";
@@ -51,11 +56,11 @@ function get_source($file)
 	return "https://www.rismosch.com/articles/{$article_id}/{$file}";
 }
 
-function echo_source($file)
+function get_page_url($number)
 {
 	global $article_id;
 	
-	echo "https://www.rismosch.com/articles/{$article_id}/{$file}";
+	return "https://www.rismosch.com/article?id={$article_id}&page={$number}";
 }
 
 echo_head();
@@ -73,7 +78,7 @@ echo_head();
 			<?php
 				echo "<h1>{$title}</h1>";
 				
-				$content = "articles/{$article_id}/content.php";
+				$content = "articles/{$article_id}/{$fileToLoad}.php";
 				if(file_exists($content))
 				{
 					if(!is_null($articleData))
@@ -92,7 +97,7 @@ echo_head();
 				}
 				else
 				{
-					echo "<p>Could not find article with id={$article_id}</p>";
+					echo "<p>Could not find the article you were looking for</p>";
 					$article_id = 0;
 				}
 			?>
