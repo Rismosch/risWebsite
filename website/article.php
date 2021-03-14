@@ -35,6 +35,24 @@ if($dbConn){
 	}
 }
 
+if(isset($articleData))
+{
+	$thumbnail_path = $articleData['thumbnail_path'];
+	if(is_null($thumbnail_path))
+	{
+		$thumbnail_path = "articles/{$articleData['id']}/thumbnail.jpg";
+	}
+	
+	if(!file_exists($thumbnail_path))
+	{
+		$thumbnail_path = "assets/thumbnails/default.jpg";
+	}
+}
+else
+	$thumbnail_path = "assets/thumbnails/default.jpg";
+
+echo_head();
+
 echo "
 
 	<title>{$title}</title>
@@ -44,7 +62,7 @@ echo "
 	<meta property=\"og:title\" content=\"{$title}\" />
 	<meta property=\"og:type\" content=\"article\" />
 	<meta property=\"og:url\" content=\"https://www.rismosch.com/article?id={$article_id}\" />
-	<meta property=\"og:image\" content=\"https://www.rismosch.com/assets/meta_image_x10.png\" />
+	<meta property=\"og:image\" content=\"https://www.rismosch.com/{$thumbnail_path}\" />
 
 	<meta name=\"author\" content=\"Simon Sutoris\">
 ";
@@ -62,8 +80,6 @@ function get_page_url($number)
 	
 	return "https://www.rismosch.com/article?id={$article_id}&page={$number}";
 }
-
-echo_head();
 
 ?>
 </head>
@@ -92,7 +108,7 @@ echo_head();
 					
 					if($dbConn && isset($articleData))
 					{
-						printNextPreviousPost($dbConn,$articleData);
+						printArticleFoot($dbConn,$articleData);
 					}
 				}
 				else

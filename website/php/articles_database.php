@@ -156,7 +156,7 @@ function printArticles($dbConn, $pageName)
 	
 	$totalRowsResult = mysqli_query($dbConn,"SELECT COUNT(id) as count FROM Articles WHERE type_id={$article_type_id} AND {$categoryFilterString}");
 	$row = mysqli_fetch_assoc($totalRowsResult);
-	echo "{$numRows} of total {$row['count']} Posts</p>";
+	echo "{$numRows} of total {$row['count']} posts</p>";
 	
 	if($numRows > 0)
 	{
@@ -351,8 +351,10 @@ function printLatestArticle($dbConn)
 	}
 }
 
-function printNextPreviousPost($dbConn,$articleData)
+function printArticleFoot($dbConn,$articleData)
 {
+	echo "<p><a style=\"display:inline-block; margin-top: 5px;\" class=\"button\" href=\"https://www.rismosch.com/blog?category={$articleData['category_id']}\" title=\"{$articleData['category']}\">More {$articleData['category']}-related Blog Posts</a></p>";
+	
 	$sqlNext = GetNextPreviousSql("> '{$articleData['timestamp']}'");
 	$sqlPrevious = GetNextPreviousSql("< '{$articleData['timestamp']}'");
 	
@@ -372,6 +374,8 @@ function printNextPreviousPost($dbConn,$articleData)
 		echo "<a class=\"button button_inactive\">Previous Post</a>";
 	}
 	
+	echo " ";
+	
 	// Next Button
 	$result = mysqli_query($dbConn,$sqlNext);
 	$numRows = mysqli_num_rows($result);
@@ -379,11 +383,11 @@ function printNextPreviousPost($dbConn,$articleData)
 	{
 		$row = mysqli_fetch_assoc($result);
 		
-		echo "<a style=\"float:right;\" class=\"button\" href=\"https://www.rismosch.com/article?id={$row['id']}\" title=\"{$row['title']}\">Next Post</a>";
+		echo "<a class=\"button\" href=\"https://www.rismosch.com/article?id={$row['id']}\" title=\"{$row['title']}\">Next Post</a>";
 	}
 	else
 	{
-		echo "<a style=\"float:right;\" class=\"button button_inactive\">Next Post</a>";
+		echo "<a class=\"button button_inactive\">Next Post</a>";
 	}
 	
 	echo "</div>";
