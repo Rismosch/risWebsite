@@ -9,9 +9,9 @@ if(isset($_GET["id"]))
 else
 	$article_id = 0;
 
-if(isset($_GET["page"]))
+/*if(isset($_GET["page"]))
 	$fileToLoad = 'page_' . intval($_GET["page"]);
-else
+else*/
 	$fileToLoad = 'page_0';
 
 $dbConn = mysqli_connect($dbHost, $dbSelectUsername, $dbSelectPassword, $dbName);
@@ -74,12 +74,12 @@ function get_source($file)
 	return "https://www.rismosch.com/articles/{$article_id}/{$file}";
 }
 
-function get_page_url($number)
+/*function get_page_url($number)
 {
 	global $article_id;
 	
 	return "https://www.rismosch.com/article?id={$article_id}&page={$number}";
-}
+}*/
 
 ?>
 </head>

@@ -77,7 +77,7 @@ function echo_selector($active_tab)
 					<div><b>Projects</b></div>
 				</a>
 			</li>
-			<li class="selector_tab '. $tab_selection[3] .'" id="selector_tab active_tab">
+			<li class="selector_tab '. $tab_selection[3] .'" id="selector_tab">
 				<a href="https://www.rismosch.com/about">
 					<div><b>About</b></div>
 				</a>
