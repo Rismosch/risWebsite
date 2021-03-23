@@ -22,6 +22,14 @@ else
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 
+<?php
+
+$cssFile = "article_previewer/article.css";
+if(file_exists($cssFile))
+	echo "<link rel=\"stylesheet\" href=\"{$cssFile}\">";
+
+?>
+
 <title>Article Previewer</title>
 
 <style>
@@ -210,7 +218,7 @@ div.content{
 				}
 			?>
 			<div style="border: 1px solid var(--pico-8-white); display: block; width: 100%; height: 500px;">
-				<p style="margin: auto;"> Comments</p>
+				<span style="margin: auto;"> Comments</span>
 			</div>
 		</div>
 	</div>

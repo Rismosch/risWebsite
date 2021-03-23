@@ -53,6 +53,10 @@ else
 
 echo_head();
 
+$cssFile = "articles/{$article_id}/article.css";
+if(file_exists($cssFile))
+	echo "<link rel=\"stylesheet\" href=\"{$cssFile}\">";
+
 echo "
 
 	<title>{$title}</title>

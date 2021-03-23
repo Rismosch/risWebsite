@@ -353,13 +353,10 @@ function printLatestArticle($dbConn)
 
 function printArticleFoot($dbConn,$articleData)
 {
-	echo "<p><a style=\"display:inline-block; margin-top: 5px;\" class=\"button\" href=\"https://www.rismosch.com/blog?category={$articleData['category_id']}\" title=\"{$articleData['category']}\">More {$articleData['category']}-related Blog Posts</a></p>";
-	
 	$sqlNext = GetNextPreviousSql("> '{$articleData['timestamp']}'");
 	$sqlPrevious = GetNextPreviousSql("< '{$articleData['timestamp']}'");
 	
 	echo "<div style=\"display:block; margin-top: 5px;\">";
-	
 	// Previous Button
 	$result = mysqli_query($dbConn,$sqlPrevious);
 	$numRows = mysqli_num_rows($result);
@@ -383,14 +380,18 @@ function printArticleFoot($dbConn,$articleData)
 	{
 		$row = mysqli_fetch_assoc($result);
 		
-		echo "<a class=\"button\" href=\"https://www.rismosch.com/article?id={$row['id']}\" title=\"{$row['title']}\">Next Post</a>";
+		echo "<a style=\"float: right;\" class=\"button\" href=\"https://www.rismosch.com/article?id={$row['id']}\" title=\"{$row['title']}\">Next Post</a>";
 	}
 	else
 	{
-		echo "<a class=\"button button_inactive\">Next Post</a>";
+		echo "<a style=\"float: right;\" class=\"button button_inactive\">Next Post</a>";
 	}
 	
 	echo "</div>";
+	
+	
+	// Other Button
+	echo "<p style=\"text-align:center;\"><a style=\"display:inline-block; margin-top: 5px;\" class=\"button\" href=\"https://www.rismosch.com/blog?category={$articleData['category_id']}\" title=\"{$articleData['category']}\">More \"{$articleData['category']}\"-related Blog Posts</a></p>";
 }
 
 function GetNextPreviousSql($nextPreviousTimestamp)
