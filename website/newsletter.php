@@ -177,18 +177,18 @@ echo_head();
 				<p>The confirmation email will expire in 24 hours. Once it's expired, you will be automatically unsubscribed from my newsletter.</p>
 				
 			</div>
-			
 			<div style="display:<?php if($subscribe_successful) echo "none"; else echo "block"?>;">
 				
 				<p>
 					Subscribe to my newsletter to be notified when I upload a new blogpost or project.<br>
 					Newsletter can be unsubscribed at any time.
 				</p>
-				
 				<form action="newsletter" method="POST" id="contact-form">
 					
+					<br>
 					<p>Email <span class="contact_error" id="display_error"><?php if(isset($errorEmail)) echo $errorEmail; ?></span></p>
 					<input name="email" class="contact_input" id="newsletter_emailfield" type="text" value = "<?php if(isset($emailUnsafe)) echo $emailUnsafe; ?>">
+					<br><br>
 					
 					<p>
 						<table>

@@ -356,7 +356,7 @@ function printArticleFoot($dbConn,$articleData)
 	$sqlNext = GetNextPreviousSql("> '{$articleData['timestamp']}'");
 	$sqlPrevious = GetNextPreviousSql("< '{$articleData['timestamp']}'");
 	
-	echo "<div style=\"display:block; margin-top: 5px;\">";
+	echo "<p style=\"text-align:center; display:block;\">";
 	// Previous Button
 	$result = mysqli_query($dbConn,$sqlPrevious);
 	$numRows = mysqli_num_rows($result);
@@ -380,14 +380,14 @@ function printArticleFoot($dbConn,$articleData)
 	{
 		$row = mysqli_fetch_assoc($result);
 		
-		echo "<a style=\"float: right;\" class=\"button\" href=\"https://www.rismosch.com/article?id={$row['id']}\" title=\"{$row['title']}\">Next Post</a>";
+		echo "<a class=\"button\" href=\"https://www.rismosch.com/article?id={$row['id']}\" title=\"{$row['title']}\">Next Post</a>";
 	}
 	else
 	{
-		echo "<a style=\"float: right;\" class=\"button button_inactive\">Next Post</a>";
+		echo "<a class=\"button button_inactive\">Next Post</a>";
 	}
 	
-	echo "</div>";
+	echo "</p>";
 	
 	
 	// Other Button
