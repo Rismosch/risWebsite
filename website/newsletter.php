@@ -184,17 +184,20 @@ echo_head();
 					Subscribe to my newsletter to be notified when I upload a new blogpost or project.<br>
 					Newsletter can be unsubscribed at any time.
 				</p>
-				<p><b>
-					Once you enter your email here, it will be stored in my database.<br>
-					Do NOT enter your email, if you don't agree to my privacy policy.<br>
-					By entering your email, you confirm that you have read and accept my privacy policy.<br>
-				</b></p>
-				<p style="text-align:center;"><b><a href="https://www.rismosch.com/privacy">READ PRIVACY POLICY</a></b></p>
 				
 				<form action="newsletter" method="POST" id="contact-form">
 					
 					<p>Email <span class="contact_error" id="display_error"><?php if(isset($errorEmail)) echo $errorEmail; ?></span></p>
 					<input name="email" class="contact_input" id="newsletter_emailfield" type="text" value = "<?php if(isset($emailUnsafe)) echo $emailUnsafe; ?>">
+					
+					<p>
+						<table>
+							<tr>
+								<td><img id="privacy_checkbox" class="checkbox pixel_image" src="assets/icon_8bit/checkbox_inactive.png" onclick="onPrivacyCheckboxToggle()"></td>
+								<td>I have read and accept the <a href="https://www.rismosch.com/privacy">Privacy Policy</a></td>
+							</tr>
+						</table>
+					</p>
 					
 					<p><span class="contact_error"><?php if(isset($errorContact)) echo $errorContact; ?></span></p>
 					<p>
@@ -202,11 +205,14 @@ echo_head();
 							class="g-recaptcha"
 							id="submit_button"
 							type="submit"
+							style="display:none;"
 							data-sitekey="<?php echo $reCAPTCHA_web_key;?>"
 							data-callback='onRecaptchaSuccess'
 						>
 						Subscribe
 						</button>
+						
+						<a class="button button_inactive" id="submit_button_inactive">Subscribe</a>
 					</p>
 					
 					<img id="loading_animation" class="loading_animation pixel_image invisible" src="assets/icon_8bit/loading.gif">
@@ -218,17 +224,38 @@ echo_head();
 	</div>
 	
 	<script>
+		
+		var privacyAccepted = false;
+		function onPrivacyCheckboxToggle()
+		{
+			privacyAccepted = !privacyAccepted;
+			
+			if(privacyAccepted)
+			{
+				document.getElementById("privacy_checkbox").src="assets/icon_8bit/checkbox_active.png";
+				document.getElementById("submit_button").style.display = "inline-block";
+				document.getElementById("submit_button_inactive").style.display = "none";
+			}
+			else
+			{
+				document.getElementById("privacy_checkbox").src="assets/icon_8bit/checkbox_inactive.png";
+				document.getElementById("submit_button").style.display = "none";
+				document.getElementById("submit_button_inactive").style.display = "inline-block";
+			}
+		}
+		
 		function onRecaptchaSuccess () {
 			return new Promise(function(resolve, reject){
 				
 				document.getElementById('loading_animation').classList.remove('invisible');
-				document.getElementById('submit_button').classList.add('invisible');
+				document.getElementById('submit_button').style.display = "none";
 				
 				document.getElementById('contact-form').submit();
 				
 				resolve;
 			});
 		}
+		
 	</script>
 </body>
 </html>

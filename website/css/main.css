@@ -101,6 +101,12 @@ a.button_inactive:active{
 	cursor: default;
 }
 
+.checkbox{
+	width: 30px;
+	height:30px;
+	cursor: pointer;
+}
+
 .invisible{
 	display: none;
 }

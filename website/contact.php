@@ -167,13 +167,6 @@ echo_head();
 				<form action="contact" method="POST" id="contact-form">
 					<div>
 						
-						<p><b>
-							You are entering personal information that will be stored by my email client.<br>
-							Do NOT enter your data, if you don't agree to my privacy policy.<br>
-							By entering your data, you confirm that you have read and accept my privacy policy.<br>
-						</b></p>
-						<p style="text-align:center;"><b><a href="https://www.rismosch.com/privacy">READ PRIVACY POLICY</a></b></p>
-						
 						<p>Name <span class="contact_error" id="display_error_name"><?php if(isset($errorName)) echo $errorName; ?></span></p>
 						<input name="name" class="contact_input" id="contact_namefield" type="text" value = "<?php if(isset($nameUnsafe)) echo $nameUnsafe; ?>">
 						
@@ -187,17 +180,29 @@ echo_head();
 						<textarea name="message" class="contact_input" id="contact_textarea" rows="10" cols="35"><?php if(isset($messageUnsafe)) echo $messageUnsafe; ?></textarea>
 						<p id="contact_textarea_count">0/999</p>
 						
+						<p>
+							<table>
+								<tr>
+									<td><img id="privacy_checkbox" class="checkbox pixel_image" src="assets/icon_8bit/checkbox_inactive.png" onclick="onPrivacyCheckboxToggle()"></td>
+									<td>I have read and accept the <a href="https://www.rismosch.com/privacy">Privacy Policy</a></td>
+								</tr>
+							</table>
+						</p>
+						
 						<p><span class="contact_error"><?php if(isset($errorContact)) echo $errorContact; ?></span></p>
 						<p>
 							<button
 								class="g-recaptcha"
 								id="submit_button"
 								type="submit"
+								style="display:none;"
 								data-sitekey="<?php echo $reCAPTCHA_web_key;?>"
 								data-callback='onRecaptchaSuccess'
 							>
 							Send
 							</button>
+							
+							<a class="button button_inactive" id="submit_button_inactive">Send</a>
 						</p>
 						
 						<img id="loading_animation" class="loading_animation pixel_image invisible" src="assets/icon_8bit/loading.gif">
@@ -212,11 +217,30 @@ echo_head();
 	
 	<script>
 		
+		var privacyAccepted = false;
+		function onPrivacyCheckboxToggle()
+		{
+			privacyAccepted = !privacyAccepted;
+			
+			if(privacyAccepted)
+			{
+				document.getElementById("privacy_checkbox").src="assets/icon_8bit/checkbox_active.png";
+				document.getElementById("submit_button").style.display = "inline-block";
+				document.getElementById("submit_button_inactive").style.display = "none";
+			}
+			else
+			{
+				document.getElementById("privacy_checkbox").src="assets/icon_8bit/checkbox_inactive.png";
+				document.getElementById("submit_button").style.display = "none";
+				document.getElementById("submit_button_inactive").style.display = "inline-block";
+			}
+		}
+		
 		function onRecaptchaSuccess() {
 			return new Promise(function(resolve, reject){
 				
 				document.getElementById('loading_animation').classList.remove('invisible');
-				document.getElementById('submit_button').classList.add('invisible');
+				document.getElementById('submit_button').style.display = "none";
 				
 				document.getElementById('contact-form').submit();
 				
