@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `Article_Categories` (
 INSERT INTO `Article_Categories` (`id`, `name`) VALUES
 (1, 'Music'),
 (2, 'Programming'),
-(99, 'Other');
+(42, 'Other');
 
 DROP TABLE IF EXISTS `Article_Types`;
 CREATE TABLE IF NOT EXISTS `Article_Types` (
