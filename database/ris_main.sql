@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `Articles` (
   PRIMARY KEY (`id`),
   KEY `type_id` (`type_id`),
   KEY `category_id` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS `Article_Categories`;
 CREATE TABLE IF NOT EXISTS `Article_Categories` (
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `Article_Categories` (
 INSERT INTO `Article_Categories` (`id`, `name`) VALUES
 (1, 'Music'),
 (2, 'Programming'),
-(3, 'Other');
+(99, 'Other');
 
 DROP TABLE IF EXISTS `Article_Types`;
 CREATE TABLE IF NOT EXISTS `Article_Types` (
