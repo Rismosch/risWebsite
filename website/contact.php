@@ -184,7 +184,7 @@ echo_head();
 							<table>
 								<tr>
 									<td><img id="privacy_checkbox" class="checkbox pixel_image" src="assets/icon_8bit/checkbox_inactive.png" onclick="onPrivacyCheckboxToggle()"></td>
-									<td>I have read and accept the <a href="https://www.rismosch.com/privacy">Privacy Policy</a></td>
+									<td>I have read and accept the <a href="https://www.rismosch.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></td>
 								</tr>
 							</table>
 						</p>
