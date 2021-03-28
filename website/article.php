@@ -114,26 +114,7 @@ function hide_other_post()
 					{
 						$sqlNext = GetNextPreviousSql("> '{$articleData['timestamp']}'");
 						$sqlPrevious = GetNextPreviousSql("< '{$articleData['timestamp']}'");
-						
 						echo "<p style=\"text-align:center; display:block;\">";
-						// Previous Button
-						if($showPrevious)
-						{
-							$result = mysqli_query($dbConn,$sqlPrevious);
-							$numRows = mysqli_num_rows($result);
-							if($numRows > 0)
-							{
-								$row = mysqli_fetch_assoc($result);
-								
-								echo "<a class=\"button\" href=\"https://www.rismosch.com/article?id={$row['id']}\" title=\"{$row['title']}\">Previous Post</a>";
-							}
-							else
-							{
-								echo "<a class=\"button button_inactive\">Previous Post</a>";
-							}
-							
-							echo " ";
-						}
 						
 						// Next Button
 						if($showNext)
@@ -143,22 +124,31 @@ function hide_other_post()
 							if($numRows > 0)
 							{
 								$row = mysqli_fetch_assoc($result);
+								$articleTitle = "Next Post: {$row['title']}";
 								
-								echo "<a class=\"button\" href=\"https://www.rismosch.com/article?id={$row['id']}\" title=\"{$row['title']}\">Next Post</a>";
+								echo "<p><a class=\"button\" href=\"https://www.rismosch.com/article?id={$row['id']}\" title=\"{$articleTitle}\">{$articleTitle}</a></p>";
 							}
-							else
+						}
+						
+						// Previous Button
+						if($showPrevious)
+						{
+							$result = mysqli_query($dbConn,$sqlPrevious);
+							$numRows = mysqli_num_rows($result);
+							if($numRows > 0)
 							{
-								echo "<a class=\"button button_inactive\">Next Post</a>";
+								$row = mysqli_fetch_assoc($result);
+								$articleTitle = "Previous Post: {$row['title']}";
+								
+								echo "<p><a class=\"button\" href=\"https://www.rismosch.com/article?id={$row['id']}\" title=\"{$articleTitle}\">{$articleTitle}</a></p>";
 							}
-							
-							echo "</p>";
 						}
 						
 						// Other Button
 						if($showOther)
 						{
 							echo "
-								<p style=\"text-align:center;\">
+								<p>
 									<a
 										style=\"display:inline-block; margin-top: 5px;\"
 										class=\"button\" href=\"https://www.rismosch.com/blog?category={$articleData['category_id']}\"
@@ -169,6 +159,8 @@ function hide_other_post()
 								</p>
 							";
 						}
+						
+						echo "</p>";
 					}
 				}
 				else
