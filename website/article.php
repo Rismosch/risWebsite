@@ -35,21 +35,7 @@ if($dbConn){
 	}
 }
 
-if(isset($articleData))
-{
-	$thumbnail_path = $articleData['thumbnail_path'];
-	if(is_null($thumbnail_path))
-	{
-		$thumbnail_path = "articles/{$articleData['id']}/thumbnail.jpg";
-	}
-	
-	if(!file_exists($thumbnail_path))
-	{
-		$thumbnail_path = "assets/thumbnails/default.jpg";
-	}
-}
-else
-	$thumbnail_path = "assets/thumbnails/default.jpg";
+$thumbnail_path = GetThumbnailPath($articleData);
 
 echo_head();
 

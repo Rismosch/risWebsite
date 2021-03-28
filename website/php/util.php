@@ -98,27 +98,50 @@ function echo_selector($active_tab)
 	';
 }
 
+$img_sources = [];
+$img_count = 0;
+function late_image($source, $class, $style)
+{
+	global
+		$img_sources,
+		$img_count;
+	
+	echo "
+	<img
+		src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+		class='{$class}'
+		style='{$style}'
+		id='img{$img_count}'
+		alt=''
+	>
+	";
+	
+	$img_sources[] = $source;
+	++$img_count;
+}
+
 function echo_foot($uses_captcha)
 {
+	// foot links
 	echo '
 	<div class="foot" id="foot">
 		
 		<a title="Newsletter" href="https://www.rismosch.com/newsletter">
-			<img class="newsletter_icon pixel_image" src="assets/newsletter.gif">
+			'; late_image("assets/newsletter.gif", "newsletter_icon pixel_image", ""); echo '
 		</a>
 		
 		<div class="socials" id="socials">
 			<a title="YouTube" href="https://www.youtube.com/channel/UCrWSfmTaXTN_LzEsVRKNJTw">
-				<img class="social_icon" src="assets/icon_social/youtube.webp">
+				'; late_image("assets/icon_social/youtube.webp", "social_icon", ""); echo '
 			</a>
 			<a title="Bandcamp" href="https://rismosch.bandcamp.com">
-				<img class="social_icon" src="assets/icon_social/bandcamp.webp">
+				'; late_image("assets/icon_social/bandcamp.webp", "social_icon", ""); echo '
 			</a>
 			<a title="itch.io" href="https://rismosch.itch.io/">
-				<img class="social_icon" src="assets/icon_social/itch_io.webp">
+				'; late_image("assets/icon_social/itch_io.webp", "social_icon", ""); echo '
 			</a>
 			<a title="GitHub" href="https://github.com/Rismosch">
-				<img class="social_icon" src="assets/icon_social/github.webp">
+				'; late_image("assets/icon_social/github.webp", "social_icon", ""); echo '
 			</a>
 		</div>
 		
@@ -138,11 +161,24 @@ function echo_foot($uses_captcha)
 		
 	</div>
 	';
-
+	
+	// back to top button
 	if($uses_captcha == true)
 		echo '<button onclick="scrollToTop()" id="scroll_to_top" class="scroll_to_top scroll_captcha_offset">Top</button>';
 	else
 		echo '<button onclick="scrollToTop()" id="scroll_to_top" class="scroll_to_top">Top</button>';
+	
+	// late loading images
+	global
+		$img_sources,
+		$img_count;
+	
+	echo "\n<script>\n";
+	for($i = 0; $i < $img_count; ++$i)
+	{
+		echo "document.getElementById(\"img{$i}\").src = \"{$img_sources[$i]}\";\n";
+	}
+	echo "</script>\n";
 }
 
 ?>

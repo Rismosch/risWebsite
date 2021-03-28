@@ -185,11 +185,7 @@ function printArticles($dbConn, $pageName)
 							<td>
 								<div class=\"articles_thumbnail_wrapper_outside\">
 									<div class=\"articles_thumbnail_wrapper_inside\">
-										<img
-											class=\"articles_thumbnail\"
-											src=\"{$thumbnail}\"
-											alt=\"\"
-										>
+										"; late_image($thumbnail, "articles_thumbnail", ""); echo "
 									</div>
 								</div>
 							</td>
@@ -209,11 +205,7 @@ function printArticles($dbConn, $pageName)
 						<tr>
 							<td class=\"articles_thumbnail_row_desktop\">
 								<div class=\"articles_thumbnail_wrapper\">
-									<img
-										class=\"articles_thumbnail\"
-										src=\"{$thumbnail}\"
-										alt=\"\"
-									>
+									"; late_image($thumbnail, "articles_thumbnail", ""); echo "
 								</div>
 							</td>
 							<td>

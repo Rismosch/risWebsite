@@ -30,7 +30,7 @@ echo_head();
 			<h1>About</h1>
 			<table>
 				<tr>
-					<td><img class="profile_picture" id="profile_picture" src="assets/profile_picture.webp"></td>
+					<td><?php late_image("assets/profile_picture.webp", "profile_picture", "");?></td>
 					<td>Hello Internet, my name is Rismosch, or B. Eng. Simon Sutoris. I describe myself as a programmer and a music producer.</td>
 				</tr>
 			</table>
@@ -40,7 +40,7 @@ echo_head();
 			<table>
 				<tr>
 					<td>Currently, I am programming professionally in C#. But in school and homeprojects I came in contact with many different programming languages.</td>
-					<td><img class="about_picture pixel_image" id="about_picture" src="assets/icon_8bit/prog.png"></td>
+					<td><?php late_image("assets/icon_8bit/prog.png", "about_picture pixel_image", "");?></td>
 				</tr>
 			</table>
 			
@@ -49,7 +49,7 @@ echo_head();
 			<table>
 				<tr>
 					<td>My music is very synth-heavy, with fast and crazy drum breaks. I describe my music as an amalgamation of early Drum and Bass/Jungle and Punk Rock. Also, I love distortion.</td>
-					<td><img class="about_picture pixel_image" id="about_picture" src="assets/icon_8bit/synth.png"></td>
+					<td><?php late_image("assets/icon_8bit/synth.png", "about_picture pixel_image", "");?></td>
 				</tr>
 			</table>
 			
@@ -58,7 +58,7 @@ echo_head();
 			<table>
 				<tr>
 					<td>I have good experience with Microsoft Office products and use them on an almost daily basis, most notably Microsoft Excel. I also dabbed a bit in Video Editing.</td>
-					<td><img class="about_picture pixel_image" id="about_picture" src="assets/icon_8bit/video.png"></td>
+					<td><?php late_image("assets/icon_8bit/video.png", "about_picture pixel_image", "");?></td>
 				</tr>
 			</table>
 			
