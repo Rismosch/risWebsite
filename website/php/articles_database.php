@@ -175,10 +175,7 @@ function printArticles($dbConn, $pageName)
 			else
 				$link = "https://www.rismosch.com/article?id={$row['id']}";
 			
-			if(!is_null($row['thumbnail_path']))
-				$thumbnail = $row['thumbnail_path'];
-			else
-				$thumbnail = "https://www.rismosch.com/articles/{$row['id']}/thumbnail.jpg";
+			$thumbnail = GetThumbnailPath($row);
 			
 			echo
 			"<tr><td><a title=\"{$row['title']}\" href=\"{$link}\" class=\"articles_entry_link\">
@@ -191,7 +188,6 @@ function printArticles($dbConn, $pageName)
 										<img
 											class=\"articles_thumbnail\"
 											src=\"{$thumbnail}\"
-											onerror=\"this.onerror=null; this.src='assets/thumbnails/default.jpg'\"
 											alt=\"\"
 										>
 									</div>
@@ -216,7 +212,6 @@ function printArticles($dbConn, $pageName)
 									<img
 										class=\"articles_thumbnail\"
 										src=\"{$thumbnail}\"
-										onerror=\"this.onerror=null; this.src='assets/thumbnails/default.jpg'\"
 										alt=\"\"
 									>
 								</div>
@@ -243,111 +238,6 @@ function printArticles($dbConn, $pageName)
 	else
 	{
 		echo "<p>no articles found &#175;&#92;&#95;&#40;&#12484;&#41;&#95;&#47;&#175;</p>";
-	}
-}
-
-function printLatestArticle($dbConn)
-{
-	$sqlLatestArticle ="
-		SELECT
-			Articles.id AS id,
-			Article_Types.name AS type,
-			Article_Categories.name AS category,
-			Articles.title AS title,
-			Articles.timestamp AS timestamp,
-			Articles.link AS link,
-			Articles.thumbnail_path AS thumbnail_path
-		FROM
-			Articles,
-			Article_Categories,
-			Article_Types
-		WHERE
-			Articles.category_id = Article_Categories.id AND
-			Articles.type_id = Article_Types.id
-		ORDER BY
-			Articles.timestamp DESC
-		LIMIT
-			0,
-			1
-	";
-	
-	$result = mysqli_query($dbConn,$sqlLatestArticle);
-	$numRows = mysqli_num_rows($result);
-	if($numRows > 0){
-		
-		$row = mysqli_fetch_assoc($result);
-		
-		$timestamp = strtotime($row['timestamp']);
-		$newTimestampFormat = date('M jS, Y',$timestamp);
-		
-		if(!is_null($row['link']))
-			$link = $row['link'];
-		else
-			$link = "https://www.rismosch.com/article?id={$row['id']}";
-		
-		if(!is_null($row['thumbnail_path']))
-			$thumbnail = $row['thumbnail_path'];
-		else
-			$thumbnail = "https://www.rismosch.com/articles/{$row['id']}/thumbnail.jpg";
-		
-		echo "
-<a title=\"{$row['title']}\" href=\"{$link}\" class=\"articles_entry_link\">
-	<div class=\"articles_mobile\">
-		<table class=\"articles_entry\">
-			<tr>
-				<td>
-					<div class=\"articles_thumbnail_wrapper_outside\">
-						<div class=\"articles_thumbnail_wrapper_inside\">
-							<img
-								class=\"articles_thumbnail\"
-								src=\"{$thumbnail}\"
-								onerror=\"this.onerror=null; this.src='assets/thumbnails/default.jpg'\"
-								alt=\"\"
-							>
-						</div>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class=\"articles_thumbnail_information\">
-						<h3>{$row['title']}</h3>
-						<p>{$row['category']} &#183; {$newTimestampFormat}</p>
-					</div>
-				</td>
-			</tr>
-		</table>
-	</div>
-	<div class=\"articles_desktop\">
-		<table class=\"articles_entry\">
-			<tr>
-				<td class=\"articles_thumbnail_row_desktop\">
-					<div class=\"articles_thumbnail_wrapper\">
-						<img
-							class=\"articles_thumbnail\"
-							src=\"{$thumbnail}\"
-							onerror=\"this.onerror=null; this.src='assets/thumbnails/default.jpg'\"
-							alt=\"\"
-						>
-					</div>
-				</td>
-				<td>
-					<div class=\"articles_thumbnail_information\">
-						<h3>{$row['title']}</h3>
-						<br>
-						<p>{$row['category']} &#183; {$newTimestampFormat}</p>
-					</div>
-				</td>
-			</tr>
-		</table>
-	</div>
-</a>
-		";
-	
-	}
-	else
-	{
-		echo "<h3>:(</h3><p>Error while loading latest article.</p>";
 	}
 }
 
@@ -499,6 +389,27 @@ function printSelector($dbConn, $pageName)
 	echo "
 		</div>
 	";
+}
+
+function GetThumbnailPath($articleData)
+{
+	if(isset($articleData))
+	{
+		$thumbnail_path = $articleData['thumbnail_path'];
+		if(is_null($thumbnail_path))
+		{
+			$thumbnail_path = "articles/{$articleData['id']}/thumbnail.webp";
+		}
+		
+		if(!file_exists($thumbnail_path))
+		{
+			$thumbnail_path = "assets/thumbnails/default.webp";
+		}
+	}
+	else
+		$thumbnail_path = "assets/thumbnails/default.webp";
+	
+	return $thumbnail_path;
 }
 
 function GetArticleData($dbConn, $articleId)

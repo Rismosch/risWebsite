@@ -41,10 +41,107 @@ echo_head();
 				<tr class="row_empty row_devider"><td></td></tr>
 				<tr><td>
 				<?php
-					$dbSelectConnection = mysqli_connect($dbHost, $dbSelectUsername, $dbSelectPassword, $dbName);
+					$dbConn = mysqli_connect($dbHost, $dbSelectUsername, $dbSelectPassword, $dbName);
 					
-					if($dbSelectConnection){
-						printLatestArticle($dbSelectConnection);
+					if($dbConn)
+					{
+						$sqlLatestArticle ="
+							SELECT
+								Articles.id AS id,
+								Article_Types.name AS type,
+								Article_Categories.name AS category,
+								Articles.title AS title,
+								Articles.timestamp AS timestamp,
+								Articles.link AS link,
+								Articles.thumbnail_path AS thumbnail_path
+							FROM
+								Articles,
+								Article_Categories,
+								Article_Types
+							WHERE
+								Articles.category_id = Article_Categories.id AND
+								Articles.type_id = Article_Types.id AND
+								Articles.id = 11
+							ORDER BY
+								Articles.timestamp DESC
+							LIMIT
+								0,
+								1
+						";
+						
+						$result = mysqli_query($dbConn,$sqlLatestArticle);
+						$numRows = mysqli_num_rows($result);
+						if($numRows > 0){
+							
+							$row = mysqli_fetch_assoc($result);
+							
+							$timestamp = strtotime($row['timestamp']);
+							$newTimestampFormat = date('M jS, Y',$timestamp);
+							
+							if(!is_null($row['link']))
+								$link = $row['link'];
+							else
+								$link = "https://www.rismosch.com/article?id={$row['id']}";
+							
+							$thumbnail = GetThumbnailPath($row);
+							
+							echo "
+							<a title=\"{$row['title']}\" href=\"{$link}\" class=\"articles_entry_link\">
+								<div class=\"articles_mobile\">
+									<table class=\"articles_entry\">
+										<tr>
+											<td>
+												<div class=\"articles_thumbnail_wrapper_outside\">
+													<div class=\"articles_thumbnail_wrapper_inside\">
+														<img
+															class=\"articles_thumbnail\"
+															src=\"{$thumbnail}\"
+															alt=\"\"
+														>
+													</div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class=\"articles_thumbnail_information\">
+													<h3>{$row['title']}</h3>
+													<p>{$row['category']} &#183; {$newTimestampFormat}</p>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<div class=\"articles_desktop\">
+									<table class=\"articles_entry\">
+										<tr>
+											<td class=\"articles_thumbnail_row_desktop\">
+												<div class=\"articles_thumbnail_wrapper\">
+													<img
+														class=\"articles_thumbnail\"
+														src=\"{$thumbnail}\"
+														alt=\"\"
+													>
+												</div>
+											</td>
+											<td>
+												<div class=\"articles_thumbnail_information\">
+													<h3>{$row['title']}</h3>
+													<br>
+													<p>{$row['category']} &#183; {$newTimestampFormat}</p>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</a>
+							";
+						
+						}
+						else
+						{
+							echo "<h3>:(</h3><p>Error while loading latest article.</p>";
+						}
 					}
 					else{
 						echo "<h3>:(</h3><p>Error while loading latest article.</p>";

@@ -30,7 +30,7 @@ echo_head();
 			<h1>About</h1>
 			<table>
 				<tr>
-					<td><img class="profile_picture" id="profile_picture" src="assets/Profile Picture.jpg"></td>
+					<td><img class="profile_picture" id="profile_picture" src="assets/profile_picture.webp"></td>
 					<td>Hello Internet, my name is Rismosch, or B. Eng. Simon Sutoris. I describe myself as a programmer and a music producer.</td>
 				</tr>
 			</table>

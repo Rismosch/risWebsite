@@ -109,16 +109,16 @@ function echo_foot($uses_captcha)
 		
 		<div class="socials" id="socials">
 			<a title="YouTube" href="https://www.youtube.com/channel/UCrWSfmTaXTN_LzEsVRKNJTw">
-				<img class="social_icon" src="assets/icon_social/youtube.png">
+				<img class="social_icon" src="assets/icon_social/youtube.webp">
 			</a>
 			<a title="Bandcamp" href="https://rismosch.bandcamp.com">
-				<img class="social_icon" src="assets/icon_social/bandcamp.png">
+				<img class="social_icon" src="assets/icon_social/bandcamp.webp">
 			</a>
 			<a title="itch.io" href="https://rismosch.itch.io/">
-				<img class="social_icon" src="assets/icon_social/itch_io.png">
+				<img class="social_icon" src="assets/icon_social/itch_io.webp">
 			</a>
 			<a title="GitHub" href="https://github.com/Rismosch">
-				<img class="social_icon" src="assets/icon_social/github.png">
+				<img class="social_icon" src="assets/icon_social/github.webp">
 			</a>
 		</div>
 		
