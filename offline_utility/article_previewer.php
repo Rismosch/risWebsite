@@ -10,6 +10,27 @@ function get_page_url($number)
 	return "http://localhost/article_previewer.php?page={$number}";
 }
 
+$showPrevious = true;
+function hide_previous_post()
+{
+	global $showPrevious;
+	$showPrevious = false;
+}
+
+$showNext = true;
+function hide_next_post()
+{
+	global $showNext;
+	$showNext = false;
+}
+
+$showOther = true;
+function hide_other_post()
+{
+	global $showOther;
+	$showOther = false;
+}
+
 if(isset($_GET["page"]))
 	$fileToLoad = 'page_' . intval($_GET["page"]);
 else

@@ -233,49 +233,6 @@ function printArticles($dbConn, $pageName)
 	}
 }
 
-function printArticleFoot($dbConn,$articleData)
-{
-	$sqlNext = GetNextPreviousSql("> '{$articleData['timestamp']}'");
-	$sqlPrevious = GetNextPreviousSql("< '{$articleData['timestamp']}'");
-	
-	echo "<p style=\"text-align:center; display:block;\">";
-	// Previous Button
-	$result = mysqli_query($dbConn,$sqlPrevious);
-	$numRows = mysqli_num_rows($result);
-	if($numRows > 0)
-	{
-		$row = mysqli_fetch_assoc($result);
-		
-		echo "<a class=\"button\" href=\"https://www.rismosch.com/article?id={$row['id']}\" title=\"{$row['title']}\">Previous Post</a>";
-	}
-	else
-	{
-		echo "<a class=\"button button_inactive\">Previous Post</a>";
-	}
-	
-	echo " ";
-	
-	// Next Button
-	$result = mysqli_query($dbConn,$sqlNext);
-	$numRows = mysqli_num_rows($result);
-	if($numRows > 0)
-	{
-		$row = mysqli_fetch_assoc($result);
-		
-		echo "<a class=\"button\" href=\"https://www.rismosch.com/article?id={$row['id']}\" title=\"{$row['title']}\">Next Post</a>";
-	}
-	else
-	{
-		echo "<a class=\"button button_inactive\">Next Post</a>";
-	}
-	
-	echo "</p>";
-	
-	
-	// Other Button
-	echo "<p style=\"text-align:center;\"><a style=\"display:inline-block; margin-top: 5px;\" class=\"button\" href=\"https://www.rismosch.com/blog?category={$articleData['category_id']}\" title=\"{$articleData['category']}\">More \"{$articleData['category']}\"-related Blog Posts</a></p>";
-}
-
 function GetNextPreviousSql($nextPreviousTimestamp)
 {
 	return "

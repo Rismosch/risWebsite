@@ -64,12 +64,26 @@ function get_source($file)
 	return "https://www.rismosch.com/articles/{$article_id}/{$file}";
 }
 
-/*function get_page_url($number)
+$showPrevious = true;
+function hide_previous_post()
 {
-	global $article_id;
-	
-	return "https://www.rismosch.com/article?id={$article_id}&page={$number}";
-}*/
+	global $showPrevious;
+	$showPrevious = false;
+}
+
+$showNext = true;
+function hide_next_post()
+{
+	global $showNext;
+	$showNext = false;
+}
+
+$showOther = true;
+function hide_other_post()
+{
+	global $showOther;
+	$showOther = false;
+}
 
 ?>
 </head>
@@ -98,7 +112,63 @@ function get_source($file)
 					
 					if($dbConn && isset($articleData))
 					{
-						printArticleFoot($dbConn,$articleData);
+						$sqlNext = GetNextPreviousSql("> '{$articleData['timestamp']}'");
+						$sqlPrevious = GetNextPreviousSql("< '{$articleData['timestamp']}'");
+						
+						echo "<p style=\"text-align:center; display:block;\">";
+						// Previous Button
+						if($showPrevious)
+						{
+							$result = mysqli_query($dbConn,$sqlPrevious);
+							$numRows = mysqli_num_rows($result);
+							if($numRows > 0)
+							{
+								$row = mysqli_fetch_assoc($result);
+								
+								echo "<a class=\"button\" href=\"https://www.rismosch.com/article?id={$row['id']}\" title=\"{$row['title']}\">Previous Post</a>";
+							}
+							else
+							{
+								echo "<a class=\"button button_inactive\">Previous Post</a>";
+							}
+							
+							echo " ";
+						}
+						
+						// Next Button
+						if($showNext)
+						{
+							$result = mysqli_query($dbConn,$sqlNext);
+							$numRows = mysqli_num_rows($result);
+							if($numRows > 0)
+							{
+								$row = mysqli_fetch_assoc($result);
+								
+								echo "<a class=\"button\" href=\"https://www.rismosch.com/article?id={$row['id']}\" title=\"{$row['title']}\">Next Post</a>";
+							}
+							else
+							{
+								echo "<a class=\"button button_inactive\">Next Post</a>";
+							}
+							
+							echo "</p>";
+						}
+						
+						// Other Button
+						if($showOther)
+						{
+							echo "
+								<p style=\"text-align:center;\">
+									<a
+										style=\"display:inline-block; margin-top: 5px;\"
+										class=\"button\" href=\"https://www.rismosch.com/blog?category={$articleData['category_id']}\"
+										title=\"{$articleData['category']}\"
+									>
+										More \"{$articleData['category']}\"-related Blog Posts
+									</a>
+								</p>
+							";
+						}
 					}
 				}
 				else
