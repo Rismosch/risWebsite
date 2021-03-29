@@ -126,7 +126,7 @@ function hide_other_post()
 								$row = mysqli_fetch_assoc($result);
 								$articleTitle = "Next Post: {$row['title']}";
 								
-								echo "<p><a class=\"button\" href=\"https://www.rismosch.com/article?id={$row['id']}\" title=\"{$articleTitle}\">{$articleTitle}</a></p>";
+								echo "<p><a class=\"button\" href=\"https://www.rismosch.com/article?id={$row['id']}\">{$articleTitle}</a></p>";
 							}
 						}
 						
@@ -140,7 +140,7 @@ function hide_other_post()
 								$row = mysqli_fetch_assoc($result);
 								$articleTitle = "Previous Post: {$row['title']}";
 								
-								echo "<p><a class=\"button\" href=\"https://www.rismosch.com/article?id={$row['id']}\" title=\"{$articleTitle}\">{$articleTitle}</a></p>";
+								echo "<p><a class=\"button\" href=\"https://www.rismosch.com/article?id={$row['id']}\">{$articleTitle}</a></p>";
 							}
 						}
 						
@@ -152,7 +152,6 @@ function hide_other_post()
 									<a
 										style=\"display:inline-block; margin-top: 5px;\"
 										class=\"button\" href=\"https://www.rismosch.com/blog?category={$articleData['category_id']}\"
-										title=\"{$articleData['category']}\"
 									>
 										More \"{$articleData['category']}\"-related Blog Posts
 									</a>
@@ -174,7 +173,7 @@ function hide_other_post()
 				<div style="padding: 5px; border:5px solid var(--pico-8-cyan); background-color:var(--pico-8-white);" id="data-collection-warning" class="invisible">
 					<p>
 						Comments are powered by <a href="https://disqus.com/" target="_blank" rel="noopener noreferrer">Disqus</a>, a third party service.
-						What data they collect is beyond my control.
+						What data they collect is beyond my control.<br><br>
 						I strongly recommend that you read their <a href="https://help.disqus.com/en/articles/1717103-disqus-privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
 					</p>
 					<p style="text-align:center;">
