@@ -171,7 +171,7 @@ function hide_other_post()
 			?>
 			
 			<div style="margin-top:5px;">
-				<div style="padding: 5px; border:5px solid var(--pico-8-red); background-color:var(--pico-8-white);" id="data-collection-warning" class="invisible">
+				<div style="padding: 5px; border:5px solid var(--pico-8-cyan); background-color:var(--pico-8-white);" id="data-collection-warning" class="invisible">
 					<p>
 						Comments are powered by <a href="https://disqus.com/" target="_blank" rel="noopener noreferrer">Disqus</a>, a third party service.
 						What data they collect is beyond my control.
