@@ -4,7 +4,7 @@
  * Export data to MS Excel. PHP XLSX generator
  * Author: sergey.shuchkin@gmail.com
  * 
- * Source: https://github.com/Rismosch/simplexlsxgen
+ * Source: https://github.com/shuchkin/simplexlsxgen
  * Last referenced: 7th March 2021
  * 
  * License:
