@@ -5,7 +5,7 @@ var scrollToTopButton = document.getElementById("scroll_to_top");
 
 window.onload = function()
 {
-	checkContinuousSession();
+	//checkContinuousSession();
 	onloadBanner();
 }
 
@@ -163,10 +163,11 @@ function onloadBanner(){
 }
 
 function playStartupAnimation(){
-	if (isContinuousSession)
-		playAnimation(shimmerFrame)
+	/*if (isContinuousSession)
+		playAnimation(shimmerFrame);
 	else
-		playAnimation(0);
+		playAnimation(0);*/
+	playAnimation(shimmerFrame);
 };
 
 function playHoverAnimation(){

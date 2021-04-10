@@ -170,11 +170,13 @@ function hide_other_post()
 			?>
 			
 			<div style="margin-top:5px;">
-				<div style="padding: 5px; border:5px solid var(--pico-8-cyan); background-color:var(--pico-8-white);" id="data-collection-warning" class="invisible">
-					<p>
-						Comments are powered by <a href="https://disqus.com/" target="_blank" rel="noopener noreferrer">Disqus</a>, a third party service.
-						What data they collect is beyond my control.<br><br>
-						I strongly recommend that you read their <a href="https://help.disqus.com/en/articles/1717103-disqus-privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+				<div style="padding: 5px;border:5px solid var(--pico-8-cyan);background-color:var(--pico-8-white);" id="data-collection-warning" class="invisible">
+					<p style="text-align: justify; margin-left: 20px; margin-right: 20px;">
+						I don't use cookies to track your data.
+						My comments however, which are powered by <a href="https://disqus.com/" target="_blank" rel="noopener noreferrer">Disqus</a>, definitely do.
+						So you should probably read their <a href="https://help.disqus.com/en/articles/1717103-disqus-privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.<br>
+						<br>
+						Unless you click the button below, no data will be tracked.
 					</p>
 					<p style="text-align:center;">
 						<button onclick="ShowComments()">Accept and view comments</button>
