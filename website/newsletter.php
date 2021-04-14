@@ -226,8 +226,12 @@ echo_head();
 	<script>
 		
 		var privacyAccepted = false;
+		var isSubmitting = false;
 		function onPrivacyCheckboxToggle()
 		{
+			if(isSubmitting)
+				return;
+			
 			privacyAccepted = !privacyAccepted;
 			
 			if(privacyAccepted)
@@ -246,6 +250,8 @@ echo_head();
 		
 		function onRecaptchaSuccess () {
 			return new Promise(function(resolve, reject){
+				
+				isSubmitting = true;
 				
 				document.getElementById('loading_animation').classList.remove('invisible');
 				document.getElementById('submit_button').style.display = "none";
