@@ -6,5 +6,5 @@ RewriteEngine On
 RewriteRule ^([^/.]+)$ $1.php [L]
 
 <filesMatch ".(css|jpg|jpeg|png|gif|webp|js|ico)$">
-Header set Cache-Control "max-age=5256000, public"
+Header set Cache-Control "max-age=2419200, public"
 </filesMatch>
