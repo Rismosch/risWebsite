@@ -205,10 +205,9 @@ function hide_other_post()
 								$thumbnail = GetThumbnailPath($row);
 								
 								echo "
-									<p style=\"text-align:center;\">
+									<p>
 										<a
 											style=\"display:inline-block; margin-top: 5px;\"
-											class=\"button\"
 											href=\"{$link}\">
 											Previous Post: {$row['title']}
 										</a>
@@ -221,10 +220,9 @@ function hide_other_post()
 						if($showOther)
 						{
 							echo "
-								<p style=\"text-align:center;\">
+								<p>
 									<a
 										style=\"display:inline-block; margin-top: 5px;\"
-										class=\"button\"
 										href=\"https://www.rismosch.com/blog?category={$articleData['category_id']}\">
 										More \"{$articleData['category']}\"-related Blog Posts
 									</a>
