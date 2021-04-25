@@ -114,7 +114,6 @@ function hide_other_post()
 					{
 						$sqlNext = GetNextPreviousSql("> '{$articleData['timestamp']}'","ASC");
 						$sqlPrevious = GetNextPreviousSql("< '{$articleData['timestamp']}'","DESC");
-						echo "<p style=\"border-bottom-width: 5px; border-bottom-style: dashed; border-bottom-color:var(--pico-8-white);\"></p>";
 						
 						// Next Button
 						if($showNext)
@@ -135,6 +134,7 @@ function hide_other_post()
 								
 								$thumbnail = GetThumbnailPath($row);
 								
+								echo "<p style=\"border-bottom-width: 5px; border-bottom-style: dashed; border-bottom-color:var(--pico-8-white);\"></p>";
 								echo"
 								<table style=\"width: 100%;\">
 									<tr><td><a title=\"{$row['title']}\" href=\"{$link}\" class=\"articles_entry_link\">
@@ -152,7 +152,7 @@ function hide_other_post()
 											<tr>
 												<td>
 													<div class=\"articles_thumbnail_information\">
-														<h3>Next Post: {$row['title']} =&gt;</h3>
+														<h3>Next Post: {$row['title']}</h3>
 														<p>{$row['category']} &#183; {$newTimestampFormat}</p>
 													</div>
 												</td>
@@ -173,9 +173,6 @@ function hide_other_post()
 														<br>
 														<p>{$row['category']} &#183; {$newTimestampFormat}</p>
 													</div>
-												</td>
-												<td style=\"width: 10%;\">
-													<h1 style=\"text-align: center;\">=&gt;</h1>
 												</td>
 											</tr>
 										</table>
@@ -207,56 +204,16 @@ function hide_other_post()
 								
 								$thumbnail = GetThumbnailPath($row);
 								
-								echo"
-								<table style=\"width: 100%;\">
-									<tr><td><a title=\"{$row['title']}\" href=\"{$link}\" class=\"articles_entry_link\">
-									<div class=\"articles_mobile\">
-										<table class=\"articles_entry\">
-											<tr>
-												<td>
-													<div class=\"articles_thumbnail_wrapper_outside\">
-														<div class=\"articles_thumbnail_wrapper_inside\">
-															"; late_image($thumbnail, "articles_thumbnail", ""); echo "
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class=\"articles_thumbnail_information\">
-														<h3>&lt;= Previous Post: {$row['title']}</h3>
-														<p>{$row['category']} &#183; {$newTimestampFormat}</p>
-													</div>
-												</td>
-											</tr>
-										</table>
-									</div>
-									<div class=\"articles_desktop\">
-										<table class=\"articles_entry\">
-											<tr>
-												<td style=\"width: 10%;\">
-													<h1 style=\"text-align: center;\">&lt;=</h1>
-												</td>
-												<td>
-													<div class=\"articles_thumbnail_information\">
-														<h3>Previous Post: {$row['title']}</h3>
-														<br>
-														<p>{$row['category']} &#183; {$newTimestampFormat}</p>
-													</div>
-												</td>
-												<td class=\"articles_thumbnail_row_desktop\">
-													<div class=\"articles_thumbnail_wrapper\">
-														"; late_image($thumbnail, "articles_thumbnail", ""); echo "
-													</div>
-												</td>
-											</tr>
-										</table>
-									</div>
-									</a></td></tr>
-								</table>
+								echo "
+									<p style=\"text-align:center;\">
+										<a
+											style=\"display:inline-block; margin-top: 5px;\"
+											class=\"button\"
+											href=\"{$link}\">
+											Previous Post: {$row['title']}
+										</a>
+									</p>
 								";
-								
-								echo "<p style=\"border-bottom-width: 5px; border-bottom-style: dashed; border-bottom-color:var(--pico-8-white);\"></p>";
 							}
 						}
 						
@@ -267,8 +224,8 @@ function hide_other_post()
 								<p style=\"text-align:center;\">
 									<a
 										style=\"display:inline-block; margin-top: 5px;\"
-										class=\"button\" href=\"https://www.rismosch.com/blog?category={$articleData['category_id']}\"
-									>
+										class=\"button\"
+										href=\"https://www.rismosch.com/blog?category={$articleData['category_id']}\">
 										More \"{$articleData['category']}\"-related Blog Posts
 									</a>
 								</p>
