@@ -61,7 +61,7 @@ echo_head();
 							WHERE
 								Articles.category_id = Article_Categories.id AND
 								Articles.type_id = Article_Types.id AND
-								Articles.id = 11
+								Articles.id = 12
 							ORDER BY
 								Articles.timestamp DESC
 							LIMIT

@@ -12,7 +12,10 @@ if(isset($_GET["category"]))
 else
 	$category = $categoryDefault;
 
-if($category < 1 || $category > 3)
+if(
+	$category != 1 &&
+	$category != 2 &&
+	$category != 42)
 	$category = $categoryDefault;
 
 if($category != $categoryDefault)
@@ -233,10 +236,10 @@ function printArticles($dbConn, $pageName)
 	}
 }
 
-function GetNextPreviousSql($nextPreviousTimestamp)
+function GetNextPreviousSql($nextPreviousTimestamp, $orderBy)
 {
 	return "
-		SELECT
+	SELECT
 		Articles.id AS id,
 		Article_Types.name AS type,
 		Article_Categories.name AS category,
@@ -254,7 +257,7 @@ function GetNextPreviousSql($nextPreviousTimestamp)
 		Articles.link IS NULL AND
 		Articles.timestamp {$nextPreviousTimestamp}
 	ORDER BY
-		Articles.timestamp DESC
+		Articles.timestamp {$orderBy}
 	LIMIT
 		0,
 		1

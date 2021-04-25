@@ -2,12 +2,34 @@
 
 function get_source($file)
 {
-	return "article_previewer\\{$file}";
+	return "article_previewer/{$file}";
 }
 
 function get_page_url($number)
 {
 	return "http://localhost/article_previewer.php?page={$number}";
+}
+
+$img_sources = [];
+$img_count = 0;
+function late_image($source, $class, $style)
+{
+	global
+		$img_sources,
+		$img_count;
+	
+	echo "
+	<img
+		src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+		class='{$class}'
+		style='{$style}'
+		id='img{$img_count}'
+		alt=''
+	>
+	";
+	
+	$img_sources[] = $source;
+	++$img_count;
 }
 
 $showPrevious = true;
@@ -243,5 +265,13 @@ div.content{
 			</div>
 		</div>
 	</div>
+	<?php
+		echo "\n<script>\n";
+		for($i = 0; $i < $img_count; ++$i)
+		{
+			echo "document.getElementById(\"img{$i}\").src = \"{$img_sources[$i]}\";\n";
+		}
+		echo "</script>\n";
+	?>
 </body>
 </html>

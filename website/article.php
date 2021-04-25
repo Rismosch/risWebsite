@@ -112,8 +112,8 @@ function hide_other_post()
 					
 					if($dbConn && isset($articleData))
 					{
-						$sqlNext = GetNextPreviousSql("> '{$articleData['timestamp']}'");
-						$sqlPrevious = GetNextPreviousSql("< '{$articleData['timestamp']}'");
+						$sqlNext = GetNextPreviousSql("> '{$articleData['timestamp']}'","ASC");
+						$sqlPrevious = GetNextPreviousSql("< '{$articleData['timestamp']}'","DESC");
 						echo "<p style=\"text-align:center; display:block;\">";
 						
 						// Next Button
