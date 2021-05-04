@@ -61,7 +61,7 @@ echo_head();
 							WHERE
 								Articles.category_id = Article_Categories.id AND
 								Articles.type_id = Article_Types.id AND
-								Articles.id = 12
+								Articles.id = 'i-made-a-website-only-with-notepad-plus-plus'
 							ORDER BY
 								Articles.timestamp DESC
 							LIMIT

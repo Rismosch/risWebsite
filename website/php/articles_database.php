@@ -384,7 +384,7 @@ function GetArticleData($dbConn, $articleId)
 	WHERE
 		Articles.category_id = Article_Categories.id AND
 		Articles.type_id = Article_Types.id AND
-		Articles.id = {$articleId}
+		Articles.id = '{$articleId}'
 	";
 	
 	$result = mysqli_query($dbConn, $sqlArticleData);

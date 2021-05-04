@@ -5,9 +5,34 @@ include 'php/articles_database.php';
 include 'php/util.php';
 
 if(isset($_GET["id"]))
-	$article_id = intval($_GET["id"]);
+{
+	//$article_id = intval($_GET["id"]);
+	
+	$safe_characters = 'abcdefghijklmnopqrstuvwxyz-';
+	$id_is_safe = true;
+	
+	$unsafe_article_id = $_GET["id"];
+	$unsafe_article_id_chars = str_split($unsafe_article_id);
+	foreach($unsafe_article_id_chars as $unsafe_article_id_char)
+	{
+		if(empty($unsafe_article_id_char))
+			continue;
+		
+		if(strpos($safe_characters, $unsafe_article_id_char) !== false)
+			continue;
+		
+		$id_is_safe = false;
+		break;
+	}
+	
+	if($id_is_safe)
+		$article_id = $unsafe_article_id;
+	else
+		$article_id = "error";
+	
+}
 else
-	$article_id = 0;
+	$article_id = "error";
 
 /*if(isset($_GET["page"]))
 	$fileToLoad = 'page_' . intval($_GET["page"]);
@@ -234,7 +259,7 @@ function hide_other_post()
 				else
 				{
 					echo "<p>Could not find the article you were looking for</p>";
-					$article_id = 0;
+					$article_id = "error";
 				}
 			?>
 			
