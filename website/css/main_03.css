@@ -133,7 +133,9 @@ div.content{
 	border-color: var(--pico-8-white);
 	
 	border-width: 5px;
-	
+}
+
+.auto-break{
 	overflow-wrap: break-word;
 	word-wrap: break-word;
 	-ms-word-break: break-all;
