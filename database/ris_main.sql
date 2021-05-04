@@ -13,7 +13,7 @@ USE `ris_main`;
 
 DROP TABLE IF EXISTS `Articles`;
 CREATE TABLE IF NOT EXISTS `Articles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` varchar(256) NOT NULL,
   `type_id` int(11) NOT NULL DEFAULT '0',
   `category_id` int(11) NOT NULL DEFAULT '0',
   `title` varchar(256) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `Articles` (
   PRIMARY KEY (`id`),
   KEY `type_id` (`type_id`),
   KEY `category_id` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS `Article_Categories`;
 CREATE TABLE IF NOT EXISTS `Article_Categories` (
