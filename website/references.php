@@ -87,7 +87,7 @@ echo_head();
 				
 				<tr><td><b>disqusLoader.js</b></td></tr>
 				<tr><td>by Osvaldas Valutis</td></tr>
-				<tr><td><a href="https://github.com/osvaldasvalutis/disqusLoader.js">source</a> last referenced 31th JAN, 2021; <a href="https://www.rismosch.com/licenses/discusLoader">license</a></td></tr>
+				<tr><td><a href="https://github.com/osvaldasvalutis/disqusLoader.js">source</a> last referenced 31th JAN, 2021; <a href="https://www.rismosch.com/licenses/disqusLoader">license</a></td></tr>
 				
 				<tr class="row_empty"><td></td></tr>
 				<tr class="row_empty row_devider"><td></td></tr>
