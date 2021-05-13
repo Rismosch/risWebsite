@@ -89,27 +89,6 @@ function get_source($file)
 	return "https://www.rismosch.com/articles/{$article_id}/{$file}";
 }
 
-$showPrevious = true;
-function hide_previous_post()
-{
-	global $showPrevious;
-	$showPrevious = false;
-}
-
-$showNext = true;
-function hide_next_post()
-{
-	global $showNext;
-	$showNext = false;
-}
-
-$showOther = true;
-function hide_other_post()
-{
-	global $showOther;
-	$showOther = false;
-}
-
 ?>
 </head>
 <body>
@@ -121,28 +100,17 @@ function hide_other_post()
 		
 		<div class="content" id="content">
 			<?php
-				echo "<h1>{$title}</h1>";
-				
 				$content = "articles/{$article_id}/{$fileToLoad}.php";
 				if(file_exists($content))
 				{
-					if(!is_null($articleData))
+					if(isset($articleData))
 					{
-						$timestamp = strtotime($articleData['timestamp']);
-						$newTimestampFormat = date('M jS, Y',$timestamp);
-						
-						echo "<p>{$articleData['category']} &#183; {$newTimestampFormat}</p>";
-					}
-					include $content;
-					
-					if($dbConn && isset($articleData))
-					{
-						$sqlNext = GetNextPreviousSql("> '{$articleData['timestamp']}'","ASC");
-						$sqlPrevious = GetNextPreviousSql("< '{$articleData['timestamp']}'","DESC");
-						
-						// Next Button
-						if($showNext)
+						if($dbConn)
 						{
+							$sqlNext = GetNextPreviousSql("> '{$articleData['timestamp']}'","ASC");
+							$sqlPrevious = GetNextPreviousSql("< '{$articleData['timestamp']}'","DESC");
+							
+							// Next Article Data
 							$result = mysqli_query($dbConn,$sqlNext);
 							$numRows = mysqli_num_rows($result);
 							if($numRows > 0)
@@ -157,62 +125,18 @@ function hide_other_post()
 								else
 									$link = "https://www.rismosch.com/article?id={$row['id']}";
 								
-								$thumbnail = GetThumbnailPath($row);
-								
-								echo "<p style=\"border-bottom-width: 5px; border-bottom-style: dashed; border-bottom-color:var(--pico-8-white);\"></p>";
-								echo"
-								<table style=\"width: 100%;\">
-									<tr><td><a title=\"{$row['title']}\" href=\"{$link}\" class=\"articles_entry_link\">
-									<div class=\"articles_mobile\">
-										<table class=\"articles_entry\">
-											<tr>
-												<td>
-													<div class=\"articles_thumbnail_wrapper_outside\">
-														<div class=\"articles_thumbnail_wrapper_inside\">
-															"; late_image($thumbnail, "articles_thumbnail", ""); echo "
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class=\"articles_thumbnail_information\">
-														<h3>Next Post: {$row['title']}</h3>
-														<p>{$row['category']} &#183; {$newTimestampFormat}</p>
-													</div>
-												</td>
-											</tr>
-										</table>
-									</div>
-									<div class=\"articles_desktop\">
-										<table class=\"articles_entry\">
-											<tr>
-												<td class=\"articles_thumbnail_row_desktop\">
-													<div class=\"articles_thumbnail_wrapper\">
-														"; late_image($thumbnail, "articles_thumbnail", ""); echo "
-													</div>
-												</td>
-												<td>
-													<div class=\"articles_thumbnail_information\">
-														<h3>Next Post: {$row['title']}</h3>
-														<br>
-														<p>{$row['category']} &#183; {$newTimestampFormat}</p>
-													</div>
-												</td>
-											</tr>
-										</table>
-									</div>
-									</a></td></tr>
-								</table>
-								";
-								
-								echo "<p style=\"border-bottom-width: 5px; border-bottom-style: dashed; border-bottom-color:var(--pico-8-white);\"></p>";
+								$nextArticleData = array(
+									'id' => $row['id'],
+									'type' => $row['type'],
+									'category' => $row['category'],
+									'title' => $row['title'],
+									'timestamp' => $newTimestampFormat,
+									'link' => $link,
+									'thumbnail_path' => GetThumbnailPath($row),
+								);
 							}
-						}
-						
-						// Previous Button
-						if($showPrevious)
-						{
+							
+							// Previous Article Data
 							$result = mysqli_query($dbConn,$sqlPrevious);
 							$numRows = mysqli_num_rows($result);
 							if($numRows > 0)
@@ -227,38 +151,145 @@ function hide_other_post()
 								else
 									$link = "https://www.rismosch.com/article?id={$row['id']}";
 								
-								$thumbnail = GetThumbnailPath($row);
-								
-								echo "
-									<p>
-										<a
-											style=\"display:inline-block; margin-top: 5px;\"
-											href=\"{$link}\">
-											Previous Post: {$row['title']}
-										</a>
-									</p>
-								";
+								$prevArticleData = array(
+									'id' => $row['id'],
+									'type' => $row['type'],
+									'category' => $row['category'],
+									'title' => $row['title'],
+									'timestamp' => $newTimestampFormat,
+									'link' => $link,
+									'thumbnail_path' => GetThumbnailPath($row),
+								);
 							}
 						}
 						
-						// Other Button
-						if($showOther)
-						{
-							echo "
-								<p>
-									<a
-										style=\"display:inline-block; margin-top: 5px;\"
-										href=\"https://www.rismosch.com/blog?category={$articleData['category_id']}\">
-										More \"{$articleData['category']}\"-related Blog Posts
-									</a>
-								</p>
-							";
-						}
+						$timestamp = strtotime($articleData['timestamp']);
+						$newTimestampFormat = date('M jS, Y',$timestamp);
+						
+						// Article Links
+						echo "<p style=\"text-align: center; color: var(--pico-8-blue);\"><span style=\"float: left; text-align: left;\">";
+						
+						// Previous
+						if(isset($prevArticleData))
+							echo "<a title=\"{$prevArticleData['title']}\" href=\"{$prevArticleData['link']}\">";
+						
+						echo "&lt; prev";
+						
+						if(isset($prevArticleData))
+							echo "</a>";
+						
+						// Permalink
+						echo "</span><a title=\"{$title}\" href=\"\">permalink</a><span style=\"float: right; text-align: right;\">";
+						
+						// Next
+						if(isset($nextArticleData))
+							echo "<a title=\"{$nextArticleData['title']}\" href=\"{$nextArticleData['link']}\" style=\"margin-right: 5px;\">";
+						
+						echo "next &gt;";
+						
+						if(isset($nextArticleData))
+							echo "</a>";
+						
+						echo "</span></p>";
+						
+						// Title
+						echo "<h1>{$title}</h1><p>{$articleData['category']} &#183; {$newTimestampFormat}</p>";
 					}
+					
+					// Content
+					include $content;
+					
+					// Foot Article Widgets
+					if(isset($nextArticleData))
+					{
+						echo "<p style=\"border-bottom-width: 5px; border-bottom-style: dashed; border-bottom-color:var(--pico-8-white);\"></p>";
+						echo"
+						<table style=\"width: 100%;\">
+							<tr><td><a title=\"{$nextArticleData['title']}\" href=\"{$nextArticleData['link']}\" class=\"articles_entry_link\">
+							<div class=\"articles_mobile\">
+								<table class=\"articles_entry\">
+									<tr>
+										<td>
+											<div class=\"articles_thumbnail_wrapper_outside\">
+												<div class=\"articles_thumbnail_wrapper_inside\">
+													"; late_image($nextArticleData['thumbnail_path'], "articles_thumbnail", ""); echo "
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class=\"articles_thumbnail_information\">
+												<h3>Next Post: {$nextArticleData['title']}</h3>
+												<p>{$nextArticleData['category']} &#183; {$nextArticleData['timestamp']}</p>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</div>
+							<div class=\"articles_desktop\">
+								<table class=\"articles_entry\">
+									<tr>
+										<td class=\"articles_thumbnail_row_desktop\">
+											<div class=\"articles_thumbnail_wrapper\">
+												"; late_image($nextArticleData['thumbnail_path'], "articles_thumbnail", ""); echo "
+											</div>
+										</td>
+										<td>
+											<div class=\"articles_thumbnail_information\">
+												<h3>Next Post: {$nextArticleData['title']}</h3>
+												<br>
+												<p>{$nextArticleData['category']} &#183; {$nextArticleData['timestamp']}</p>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</div>
+							</a></td></tr>
+						</table>
+						";
+					}
+					
+					echo "<p style=\"border-bottom-width: 5px; border-bottom-style: dashed; border-bottom-color:var(--pico-8-white);\"></p>";
+					
+					if(isset($prevArticleData))
+					{
+						echo "
+							<table>
+								<tr>
+									<td>&lt;</td>
+									<td><a title=\"{$prevArticleData['title']}\" style=\"display:inline-block; margin-top: 5px;\" href=\"{$prevArticleData['link']}\">Previous Post: {$prevArticleData['title']}</a></td>
+								</tr>
+							</table>
+						";
+					}
+					
+					if(isset($articleData))
+					{
+						echo "
+							<table>
+								<tr>
+									<td>&gt;</td>
+									<td><a title=\"Blog\" style=\"display:inline-block; margin-top: 5px;\" href=\"https://www.rismosch.com/blog?category={$articleData['category_id']}\">More {$articleData['category']} related Posts</a></td>
+								</tr>
+							</table>
+						";
+					}
+					
+					echo "
+						<table>
+							<tr>
+								<td>&gt;</td>
+								<td><a title=\"{$title}\" href=\"\">Permalink to this Post</a></td>
+							</tr>
+						</table>
+					";
+					
+					echo "<p style=\"border-bottom-width: 5px; border-bottom-style: dashed; border-bottom-color:var(--pico-8-white);\"></p>";
 				}
 				else
 				{
-					echo "<p>Could not find the article you were looking for</p>";
+					echo "<h1>{$title}</h1><p>Could not find the article you were looking for</p>";
 					$article_id = "error";
 				}
 			?>
