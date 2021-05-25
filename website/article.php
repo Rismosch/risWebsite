@@ -92,6 +92,7 @@ function get_source($file)
 ?>
 </head>
 <body>
+	<div style="position: absolute; z-index: 42; display: none; color:var(--pico-8-cyan); background-color:var(--pico-8-white); padding-left: 5px; padding-right: 5px; user-select: none; -moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none; -o-user-select: none;" id="copied_to_clipboard">Copied!</div>
 	<div class="background">
 		<?php
 			echo_banner();
@@ -179,7 +180,7 @@ function get_source($file)
 							echo "</a>";
 						
 						// Permalink
-						echo "</span><a title=\"{$title}\" href=\"\">permalink</a><span style=\"float: right; text-align: right;\">";
+						echo "</span><a onclick=\"CopyPermalink(event)\" style=\"cursor: pointer; text-decoration: underline;\">permalink</a><span style=\"float: right; text-align: right;\">";
 						
 						// Next
 						if(isset($nextArticleData))
@@ -280,7 +281,7 @@ function get_source($file)
 						<table>
 							<tr>
 								<td>&gt;</td>
-								<td><a title=\"{$title}\" href=\"\">Permalink to this Post</a></td>
+								<td><span style=\"color:var(--pico-8-blue);\"><a onclick=\"CopyPermalink(event)\" style=\"cursor: pointer; text-decoration: underline;\">permalink</a></span></td>
 							</tr>
 						</table>
 					";
@@ -367,6 +368,79 @@ function get_source($file)
 		{
 			document.getElementById("data-collection-warning").classList.remove("invisible");
 			document.getElementById("comments_block").classList.add("invisible");
+		}
+		
+		var copied_to_clipboard_animation_id;
+		var copied_to_clipboard_currentFrame = 0;
+		var copied_to_clipboard_animationIsPlaying = false;
+		
+		var copied_to_clipboard = document.getElementById("copied_to_clipboard");
+		var positionX = 0;
+		var positionY = 0;
+		
+		function CopyPermalink(event)
+		{
+			// Copy Text
+			var textArea = document.createElement("textarea");
+			
+			textArea.style.position = 'fixed';
+			textArea.style.top = 0;
+			textArea.style.left = 0;
+			textArea.style.width = '2em';
+			textArea.style.height = '2em';
+			textArea.style.padding = 0;
+			textArea.style.border = 'none';
+			textArea.style.outline = 'none';
+			textArea.style.boxShadow = 'none';
+			textArea.style.background = 'transparent';
+			
+			textArea.value = "https://www.rismosch.com/article?id="<?php echo "+\"{$article_id}\"";?>;
+			
+			document.body.appendChild(textArea);
+			textArea.focus();
+			textArea.select();
+			
+			try {
+				var successful = document.execCommand('copy');
+				var msg = successful ? 'successful' : 'unsuccessful';
+				console.log('Copying text command was ' + msg);
+			} catch (err) {
+				console.log('Oops, unable to copy');
+			}
+			
+			document.body.removeChild(textArea);
+			
+			// Play Animation
+			positionX = event.clientX;
+			positionY = event.clientY;
+			
+			copied_to_clipboard_currentFrame = 0;
+			if(!copied_to_clipboard_animationIsPlaying)
+				copied_to_clipboard_animation_id = setInterval(animate_clipboard, 10);
+			
+			copied_to_clipboard_animationIsPlaying = true;
+		}
+		
+		function animate_clipboard()
+		{
+			++copied_to_clipboard_currentFrame;
+			
+			var x = positionX;
+			var y = positionY + window.scrollY - copied_to_clipboard_currentFrame;
+			
+			if(copied_to_clipboard_currentFrame < 35)
+			{
+				copied_to_clipboard.style.top = y+"px";
+				copied_to_clipboard.style.left = x+"px";
+				copied_to_clipboard.style.display = "block";
+			}
+			
+			if(copied_to_clipboard_currentFrame >= 150)
+			{
+				clearInterval(copied_to_clipboard_animation_id);
+				copied_to_clipboard_animationIsPlaying = false;
+				copied_to_clipboard.style.display = "none";
+			}
 		}
 		
 	</script>
