@@ -92,7 +92,7 @@ function get_source($file)
 ?>
 </head>
 <body>
-	<div style="position: absolute; z-index: 42; display: none; color:var(--pico-8-cyan); background-color:var(--pico-8-white); padding-left: 5px; padding-right: 5px; user-select: none; -moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none; -o-user-select: none;" id="copied_to_clipboard">Copied!</div>
+	<div class="unselectable" style="position: absolute; z-index: 42; display: none; color:var(--pico-8-cyan); background-color:var(--pico-8-white); padding-left: 5px; padding-right: 5px;" id="copied_to_clipboard">Copied!</div>
 	<div class="background">
 		<?php
 			echo_banner();
@@ -168,28 +168,42 @@ function get_source($file)
 						$newTimestampFormat = date('M jS, Y',$timestamp);
 						
 						// Article Links
-						echo "<p style=\"text-align: center; color: var(--pico-8-blue);\"><span style=\"float: left; text-align: left;\">";
+						echo "<p style=\"text-align: center;\">";
 						
 						// Previous
+						echo "<span style=\"float: left; text-align: left;\">";
+						
 						if(isset($prevArticleData))
 							echo "<a title=\"{$prevArticleData['title']}\" href=\"{$prevArticleData['link']}\">";
+						else
+							echo "<span class=\"unselectable\">";
 						
 						echo "&lt; prev";
 						
 						if(isset($prevArticleData))
 							echo "</a>";
+						else
+							echo "</span>";
+						
+						echo "</span>";
 						
 						// Permalink
-						echo "</span><a onclick=\"CopyPermalink(event)\" style=\"cursor: pointer; text-decoration: underline;\">permalink</a><span style=\"float: right; text-align: right;\">";
+						echo "<span style=\"color: var(--pico-8-blue);\"><a onclick=\"CopyPermalink(event)\" style=\"cursor: pointer; text-decoration: underline;\">permalink</a></span>";
 						
 						// Next
+						echo "<span style=\"float: right; text-align: right;\">";
+						
 						if(isset($nextArticleData))
 							echo "<a title=\"{$nextArticleData['title']}\" href=\"{$nextArticleData['link']}\" style=\"margin-right: 5px;\">";
+						else
+							echo "<span class=\"unselectable\">";
 						
 						echo "next &gt;";
 						
 						if(isset($nextArticleData))
 							echo "</a>";
+						else
+							echo "</span>";
 						
 						echo "</span></p>";
 						
@@ -412,7 +426,7 @@ function get_source($file)
 			
 			// Play Animation
 			positionX = event.clientX;
-			positionY = event.clientY;
+			positionY = event.clientY + window.scrollY;
 			
 			copied_to_clipboard_currentFrame = 0;
 			if(!copied_to_clipboard_animationIsPlaying)
@@ -426,7 +440,7 @@ function get_source($file)
 			++copied_to_clipboard_currentFrame;
 			
 			var x = positionX;
-			var y = positionY + window.scrollY - copied_to_clipboard_currentFrame;
+			var y = positionY - copied_to_clipboard_currentFrame;
 			
 			if(copied_to_clipboard_currentFrame < 35)
 			{

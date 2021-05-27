@@ -111,6 +111,14 @@ a.button_inactive:active{
 	display: none;
 }
 
+.unselectable{
+	user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
+}
+
 /* BANNER --------------------------------------------------------------------------------------------------------------------------------*/
 .banner{
 	background-image: url('../assets/banner_spritesheet_2.png');
