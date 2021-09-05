@@ -176,7 +176,7 @@ function get_source($file)
 						if(isset($prevArticleData))
 							echo "<a title=\"{$prevArticleData['title']}\" href=\"{$prevArticleData['link']}\">";
 						else
-							echo "<span class=\"unselectable\">";
+							echo "<span class=\"unselectable\" style=\"color:var(--pico-8-light-grey)\">";
 						
 						echo "&lt; prev";
 						
@@ -196,7 +196,7 @@ function get_source($file)
 						if(isset($nextArticleData))
 							echo "<a title=\"{$nextArticleData['title']}\" href=\"{$nextArticleData['link']}\" style=\"margin-right: 5px;\">";
 						else
-							echo "<span class=\"unselectable\">";
+							echo "<span class=\"unselectable\" style=\"color:var(--pico-8-light-grey)\">";
 						
 						echo "next &gt;";
 						

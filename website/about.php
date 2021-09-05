@@ -48,7 +48,7 @@ echo_head();
 			
 			<table>
 				<tr>
-					<td>My music is very synth-heavy, with fast and crazy drum breaks. I describe my music as an amalgamation of early Drum and Bass/Jungle and Punk Rock. Also, I love distortion.</td>
+					<td>My music is very synth-heavy, with fast and crazy drum breaks. I make Electronica, and I like to describe my music as an amalgamation of early Drum and Bass/Jungle and Punk Rock. Also, I love distortion.</td>
 					<td><?php late_image("assets/icon_8bit/synth.png", "about_picture pixel_image", "");?></td>
 				</tr>
 			</table>
