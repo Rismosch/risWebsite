@@ -221,10 +221,11 @@ function printArticles($dbConn, $pageName)
 						</tr>
 					</table>
 				</div>
-				</a></td></tr>
-				<tr class=\"row_empty\"><td></td></tr>
-				<tr class=\"row_empty row_devider\"><td></td></tr>
-				";
+			</a></td></tr>
+			<tr class=\"row_empty\"><td></td></tr>
+			<tr class=\"row_empty row_devider\"><td>
+			</td></tr>
+			";
 		}
 		echo "
 			</table>
