@@ -8,7 +8,7 @@ if(isset($_GET["id"]))
 {
 	//$article_id = intval($_GET["id"]);
 	
-	$safe_characters = 'abcdefghijklmnopqrstuvwxyz-';
+	$safe_characters = 'abcdefghijklmnopqrstuvwxyz-0123456789';
 	$id_is_safe = true;
 	
 	$unsafe_article_id = $_GET["id"];
