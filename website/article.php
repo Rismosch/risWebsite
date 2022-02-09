@@ -102,6 +102,7 @@ function get_source($file)
 		<div class="content" id="content">
 			<?php
 				$content = "articles/{$article_id}/{$fileToLoad}.php";
+				
 				if(file_exists($content))
 				{
 					if(isset($articleData))

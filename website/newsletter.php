@@ -62,6 +62,8 @@ if(!empty($_POST))
 			{
 				$row = mysqli_fetch_assoc($result);
 				$id = $row['id'];
+				$confirmed = $row['confirmed'];
+				mysqli_query($databaseConnection,"UPDATE Emails SET timestamp=CURRENT_TIMESTAMP WHERE id = '{$id}'");
 			}
 			else
 			{
@@ -173,7 +175,8 @@ echo_head();
 			<div style="display:<?php if($subscribe_successful) echo "block"; else echo "none"?>;">
 			
 				<p style="color: var(--pico-8-green);">Success &#10003;</p>
-				<p>Thanks for signing up! :)<br>I have sent you a message to confirm your email. This may take a minute or two.</p>
+				<p>Thanks for signing up! :)<br>I have sent you a message to confirm your email. This may take up to 5 minutes.</p>
+				<p>Please make sure that you also check your spam folder!</p>
 				<p>The confirmation email will expire in 24 hours. Once it's expired, you will be automatically unsubscribed from my newsletter.</p>
 				
 			</div>
