@@ -62,7 +62,6 @@ if(!empty($_POST))
 			{
 				$row = mysqli_fetch_assoc($result);
 				$id = $row['id'];
-				$confirmed = $row['confirmed'];
 				mysqli_query($databaseConnection,"UPDATE Emails SET timestamp=CURRENT_TIMESTAMP WHERE id = '{$id}'");
 			}
 			else

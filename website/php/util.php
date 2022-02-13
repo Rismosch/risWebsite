@@ -134,12 +134,15 @@ function echo_foot($uses_captcha)
 			<a title="YouTube" href="https://www.youtube.com/channel/UCrWSfmTaXTN_LzEsVRKNJTw">
 				'; late_image("assets/icon_social/youtube.webp", "social_icon", ""); echo '
 			</a>
+			<a title="Twitter" href="https://twitter.com/rismosch">
+				'; late_image("assets/icon_social/twitter.webp", "social_icon", ""); echo '
+			</a>
 			<a title="Bandcamp" href="https://rismosch.bandcamp.com">
 				'; late_image("assets/icon_social/bandcamp.webp", "social_icon", ""); echo '
 			</a>
-			<a title="itch.io" href="https://rismosch.itch.io/">
-				'; late_image("assets/icon_social/itch_io.webp", "social_icon", ""); echo '
-			</a>
+			<!--<a title="itch.io" href="https://rismosch.itch.io/">
+				'; /*late_image("assets/icon_social/itch_io.webp", "social_icon", "");*/ echo '
+			</a>-->
 			<a title="GitHub" href="https://github.com/Rismosch">
 				'; late_image("assets/icon_social/github.webp", "social_icon", ""); echo '
 			</a>

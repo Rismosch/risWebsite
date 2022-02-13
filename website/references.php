@@ -32,7 +32,7 @@ echo_head();
 			
 			<h2>Used Logos</h2>
 			
-			<p>The 4 social-media logos below each site on rismosch.com were not designed by me and don't belong to me. Each logo has been taken from the official brand-resources site of the respective platform.</p>
+			<p>The social-media logos below each site on rismosch.com were not designed by me and don't belong to me. Each logo has been taken from the official brand-resources site of the respective platform.</p>
 			
 			<table class="licenses_table">
 				<tr class="row_empty row_devider"><td></td></tr>
@@ -43,17 +43,23 @@ echo_head();
 				<tr class="row_empty"><td></td></tr>
 				<tr class="row_empty row_devider"><td></td></tr>
 				
+				<tr><td><b>Twitter</b></td></tr>
+				<tr><td><a href="https://about.twitter.com/en/who-we-are/brand-toolkit">source</a> last referenced 13th FEB, 2022</td></tr>
+				
+				<tr class="row_empty"><td></td></tr>
+				<tr class="row_empty row_devider"><td></td></tr>
+				
 				<tr><td><b>Bandcamp</b></td></tr>
 				<tr><td><a href="https://bandcamp.com/buttons">source</a> last referenced 24th OCT, 2020</td></tr>
 				
 				<tr class="row_empty"><td></td></tr>
 				<tr class="row_empty row_devider"><td></td></tr>
 				
-				<tr><td><b>itch.io</b></td></tr>
+				<!--<tr><td><b>itch.io</b></td></tr>
 				<tr><td><a href="https://itch.io/press-kit">source</a> last referenced 24th OCT, 2020</td></tr>
 				
 				<tr class="row_empty"><td></td></tr>
-				<tr class="row_empty row_devider"><td></td></tr>
+				<tr class="row_empty row_devider"><td></td></tr>-->
 				
 				<tr><td><b>GitHub</b></td></tr>
 				<tr><td><a href="https://github.com/logos">source</a> last referenced 24th OCT, 2020</td></tr>
