@@ -30,7 +30,7 @@ echo_head();
 			<h1>About</h1>
 			<table>
 				<tr>
-					<td><?php late_image("assets/profile_picture.webp", "profile_picture", "");?></td>
+					<td><?php late_image("assets/profile_pictures/2020.webp", "profile_picture", "");?></td>
 					<td>Hello Internet, my name is Rismosch, or B. Eng. Simon Sutoris. I describe myself as a programmer and a music producer.</td>
 				</tr>
 			</table>
