@@ -110,10 +110,19 @@ function late_image($source, $class, $style)
 	<img
 		src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
 		class='{$class}'
-		style='{$style}'
+		style='display: none; {$style}'
 		id='img{$img_count}'
 		alt=''
 	>
+	
+	<noscript>
+	<img
+		src='{$source}'
+		class='{$class}'
+		style='display: block; {$style}'
+		alt=''
+	>
+	</noscript>
 	";
 	
 	$img_sources[] = $source;
@@ -180,6 +189,7 @@ function echo_foot($uses_captcha)
 	for($i = 0; $i < $img_count; ++$i)
 	{
 		echo "document.getElementById(\"img{$i}\").src = \"{$img_sources[$i]}\";\n";
+		echo "document.getElementById(\"img{$i}\").style.display = \"block\";\n";
 	}
 	echo "</script>\n";
 }
