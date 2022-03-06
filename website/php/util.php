@@ -99,18 +99,20 @@ function echo_selector($active_tab)
 }
 
 $img_sources = [];
+$img_styles = [];
 $img_count = 0;
 function late_image($source, $class, $style)
 {
 	global
 		$img_sources,
+		$img_styles,
 		$img_count;
 	
 	echo "
 	<img
 		src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
 		class='{$class}'
-		style='display: none; {$style}'
+		style='display: none;'
 		id='img{$img_count}'
 		alt=''
 	>
@@ -119,13 +121,14 @@ function late_image($source, $class, $style)
 	<img
 		src='{$source}'
 		class='{$class}'
-		style='display: block; {$style}'
+		style='{$style}'
 		alt=''
 	>
 	</noscript>
 	";
 	
 	$img_sources[] = $source;
+	$img_styles[] = $style;
 	++$img_count;
 }
 
@@ -183,13 +186,17 @@ function echo_foot($uses_captcha)
 	// late loading images
 	global
 		$img_sources,
+		$img_styles,
 		$img_count;
 	
 	echo "\n<script>\n";
 	for($i = 0; $i < $img_count; ++$i)
 	{
-		echo "document.getElementById(\"img{$i}\").src = \"{$img_sources[$i]}\";\n";
-		echo "document.getElementById(\"img{$i}\").style.display = \"block\";\n";
+		echo "
+		var image = document.getElementById(\"img{$i}\");
+		image.src = \"{$img_sources[$i]}\";
+		image.style = \"{$img_styles[$i]}\";
+		";
 	}
 	echo "</script>\n";
 }
