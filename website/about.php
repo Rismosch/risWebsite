@@ -64,8 +64,6 @@ echo_head();
 			
 			<br>
 			
-			<p></p>
-			<br>
 			<p>German is my mother language, and my English is fairly decent.</p>
 			
 			<br>

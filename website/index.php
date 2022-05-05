@@ -152,7 +152,7 @@ echo_head();
 			<!--<h2>Latest Blog Post</h2>
 			<table style="width: 100%;">
 				<tr class="row_empty row_devider"><td></td></tr>
-				<?php
+				<?php echo "<tr><td>query here...</td></tr>";/*
 					$dbConn = mysqli_connect($dbHost, $dbSelectUsername, $dbSelectPassword, $dbName);
 					
 					if($dbConn)
@@ -252,7 +252,7 @@ echo_head();
 					else{
 						echo "<h3>:(</h3><p>Error while loading latest article.</p>";
 					}
-				?>
+				*/?>
 			</table>-->
 		</div>
 		
