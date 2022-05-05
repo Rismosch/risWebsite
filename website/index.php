@@ -63,6 +63,7 @@ echo_head();
 							WHERE
 								Articles.category_id = Article_Categories.id AND
 								Articles.type_id = Article_Types.id AND (
+									Articles.id = 'crisis' OR
 									Articles.id = 'why-people-love-bad-art' OR
 									Articles.id = 'i-made-a-website-only-with-notepad-plus-plus'
 								)
@@ -148,10 +149,10 @@ echo_head();
 			<br>
 			<br>
 			
-			<h2>Latest Blog Post</h2>
+			<!--<h2>Latest Blog Post</h2>
 			<table style="width: 100%;">
 				<tr class="row_empty row_devider"><td></td></tr>
-				<?php
+				<?php/*
 					$dbConn = mysqli_connect($dbHost, $dbSelectUsername, $dbSelectPassword, $dbName);
 					
 					if($dbConn)
@@ -250,9 +251,9 @@ echo_head();
 					}
 					else{
 						echo "<h3>:(</h3><p>Error while loading latest article.</p>";
-					}
+					}*/
 				?>
-			</table>
+			</table>-->
 		</div>
 		
 		<?php echo_foot(false); ?>
