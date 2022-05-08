@@ -48,7 +48,7 @@ echo_head();
 			
 			<table>
 				<tr>
-					<td>My music is very synth-heavy, with fast and crazy drum breaks. I make Electronica, and I like to describe my music as an amalgamation of early Drum and Bass/Jungle and Punk Rock. Also, I love distortion.</td>
+					<td>My music is very synth-heavy, with fast and crazy drum breaks. I make Electronica, and I like to describe my music as an amalgamation of Drum and Bass and Punk. Also, I love distorted sounds.</td>
 					<td><?php late_image("assets/icon_8bit/synth.png", "about_picture pixel_image", "");?></td>
 				</tr>
 			</table>
@@ -97,7 +97,6 @@ echo_head();
 						<p>
 							C/C++, <br>
 							Java, <br>
-							Python, <br>
 							HTML, <br>
 							CSS, <br>
 							JavaScript, <br>
