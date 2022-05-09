@@ -20,7 +20,7 @@ function echo_head()
 		<meta name="msapplication-TileColor" content="#00aba9">
 		
 		'; if(!$isMobile) echo '<link rel="stylesheet" href="css/desktop.css">'; echo '
-		<link rel="stylesheet" href="css/main_07.css">
+		<link rel="stylesheet" href="css/main_09.css">
 		
 		<script src="3rd_party_libraries/disqusloader.js"></script>
 		<script src="javascript/util.js"></script>

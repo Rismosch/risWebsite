@@ -169,7 +169,7 @@ function get_source($file)
 						$newTimestampFormat = date('M jS, Y',$timestamp);
 						
 						// Article Links
-						echo "<p style=\"text-align: center;\">";
+						echo "<p style=\"text-align: center; margin-top: 13px;\">";
 						
 						// Previous
 						echo "<span style=\"float: left; text-align: left;\">";
@@ -179,7 +179,7 @@ function get_source($file)
 						else
 							echo "<span class=\"unselectable\" style=\"color:var(--pico-8-light-grey)\">";
 						
-						echo "&lt; prev";
+						echo "&#9664; prev";
 						
 						if(isset($prevArticleData))
 							echo "</a>";
@@ -199,7 +199,7 @@ function get_source($file)
 						else
 							echo "<span class=\"unselectable\" style=\"color:var(--pico-8-light-grey)\">";
 						
-						echo "next &gt;";
+						echo "next &#9654;";
 						
 						if(isset($nextArticleData))
 							echo "</a>";
@@ -273,8 +273,8 @@ function get_source($file)
 						echo "
 							<table>
 								<tr>
-									<td>&lt;</td>
-									<td><a title=\"{$prevArticleData['title']}\" style=\"display:inline-block; margin-top: 5px;\" href=\"{$prevArticleData['link']}\">Previous Post: {$prevArticleData['title']}</a></td>
+									<td>&#9664;</td>
+									<td><a title=\"{$prevArticleData['title']}\" style=\"display:inline-block;\" href=\"{$prevArticleData['link']}\">Previous Post: {$prevArticleData['title']}</a></td>
 								</tr>
 							</table>
 						";
@@ -283,19 +283,19 @@ function get_source($file)
 					if(isset($articleData))
 					{
 						echo "
-							<table>
+							<table style=\"margin-top:10px;\">
 								<tr>
-									<td>&gt;</td>
-									<td><a title=\"Blog\" style=\"display:inline-block; margin-top: 5px;\" href=\"https://www.rismosch.com/blog?category={$articleData['category_id']}\">More {$articleData['category']} related Posts</a></td>
+									<td>&#9654;</td>
+									<td><a title=\"Blog\" style=\"display:inline-block;\" href=\"https://www.rismosch.com/blog?category={$articleData['category_id']}\">More <b>{$articleData['category']}</b> related Posts</a></td>
 								</tr>
 							</table>
 						";
 					}
 					
 					echo "
-						<table>
+						<table style=\"margin-top:10px;\">
 							<tr>
-								<td>&gt;</td>
+								<td>&#9654;</td>
 								<td><span style=\"color:var(--pico-8-blue);\"><a onclick=\"CopyPermalink(event)\" style=\"cursor: pointer; text-decoration: underline;\">permalink</a></span></td>
 							</tr>
 						</table>
