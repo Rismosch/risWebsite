@@ -63,7 +63,7 @@ echo_head();
 							WHERE
 								Articles.category_id = Article_Categories.id AND
 								Articles.type_id = Article_Types.id AND (
-									Articles.id = 'crisis' OR
+									Articles.id = 'post-crisis' OR
 									Articles.id = 'why-people-love-bad-art' OR
 									Articles.id = 'i-made-a-website-only-with-notepad-plus-plus'
 								)

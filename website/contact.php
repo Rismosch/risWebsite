@@ -102,14 +102,14 @@ if(!empty($_POST))
 			$mail->Port = 25;
 			
 			// Recipients
-			$mail->setFrom($emailSanitized, $nameSanitized);
+			$mail->setFrom($contactEmail, 'risWebsite');
 			$mail->addAddress($contactEmail, 'Rismosch');
 			
 			// Content
 			$mail->CharSet = 'UTF-8';
 			$mail->Encoding = 'base64';
-			$mail->Subject = $subjectSanitized;
-			$mail->Body    = $messageSanitized;
+			$mail->Subject = 'new message from contact form!';
+			$mail->Body    = "name:{$nameSanitized}\nemail:{$emailSanitized}\nsubject:{$subjectSanitized}\nmessage:\n\n{$messageSanitized}";
 			
 			$mail->send();
 			
