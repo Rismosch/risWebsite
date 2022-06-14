@@ -189,7 +189,7 @@ function get_source($file)
 						echo "</span>";
 						
 						// Permalink
-						echo "<span style=\"color: var(--pico-8-blue);\"><a onclick=\"CopyPermalink(event)\" style=\"cursor: pointer; text-decoration: underline;\">permalink</a></span>";
+						echo "<span style=\"color: var(--pico-8-blue); display: none;\" id=\"permalink_header\"><a onclick=\"CopyPermalink(event)\" style=\"cursor: pointer; text-decoration: underline;\">permalink</a></span>";
 						
 						// Next
 						echo "<span style=\"float: right; text-align: right;\">";
@@ -209,7 +209,7 @@ function get_source($file)
 						echo "</span></p>";
 						
 						// Title
-						echo "<h1>{$title}</h1><p>{$articleData['category']} &#183; {$newTimestampFormat}</p>";
+						echo "<noscript><br></noscript><h1>{$title}</h1><p>{$articleData['category']} &#183; {$newTimestampFormat}</p>";
 					}
 					
 					// Content
@@ -293,7 +293,7 @@ function get_source($file)
 					}
 					
 					echo "
-						<table style=\"margin-top:10px;\">
+						<table style=\"margin-top:10px; display: none;\" id=\"permalink_foot\">
 							<tr>
 								<td>&#9654;</td>
 								<td><span style=\"color:var(--pico-8-blue);\"><a onclick=\"CopyPermalink(event)\" style=\"cursor: pointer; text-decoration: underline;\">permalink</a></span></td>
@@ -336,6 +336,9 @@ function get_source($file)
 	
 	<script>
 		
+		document.getElementById("permalink_header").style.display = "inline";
+		document.getElementById("permalink_foot").style.display = "inline-block";
+
 		const disqusDataCollectionCookieName = "DisqusDataCollectionWarning";
 		
 		ShowDisqusDataCollectionWarning();
