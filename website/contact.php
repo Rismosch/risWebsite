@@ -156,59 +156,67 @@ echo_head();
 			
 			<h1>Contact Me</h1>
 			
-			<div style="display:<?php if($contact_successful) echo "block"; else echo "none"?>;">
-			
-				<p style="color: var(--pico-8-green);">Success &#10003;</p>
-				<p>I have received your message! I will try to come back to you as soon as possible :)</p>
+			<div style="display:none" id="javascript_content">
+
+				<div style="display:<?php if($contact_successful) echo "block"; else echo "none"?>;">
 				
-			</div>
-			
-			<div style="display:<?php if($contact_successful) echo "none"; else echo "block"?>;">
-				<form action="contact" method="POST" id="contact-form">
-					<div>
-						
-						<p>Name <span class="contact_error" id="display_error_name"><?php if(isset($errorName)) echo $errorName; ?></span></p>
-						<input name="name" class="contact_input" id="contact_namefield" type="text" value = "<?php if(isset($nameUnsafe)) echo $nameUnsafe; ?>">
-						
-						<p>Email <span class="contact_error" id="display_error_email"><?php if(isset($errorEmail)) echo $errorEmail; ?></span></p>
-						<input name="email" class="contact_input" id="contact_emailfield" type="text" value = "<?php if(isset($emailUnsafe)) echo $emailUnsafe; ?>">
-						
-						<p>Subject <span class="contact_error" id="display_error_subject"><?php if(isset($errorSubject)) echo $errorSubject; ?></span></p>
-						<input name="subject" class="contact_input" id="contact_subjectfield" type="text" value = "<?php if(isset($subjectUnsafe)) echo $subjectUnsafe; ?>">
-						
-						<p>Message <span class="contact_error" id="display_error_message"><?php if(isset($errorMessage)) echo $errorMessage; ?></span></p>
-						<textarea name="message" class="contact_input" id="contact_textarea" rows="10" cols="35"><?php if(isset($messageUnsafe)) echo $messageUnsafe; ?></textarea>
-						<p id="contact_textarea_count">0/999</p>
-						
-						<p>
-							<table>
-								<tr>
-									<td><img id="privacy_checkbox" class="checkbox" src="assets/icon_8bit/checkbox_inactive.png" onclick="onPrivacyCheckboxToggle()"></td>
-									<td>I have read and accept the <a href="https://www.rismosch.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></td>
-								</tr>
-							</table>
-						</p>
-						
-						<p><span class="contact_error"><?php if(isset($errorContact)) echo $errorContact; ?></span></p>
-						<p>
-							<button
-								class="g-recaptcha"
-								id="submit_button"
-								type="submit"
-								style="display:none;"
-								data-sitekey="<?php echo $reCAPTCHA_web_key;?>"
-								data-callback='onRecaptchaSuccess'
-							>
-							Send
-							</button>
+					<p style="color: var(--pico-8-green);">Success &#10003;</p>
+					<p>I have received your message! I will try to come back to you as soon as possible :)</p>
+					
+				</div>
+				
+				<div style="display:<?php if($contact_successful) echo "none"; else echo "block"?>;">
+					<form action="contact" method="POST" id="contact-form">
+						<div>
 							
-							<a class="button button_inactive" id="submit_button_inactive">Send</a>
-						</p>
-						
-						<img id="loading_animation" class="loading_animation pixel_image invisible" src="assets/icon_8bit/loading.gif">
-					</div>
-				</form>
+							<p>Name <span class="contact_error" id="display_error_name"><?php if(isset($errorName)) echo $errorName; ?></span></p>
+							<input name="name" class="contact_input" id="contact_namefield" type="text" value = "<?php if(isset($nameUnsafe)) echo $nameUnsafe; ?>">
+							
+							<p>Email <span class="contact_error" id="display_error_email"><?php if(isset($errorEmail)) echo $errorEmail; ?></span></p>
+							<input name="email" class="contact_input" id="contact_emailfield" type="text" value = "<?php if(isset($emailUnsafe)) echo $emailUnsafe; ?>">
+							
+							<p>Subject <span class="contact_error" id="display_error_subject"><?php if(isset($errorSubject)) echo $errorSubject; ?></span></p>
+							<input name="subject" class="contact_input" id="contact_subjectfield" type="text" value = "<?php if(isset($subjectUnsafe)) echo $subjectUnsafe; ?>">
+							
+							<p>Message <span class="contact_error" id="display_error_message"><?php if(isset($errorMessage)) echo $errorMessage; ?></span></p>
+							<textarea name="message" class="contact_input" id="contact_textarea" rows="10" cols="35"><?php if(isset($messageUnsafe)) echo $messageUnsafe; ?></textarea>
+							<p id="contact_textarea_count">0/999</p>
+							
+							<p>
+								<table>
+									<tr>
+										<td><img id="privacy_checkbox" class="checkbox" src="assets/icon_8bit/checkbox_inactive.png" onclick="onPrivacyCheckboxToggle()"></td>
+										<td>I have read and accept the <a href="https://www.rismosch.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></td>
+									</tr>
+								</table>
+							</p>
+							
+							<p><span class="contact_error"><?php if(isset($errorContact)) echo $errorContact; ?></span></p>
+							<p>
+								<button
+									class="g-recaptcha"
+									id="submit_button"
+									type="submit"
+									style="display:none;"
+									data-sitekey="<?php echo $reCAPTCHA_web_key;?>"
+									data-callback='onRecaptchaSuccess'
+								>
+								Send
+								</button>
+								
+								<a class="button button_inactive" id="submit_button_inactive">Send</a>
+							</p>
+							
+							<img id="loading_animation" class="loading_animation pixel_image invisible" src="assets/icon_8bit/loading.gif">
+						</div>
+					</form>
+				</div>
+			
 			</div>
+
+			<noscript>
+				<p>Unfortunately, this page only works if JavaScript is enabled :(</p>
+			</noscript>
 			
 		</div>
 		
@@ -217,6 +225,8 @@ echo_head();
 	
 	<script>
 		
+		document.getElementById("javascript_content").style.display = "block";
+
 		var privacyAccepted = false;
 		var isSubmitting = false;
 		function onPrivacyCheckboxToggle()

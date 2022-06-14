@@ -171,55 +171,64 @@ echo_head();
 			
 			<h1>Newsletter</h1>
 			
-			<div style="display:<?php if($subscribe_successful) echo "block"; else echo "none"?>;">
-			
-				<p style="color: var(--pico-8-green);">Success &#10003;</p>
-				<p>Thanks for signing up! :)<br>I have sent you a message to confirm your email. This may take up to 5 minutes.</p>
-				<p>Please make sure that you also check your spam folder!</p>
-				<p>The confirmation email will expire in 24 hours. Once it's expired, you will be automatically unsubscribed from my newsletter.</p>
+			<div style="display:none" id="javascript_content">
+
+				<div style="display:<?php if($subscribe_successful) echo "block"; else echo "none"?>;">
 				
-			</div>
-			<div style="display:<?php if($subscribe_successful) echo "none"; else echo "block"?>;">
-				
-				<p>
-					Subscribe to my newsletter to be notified when I upload a new blogpost or project.<br>
-					Newsletter can be unsubscribed at any time.
-				</p>
-				<form action="newsletter" method="POST" id="contact-form">
+					<p style="color: var(--pico-8-green);">Success &#10003;</p>
+					<p>Thanks for signing up! :)<br>I have sent you a message to confirm your email. This may take up to 5 minutes.</p>
+					<p>Please make sure that you also check your spam folder!</p>
+					<p>The confirmation email will expire in 24 hours. Once it's expired, you will be automatically unsubscribed from my newsletter.</p>
 					
-					<br>
-					<p>Email <span class="contact_error" id="display_error"><?php if(isset($errorEmail)) echo $errorEmail; ?></span></p>
-					<input name="email" class="contact_input" id="newsletter_emailfield" type="text" value = "<?php if(isset($emailUnsafe)) echo $emailUnsafe; ?>">
-					<br><br>
+				</div>
+				<div style="display:<?php if($subscribe_successful) echo "none"; else echo "block"?>;">
 					
 					<p>
-						<table>
-							<tr>
-								<td><img id="privacy_checkbox" class="checkbox" src="assets/icon_8bit/checkbox_inactive.png" onclick="onPrivacyCheckboxToggle()"></td>
-								<td>I have read and accept the <a href="https://www.rismosch.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></td>
-							</tr>
-						</table>
+						Subscribe to my newsletter to be notified when I upload a new blogpost or project.<br>
+						Newsletter can be unsubscribed at any time.
 					</p>
-					
-					<p><span class="contact_error"><?php if(isset($errorContact)) echo $errorContact; ?></span></p>
-					<p>
-						<button
-							class="g-recaptcha"
-							id="submit_button"
-							type="submit"
-							style="display:none;"
-							data-sitekey="<?php echo $reCAPTCHA_web_key;?>"
-							data-callback='onRecaptchaSuccess'
-						>
-						Subscribe
-						</button>
+					<form action="newsletter" method="POST" id="contact-form">
 						
-						<a class="button button_inactive" id="submit_button_inactive">Subscribe</a>
-					</p>
-					
-					<img id="loading_animation" class="loading_animation pixel_image invisible" src="assets/icon_8bit/loading.gif">
-				</form>
+						<br>
+						<p>Email <span class="contact_error" id="display_error"><?php if(isset($errorEmail)) echo $errorEmail; ?></span></p>
+						<input name="email" class="contact_input" id="newsletter_emailfield" type="text" value = "<?php if(isset($emailUnsafe)) echo $emailUnsafe; ?>">
+						<br><br>
+						
+						<p>
+							<table>
+								<tr>
+									<td><img id="privacy_checkbox" class="checkbox" src="assets/icon_8bit/checkbox_inactive.png" onclick="onPrivacyCheckboxToggle()"></td>
+									<td>I have read and accept the <a href="https://www.rismosch.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></td>
+								</tr>
+							</table>
+						</p>
+						
+						<p><span class="contact_error"><?php if(isset($errorContact)) echo $errorContact; ?></span></p>
+						<p>
+							<button
+								class="g-recaptcha"
+								id="submit_button"
+								type="submit"
+								style="display:none;"
+								data-sitekey="<?php echo $reCAPTCHA_web_key;?>"
+								data-callback='onRecaptchaSuccess'
+							>
+							Subscribe
+							</button>
+							
+							<a class="button button_inactive" id="submit_button_inactive">Subscribe</a>
+						</p>
+						
+						<img id="loading_animation" class="loading_animation pixel_image invisible" src="assets/icon_8bit/loading.gif">
+					</form>
+				</div>
+
 			</div>
+
+			<noscript>
+				<p>Unfortunately, this page only works if JavaScript is enabled :(</p>
+			</noscript>
+			
 		</div>
 		
 		<?php echo_foot(true); ?>
@@ -227,6 +236,8 @@ echo_head();
 	
 	<script>
 		
+		document.getElementById("javascript_content").style.display = "block";
+
 		var privacyAccepted = false;
 		var isSubmitting = false;
 		function onPrivacyCheckboxToggle()
