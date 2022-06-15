@@ -19,10 +19,10 @@ window.onscroll = function()
 		scrollToTopButton.style.display = "none";
 }
 
-window.onclick = function(event)
-{
-	closeDropdown(event);
-}
+// window.onclick = function(event)
+// {
+// 	closeDropdown(event);
+// }
 
 function getScrollToTopButton()
 {
@@ -77,7 +77,7 @@ function getCookie(name)
 
 // Dropdown ---------------------------------------------------------------------------------------
 
-function showDropdown(id)
+/*function showDropdown(id)
 {
 	var dropdowns = document.getElementsByClassName("dropdownContent");
 	for (var i = 0; i < dropdowns.length; ++i)
@@ -122,7 +122,7 @@ function closeOtherDropdowns(id)
 			dropdown.classList.remove('show');
 		}
 	}
-}
+}*/
 
 // Continuous Session -----------------------------------------------------------------------------
 

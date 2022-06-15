@@ -93,7 +93,7 @@ function printDropdown($dbConn, $pageName)
 	}
 	echo "
 		<div class=\"dropdown\">
-			<button onclick=\"showDropdown('dropdownCategory')\" class=\"dropdownButton dropdownCategory\" id=\"dropdownButton\">Filter</button>
+			<button class=\"dropdownButton dropdownCategory\" id=\"dropdownButton\">Filter</button>
 			<div class=\"dropdownContent dropdownCategory\">
 				<a href=\"https://www.rismosch.com/{$pageName}?category=0&show={$show}&page=0\" ";
 	if ($selectedCategoryId == 0)

@@ -20,7 +20,7 @@ function echo_head()
 		<meta name="msapplication-TileColor" content="#00aba9">
 		
 		'; if(!$isMobile) echo '<link rel="stylesheet" href="css/desktop.css">'; echo '
-		<link rel="stylesheet" href="css/main_09.css">
+		<link rel="stylesheet" href="css/main_11.css">
 		
 		<script src="3rd_party_libraries/disqusloader.js"></script>
 		<script src="javascript/util.js"></script>
@@ -85,12 +85,14 @@ function echo_selector($active_tab)
 		</ul>
 		
 		<div class="mobile">
-			<div onclick="showDropdown(\'dropdownSelector\')" class="dropdownButton dropdownSelector selector_menu pixel_image" id="dropdownButton"></div>
-			<div class="dropdownContent dropdownSelector dropdown">
-				<a '.$tab_selection_dropdown[0].'href="https://www.rismosch.com/">Home</a>
-				<a '.$tab_selection_dropdown[1].'href="https://www.rismosch.com/blog">Blog</a>
-				<a '.$tab_selection_dropdown[2].'href="https://www.rismosch.com/projects">Projects</a>
-				<a '.$tab_selection_dropdown[3].'href="https://www.rismosch.com/about">About</a>
+			<div class="selectorDropdown">
+				<button class="pixel_image"></button>
+				<div class="dropdownContent dropdown">
+					<a '.$tab_selection_dropdown[0].'href="https://www.rismosch.com/">Home</a>
+					<a '.$tab_selection_dropdown[1].'href="https://www.rismosch.com/blog">Blog</a>
+					<a '.$tab_selection_dropdown[2].'href="https://www.rismosch.com/projects">Projects</a>
+					<a '.$tab_selection_dropdown[3].'href="https://www.rismosch.com/about">About</a>
+				</div>
 			</div>
 		</div>
 		

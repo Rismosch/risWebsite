@@ -11,7 +11,7 @@ echo_head();
 	<meta name="keywords" content="about, resumee, cv, curriculum vitae">
 
 	<meta name="robots" content="all">
-
+wer
 	<meta property="og:title" content="About" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="https://www.rismosch.com/about" />
