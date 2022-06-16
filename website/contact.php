@@ -90,29 +90,58 @@ if(!empty($_POST))
 	}
 	
 	if (empty($errors)) {
-		$mail = new PHPMailer(true);
-		
-		try {
-			// Server settings
-			// $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-			$mail->isSMTP();
-			$mail->Host = 'localhost';
-			$mail->SMTPAuth = false;
-			$mail->SMTPAutoTLS = false;
-			$mail->Port = 25;
-			
-			// Recipients
-			$mail->setFrom($noreplyEmail, 'noreply');
-			$mail->AddReplyTo($noreplyEmail,'noreply');
-			$mail->addAddress($myEmail, 'Rismosch');
+		try
+		{
+			// Send to myself
+			{
+				$mail_self = new PHPMailer(true);
 
-			// Content
-			$mail->CharSet = 'UTF-8';
-			$mail->Encoding = 'base64';
-			$mail->Subject = 'new message from contact form!';
-			$mail->Body    = "Name: \"{$nameSanitized}\"\nEmail: \"{$emailSanitized}\"\nSubject: \"{$subjectSanitized}\"\nMessage:\n\n{$messageSanitized}";
+				// Server settings
+				// $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+				$mail_self->isSMTP();
+				$mail_self->Host = 'localhost';
+				$mail_self->SMTPAuth = false;
+				$mail_self->SMTPAutoTLS = false;
+				$mail_self->Port = 25;
+				
+				// Recipients
+				$mail_self->setFrom($noreplyEmail, 'noreply');
+				$mail_self->AddReplyTo($noreplyEmail,'noreply');
+				$mail_self->addAddress($myEmail, 'Rismosch');
 
-			$mail->send();
+				// Content
+				$mail_self->CharSet = 'UTF-8';
+				$mail_self->Encoding = 'base64';
+				$mail_self->Subject = 'new message from contact form!';
+				$mail_self->Body    = "Name: \"{$nameSanitized}\"\nEmail: \"{$emailSanitized}\"\nSubject: \"{$subjectSanitized}\"\nMessage:\n\n{$messageSanitized}";
+
+				$mail_self->send();
+			}
+
+			// Send to Sender
+			{
+				$mail_sender = new PHPMailer(true);
+				// Server settings
+				// $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+				$mail_sender->isSMTP();
+				$mail_sender->Host = 'localhost';
+				$mail_sender->SMTPAuth = false;
+				$mail_sender->SMTPAutoTLS = false;
+				$mail_sender->Port = 25;
+				
+				// Recipients
+				$mail_sender->setFrom($noreplyEmail, 'noreply');
+				$mail_sender->AddReplyTo($noreplyEmail,'noreply');
+				$mail_sender->addAddress($emailSanitized, 'Rismosch');
+
+				// Content
+				$mail_sender->CharSet = 'UTF-8';
+				$mail_sender->Encoding = 'base64';
+				$mail_sender->Subject = "I received your message!";
+				$mail_sender->Body    = "Hello!\n\nI just received a new message from you! I will try to come back to you as soon as I've read it.\n\nSincerely,\nSimon Sutoris\n\n---\n\nDO NOT REPLY TO THIS EMAIL.\nIf you have any questions, contact me here: https://www.rismosch.com/contact\n\n<ORIGINAL MESSAGE>\nName: \"{$nameSanitized}\"\nEmail: \"{$emailSanitized}\"\nSubject: \"{$subjectSanitized}\"\nMessage:\n\n{$messageSanitized}";
+
+				$mail_sender->send();
+			}
 			
 			// Success
 			$contact_successful = true;
@@ -120,7 +149,8 @@ if(!empty($_POST))
 			$emailUnsafe = "";
 			$messageUnsafe = "";
 			
-		} catch (Exception $e) {
+		} catch (Exception $e)
+		{
 			//$errorContact = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 			$errorContact = "Something went wrong. Please try again later.";
 		}
