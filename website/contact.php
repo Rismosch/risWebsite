@@ -105,15 +105,15 @@ if(!empty($_POST))
 				$mail_self->Port = 25;
 				
 				// Recipients
-				$mail_self->setFrom($noreplyEmail, 'noreply');
-				$mail_self->AddReplyTo($noreplyEmail,'noreply');
+				$mail_self->setFrom($contactformEmail, 'noreply');
+				$mail_self->AddReplyTo($contactformEmail,'noreply');
 				$mail_self->addAddress($myEmail, 'Rismosch');
 
 				// Content
 				$mail_self->CharSet = 'UTF-8';
 				$mail_self->Encoding = 'base64';
 				$mail_self->Subject = 'new message from contact form!';
-				$mail_self->Body    = "Name: \"{$nameSanitized}\"\nEmail: \"{$emailSanitized}\"\nSubject: \"{$subjectSanitized}\"\nMessage:\n\n{$messageSanitized}";
+				$mail_self->Body    = "Name: {$nameSanitized}\nEmail: {$emailSanitized}\nSubject: {$subjectSanitized}\nMessage:\n\n{$messageSanitized}";
 
 				$mail_self->send();
 			}
@@ -138,7 +138,7 @@ if(!empty($_POST))
 				$mail_sender->CharSet = 'UTF-8';
 				$mail_sender->Encoding = 'base64';
 				$mail_sender->Subject = "I received your message!";
-				$mail_sender->Body    = "Hello!\n\nI just received a new message from you! I will try to come back to you as soon as I've read it.\n\nSincerely,\nSimon Sutoris\n\n---\n\nDO NOT REPLY TO THIS EMAIL.\nIf you have any questions, contact me here: https://www.rismosch.com/contact\n\n<ORIGINAL MESSAGE>\nName: \"{$nameSanitized}\"\nEmail: \"{$emailSanitized}\"\nSubject: \"{$subjectSanitized}\"\nMessage:\n\n{$messageSanitized}";
+				$mail_sender->Body    = "Hello!\n\nI just received a new message from you! I will try to come back to you as soon as I've read it.\n\nSincerely,\nSimon Sutoris\n\n---\n\nDO NOT REPLY TO THIS EMAIL.\nIf you have any questions, contact me here: https://www.rismosch.com/contact\n\n<ORIGINAL MESSAGE>\nName: {$nameSanitized}\nEmail: {$emailSanitized}\nSubject: {$subjectSanitized}\nMessage:\n\n{$messageSanitized}";
 
 				$mail_sender->send();
 			}
