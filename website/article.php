@@ -222,7 +222,7 @@ function get_source($file)
 						echo "</span>";
 						
 						// Permalink
-						echo "<span style=\"color: var(--pico-8-blue); display: none;\" id=\"permalink_header\"><a onclick=\"CopyPermalink(event)\" style=\"cursor: pointer; text-decoration: underline;\">permalink</a></span>";
+						echo "<span style=\"color: var(--pico-8-blue); display: none;\" id=\"permalink_header\"><span onclick=\"CopyPermalink(event)\" style=\"cursor: pointer; text-decoration: underline;\">permalink</span></span>";
 						
 						// Next
 						echo "<span style=\"float: right; text-align: right;\">";
@@ -329,7 +329,7 @@ function get_source($file)
 						<table style=\"margin-top:10px; display: none;\" id=\"permalink_foot\">
 							<tr>
 								<td>&#9654;</td>
-								<td><span style=\"color:var(--pico-8-blue);\"><a onclick=\"CopyPermalink(event)\" style=\"cursor: pointer; text-decoration: underline;\">permalink</a></span></td>
+								<td><span style=\"color:var(--pico-8-blue);\"><span onclick=\"CopyPermalink(event)\" style=\"cursor: pointer; text-decoration: underline;\">permalink</span></span></td>
 							</tr>
 						</table>
 					";

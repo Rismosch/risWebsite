@@ -358,7 +358,7 @@ function printSelector($dbConn, $pageName)
 		else
 		{
 			echo "
-				<a class=\"button button_inactive\">&lt;</a>
+				<span class=\"button button_inactive\">&lt;</span>
 			";
 		}
 		
@@ -385,7 +385,7 @@ function printSelector($dbConn, $pageName)
 		else
 		{
 			echo "
-				<a class=\"button button_inactive\">&gt;</a>
+				<span class=\"button button_inactive\">&gt;</span>
 			";
 		}
 	}
