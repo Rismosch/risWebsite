@@ -102,9 +102,9 @@ if(!empty($_POST))
 			$mail->Port = 25;
 			
 			// Recipients
-			$mail->setFrom($contactEmail, 'Rismosch');
-			$mail->AddReplyTo($contactEmail,'Rismosch');
-			$mail->addAddress($contactEmail, 'Rismosch');
+			$mail->setFrom($noreplyEmail, 'noreply');
+			$mail->AddReplyTo($noreplyEmail,'noreply');
+			$mail->addAddress($myEmail, 'Rismosch');
 
 			// Content
 			$mail->CharSet = 'UTF-8';
@@ -161,6 +161,8 @@ echo_head();
 		<div class="content" id="content">
 			
 			<h1>Contact Me</h1>
+
+			<!--<p>&#128119; Under Construction... &#128296;</p>-->
 			
 			<div style="display:none" id="javascript_content">
 				

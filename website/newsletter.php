@@ -120,13 +120,14 @@ if(!empty($_POST))
 				$mail->Port = 25;
 				
 				// Recipients
-				$mail->setFrom($contactEmail, 'Rismosch');
+				$mail->setFrom($noreplyEmail, 'noreply');
+				$mail->AddReplyTo($noreplyEmail,'noreply');
 				$mail->addAddress($emailSanitized);
 				
 				// Content
 				$mail->isHTML(false);
 				$mail->Subject = 'Rismosch: confirm your email';
-				$mail->Body    = "Hi :)\n\nThanks for signing up! Please go ahead and confirm your email by clicking the link below:\n\nhttps://www.rismosch.com/newsletter_confirm?id={$id}\n\nThis link will expire in 24 hours. If the email is not confirmed in 24 hours, you will be automatically unsubscribed from my newsletter.\n\nSincerely,\nSimon Sutoris\n\n\n\nIf you have any questions, reply to this email or contact me here: https://www.rismosch.com/contact \n\nIf you don't want to receive further messages, unsubscribe here: https://www.rismosch.com/newsletter_delete?id={$id}";
+				$mail->Body    = "Hi :)\n\nThanks for signing up! Please go ahead and confirm your email by clicking the link below:\n\nhttps://www.rismosch.com/newsletter_confirm?id={$id}\n\nThis link will expire in 24 hours. If the email is not confirmed in 24 hours, you will be automatically unsubscribed from my newsletter.\n\nSincerely,\nSimon Sutoris\n\n---\n\nDO NOT REPLY TO THIS EMAIL.\nIf you have any questions, contact me here: https://www.rismosch.com/contact";
 				
 				$mail->send();
 				
@@ -137,6 +138,11 @@ if(!empty($_POST))
 				//$errorContact = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 				$errorContact = "Something went wrong. Please try again later.";
 			}
+		}
+		
+		if ($subscribe_successful) {
+			header("Location: https://www.rismosch.com/newsletter_success");
+			exit();
 		}
 	}
 }
@@ -170,18 +176,12 @@ echo_head();
 		<div class="content" id="content">
 			
 			<h1>Newsletter</h1>
-			
+
+			<!--<p>&#128119; Under Construction... &#128296;</p>-->
+
 			<div style="display:none" id="javascript_content">
 
-				<div style="display:<?php if($subscribe_successful) echo "block"; else echo "none"?>;">
-				
-					<p style="color: var(--pico-8-green);">Success &#10003;</p>
-					<p>Thanks for signing up! :)<br>I have sent you a message to confirm your email. This may take up to 5 minutes.</p>
-					<p>Please make sure that you also check your spam folder!</p>
-					<p>The confirmation email will expire in 24 hours. Once it's expired, you will be automatically unsubscribed from my newsletter.</p>
-					
-				</div>
-				<div style="display:<?php if($subscribe_successful) echo "none"; else echo "block"?>;">
+				<div>
 					
 					<p>
 						Subscribe to my newsletter to be notified when I upload a new blogpost or project.<br>
