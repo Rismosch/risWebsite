@@ -110,6 +110,7 @@ function get_source($file)
 						if($dbConn)
 						{
 							$sqlNext = GetNextPreviousSql("> '{$articleData['timestamp']}'","ASC");
+							$sqlRandom = GetRandomSql($articleData['id']);
 							$sqlPrevious = GetNextPreviousSql("< '{$articleData['timestamp']}'","DESC");
 							
 							// Next Article Data
@@ -136,6 +137,38 @@ function get_source($file)
 									'link' => $link,
 									'thumbnail_path' => GetThumbnailPath($row),
 								);
+
+								$footArticleData = $nextArticleData;
+								$footArticlePrefix = "Next Post";
+							}
+							else {
+								// Random Article Data
+								$result = mysqli_query($dbConn,$sqlRandom);
+								$numRows = mysqli_num_rows($result);
+								if($numRows > 0)
+								{
+									$row = mysqli_fetch_assoc($result);
+
+									$timestamp = strtotime($row['timestamp']);
+									$newTimestampFormat = date('M jS, Y',$timestamp);
+
+									if(!is_null($row['link']))
+										$link = $row['link'];
+									else
+										$link = "https://www.rismosch.com/article?id={$row['id']}";
+										
+									$footArticleData = array(
+										'id' => $row['id'],
+										'type' => $row['type'],
+										'category' => $row['category'],
+										'title' => $row['title'],
+										'timestamp' => $newTimestampFormat,
+										'link' => $link,
+										'thumbnail_path' => GetThumbnailPath($row),
+									);
+									
+									$footArticlePrefix = "Random Post";
+								}
 							}
 							
 							// Previous Article Data
@@ -216,19 +249,19 @@ function get_source($file)
 					include $content;
 					
 					// Foot Article Widgets
-					if(isset($nextArticleData))
+					if(isset($footArticleData))
 					{
 						echo "<p style=\"border-bottom-width: 5px; border-bottom-style: dashed; border-bottom-color:var(--pico-8-white);\"></p>";
 						echo"
 						<table style=\"width: 100%;\">
-							<tr><td><a title=\"{$nextArticleData['title']}\" href=\"{$nextArticleData['link']}\" class=\"articles_entry_link\">
+							<tr><td><a title=\"{$footArticleData['title']}\" href=\"{$footArticleData['link']}\" class=\"articles_entry_link\">
 							<div class=\"articles_mobile\">
 								<table class=\"articles_entry\">
 									<tr>
 										<td>
 											<div class=\"articles_thumbnail_wrapper_outside\">
 												<div class=\"articles_thumbnail_wrapper_inside\">
-													"; late_image($nextArticleData['thumbnail_path'], "articles_thumbnail", ""); echo "
+													"; late_image($footArticleData['thumbnail_path'], "articles_thumbnail", ""); echo "
 												</div>
 											</div>
 										</td>
@@ -236,8 +269,8 @@ function get_source($file)
 									<tr>
 										<td>
 											<div class=\"articles_thumbnail_information\">
-												<h3>Next Post: {$nextArticleData['title']}</h3>
-												<p>{$nextArticleData['category']} &#183; {$nextArticleData['timestamp']}</p>
+												<h3>{$footArticlePrefix}: {$footArticleData['title']}</h3>
+												<p>{$footArticleData['category']} &#183; {$footArticleData['timestamp']}</p>
 											</div>
 										</td>
 									</tr>
@@ -248,14 +281,14 @@ function get_source($file)
 									<tr>
 										<td class=\"articles_thumbnail_row_desktop\">
 											<div class=\"articles_thumbnail_wrapper\">
-												"; late_image($nextArticleData['thumbnail_path'], "articles_thumbnail", ""); echo "
+												"; late_image($footArticleData['thumbnail_path'], "articles_thumbnail", ""); echo "
 											</div>
 										</td>
 										<td>
 											<div class=\"articles_thumbnail_information\">
-												<h3>Next Post: {$nextArticleData['title']}</h3>
+												<h3>{$footArticlePrefix}: {$footArticleData['title']}</h3>
 												<br>
-												<p>{$nextArticleData['category']} &#183; {$nextArticleData['timestamp']}</p>
+												<p>{$footArticleData['category']} &#183; {$footArticleData['timestamp']}</p>
 											</div>
 										</td>
 									</tr>

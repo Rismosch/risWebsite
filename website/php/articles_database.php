@@ -265,6 +265,34 @@ function GetNextPreviousSql($nextPreviousTimestamp, $orderBy)
 	";
 }
 
+function GetRandomSql($exclude)
+{
+	return "
+	SELECT
+		Articles.id AS id,
+		Article_Types.name AS type,
+		Article_Categories.name AS category,
+		Articles.title AS title,
+		Articles.timestamp AS timestamp,
+		Articles.link AS link,
+		Articles.thumbnail_path AS thumbnail_path
+	FROM
+		Articles,
+		Article_Categories,
+		Article_Types
+	WHERE
+		Articles.category_id = Article_Categories.id AND
+		Articles.type_id = Article_Types.id AND
+		Articles.link IS NULL AND
+		Articles.id <> \"{$exclude}\"
+	ORDER BY
+		RAND()
+	LIMIT
+		0,
+		1
+	";
+}
+
 function printSelector($dbConn, $pageName)
 {
 	global
