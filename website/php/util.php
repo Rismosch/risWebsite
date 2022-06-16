@@ -20,7 +20,7 @@ function echo_head()
 		<meta name="msapplication-TileColor" content="#00aba9">
 		
 		'; if(!$isMobile) echo '<link rel="stylesheet" href="css/desktop.css">'; echo '
-		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/main_3.css">
 		
 		<script src="3rd_party_libraries/disqusloader.js"></script>
 		<script src="javascript/util.js"></script>
@@ -36,6 +36,7 @@ function echo_banner()
 			class="banner pixel_image"
 			src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
 			onmouseover="playHoverAnimation()"
+			alt=\'Banner\'
 		>
 	</a>
 	';
@@ -86,7 +87,7 @@ function echo_selector($active_tab)
 		
 		<div class="mobile">
 			<div class="selectorDropdown">
-				<button class="pixel_image"></button>
+				<button class="pixel_image" aria-label="Navigation Dropdown"></button>
 				<div class="dropdownContent dropdown">
 					<a '.$tab_selection_dropdown[0].'href="https://www.rismosch.com/">Home</a>
 					<a '.$tab_selection_dropdown[1].'href="https://www.rismosch.com/blog">Blog</a>
@@ -165,15 +166,15 @@ function echo_foot($uses_captcha)
 		<div class="foot_links">
 			<p>
 				<a class="foot_link" href="https://www.rismosch.com/privacy">Privacy Policy</a>
-				<a class="foot_link_divider">&nbsp; | &nbsp;</a>
+				<span class="foot_link_divider">&nbsp; | &nbsp;</span>
 				<a class="foot_link" href="https://www.rismosch.com/references">References</a>
-				<a class="foot_link_divider">&nbsp; | &nbsp;</a>
+				<span class="foot_link_divider">&nbsp; | &nbsp;</span>
 				<a class="foot_link" href="https://www.rismosch.com/contact">Contact Me</a>
 			</p>
 		</div>
 		
 		<div class="foot_copyright">
-			<p>Copyright &#169; 2021 <a class="simon_sutoris">Simon Sutoris</a></p>
+			<p>Copyright &#169; 2021 <span class="simon_sutoris">Simon Sutoris</span></p>
 		</div>
 		
 	</div>

@@ -163,78 +163,100 @@ function printArticles($dbConn, $pageName)
 	
 	if($numRows > 0)
 	{
-		echo "
-			<table style=\"width: 100%;\">
-				<tr class=\"row_empty\"><td></td></tr>
-				<tr class=\"row_empty row_devider\"><td></td></tr>
-		";
+		PrintArticleTableTop();
 		while($row = mysqli_fetch_assoc($result))
 		{
-			$timestamp = strtotime($row['timestamp']);
-			$newTimestampFormat = date('M jS, Y',$timestamp);
-			
-			if(!is_null($row['link']))
-				$link = $row['link'];
-			else
-				$link = "https://www.rismosch.com/article?id={$row['id']}";
-			
-			$thumbnail = GetThumbnailPath($row);
-			
-			echo
-			"<tr><td><a title=\"{$row['title']}\" href=\"{$link}\" class=\"articles_entry_link\">
-				<div class=\"articles_mobile\">
-					<table class=\"articles_entry\">
-						<tr>
-							<td>
-								<div class=\"articles_thumbnail_wrapper_outside\">
-									<div class=\"articles_thumbnail_wrapper_inside\">
-										"; late_image($thumbnail, "articles_thumbnail", ""); echo "
-									</div>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<div class=\"articles_thumbnail_information\">
-									<h3>{$row['title']}</h3>
-									<p>{$row['category']} &#183; {$newTimestampFormat}</p>
-								</div>
-							</td>
-						</tr>
-					</table>
-				</div>
-				<div class=\"articles_desktop\">
-					<table class=\"articles_entry\">
-						<tr>
-							<td class=\"articles_thumbnail_row_desktop\">
-								<div class=\"articles_thumbnail_wrapper\">
-									"; late_image($thumbnail, "articles_thumbnail", ""); echo "
-								</div>
-							</td>
-							<td>
-								<div class=\"articles_thumbnail_information\">
-									<h3>{$row['title']}</h3>
-									<br>
-									<p>{$row['category']} &#183; {$newTimestampFormat}</p>
-								</div>
-							</td>
-						</tr>
-					</table>
-				</div>
-			</a></td></tr>
-			<tr class=\"row_empty\"><td></td></tr>
-			<tr class=\"row_empty row_devider\"><td>
-			</td></tr>
-			";
+			PrintArticleTableEntry($row, false);
 		}
-		echo "
-			</table>
-		";
+		PrintArticleTableBottom();
 	}
 	else
 	{
 		echo "<p>no articles found &#175;&#92;&#95;&#40;&#12484;&#41;&#95;&#47;&#175;</p>";
 	}
+}
+
+function PrintArticleTableTop()
+{
+	echo "<table style=\"width: 100%;\">";
+	PrintArticleTableDevider();
+}
+
+
+function PrintArticleTableBottom()
+{
+	echo "</table>";
+}
+
+function PrintArticleTableDevider()
+{
+	echo "<tr class=\"row_empty\"><td></td></tr><tr class=\"row_empty row_devider\"><td></td></tr>";
+}
+
+function PrintArticleTableEntry($article, $printOnlyNoscript)
+{
+	$timestamp = strtotime($article['timestamp']);
+	$newTimestampFormat = date('M jS, Y',$timestamp);
+	
+	if(!is_null($article['link']))
+		$link = $article['link'];
+	else
+		$link = "https://www.rismosch.com/article?id={$article['id']}";
+	
+	$thumbnail = GetThumbnailPath($article);
+
+	echo
+	"<tr><td><a title=\"{$article['title']}\" href=\"{$link}\" class=\"articles_entry_link\">
+		<div class=\"articles_mobile\">
+			<table class=\"articles_entry\">
+				<tr>
+					<td>
+						<div class=\"articles_thumbnail_wrapper_outside\">
+							<div class=\"articles_thumbnail_wrapper_inside\">";
+								if (!$printOnlyNoscript)
+									late_image($thumbnail, "articles_thumbnail", "");
+								else
+									echo "<img src='{$thumbnail}' class='articles_thumbnail'>";
+								echo "
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class=\"articles_thumbnail_information\">
+							<h3>{$article['title']}</h3>
+							<p>{$article['category']} &#183; {$newTimestampFormat}</p>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class=\"articles_desktop\">
+			<table class=\"articles_entry\">
+				<tr>
+					<td class=\"articles_thumbnail_row_desktop\">
+						<div class=\"articles_thumbnail_wrapper\">";
+							if (!$printOnlyNoscript)
+								late_image($thumbnail, "articles_thumbnail", "");
+							else
+								echo "<img src='{$thumbnail}' class='articles_thumbnail'>";
+							echo "
+						</div>
+					</td>
+					<td>
+						<div class=\"articles_thumbnail_information\">
+							<h3>{$article['title']}</h3>
+							<br>
+							<p>{$article['category']} &#183; {$newTimestampFormat}</p>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</a></td></tr>
+	";
+	PrintArticleTableDevider();
 }
 
 function GetNextPreviousSql($nextPreviousTimestamp, $orderBy)

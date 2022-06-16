@@ -199,23 +199,27 @@ echo_head();
 				<form action="contact" method="POST" id="contact-form">
 					<div>
 						
-						<p>Name <span class="contact_error" id="display_error_name"><?php if(isset($errorName)) echo $errorName; ?></span></p>
-						<input name="name" class="contact_input" id="contact_namefield" type="text" value = "<?php if(isset($nameUnsafe)) echo $nameUnsafe; ?>">
+						<label>Name <span class="contact_error" id="display_error_name"><?php if(isset($errorName)) echo $errorName; ?></span><br>
+						<input name="name" class="contact_input" id="contact_namefield" type="text" value = "<?php if(isset($nameUnsafe)) echo $nameUnsafe; ?>"><br>
+						</label>
+
+						<label>Email <span class="contact_error" id="display_error_email"><?php if(isset($errorEmail)) echo $errorEmail; ?></span><br>
+						<input name="email" class="contact_input" id="contact_emailfield" type="text" value = "<?php if(isset($emailUnsafe)) echo $emailUnsafe; ?>"><br>
+						</label>
 						
-						<p>Email <span class="contact_error" id="display_error_email"><?php if(isset($errorEmail)) echo $errorEmail; ?></span></p>
-						<input name="email" class="contact_input" id="contact_emailfield" type="text" value = "<?php if(isset($emailUnsafe)) echo $emailUnsafe; ?>">
+						<label>Subject <span class="contact_error" id="display_error_subject"><?php if(isset($errorSubject)) echo $errorSubject; ?></span><br>
+						<input name="subject" class="contact_input" id="contact_subjectfield" type="text" value = "<?php if(isset($subjectUnsafe)) echo $subjectUnsafe; ?>"><br>
+						</label>
 						
-						<p>Subject <span class="contact_error" id="display_error_subject"><?php if(isset($errorSubject)) echo $errorSubject; ?></span></p>
-						<input name="subject" class="contact_input" id="contact_subjectfield" type="text" value = "<?php if(isset($subjectUnsafe)) echo $subjectUnsafe; ?>">
-						
-						<p>Message <span class="contact_error" id="display_error_message"><?php if(isset($errorMessage)) echo $errorMessage; ?></span></p>
-						<textarea name="message" class="contact_input" id="contact_textarea" rows="10" cols="35"><?php if(isset($messageUnsafe)) echo $messageUnsafe; ?></textarea>
-						<p id="contact_textarea_count">0/999</p>
+						<label>Message <span class="contact_error" id="display_error_message"><?php if(isset($errorMessage)) echo $errorMessage; ?></span><br>
+						<textarea name="message" class="contact_input" id="contact_textarea" rows="10" cols="35"><?php if(isset($messageUnsafe)) echo $messageUnsafe; ?></textarea><br>
+						</label>
+						<span id="contact_textarea_count">0/999</span>
 						
 						<p>
 							<table>
 								<tr>
-									<td><img id="privacy_checkbox" class="checkbox" src="assets/icon_8bit/checkbox_inactive.png" onclick="onPrivacyCheckboxToggle()"></td>
+									<td><img id="privacy_checkbox" class="checkbox" src="assets/icon_8bit/checkbox_inactive.png" onclick="onPrivacyCheckboxToggle()" alt="Privacy Checkbox"></td>
 									<td>I have read and accept the <a href="https://www.rismosch.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></td>
 								</tr>
 							</table>
@@ -234,7 +238,7 @@ echo_head();
 							Send
 							</button>
 							
-							<a class="button button_inactive" id="submit_button_inactive">Send</a>
+							<span class="button button_inactive" id="submit_button_inactive">Send</span>
 						</p>
 						
 						<img id="loading_animation" class="loading_animation pixel_image invisible" src="assets/icon_8bit/loading.gif">

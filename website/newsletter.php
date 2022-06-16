@@ -190,14 +190,14 @@ echo_head();
 					<form action="newsletter" method="POST" id="contact-form">
 						
 						<br>
-						<p>Email <span class="contact_error" id="display_error"><?php if(isset($errorEmail)) echo $errorEmail; ?></span></p>
-						<input name="email" class="contact_input" id="newsletter_emailfield" type="text" value = "<?php if(isset($emailUnsafe)) echo $emailUnsafe; ?>">
-						<br><br>
+						<label>Email <span class="contact_error" id="display_error"><?php if(isset($errorEmail)) echo $errorEmail; ?></span><br>
+						<input name="email" class="contact_input" id="newsletter_emailfield" type="text" value = "<?php if(isset($emailUnsafe)) echo $emailUnsafe; ?>"><br>
+						</label>
 						
 						<p>
 							<table>
 								<tr>
-									<td><img id="privacy_checkbox" class="checkbox" src="assets/icon_8bit/checkbox_inactive.png" onclick="onPrivacyCheckboxToggle()"></td>
+									<td><img id="privacy_checkbox" class="checkbox" src="assets/icon_8bit/checkbox_inactive.png" onclick="onPrivacyCheckboxToggle()" alt="Privacy Checkbox"></td>
 									<td>I have read and accept the <a href="https://www.rismosch.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></td>
 								</tr>
 							</table>
@@ -216,7 +216,7 @@ echo_head();
 							Subscribe
 							</button>
 							
-							<a class="button button_inactive" id="submit_button_inactive">Subscribe</a>
+							<span class="button button_inactive" id="submit_button_inactive">Subscribe</span>
 						</p>
 						
 						<img id="loading_animation" class="loading_animation pixel_image invisible" src="assets/icon_8bit/loading.gif">
