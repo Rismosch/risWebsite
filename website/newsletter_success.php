@@ -33,7 +33,7 @@ echo_head();
 
 			<p style="color: var(--pico-8-green);">Success &#10003;</p>
 			<p>Thanks for signing up! :)<br>I have sent you a message to confirm your email.</p>
-			<p>This may take up to 5 minutes. Please make sure that you also check your spam folder!</p>
+			<p>This may take up to an hour. Please make sure that you also check your spam folder!</p>
 			<p>The confirmation email will expire in 24 hours. Once it's expired, you will be automatically unsubscribed from my newsletter.</p>
 			
 		</div>
