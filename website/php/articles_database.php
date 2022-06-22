@@ -427,7 +427,9 @@ function GetArticleData($dbConn, $articleId)
 		Articles.title AS title,
 		Articles.timestamp AS timestamp,
 		Articles.link AS link,
-		Articles.thumbnail_path AS thumbnail_path
+		Articles.thumbnail_path AS thumbnail_path,
+		Articles.description AS description,
+		Articles.keywords AS keywords
 	FROM
 		Articles,
 		Article_Categories,

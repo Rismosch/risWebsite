@@ -20,6 +20,8 @@ CREATE TABLE IF NOT EXISTS `Articles` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `link` varchar(256) DEFAULT NULL,
   `thumbnail_path` varchar(256) DEFAULT NULL,
+  `description` varchar(256) NOT NULL,
+  `keywords` varchar(256) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `type_id` (`type_id`),
   KEY `category_id` (`category_id`)

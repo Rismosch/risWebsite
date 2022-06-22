@@ -41,8 +41,10 @@ else*/
 
 $dbConn = mysqli_connect($dbHost, $dbSelectUsername, $dbSelectPassword, $dbName);
 
-$title = ":(";
 $active_tab = -1;
+$title = ":(";
+$description = "Article data could not be retrieved.";
+$keywords = "error";
 if($dbConn){
 	$articleData = GetArticleData($dbConn, $article_id);
 	if(!is_null($articleData))
@@ -53,6 +55,8 @@ if($dbConn){
 			$active_tab = 2;
 
 		$title = $articleData['title'];
+		$description = $articleData['description'];
+		$keywords = $articleData['keywords'];
 	}
 	else
 	{
@@ -71,6 +75,8 @@ if(file_exists($cssFile))
 echo "
 
 	<title>{$title}</title>
+	<meta name=\"description\" content=\"{$description}\">
+	<meta name=\"keywords\" content=\"{$keywords}\">
 
 	<meta name=\"robots\" content=\"all\">
 
