@@ -73,6 +73,13 @@ if(!empty($_POST))
 		$errors[] = $errorMessage;
 	}
 	
+	if (!array_key_exists('privacy_accepted', $_POST) || $_POST['privacy_accepted'] != true)
+	{
+		$errorPrivacy = 'Privay Policy must be read and accepted';
+		$errors[] = $errorPrivacy;
+	}
+	
+
 	
 	if (isset($_POST['g-recaptcha-response']))
 	{
@@ -137,8 +144,8 @@ if(!empty($_POST))
 				// Content
 				$mail_sender->CharSet = 'UTF-8';
 				$mail_sender->Encoding = 'base64';
-				$mail_sender->Subject = "I received your message!";
-				$mail_sender->Body    = "Hello!\n\nI just received a new message from you! I will try to come back to you as soon as I've read it.\n\nSincerely,\nSimon Sutoris\n\n---\n\nDO NOT REPLY TO THIS EMAIL.\n\n<ORIGINAL MESSAGE>\nName: {$nameSanitized}\nEmail: {$emailSanitized}\nSubject: {$subjectSanitized}\nMessage:\n\n{$messageSanitized}";
+				$mail_sender->Subject = "Rismosch: I received your message!";
+				$mail_sender->Body    = "Hello!\n\nI just received a new message from you! I will try to come back to you as soon as I've read it.\n\nSincerely,\nSimon Sutoris\n\n---\n\nDO NOT REPLY TO THIS EMAIL.\nIf you have any questions, contact me here: https://www.rismosch.com/contact\n\n<ORIGINAL MESSAGE>\nName: {$nameSanitized}\nEmail: {$emailSanitized}\nSubject: {$subjectSanitized}\nMessage:\n\n{$messageSanitized}";
 
 				$mail_sender->send();
 			}
@@ -212,34 +219,27 @@ echo_head();
 						</label>
 						
 						<label>Message <span class="contact_error" id="display_error_message"><?php if(isset($errorMessage)) echo $errorMessage; ?></span><br>
-						<textarea name="message" class="contact_input" id="contact_textarea" rows="10" cols="35"><?php if(isset($messageUnsafe)) echo $messageUnsafe; ?></textarea><br>
+						<textarea name="message" class="contact_input" id="contact_textarea" rows="10" cols="35"><?php if(isset($messageUnsafe)) echo $messageUnsafe; ?></textarea>
 						</label>
-						<span id="contact_textarea_count">0/999</span>
+						<p id="contact_textarea_count" style="margin-top: -1.3em;">0/999</p>
 						
-						<p>
-							<table>
-								<tr>
-									<td><img id="privacy_checkbox" class="checkbox" src="assets/icon_8bit/checkbox_inactive.png" onclick="onPrivacyCheckboxToggle()" alt="Privacy Checkbox"></td>
-									<td>I have read and accept the <a href="https://www.rismosch.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></td>
-								</tr>
-							</table>
-						</p>
+						<br>
+
+						<label><span class="contact_error" id="display_error_subject"><?php if(isset($errorPrivacy)) echo $errorPrivacy; ?></span><br>
+						<input name="privacy_accepted" style="width: 2em; height: 2em; position: relative; top: 4px;" type="checkbox">
+						I have read and accept the <a href="https://www.rismosch.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+						</label>
 						
 						<p><span class="contact_error"><?php if(isset($errorContact)) echo $errorContact; ?></span></p>
-						<p>
-							<button
-								class="g-recaptcha"
-								id="submit_button"
-								type="submit"
-								style="display:none;"
-								data-sitekey="<?php echo $reCAPTCHA_web_key;?>"
-								data-callback='onRecaptchaSuccess'
-							>
-							Send
-							</button>
-							
-							<span class="button button_inactive" id="submit_button_inactive">Send</span>
-						</p>
+						<button
+							class="g-recaptcha"
+							id="submit_button"
+							type="submit"
+							data-sitekey="<?php echo $reCAPTCHA_web_key;?>"
+							data-callback='onRecaptchaSuccess'
+						>
+						Send
+						</button>
 						
 						<img id="loading_animation" class="loading_animation pixel_image invisible" src="assets/icon_8bit/loading.gif">
 					</div>
@@ -259,34 +259,9 @@ echo_head();
 	<script>
 		
 		document.getElementById("javascript_content").style.display = "block";
-
-		var privacyAccepted = false;
-		var isSubmitting = false;
-		function onPrivacyCheckboxToggle()
-		{
-			if(isSubmitting)
-				return;
-			
-			privacyAccepted = !privacyAccepted;
-			
-			if(privacyAccepted)
-			{
-				document.getElementById("privacy_checkbox").src="assets/icon_8bit/checkbox_active.png";
-				document.getElementById("submit_button").style.display = "inline-block";
-				document.getElementById("submit_button_inactive").style.display = "none";
-			}
-			else
-			{
-				document.getElementById("privacy_checkbox").src="assets/icon_8bit/checkbox_inactive.png";
-				document.getElementById("submit_button").style.display = "none";
-				document.getElementById("submit_button_inactive").style.display = "inline-block";
-			}
-		}
 		
 		function onRecaptchaSuccess() {
 			return new Promise(function(resolve, reject){
-				
-				isSubmitting = true;
 				
 				document.getElementById('loading_animation').classList.remove('invisible');
 				document.getElementById('submit_button').style.display = "none";

@@ -34,6 +34,13 @@ if(!empty($_POST))
 		$errors[] = $errorEmail;
 	}
 	
+	if (!array_key_exists('privacy_accepted', $_POST) || $_POST['privacy_accepted'] != true)
+	{
+		$errorPrivacy = 'Privay Policy must be read and accepted';
+		$errors[] = $errorPrivacy;
+	}
+	
+	
 	
 	if (isset($_POST['g-recaptcha-response']))
 	{
@@ -193,31 +200,22 @@ echo_head();
 						<label>Email <span class="contact_error" id="display_error"><?php if(isset($errorEmail)) echo $errorEmail; ?></span><br>
 						<input name="email" class="contact_input" id="newsletter_emailfield" type="text" value = "<?php if(isset($emailUnsafe)) echo $emailUnsafe; ?>"><br>
 						</label>
-						
-						<p>
-							<table>
-								<tr>
-									<td><img id="privacy_checkbox" class="checkbox" src="assets/icon_8bit/checkbox_inactive.png" onclick="onPrivacyCheckboxToggle()" alt="Privacy Checkbox"></td>
-									<td>I have read and accept the <a href="https://www.rismosch.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></td>
-								</tr>
-							</table>
-						</p>
+
+						<label><span class="contact_error" id="display_error_subject"><?php if(isset($errorPrivacy)) echo $errorPrivacy; ?></span><br>
+						<input name="privacy_accepted" style="width: 2em; height: 2em; position: relative; top: 4px;" type="checkbox">
+						I have read and accept the <a href="https://www.rismosch.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+						</label>
 						
 						<p><span class="contact_error"><?php if(isset($errorContact)) echo $errorContact; ?></span></p>
-						<p>
-							<button
-								class="g-recaptcha"
-								id="submit_button"
-								type="submit"
-								style="display:none;"
-								data-sitekey="<?php echo $reCAPTCHA_web_key;?>"
-								data-callback='onRecaptchaSuccess'
-							>
-							Subscribe
-							</button>
-							
-							<span class="button button_inactive" id="submit_button_inactive">Subscribe</span>
-						</p>
+						<button
+							class="g-recaptcha"
+							id="submit_button"
+							type="submit"
+							data-sitekey="<?php echo $reCAPTCHA_web_key;?>"
+							data-callback='onRecaptchaSuccess'
+						>
+						Subscribe
+						</button>
 						
 						<img id="loading_animation" class="loading_animation pixel_image invisible" src="assets/icon_8bit/loading.gif">
 					</form>
@@ -237,34 +235,9 @@ echo_head();
 	<script>
 		
 		document.getElementById("javascript_content").style.display = "block";
-
-		var privacyAccepted = false;
-		var isSubmitting = false;
-		function onPrivacyCheckboxToggle()
-		{
-			if(isSubmitting)
-				return;
-			
-			privacyAccepted = !privacyAccepted;
-			
-			if(privacyAccepted)
-			{
-				document.getElementById("privacy_checkbox").src="assets/icon_8bit/checkbox_active.png";
-				document.getElementById("submit_button").style.display = "inline-block";
-				document.getElementById("submit_button_inactive").style.display = "none";
-			}
-			else
-			{
-				document.getElementById("privacy_checkbox").src="assets/icon_8bit/checkbox_inactive.png";
-				document.getElementById("submit_button").style.display = "none";
-				document.getElementById("submit_button_inactive").style.display = "inline-block";
-			}
-		}
 		
 		function onRecaptchaSuccess () {
 			return new Promise(function(resolve, reject){
-				
-				isSubmitting = true;
 				
 				document.getElementById('loading_animation').classList.remove('invisible');
 				document.getElementById('submit_button').style.display = "none";
