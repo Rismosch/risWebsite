@@ -134,7 +134,7 @@ if(!empty($_POST))
 				// Content
 				$mail->isHTML(false);
 				$mail->Subject = 'Rismosch: confirm your email';
-				$mail->Body    = "Hi :)\n\nThanks for signing up! Please go ahead and confirm your email by clicking the link below:\n\nhttps://www.rismosch.com/newsletter_confirm?id={$id}\n\nThis link will expire in 24 hours. If the email is not confirmed in 24 hours, you will be automatically unsubscribed from my newsletter.\n\nSincerely,\nSimon Sutoris\n\n---\n\nDO NOT REPLY TO THIS EMAIL.\nIf you have any questions, contact me here: https://www.rismosch.com/contact";
+				$mail->Body    = "Hello!\n\nThanks for signing up! Please go ahead and confirm your email by clicking the link below:\n\nhttps://www.rismosch.com/newsletter_confirm?id={$id}\n\nThis link will expire in 24 hours. If the email is not confirmed in 24 hours, you will be automatically unsubscribed from my newsletter.\n\nSincerely,\nSimon Sutoris\n\n---\n\nDO NOT REPLY TO THIS EMAIL.\nIf you have any questions, contact me here: https://www.rismosch.com/contact";
 				
 				$mail->send();
 				
