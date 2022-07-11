@@ -126,6 +126,8 @@ a:active{
 	background-color: var(--pico-8-white);
 	overflow-x: auto;
 	white-space: nowrap;
+	padding-left: 0.2em;
+	padding-right: 0.2em;
 }
 
 .code_block{
