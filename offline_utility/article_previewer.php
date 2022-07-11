@@ -121,6 +121,18 @@ a:active{
 	color: var(--pico-8-red);
 }
 
+.code{
+	font-family: Consolas, sans-serif;
+	background-color: var(--pico-8-white);
+	overflow-x: auto;
+	white-space: nowrap;
+}
+
+.code_block{
+	padding: 10px;
+	line-height: 1.3em;
+}
+
 div.background{
 	margin: auto;
 	padding: 5px;
