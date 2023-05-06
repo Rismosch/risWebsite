@@ -12,6 +12,5 @@ Blog and Project-Collection of Simon Sutoris
 - Article can be _any_ HTML
 - Resumee
 - Contact Form
-- Newsletter
 
 **Repository does not contain any Articles**
