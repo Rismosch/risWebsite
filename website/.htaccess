@@ -5,6 +5,7 @@ RewriteEngine On
 # Resolve .php file for extensionless PHP URLs
 RewriteRule ^([^/.]+)$ $1.php [L]
 
-<filesMatch ".(css|jpg|jpeg|png|gif|webp|js|ico)$">
-Header set Cache-Control "max-age=2419200, public"
-</filesMatch>
+# enable again after 16.06.2023
+#<filesMatch ".(css|jpg|jpeg|png|gif|webp|js|ico)$">
+#Header set Cache-Control "max-age=2419200, public"
+#</filesMatch>

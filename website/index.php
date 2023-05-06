@@ -88,7 +88,9 @@ echo_head();
 			</noscript>
 
 			<div  style="display:none;" id="javascript_content">
-				<iframe title="bandcamp widget" style="border: 0; width: 100%; height: 307px;" src="https://bandcamp.com/EmbeddedPlayer/album=894520742/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/" seamless><a href="https://rismosch.bandcamp.com/album/angery">Angery by Rismosch</a></iframe>
+				<iframe title="bandcamp widget" style="border: 0; width: 100%; height: 307px;" src="https://bandcamp.com/EmbeddedPlayer/album=2712586750/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/" seamless><a href="https://rismosch.bandcamp.com/album/the-world-between-my-mind-and-reality">The World Between My Mind And Reality by Rismosch</a></iframe>
+				
+				<!--<iframe title="bandcamp widget" style="border: 0; width: 100%; height: 307px;" src="https://bandcamp.com/EmbeddedPlayer/album=894520742/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/" seamless><a href="https://rismosch.bandcamp.com/album/angery">Angery by Rismosch</a></iframe>-->
 
 				<br>
 				<br>
@@ -119,9 +121,9 @@ echo_head();
 						WHERE
 							Articles.category_id = Article_Categories.id AND
 							Articles.type_id = Article_Types.id AND (
-								Articles.id = 'post-crisis' OR
-								Articles.id = 'why-people-love-bad-art' OR
-								Articles.id = 'i-made-a-website-only-with-notepad-plus-plus'
+								Articles.id = 'building-a-job-system' OR
+								Articles.id = 'rebinding-controls-via-a-rebind-matrix' OR
+								Articles.id = 'why-people-love-bad-art'
 							)
 						ORDER BY
 							Articles.timestamp DESC
