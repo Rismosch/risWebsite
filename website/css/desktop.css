@@ -26,13 +26,3 @@ a.button_inactive:hover{
 table.articles_entry:hover h3{
 	text-decoration: underline;
 }
-
-/* FOOT LINKS */
-div.foot_links > p:hover{
-	cursor: default;
-}
-
-div.foot_links > p > a:hover{
-	color: var(--pico-8-white);
-	cursor: pointer;
-}

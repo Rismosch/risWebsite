@@ -31,10 +31,39 @@ echo_head();
 			
 			<h1>PRIVACY POLICY</h1>
 			
-			<p>Last updated: 03th March, 2021</p>
+			<p>Last updated: 06th May, 2023</p>
+			
+			<p style="border-bottom-width: 5px; border-bottom-style: dashed; border-bottom-color:var(--pico-8-white);"></p>
+			<p style="border-bottom-width: 5px; border-bottom-style: dashed; border-bottom-color:var(--pico-8-white);"></p>
+			<p style="border-bottom-width: 5px; border-bottom-style: dashed; border-bottom-color:var(--pico-8-white);"></p>
+			
+			<h2>FOR NON LAWYERS</h2>
+
+			<h3>What do I collect?</h3>
+
+			<p>I don't use cookies or trackers. The only data I collect is my contact form, in which you explicitly need to enter data. The form sends both you and me an email, and it is only this email that I store.</p>
+
+			<p>The server that I am hosting this website from also collects data, like logs, IP adresses, which browser you used and where you are aproximately located. While interesting, this info is insufficient to identify and track users.</p>
+
+			<p>Everything else you may do on my website, or who you even are, I have no clue about.</p>
+
+			<h3>What do others collect?</h3>
+
+			<p>You should also know that I use exactly 2 third party services. These may or may not (but probably do) collect your data:</p>
+
+			<ul>
+				<li>reCAPTCHA, for protection against malicious bots and;</li>
+				<li>Bandcamp, to display a widget for music on the home page.</li>
+			</ul>
+
+			<p style="border-bottom-width: 5px; border-bottom-style: dashed; border-bottom-color:var(--pico-8-white);"></p>
+			<p style="border-bottom-width: 5px; border-bottom-style: dashed; border-bottom-color:var(--pico-8-white);"></p>
+			<p style="border-bottom-width: 5px; border-bottom-style: dashed; border-bottom-color:var(--pico-8-white);"></p>
+
+			<h2>FOR LAWYERS</h2>
 			
 			<p>Here at rismosch.com, accessible from <a href="https://www.rismosch.com/">https://www.rismosch.com/</a> , We are committed to provide You with high-quality services and to respect Your privacy highly. This Privacy Policy describes Our policies and procedures on collecting, using, and disclosing Your information when You use Our websites, programs or services.</p>
-			
+
 			<h2>1. GENERAL</h2>
 			
 			<ul>
@@ -141,7 +170,7 @@ echo_head();
 			<p>We use two external services. They include:</p>
 			<ul>
 				<li>reCAPTCHA, for protection against malicious bots and;</li>
-				<li>Disqus, for comments below each blog-/project-post.</li>
+				<li>Bandcamp, to display a widget for music on the home page.</li>
 			</ul>
 			
 			<h2>6. FUNCTIONALITY COOKIES</h2>
@@ -244,15 +273,12 @@ echo_head();
 			
 			<h2>14. CONTACT US</h2>
 			
-			<p>There are 2 sites where users can enter data:</p>
+			<p>There is 1 site where users can enter data:</p>
 			
 			<ul>
 				<li>Contact Form <a href="https://www.rismosch.com/contact">https://www.rismosch.com/contact</a></li>
-				<li>Newsletter <a href="https://www.rismosch.com/newsletter">https://www.rismosch.com/newsletter</a></li>
 				
-				<p>If You have any questions about the provisions in this privacy policy, You can contact Us by email or any other available platform provided by Us.</p>
-				
-				<p>Email: <a href="mailto:contact@rismosch.com">contact@rismosch.com</a></p>
+				<p>If You have any questions about the provisions in this privacy policy, You can contact Us with the form above or any other available platform provided by Us.</p>
 			</ul>
 			
 		</div>

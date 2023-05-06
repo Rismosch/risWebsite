@@ -145,7 +145,7 @@ if(!empty($_POST))
 				$mail_sender->CharSet = 'UTF-8';
 				$mail_sender->Encoding = 'base64';
 				$mail_sender->Subject = "Rismosch: I received your message!";
-				$mail_sender->Body    = "Hello!\n\nI just received a new message from you! I will try to come back to you as soon as I've read it.\n\nSincerely,\nSimon Sutoris\n\n---\n\nDO NOT REPLY TO THIS EMAIL.\nIf you have any questions, contact me here: https://www.rismosch.com/contact\n\n<ORIGINAL MESSAGE>\nName: {$nameSanitized}\nEmail: {$emailSanitized}\nSubject: {$subjectSanitized}\nMessage:\n\n{$messageSanitized}";
+				$mail_sender->Body    = "Hello!\n\nI just received a new message from you! If this is not a scam and you don't try to sell me something, I will try to come back to you as soon as I've read it :)\n\nSincerely,\nSimon Sutoris\n\n---\n\nDO NOT REPLY TO THIS EMAIL.\nIf you have any questions, contact me here: https://www.rismosch.com/contact\n\n<ORIGINAL MESSAGE>\nName: {$nameSanitized}\nEmail: {$emailSanitized}\nSubject: {$subjectSanitized}\nMessage:\n\n{$messageSanitized}";
 
 				$mail_sender->send();
 			}

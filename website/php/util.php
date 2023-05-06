@@ -20,9 +20,8 @@ function echo_head()
 	<meta name="msapplication-TileColor" content="#00aba9">
 	
 	'; if(!$isMobile) echo '<link rel="stylesheet" href="css/desktop.css">'; echo '
-	<link rel="stylesheet" href="css/main_6.css">
+	<link rel="stylesheet" href="css/main_dev.css">
 	
-	<script src="3rd_party_libraries/disqusloader.js"></script>
 	<script src="javascript/util.js"></script>
 	';
 }
@@ -141,9 +140,9 @@ function echo_foot($uses_captcha)
 	echo '
 	<div class="foot" id="foot">
 		
-		<a title="Newsletter" href="https://www.rismosch.com/newsletter">
-			'; late_image("assets/newsletter.gif", "newsletter_icon pixel_image", ""); echo '
-		</a>
+		<!--<a title="Newsletter" href="https://www.rismosch.com/newsletter">
+			'; /*late_image("assets/newsletter.gif", "newsletter_icon pixel_image", "");*/ echo '
+		</a>-->
 		
 		<div class="socials" id="socials">
 			<a title="YouTube" href="https://www.youtube.com/channel/UCrWSfmTaXTN_LzEsVRKNJTw">
@@ -155,9 +154,9 @@ function echo_foot($uses_captcha)
 			<a title="Bandcamp" href="https://rismosch.bandcamp.com">
 				'; late_image("assets/icon_social/bandcamp.webp", "social_icon", ""); echo '
 			</a>
-			<!--<a title="itch.io" href="https://rismosch.itch.io/">
-				'; /*late_image("assets/icon_social/itch_io.webp", "social_icon", "");*/ echo '
-			</a>-->
+			<a title="itch.io" href="https://rismosch.itch.io/">
+				'; late_image("assets/icon_social/itch_io.webp", "social_icon", ""); echo '
+			</a>
 			<a title="GitHub" href="https://github.com/Rismosch">
 				'; late_image("assets/icon_social/github.webp", "social_icon", ""); echo '
 			</a>
@@ -165,10 +164,6 @@ function echo_foot($uses_captcha)
 		
 		<div class="foot_links">
 			<p>
-				<a class="foot_link" href="https://www.rismosch.com/privacy">Privacy Policy</a>
-				<span class="foot_link_divider">&nbsp; | &nbsp;</span>
-				<a class="foot_link" href="https://www.rismosch.com/references">References</a>
-				<span class="foot_link_divider">&nbsp; | &nbsp;</span>
 				<a class="foot_link" href="https://www.rismosch.com/contact">Contact Me</a>
 			</p>
 		</div>

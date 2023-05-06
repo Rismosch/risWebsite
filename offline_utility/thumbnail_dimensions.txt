@@ -1,0 +1,7 @@
+image size:
+width: 681
+height: 384
+
+on desktop:
+width: 240
+height: 128

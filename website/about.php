@@ -72,42 +72,15 @@ echo_head();
 			<h2 style="text-align: center;">Résumé</h2>
 			
 			<table class="resume_table">
-				<tr class="row_empty row_devider"><td colspan="2"></td></tr>
-				<tr><td colspan="2"><b>2019 - Today</b></td></tr>
-				<tr><td colspan="2">employed as a developer at CMC-Kiesel GmbH</td></tr>
-				<tr class="row_empty"><td colspan="2"></td></tr>
-				<tr>
-					<td>Programming Languages:</td>
-					<td>
-						<p>
-							C#, <br>
-							Unity, <br>
-							XAML (WPF) <br>
-						</p>
-					</td>
-				</tr>
-				<tr class="row_empty"><td colspan="2"></td></tr>
-				<tr class="row_empty row_devider"><td colspan="2"></td></tr>
-				<tr><td colspan="2"><b>2016 - 2020</b></td></tr>
-				<tr><td colspan="2">studied Technical Computer Science at Hochschule Albstadt-Sigmaringen</td></tr>
-				<tr class="row_empty"><td colspan="2"></td></tr>
-				<tr>
-					<td>Programming Languages:</td>
-					<td>
-						<p>
-							C/C++, <br>
-							Java, <br>
-							HTML, <br>
-							CSS, <br>
-							JavaScript, <br>
-							Shell Script, <br>
-							PowerShell, <br>
-							SQL <br>
-						</p>
-					</td>
-				</tr>
-				<tr class="row_empty"><td colspan="2"></td></tr>
-				<tr class="row_empty row_devider"><td colspan="2"></td></tr>
+				<tr class="row_empty row_devider"><td></td></tr>
+				<tr><td><b>2019 - Today</b></td></tr>
+				<tr><td>employed as a developer at CMC-Kiesel GmbH</td></tr>
+				<tr class="row_empty"><td></td></tr>
+				<tr class="row_empty row_devider"><td></td></tr>
+				<tr><td><b>2016 - 2020</b></td></tr>
+				<tr><td>studied Technical Computer Science at Hochschule Albstadt-Sigmaringen</td></tr>
+				<tr class="row_empty"><td></td></tr>
+				<tr class="row_empty row_devider"><td></td></tr>
 			</table>
 		</div>
 		

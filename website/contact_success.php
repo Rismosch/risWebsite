@@ -31,7 +31,7 @@ echo_head();
 			<h1>Contact Me</h1>
 			
 			<p style="color: var(--pico-8-green);">Success &#10003;</p>
-			<p>I have received your message! I will try to come back to you as soon as possible :)</p>
+			<p>I have received your message! If this isn't a scam or you trying to sell me something, I will try to come back to you as soon as I've read it :)</p>
 			
 		</div>
 		
