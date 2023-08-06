@@ -78,8 +78,8 @@ function echo_selector($active_tab)
 				</a>
 			</li>
 			<li class="selector_tab '. $tab_selection[3] .'" id="selector_tab">
-				<a href="https://www.rismosch.com/about">
-					<div><b>About</b></div>
+				<a href="https://www.rismosch.com/archive">
+					<div><b>Archive</b></div>
 				</a>
 			</li>
 		</ul>
