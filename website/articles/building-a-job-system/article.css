@@ -1,0 +1,82 @@
+.ring_buffer_playground_head {
+    width: 50px;
+    background-color: var(--pico-8-orange);
+    color: var(--pico-8-black);
+    text-align: center;
+}
+
+.ring_buffer_playground_cell {
+    width: 200px;
+    max-width: 200px;
+    height: 1.3em;
+    border: solid 1px var(--pico-8-black);
+    overflow: hidden;
+}
+
+.ring_buffer_playground_tail {
+    width: 50px;
+    background-color: var(--pico-8-green);
+    color: var(--pico-8-white);
+    text-align: center;
+}
+
+.ring_buffer_invisible {
+    background-color: var(--pico-8-white);
+    color: var(--pico-8-white);
+}
+
+.spoiler {
+    color: var(--pico-8-white); 
+    background-color:var(--pico-8-white);
+}
+
+.spoiler:hover {
+    color: var(--pico-8-black); 
+    background-color:var(--pico-8-flesh);
+}
+
+.affinity_table {
+    border-collapse: collapse;
+    background-color: var(--pico-8-white);
+    width: 300px;
+    margin: auto;
+}
+
+.affinity_table_th {
+    background-color: var(--pico-8-dark-grey);
+    color: var(--pico-8-white);
+    text-align: center;
+    border: solid 1px var(--pico-8-black);
+}
+
+.affinity_table_td_left {
+    max-width: 150px;
+    min-width: 150px;
+    text-align: center;
+    border: solid 1px var(--pico-8-black);
+}
+
+.affinity_table_td_right {
+    max-width: 150px;
+    min-width: 150px;
+    border: solid 1px var(--pico-8-black);
+}
+
+.future_table {
+    border-collapse: collapse;
+    background-color: var(--pico-8-white);
+    width: 300px;
+    max-width: 100%;
+    margin: auto;
+}
+
+.future_table_th {
+    background-color: var(--pico-8-dark-grey);
+    color: var(--pico-8-white);
+    border: solid 1px var(--pico-8-black);
+}
+
+.future_table_td {
+    width: 150px;
+    border: solid 1px var(--pico-8-black);
+}

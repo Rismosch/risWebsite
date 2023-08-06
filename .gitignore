@@ -1,5 +1,5 @@
 secret*
-thumbnails
-articles
+#thumbnails
+#articles
 *.zip
 *.xlsx
