@@ -187,13 +187,18 @@ function echo_foot($uses_captcha)
 		$img_styles,
 		$img_count;
 	
-	echo "\n<script>\n";
+	echo "\n<script>";
+	echo "
+	    var image;
+	";
 	for($i = 0; $i < $img_count; ++$i)
 	{
 		echo "
-		var image = document.getElementById(\"img{$i}\");
-		image.src = \"{$img_sources[$i]}\";
-		image.style = \"{$img_styles[$i]}\";
+		image = document.getElementById(\"img{$i}\");
+		if (image) {
+		    image.src = \"{$img_sources[$i]}\";
+		    image.style = \"{$img_styles[$i]}\";
+		}
 		";
 	}
 	echo "</script>\n";

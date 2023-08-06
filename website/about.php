@@ -39,7 +39,7 @@ echo_head();
 			
 			<table>
 				<tr>
-					<td>Currently, I am programming professionally in C#. But in school and homeprojects I came in contact with many different programming languages.</td>
+					<td>I am programming professionally in C#. But I do have good experience with a wide variety of programming languages; from high- to low level and everything in between. I am rather fond of Rust nowadays.</td>
 					<td><?php late_image("assets/icon_8bit/prog.png", "about_picture pixel_image", "");?></td>
 				</tr>
 			</table>
@@ -55,12 +55,12 @@ echo_head();
 			
 			<br>
 			
-			<table>
+			<!--<table>
 				<tr>
 					<td>I have good experience with Microsoft Office products and use them on an almost daily basis, most notably Microsoft Excel. I also dabbed a bit in Video Editing.</td>
 					<td><?php late_image("assets/icon_8bit/video.png", "about_picture pixel_image", "");?></td>
 				</tr>
-			</table>
+			</table>-->
 			
 			<br>
 			

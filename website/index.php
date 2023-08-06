@@ -58,7 +58,8 @@ echo_head();
 							WHERE
 								Articles.category_id = Article_Categories.id AND
 								Articles.type_id = Article_Types.id AND (
-									Articles.id = 'angery'
+									Articles.id = 'the-world-between-my-mind-and-reality' OR
+									Articles.id = 'quaternion-playground'
 								)
 							ORDER BY
 								Articles.timestamp DESC
@@ -86,8 +87,59 @@ echo_head();
 					PrintArticleTableBottom();
 				?>
 			</noscript>
-
+            
 			<div  style="display:none;" id="javascript_content">
+
+                <?php
+                    PrintArticleTableTop();
+    
+    				$dbConn = mysqli_connect($dbHost, $dbSelectUsername, $dbSelectPassword, $dbName);
+    				
+    				if($dbConn)
+    				{
+    					$sqlSelectedArticles ="
+    						SELECT
+    							Articles.id AS id,
+    							Article_Types.name AS type,
+    							Article_Categories.name AS category,
+    							Articles.title AS title,
+    							Articles.timestamp AS timestamp,
+    							Articles.link AS link,
+    							Articles.thumbnail_path AS thumbnail_path
+    						FROM
+    							Articles,
+    							Article_Categories,
+    							Article_Types
+    						WHERE
+    							Articles.category_id = Article_Categories.id AND
+    							Articles.type_id = Article_Types.id AND (
+    								Articles.id = 'quaternion-playground'
+    							)
+    						ORDER BY
+    							Articles.timestamp DESC
+    					";
+    					
+    					$result = mysqli_query($dbConn,$sqlSelectedArticles);
+    					$numRows = mysqli_num_rows($result);
+    					if($numRows > 0){
+    						
+    						while($row = mysqli_fetch_assoc($result))
+    						{
+    							PrintArticleTableEntry($row, false);
+    						}
+    					
+    					}
+    					else
+    					{
+    						echo "<h3>:(</h3><p>Error while loading selected projects.</p>";
+    					}
+    				}
+    				else{
+    					echo "<h3>:(</h3><p>Error while loading selected projects.</p>";
+    				}
+                    PrintArticleTableBottom();
+                ?>
+            
 				<iframe title="bandcamp widget" style="border: 0; width: 100%; height: 307px;" src="https://bandcamp.com/EmbeddedPlayer/album=2712586750/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/" seamless><a href="https://rismosch.bandcamp.com/album/the-world-between-my-mind-and-reality">The World Between My Mind And Reality by Rismosch</a></iframe>
 				
 				<!--<iframe title="bandcamp widget" style="border: 0; width: 100%; height: 307px;" src="https://bandcamp.com/EmbeddedPlayer/album=894520742/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/" seamless><a href="https://rismosch.bandcamp.com/album/angery">Angery by Rismosch</a></iframe>-->
