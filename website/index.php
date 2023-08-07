@@ -68,7 +68,7 @@ echo_head();
 			
 			<br>
 			
-			<p>German is my mother language, and my English is fairly decent.</p>
+			<p>On this site you will find my personal blog, and a collection of projects I've been working on.</p>
 			
 			<br>
 			<br>
