@@ -91,7 +91,7 @@ function echo_selector($active_tab)
 					<a '.$tab_selection_dropdown[0].'href="https://www.rismosch.com/">Home</a>
 					<a '.$tab_selection_dropdown[1].'href="https://www.rismosch.com/blog">Blog</a>
 					<a '.$tab_selection_dropdown[2].'href="https://www.rismosch.com/projects">Projects</a>
-					<a '.$tab_selection_dropdown[3].'href="https://www.rismosch.com/about">About</a>
+					<a '.$tab_selection_dropdown[3].'href="https://www.rismosch.com/archive">Archive</a>
 				</div>
 			</div>
 		</div>
