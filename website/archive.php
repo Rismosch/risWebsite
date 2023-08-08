@@ -151,11 +151,11 @@ $sortBySizeDesc = $sort == 5;
             }
             
             echo "
-                <table style=\"overflow-x: auto; white-space: nowrap; display: block; border: 5px var(--pico-8-dark-grey) solid; background-color: var(--pico-8-white);\">
+                <table style=\"width:100%;\">
                     <tr style=\"text-align: left;\">
-                        <th><a href=\"https://www.rismosch.com/archive?sort={$nameSortLink}\" style=\"color: var(--pico-8-cyan);\">Name{$nameSortChar}</a></th>
-                        <th><a href=\"https://www.rismosch.com/archive?sort={$dateSortLink}\" style=\"color: var(--pico-8-cyan);\">Last modified{$dateSortChar}</a></th>
-                        <th><a href=\"https://www.rismosch.com/archive?sort={$sizeSortLink}\" style=\"color: var(--pico-8-cyan);\">Size{$sizeSortChar}</a></th>
+                        <th><a href=\"https://www.rismosch.com/archive?sort={$nameSortLink}\" style=\"color: var(--pico-8-blue);\">Name{$nameSortChar}</a></th>
+                        <th><a href=\"https://www.rismosch.com/archive?sort={$dateSortLink}\" style=\"color: var(--pico-8-blue);\">Last modified{$dateSortChar}</a></th>
+                        <th><a href=\"https://www.rismosch.com/archive?sort={$sizeSortLink}\" style=\"color: var(--pico-8-blue);\">Size{$sizeSortChar}</a></th>
                     </tr>";
 
             foreach ($files as $file)
@@ -166,7 +166,9 @@ $sortBySizeDesc = $sort == 5;
 
                 $download_link = "https://www.rismosch.com/{$name}";
                 $formatted_name = basename($name);
-                $formatted_date = date("c", $date);
+                $formatted_date = date("M jS, Y", $date);
+                $formatted_time = date("G:i:s", $date);
+                $formatted_timestamp = "{$formatted_date}<br>{$formatted_time}";
 
                 $size_kb = intdiv($size, 1000);
                 $size_mb = intdiv($size_kb, 1000);
@@ -184,7 +186,7 @@ $sortBySizeDesc = $sort == 5;
                 echo "
                     <tr style=\"height: 3em;\">
                         <td><a href=\"{$download_link}\">{$formatted_name}</a></td>
-                        <td>{$formatted_date}</td>
+                        <td style=\"text-align: right;\">{$formatted_timestamp}</td>
                         <td style=\"text-align: right; white-space: nowrap;\">{$formatted_size}</td>
                     </tr>";
             }
