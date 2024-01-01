@@ -68,7 +68,11 @@ echo_head();
 			
 			<br>
 			
-			<p>On this site you will find my personal blog, and a collection of projects I've been working on.</p>
+			<table>
+				<tr>
+					<td>On this site you will find my personal blog, and a collection of projects I've been working on.</td>
+				</tr>
+			</table>
 			
 			<br>
 			<br>
@@ -114,7 +118,7 @@ echo_head();
 								Articles.category_id = Article_Categories.id AND
 								Articles.type_id = Article_Types.id AND (
 									Articles.id = 'the-world-between-my-mind-and-reality' OR
-									Articles.id = 'quaternion-playground'
+									Articles.id = 'ris_engine'
 								)
 							ORDER BY
 								Articles.timestamp DESC
@@ -168,7 +172,7 @@ echo_head();
     						WHERE
     							Articles.category_id = Article_Categories.id AND
     							Articles.type_id = Article_Types.id AND (
-    								Articles.id = 'quaternion-playground'
+    								Articles.id = 'ris_engine'
     							)
     						ORDER BY
     							Articles.timestamp DESC
@@ -228,8 +232,8 @@ echo_head();
 						WHERE
 							Articles.category_id = Article_Categories.id AND
 							Articles.type_id = Article_Types.id AND (
+								Articles.id = 'my-most-hated-feature-in-rust' OR
 								Articles.id = 'building-a-job-system' OR
-								Articles.id = 'rebinding-controls-via-a-rebind-matrix' OR
 								Articles.id = 'why-people-love-bad-art'
 							)
 						ORDER BY

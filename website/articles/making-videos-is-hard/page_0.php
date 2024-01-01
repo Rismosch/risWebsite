@@ -24,6 +24,6 @@
 
 <p>Because of this, my brain is now full of transformation matrices instead of quaternions. Next steps would be build on top of it more. At the time of writing, I am missing index buffers and depth testing. Then I would also want to start with my resource system, such that I can actually import 3d files. Then I would also want to put my shaders into files, such that I can recompile and hotswap them at runtime. Nice stuff.</p>
 
-<?php late_image(get_source("photo.webp"),"","display: block; margin: auto; max-width: 100%;");?>
+<?php late_image(get_source("thumbnail.webp"),"","display: block; margin: auto; max-width: 100%;");?>
 
 <p>Until then, radio silence &#128586;</p>
