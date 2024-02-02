@@ -1,8 +1,10 @@
-# Visit my website here: [rismosch.com](https://www.rismosch.com/)
-
-# Read how I did it here: [WebDev CrashCourse](https://www.rismosch.com/article?id=i-made-a-website-only-with-notepad-plus-plus)
+# risWebsite
 
 Blog and Project-Collection of Simon Sutoris
+
+Url: [rismosch.com](https://www.rismosch.com/)
+
+Blogpost: https://www.rismosch.com/article?id=i-made-a-website-only-with-notepad-plus-plus
 
 ## Feature List:
 
