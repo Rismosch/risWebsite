@@ -108,12 +108,22 @@ $sortBySizeDesc = $sort == 5;
                 $sizeSortLink = 4;
             }
 
-            $directoryToScan = "files/";
-            $scanned_files = array_diff(scandir($directoryToScan, $scanDirSort), array('..','.'));
+            $archive_directory = "archive_files/";
+            $outdated_directory = "archive_files/outdated/";
+            
             $files = array();
+            $outdated_files = array();
+            
+            $scanned_files = array_diff(scandir($archive_directory, $scanDirSort), array('..','.'));
+            
             foreach ($scanned_files as $scanned_file)
             {
-                $scanned_file_name = "{$directoryToScan}{$scanned_file}";
+                $scanned_file_name = "{$archive_directory}{$scanned_file}";
+                
+                if ($scanned_file_name == "archive_files/outdated") {
+                    continue;
+                }
+                
                 $file = array(
                     "name" => $scanned_file_name,
                     "date" => filemtime($scanned_file_name),
@@ -122,10 +132,32 @@ $sortBySizeDesc = $sort == 5;
 
                 $files[] = $file;
             }
+            
+            $scanned_files = array_diff(scandir($outdated_directory, $scanDirSort), array('..','.'));
+            
+            foreach ($scanned_files as $scanned_file)
+            {
+                $scanned_file_name = "{$outdated_directory}{$scanned_file}";
+                
+                if ($scanned_file_name == "archive_files/outdated") {
+                    continue;
+                }
+                
+                $file = array(
+                    "name" => $scanned_file_name,
+                    "date" => filemtime($scanned_file_name),
+                    "size" => filesize($scanned_file_name),
+                );
+
+                $outdated_files[] = $file;
+            }
 
             if ($sortByDateAsc)
             {
                 usort($files, function($a, $b) {
+                    return $a['date'] <=> $b['date'];
+                });
+                usort($outdated_files, function($a, $b) {
                     return $a['date'] <=> $b['date'];
                 });
             }
@@ -134,16 +166,25 @@ $sortBySizeDesc = $sort == 5;
                 usort($files, function($a, $b) {
                     return $b['date'] <=> $a['date'];
                 });
+                usort($outdated_files, function($a, $b) {
+                    return $b['date'] <=> $a['date'];
+                });
             }
             elseif ($sortBySizeAsc)
             {
                 usort($files, function($a, $b) {
                     return $a['size'] <=> $b['size'];
                 });
+                usort($outdated_files, function($a, $b) {
+                    return $a['size'] <=> $b['size'];
+                });
             }
             elseif ($sortBySizeDesc)
             {
                 usort($files, function($a, $b) {
+                    return $b['size'] <=> $a['size'];
+                });
+                usort($outdated_files, function($a, $b) {
                     return $b['size'] <=> $a['size'];
                 });
             }
@@ -183,7 +224,60 @@ $sortBySizeDesc = $sort == 5;
 
                 echo "
                     <tr style=\"height: 3em;\">
-                        <td><a href=\"{$download_link}\">{$formatted_name}</a></td>
+                        <td style=\"word-break: break-word;\"><a href=\"{$download_link}\">{$formatted_name}</a></td>
+                        <td style=\"text-align: right;\">{$formatted_timestamp}</td>
+                        <td style=\"text-align: right; white-space: nowrap;\">{$formatted_size}</td>
+                    </tr>";
+            }
+
+            echo "
+                </table>
+            ";
+            
+            ?>
+            
+            <h2>Outdated</h2>
+            
+            <p>The files below are older duplicates of the files above.</p>
+            
+            <?php
+            
+            echo "
+                <table style=\"width:100%;\">
+                    <tr style=\"text-align: left;\">
+                        <th><a href=\"https://www.rismosch.com/archive?sort={$nameSortLink}\" style=\"color: var(--pico-8-blue);\">Name{$nameSortChar}</a></th>
+                        <th><a href=\"https://www.rismosch.com/archive?sort={$dateSortLink}\" style=\"color: var(--pico-8-blue);\">Last modified{$dateSortChar}</a></th>
+                        <th><a href=\"https://www.rismosch.com/archive?sort={$sizeSortLink}\" style=\"color: var(--pico-8-blue);\">Size{$sizeSortChar}</a></th>
+                    </tr>";
+
+            foreach ($outdated_files as $file)
+            {
+                $name = $file["name"];
+                $date = $file["date"];
+                $size = $file["size"];
+
+                $download_link = "https://www.rismosch.com/{$name}";
+                $formatted_name = basename($name);
+                $formatted_date = date("M jS, Y", $date);
+                $formatted_time = date("G:i:s", $date);
+                $formatted_timestamp = "{$formatted_date}<br>{$formatted_time}";
+
+                $size_kb = intdiv($size, 1000);
+                $size_mb = intdiv($size_kb, 1000);
+                $size_mb_dezimals = $size_kb % 1000;
+
+                if ($size_mb_dezimals == 0)
+                    $formatted_size = "{$size_mb} MB";
+                elseif ($size_mb_dezimals < 10)
+                    $formatted_size = "{$size_mb}.00{$size_mb_dezimals} MB";
+                elseif ($size_mb_dezimals < 100)
+                    $formatted_size = "{$size_mb}.0{$size_mb_dezimals} MB";
+                else
+                    $formatted_size = "{$size_mb}.{$size_mb_dezimals} MB";
+
+                echo "
+                    <tr style=\"height: 3em;\">
+                        <td style=\"word-break: break-word;\"><a href=\"{$download_link}\">{$formatted_name}</a></td>
                         <td style=\"text-align: right;\">{$formatted_timestamp}</td>
                         <td style=\"text-align: right; white-space: nowrap;\">{$formatted_size}</td>
                     </tr>";

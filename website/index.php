@@ -35,7 +35,7 @@ echo_head();
 			<table>
 				<tr>
 					<td><?php late_image("assets/profile_pictures/2020.webp", "profile_picture", "");?></td>
-					<td>Hello Internet, my name is Rismosch, or B. Eng. Simon Sutoris. I describe myself as a programmer and a music producer.</td>
+					<td>Hello Internet, my name is Simon Sutoris. Online I call myself Rismosch. I'm a programmer and music enthusiast.</td>
 				</tr>
 			</table>
 			
