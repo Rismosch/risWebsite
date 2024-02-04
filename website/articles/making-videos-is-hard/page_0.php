@@ -2,7 +2,7 @@
 
 <p>I was trying to change this, by actually doing a beginner friendly intro to Quaternions, but it turned out to be much more work than anticipated. I made <a href="https://www.rismosch.com/article?id=quaternion-playground" target="_blank" rel="noopener noreferrer">this visualization tool</a>, which is something. It's inspired by the book "Visualizing Quaternions" by Andrew J. Hanson and it's in my opinion better than any other visualization that I've found online.</p>
 
-<?php late_image(get_source("obama.webp"),"","display: block; margin: auto; max-width: 100%;");?>
+<img src='https://www.rismosch.com/articles/making-videos-is-hard/obama.webp' style='display: block; margin: auto; max-width: 100%;' />
 
 <p>Unfortunately, the tool is rather worthless if you don't have a mentor that explains it to you. So the idea was that I also make a video to specifically explain the tool and give a good, simple explanation of quaternions. An explanation that isn't riddled with formulas, doesn't require an understanding of the 4th dimension, and doesn't ask of a deep understanding of mathematics. Such an explanation is indeed possible: I've held a presentation at my job to do exactly that. But the slides are rather low quality, and use many questionable pictures which violate copyright. (On that note, fuck copyright.)</p>
 
@@ -10,7 +10,7 @@
 
 <p>This is all a lot of work.</p>
 
-<?php late_image(get_source("screenshot.webp"),"","display: block; margin: auto; max-width: 100%;");?>
+<img src='https://www.rismosch.com/articles/making-videos-is-hard/screenshot.webp' style='display: block; margin: auto; max-width: 100%;' />
 
 <p>It is at this moment, where I truly realized the difference between people who make, and people who talk. On YouTube you find a lot of people who talk about how to program, how to make a game the "proper way". But often the advice these people preach is shallow and meaningless. The worst kind of these people are video essayists and critics, who talk about what makes a game good, but never made or even considered making one. On this note, huge respect for Mark Brown from Game Maker's Toolkit, who actually tried to put his knowledge to the test and tried making one.</p>
 
@@ -18,12 +18,12 @@
 
 <p>I decided that I want to be a maker, not a talker. As such I scrapped the idea of a video, and instead focus more on my engine. So here's what I've been up to: I implemented a basic Vulkan based 3d renderer into my engine :)</p>
 
-<video muted="true" style="max-width:100%; display: block; margin: auto;" loading='lazy' controls>
-<source src="<?php echo get_source("backface_culling_compressed.mp4");?>" type="video/mp4">
+<video style="max-width:100%; display: block; margin: auto;" loading='lazy' controls>
+<source src="https://www.rismosch.com/articles/making-videos-is-hard/backface_culling_compressed.mp4" type="video/mp4">
 </video>
 
 <p>Because of this, my brain is now full of transformation matrices instead of quaternions. Next steps would be build on top of it more. At the time of writing, I am missing index buffers and depth testing. Then I would also want to start with my resource system, such that I can actually import 3d files. Then I would also want to put my shaders into files, such that I can recompile and hotswap them at runtime. Nice stuff.</p>
 
-<?php late_image(get_source("thumbnail.webp"),"","display: block; margin: auto; max-width: 100%;");?>
+<img src='https://www.rismosch.com/articles/making-videos-is-hard/thumbnail.webp' style='display: block; margin: auto; max-width: 100%;' />
 
 <p>Until then, radio silence &#128586;</p>

@@ -13,10 +13,10 @@ function echo_head()
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
 	
-	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-	<link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
-	<link rel="shortcut icon" href="favicon.ico">
-	<meta name="msapplication-TileImage" content="mstile-144x144.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="https://rismosch.com/apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="https://rismosch.com/favicon.png" sizes="32x32">
+	<link rel="shortcut icon" href="https://rismosch.com/favicon.ico">
+	<meta name="msapplication-TileImage" content="https://rismosch.com/mstile-144x144.png">
 	<meta name="msapplication-TileColor" content="#00aba9">
 	
 	'; if(!$isMobile) echo '<link rel="stylesheet" href="css/desktop.css">'; echo '

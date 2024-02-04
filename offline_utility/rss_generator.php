@@ -15,7 +15,8 @@ if($dbConn){
             Articles.id AS id,
             Articles.title AS title,
             Article_Categories.name AS category,
-            Articles.timestamp AS timestamp
+            Articles.timestamp AS timestamp,
+            Articles.Description AS description
         FROM
             Articles,
             Article_Categories
@@ -36,20 +37,28 @@ if($dbConn){
 
         $rss = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>";
 
-        $rss .= "<rss version=\"2.0\" xmlns:media=\"http://search.yahoo.com/mrss/\">";
+        $rss .= "<rss version=\"2.0\" ";
+        $rss .= "xmlns:content=\"http://purl.org/rss/1.0/modules/content/\" ";
+        $rss .= "xmlns:dc=\"http://purl.org/dc/elements/1.1/\" ";
+        $rss .= "xmlns:atom=\"http://www.w3.org/2005/Atom\" ";
+        $rss .= ">";
 
         $rss .= "<channel>";
         $rss .= "<title>Rismosch</title>";
+        $rss .= "<atom:link href=\"https://www.rismosch.com/rss.xml\" rel=\"self\" type=\"application/rss+xml\" />";
+        $rss .= "<link>https://www.rismosch.com</link>";
         $rss .= "<description>Blog and Project-Collection of Simon Sutoris</description>";
-        $rss .= "<link>https://www.rismosch.com/</link>";
 
         $lastBuildDate = date('r', time());
         $rss .= "<lastBuildDate>{$lastBuildDate}</lastBuildDate>";
-        
+
         $rss .= "<image>";
-        $rss .= "<title>Rismosch Logo</title>";
-        $rss .= "<url>https://www.rismosch.com/assets/meta_image_x10.png</url>";
-        $rss .= "<link>https://www.rismosch.com/</link>";
+        $rss .= "<url>https://www.rismosch.com/assets/profile_pictures/favicon.png</url>";
+        //$rss .= "<url>https://rismosch.com/favicon.png</url>";
+        $rss .= "<title>Rismosch</title>";
+        $rss .= "<link>https://www.rismosch.com</link>";
+        $rss .= "<width>32</width>";
+        $rss .= "<height>32</height>";
         $rss .= "</image>";
     
         $rowNumber = 0;
@@ -68,37 +77,38 @@ if($dbConn){
             $timestamp = $row['timestamp'];
             $datetime = strtotime($row['timestamp']);
             $date = date('r', $datetime);
+            $description = $row['description'];
 
             $rss .= "<title>{$title}</title>";
             $rss .= "<link>{$link}</link>";
-            $rss .= "<author>Simon Sutoris</author>";
-            $rss .= "<category>{$category}</category>";
-            $rss .= "<guid>{$id}</guid>";
+            $rss .= "<dc:creator><![CDATA[Simon Sutoris]]></dc:creator>";
+            $rss .= "<category>![CDATA[{$category}]]</category>";
+            $rss .= "<guid isPermaLink=\"false\">{$id}</guid>";
             $rss .= "<pubDate>{$date}</pubDate>";
+            $rss .= "<description>{$description}</description>";
 
-            $rss .= "<description>";
-            $rss_content_url = "https://www.rismosch.com/articles/${id}/page_0.php";
+            $rss .= "<content:encoded><![CDATA[";
             
-            //$content = file_get_contents($rss_content_url);
+            $rss_content_url = "https://www.rismosch.com/articles/${id}/page_0.php";
             $ch = curl_init($rss_content_url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $content = curl_exec($ch);
-            
-            $content = str_replace("&nbsp;", " ", $content);
-
             $rss .= $content;
-            $rss .= "</description>";
+
+            $rss .= "]]></content:encoded>";
             
             $rss .= "</item>";
 
-            break;
+            if ($rowNumber >= 2) {
+                break;
+            }
         }
 
         $rss .= "</channel>";
         $rss .= "</rss>";
 
         echo "<br>saving file...<br>";
-        file_put_contents("index.xml", $rss);
+        file_put_contents("rss.xml", $rss);
 
         echo "<br>done<br>";
 

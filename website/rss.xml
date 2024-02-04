@@ -1,4 +1,4 @@
-<blockquote style="background-color:var(--pico-8-white); border: 5px solid var(--pico-8-cyan); padding: 20px;"><p>There are only two kinds of languages: the ones people complain about and the ones nobody uses.</p><cite>Bjarne Stoustroup</cite></blockquote>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" ><channel><title>Rismosch</title><atom:link href="https://www.rismosch.com/rss.xml" rel="self" type="application/rss+xml" /><link>https://www.rismosch.com</link><description>Blog and Project-Collection of Simon Sutoris</description><lastBuildDate>Sun, 04 Feb 2024 22:07:39 +0100</lastBuildDate><image><url>https://rismosch.com/favicon.png</url><title>Rismosch</title><link>https://www.rismosch.com</link><width>32</width><height>32</height></image><item><title>My most hated feature in Rust</title><link>https://www.rismosch.com/article?id=my-most-hated-feature-in-rust</link><dc:creator><![CDATA[Simon Sutoris]]></dc:creator><category>![CDATA[Programming]]</category><guid isPermaLink="false">my-most-hated-feature-in-rust</guid><pubDate>Sun, 03 Dec 2023 13:57:57 +0100</pubDate><description>Result is a quite powerful concept. But because it's so general, it's quite clunky and aweful to use.</description><content:encoded><![CDATA[<blockquote style="background-color:var(--pico-8-white); border: 5px solid var(--pico-8-cyan); padding: 20px;"><p>There are only two kinds of languages: the ones people complain about and the ones nobody uses.</p><cite>Bjarne Stoustroup</cite></blockquote>
 
 <p>I use Rust and I plan to continue, so I've earned the right to complain about Rust. But this won't be your average Rust vs Go blogpost. (Why are there so many of those? What the hell?) I won't be complaining about the borrow checker. Neither about traits, lifetimes, macros or compile times. These are fine. No, I will be complaining about <strong>Result</strong>. That is right. I will be complaining about one of Rusts most beloved features.</p> 
 
@@ -223,4 +223,33 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-green)">}</span>;<br/>
 <span style="color:var(--pico-8-cyan)">}</span><br/>
 
-</p>
+</p>]]></content:encoded></item><item><title>Making videos is hard</title><link>https://www.rismosch.com/article?id=making-videos-is-hard</link><dc:creator><![CDATA[Simon Sutoris]]></dc:creator><category>![CDATA[Other]]</category><guid isPermaLink="false">making-videos-is-hard</guid><pubDate>Mon, 31 Jul 2023 23:44:16 +0200</pubDate><description>I was planning to make a beginner friendly video to explain quaternions. Unfortunately, that took a lot longer than expected.</description><content:encoded><![CDATA[<p>Quaternions are easy. I am not saying this to flex my intelligence. I am saying this because I genuinely believe that they are easy. The problem is just that there aren't many beginner friendly resources out there. I mean there is <a href="https://eater.net/quaternions" target="_blank" rel="noopener noreferrer">this</a>, by Grant Sanderson and Ben Eater, but Grant is a mathematician, not a programmer. So while the videos are <i>theoretically</i> correct, they aren't particularly helpful in your 3d programming day to day life.</p>
+
+<p>I was trying to change this, by actually doing a beginner friendly intro to Quaternions, but it turned out to be much more work than anticipated. I made <a href="https://www.rismosch.com/article?id=quaternion-playground" target="_blank" rel="noopener noreferrer">this visualization tool</a>, which is something. It's inspired by the book "Visualizing Quaternions" by Andrew J. Hanson and it's in my opinion better than any other visualization that I've found online.</p>
+
+<img src='https://www.rismosch.com/articles/making-videos-is-hard/obama.webp' style='display: block; margin: auto; max-width: 100%;' />
+
+<p>Unfortunately, the tool is rather worthless if you don't have a mentor that explains it to you. So the idea was that I also make a video to specifically explain the tool and give a good, simple explanation of quaternions. An explanation that isn't riddled with formulas, doesn't require an understanding of the 4th dimension, and doesn't ask of a deep understanding of mathematics. Such an explanation is indeed possible: I've held a presentation at my job to do exactly that. But the slides are rather low quality, and use many questionable pictures which violate copyright. (On that note, fuck copyright.)</p>
+
+<p>If I wanted to make something that would go on YouTube, instead I had to make custom pictures and diagrams, write a proper script, record and edit a video. Problem is, the visualization tool already took a month of work, and this video will take probably another. Also also, I advocate to use <a href="https://docs.unity3d.com/ScriptReference/Quaternion.AngleAxis.html" target="_blank" rel="noopener noreferrer">Quaternion.AngleAxis</a> and <a href="https://docs.unity3d.com/ScriptReference/Quaternion.LookRotation.html" target="_blank" rel="noopener noreferrer">Quaternion.LookRotation</a> and I discourage everyone to use Euler Angles ever again. But I want to keep things as general as possible. I don't want to say <i>"just use the provided functions by Unity"</i>. Instead I want to provide proper formulas, because 1: Not everyone is using Unity. And 2: People may want to write their own quaternion library, and this just doesn't fly.</p>
+
+<p>This is all a lot of work.</p>
+
+<img src='https://www.rismosch.com/articles/making-videos-is-hard/screenshot.webp' style='display: block; margin: auto; max-width: 100%;' />
+
+<p>It is at this moment, where I truly realized the difference between people who make, and people who talk. On YouTube you find a lot of people who talk about how to program, how to make a game the "proper way". But often the advice these people preach is shallow and meaningless. The worst kind of these people are video essayists and critics, who talk about what makes a game good, but never made or even considered making one. On this note, huge respect for Mark Brown from Game Maker's Toolkit, who actually tried to put his knowledge to the test and tried making one.</p>
+
+<p>This whole makers vs talkers thing reminds me about the book "Clean Code" by Robert Martin, which is full of questionable advice, which the author himself doesn't actually follow. It also reminds me about No Man's Sky, how it was ruined by the fact that they talked about it too much, but then fixed it by shutting up and actually fixing it: <a href="https://youtu.be/O5BJVO3PDeQ" target="_blank" rel="noopener noreferrer">https://youtu.be/O5BJVO3PDeQ</a></p>
+
+<p>I decided that I want to be a maker, not a talker. As such I scrapped the idea of a video, and instead focus more on my engine. So here's what I've been up to: I implemented a basic Vulkan based 3d renderer into my engine :)</p>
+
+<video style="max-width:100%; display: block; margin: auto;" loading='lazy' controls>
+<source src="https://www.rismosch.com/articles/making-videos-is-hard/backface_culling_compressed.mp4" type="video/mp4">
+</video>
+
+<p>Because of this, my brain is now full of transformation matrices instead of quaternions. Next steps would be build on top of it more. At the time of writing, I am missing index buffers and depth testing. Then I would also want to start with my resource system, such that I can actually import 3d files. Then I would also want to put my shaders into files, such that I can recompile and hotswap them at runtime. Nice stuff.</p>
+
+<img src='https://www.rismosch.com/articles/making-videos-is-hard/thumbnail.webp' style='display: block; margin: auto; max-width: 100%;' />
+
+<p>Until then, radio silence &#128586;</p>
+]]></content:encoded></item></channel></rss>
