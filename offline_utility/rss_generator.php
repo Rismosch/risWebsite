@@ -16,7 +16,8 @@ if($dbConn){
             Articles.title AS title,
             Articles.description AS description,
             Article_Categories.name AS category,
-            Articles.timestamp AS timestamp
+            Articles.timestamp AS timestamp,
+            Articles.thumbnail_path AS thumbnail_path
         FROM
             Articles,
             Article_Categories
@@ -78,6 +79,19 @@ if($dbConn){
             $rss .= "<category>{$category}</category>";
             $rss .= "<guid>{$id}</guid>";
             $rss .= "<pubDate>{$date}</pubDate>";
+
+            $thumbnail_path = $row['thumbnail_path'];
+            if(is_null($thumbnail_path))
+            {
+                $thumbnail_path = "https://www.rismosch.com/articles/{$id}/thumbnail.webp";
+            } else {
+                $thumbnail_path = "https://www.rismosch.com/{$thumbnail_path}";
+            }
+
+            $x = array_change_key_case(get_headers($thumbnail_path, 1),CASE_LOWER);
+            if ( strcasecmp($x[0], 'HTTP/1.1 200 OK') != 0 ) { $x = $x['content-length'][1]; }
+            else { $x = $x['content-length']; }
+            $rss .= "<enclosure url=\"{$thumbnail_path}\" type=\"image/webp\" length=\"{$x}\" />";
             
             $rss .= "</item>";
         }

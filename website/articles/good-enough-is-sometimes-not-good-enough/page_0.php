@@ -1,4 +1,4 @@
-<?php late_image(get_source("gmtk_game_jam_2020_banner.webp"),"","width: 100%; display: block;");?>
+<?php late_image(get_source("gmtk_game_jam_2020_banner_2.webp"),"","width: 100%; display: block;");?>
 
 <p>Last year, Mark Brown, from the YouTube channel <a href="https://www.youtube.com/channel/UCqJ-Xo29CKyLTjn6z2XwYAw">Game Maker's Toolkit</a>, ran the GMTK Game Jam 2020, in which you had 48 hours to make a game. Like the Game Jams before it, this jam focused on a clever design idea, which challenged traditional games and forced you to think outside the box. This time, the idea was “out of control”. The theme was open for interpretation, and I wanted to make a game, where the player became faster over time, eventually becoming so fast that they are literally out of control.</p>
 

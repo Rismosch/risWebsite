@@ -110,13 +110,12 @@ function late_image($source, $class, $style)
 		$img_styles,
 		$img_count;
 	
-	echo "
+	/*echo "
 	<img
 		src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
 		class='{$class}'
 		style='display: none;'
 		id='img{$img_count}'
-		alt=''
 	>
 	
 	<noscript>
@@ -124,9 +123,16 @@ function late_image($source, $class, $style)
 		src='{$source}'
 		class='{$class}'
 		style='{$style}'
-		alt=''
 	>
 	</noscript>
+	";*/
+	
+	echo "
+	<img
+		src='{$source}'
+		class='{$class}'
+		style='{$style}'
+	>
 	";
 	
 	$img_sources[] = $source;
@@ -182,7 +188,7 @@ function echo_foot($uses_captcha)
 		echo '<button onclick="scrollToTop()" id="scroll_to_top" class="scroll_to_top">Top</button>';
 	
 	// late loading images
-	global
+	/*global
 		$img_sources,
 		$img_styles,
 		$img_count;
@@ -201,7 +207,40 @@ function echo_foot($uses_captcha)
 		}
 		";
 	}
-	echo "</script>\n";
+	echo "</script>\n";*/
+}
+
+$exclude_no_javascript_count = 0;
+function echo_head_exclude_no_javascript($showError) {
+    global $exclude_no_javascript_count;
+    
+    $exclude_no_javascript_count += 1;
+    
+    if ($showError) {
+        echo "
+    <p id=\"exclude_no_javascript_error_{$exclude_no_javascript_count}\"><b>Your browser does not support JavaScript</b></p>
+        ";
+    }
+    
+    echo "
+    <div id=\"exclude_no_javascript_{$exclude_no_javascript_count}\" style=\"display:none\">
+    ";
+    
+}
+
+function echo_foot_exclude_no_javascript() {
+    global $exclude_no_javascript_count;
+    
+    echo "
+    </div>
+    <script>
+        var exclude_no_javascript_element = document.getElementById(\"exclude_no_javascript_{$exclude_no_javascript_count}\");
+        var exclude_no_javascript_error = document.getElementById(\"exclude_no_javascript_error_{$exclude_no_javascript_count}\");
+        
+        exclude_no_javascript_element.style.display=\"block\";
+        exclude_no_javascript_error.style.display=\"none\";
+    </script>
+    ";
 }
 
 ?>

@@ -1,0 +1,16 @@
+[04-Feb-2024 09:24:39 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function late_image() in /home/qvw9rzc6quzb/public_html/articles/my-most-hated-feature-in-rust/page_0.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/qvw9rzc6quzb/public_html/articles/my-most-hated-feature-in-rust/page_0.php on line 19
+[04-Feb-2024 10:07:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function late_image() in /home/qvw9rzc6quzb/public_html/articles/my-most-hated-feature-in-rust/page_0.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/qvw9rzc6quzb/public_html/articles/my-most-hated-feature-in-rust/page_0.php on line 19
+[04-Feb-2024 10:07:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function late_image() in /home/qvw9rzc6quzb/public_html/articles/my-most-hated-feature-in-rust/page_0.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/qvw9rzc6quzb/public_html/articles/my-most-hated-feature-in-rust/page_0.php on line 19
+[04-Feb-2024 10:26:02 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function late_image() in /home/qvw9rzc6quzb/public_html/articles/my-most-hated-feature-in-rust/page_0.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/qvw9rzc6quzb/public_html/articles/my-most-hated-feature-in-rust/page_0.php on line 19

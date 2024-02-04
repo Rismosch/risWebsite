@@ -8,6 +8,7 @@
 
 <p>HTML uses tags, which do very different things. For instance: </p>
 
+<code>
 <div style="background-color: var(--pico-8-white);" class="code_block">
 <p><span class="code" style="color:var(--pico-8-cyan);">&lt;html&gt;</span> contains the entire website</p>
 <p><span class="code" style="color:var(--pico-8-cyan);">&lt;head&gt;</span> contains diverse data, like the title of the tab, or the little icon displayed next to it. Here comes usually important stuff to make the website work, but won’t be displayed <span class="code" style="color:var(--pico-8-cyan);">&lt;&#47;head&gt;</span></p>
@@ -23,11 +24,13 @@
 <p><span class="code" style="color:var(--pico-8-cyan);">&lt;&#47;body&gt;</span></p>
 <p><span class="code" style="color:var(--pico-8-cyan);">&lt;&#47;html&gt;</span></p>
 </div>
+</code>
 
 <p>There are more tags than this, but these are the most essential ones. The whole layout of your website is pretty much just a creative combination of these tags. Since you already know that a webserver works like a filesystem, even if you don’t have a host, you can make an HTML file right now, throw in some HTML tags and display it in your browser.</p>
 
 <p>Take for example the following HTML:</p>
 
+<code>
 <p class="code code_block">
 	&lt;!DOCTYPE html&gt;<br>
 	<span style="color:var(--pico-8-cyan);">&lt;html </span><span class="code" style="color:var(--pico-8-red);">lang</span>=<span class="code" style="color:var(--pico-8-purple);">&#34;en&#34;</span><span style="color:var(--pico-8-cyan);">&gt;</span><br>
@@ -40,6 +43,7 @@
 	<span style="color:var(--pico-8-cyan);">&lt;&#47;body&gt;</span><br>
 	<span style="color:var(--pico-8-cyan);">&lt;&#47;html&gt;</span>
 </p>
+</code>
 
 <?php late_image(get_source("picture_2.webp"),"","max-width:100%; margin:auto; display: block;"); ?>
 
@@ -49,27 +53,32 @@
 
 <p>CSS, or Cascading Style Sheets, allow you to put all your styles into one single file. With so called selectors, you can apply styles to tags.</p>
 
+<code>
 <p class="code code_block">
 	<span style="color:var(--pico-8-cyan);">p</span>{<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-dark-grey);">color</span>: red;<br>
 	}<br>
 </p>
+</code>
 
 <p>This selector for example, makes the text of all paragraphs red. HTML-Tags can be assigned classes and ids, so that CSS-Selectors can be more specific.</p>
 
+<code>
 <p class="code code_block">
 	<span style="color:var(--pico-8-cyan);">p</span>.<span style="color:var(--pico-8-red);">myClass</span>{<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-dark-grey);">color</span>: blue;<br>
 	}<br>
 </p>
+</code>
 
 <p>This selector only applies to paragraph tags, which have the class &#34;myClass&#34;.<br>Using the two CSS selectors above and the HTML below, we get something like this:</p>
 
-
+<code>
 <p class="code code_block">
 	<span style="color:var(--pico-8-cyan);">&lt;p&gt;</span>this is some text<span style="color:var(--pico-8-cyan);">&lt;&#47;p&gt;</span><br>
 	<span style="color:var(--pico-8-cyan);">&lt;p </span><span class="code" style="color:var(--pico-8-red);">class</span>=<span class="code" style="color:var(--pico-8-purple);">&#34;myClass&#34;</span><span style="color:var(--pico-8-cyan);">&gt;</span>this is some blue text<span style="color:var(--pico-8-cyan);">&lt;&#47;p&gt;</span><br>
 </p>
+</code>
 
 <?php late_image(get_source("picture_3.webp"),"","max-width:100%; margin:auto; display: block;"); ?>
 
@@ -90,6 +99,7 @@
 	}
 </script>
 
+<code>
 <p class="code code_block">
 	<span style="color:var(--pico-8-cyan);">&lt;p&gt;</span><br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-cyan);">&lt;button </span><span style="color:var(--pico-8-red);">onclick</span>=<span style="color:var(--pico-8-purple);">&#34;myFunction()&#34;</span><span style="color:var(--pico-8-cyan);">&gt;</span>click me<span style="color:var(--pico-8-cyan);">&lt;&#47;button&gt;</span><br>
@@ -106,6 +116,7 @@
 	&nbsp;&nbsp;&nbsp;&nbsp;}<br>
 	<span style="color:var(--pico-8-cyan);">&lt;&#47;script&gt;</span><br>
 </p>
+</code>
 
 <p>In this example, when you click the button, it increases the <span class="code">clickCount</span> by one, then it finds the element with the id <span class="code">counter</span> and finally replaces the HTML inside this element by the new value of <span class="code">clickCount</span>.</p>
 

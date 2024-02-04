@@ -238,7 +238,7 @@ $sortBySizeDesc = $sort == 5;
             
             <h2>Outdated</h2>
             
-            <p>The files below are older duplicates of the files above.</p>
+            <p>The files below contain older versions of the files above.</p>
             
             <?php
             

@@ -4,7 +4,9 @@
 
 <p>Alternatively, you can just type <span class="code">view-source:</span> before the URL, for example like this:</p>
 
+<code>
 <p class="code code_block">view-source:https://rismosch.com/</p>
+</code>
 
 <p>With this, you can see the actual HTML. This even works on mobile! By the way, you can do these things with every website, not just mine. So if you ever want to see how Googles HTML looks like, there is literally nothing stopping you to check that out. If you don’t want to do any of that, you can also just check out my GitHub, in which I made all the source code of this website open source.</p>
 
@@ -27,9 +29,11 @@
 
 <p>The Banner and Selector tabs are quite a bit more complicated. Let’s start with the Tabs, because these are just pretty CSS magic. I briefly mentioned in the CSS chapter, that HTML Tags can be defined with classes and ids.</p>
 
+<code>
 <p class="code code_block">
 	<span style="color:var(--pico-8-cyan);">&lt;div</span> <span style="color:var(--pico-8-red);">class</span>=<span style="color:var(--pico-8-purple);">&#34;myClass1 myClass2&#34;</span> <span style="color:var(--pico-8-red);">id</span>=<span style="color:var(--pico-8-purple);">&#34;myId&#34;</span><span style="color:var(--pico-8-cyan);">&gt;&lt;&#47;div&gt;</span>
 </p>
+</code>
 
 <p>The main difference between a class and an id is, that a tag can have multiple classes, but only one id. You can easily add and remove, even toggle classes. The Selector Tabs abuse this feature. The tabs are just a horizontal list. Each element has the class <span class="code">selector_tab</span>, which gives them a white border, a dark grey background, white text, and most importantly: A small margin on top. This margin makes it so, that there is a little space above the tab. You will notice that one of the tabs isn’t dark grey though, that is because additionally to the other class, it also has the <span class="code">active_tab</span> class, which overwrites the colors. It also removes the margin on top and makes the tab a little larger. Since the other tabs have this margin while the active one doesn’t, it makes it appear that the active tab is sticking out. Additionally, the margin is also removed, when you hover over the tab, thus making the tab stick out when you hover over them.</p>
 
@@ -41,6 +45,7 @@
 
 <p>What you may have noticed, is that the banner uses pixel art. And when using pixel art, it’s a good idea to only use the resolution required, otherwise your images become unnecessarily big. Setting the width and height of the image bigger than it actually is, or using <span class="code">transform:scale(5)</span> for the banner, which makes the image 5 times larger, we can scale up low resolution pixel art. However, the problem with that is, that scaled up images end up blurred. That is because the browser needs to generate new pixels to make the image bigger, and it usually does this by taking the average of surrounding pixels, which blurs it. In most cases this is the preferred way to upscale images, but not for pixelart, where you want crisp and clearly defined edges. To fix that I have the following selector in my main CSS file:</p>
 
+<code>
 <p class="code code_block">
 .<span style="color:var(--pico-8-red)">pixel_image</span>{<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-dark-grey)">image-rendering</span>: -moz-crisp-edges;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-green)">&#47;* Firefox *&#47;</span><br>
@@ -50,6 +55,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-dark-grey)">-ms-interpolation-mode</span>: nearest-neighbor;&nbsp;&nbsp;<span style="color:var(--pico-8-green)">&#47;* IE (non-standard property) *&#47;</span><br>
 }
 </p>
+</code>
 
 <p>Now adding the class <span class="code">pixel_image</span> to <i>any</i> upscaled pixelart, creates the result that we want. Below is the same picture twice. However, one has and the other has not the class <span class="code">pixel_image</span>.</p>
 
@@ -58,6 +64,7 @@
 
 <p>The final thing I want to mention is the color scheme that I used. You can actually use variable-like colors with CSS. I wanted to use the PICO-8 color scheme, not that I ever worked with the PICO-8, but because I just like the colors. On the very top of my main CSS I have the following code:</p>
 
+<code>
 <p class="code code_block">
 :<span style="color:var(--pico-8-orange)">root</span>{<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-dark-grey)">--pico-8-black</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#000000;<br>
@@ -78,13 +85,16 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-dark-grey)">--pico-8-flesh</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#ffccaa;<br>
 }
 </p>
+<code>
 
 <p>And then in the rest of the CSS I can use these like this:</p>
 
+<code>
 <p class="code code_block">
 <span style="color:var(--pico-8-cyan)">p</span>{<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-dark-grey)">color</span>: var(--pico-8-red);<br>
 }
 </p>
+<code>
 
 <p>When you take a look at my source code, you will notice that every single color in every HTML and CSS uses var(), thus creating a consistent color scheme.</p>
