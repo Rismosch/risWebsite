@@ -1,0 +1,24 @@
+[04-Feb-2024 14:44:19 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function late_image() in /home/qvw9rzc6quzb/public_html/articles/building-a-job-system/page_0.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/qvw9rzc6quzb/public_html/articles/building-a-job-system/page_0.php on line 5
+[04-Feb-2024 14:44:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function late_image() in /home/qvw9rzc6quzb/public_html/articles/building-a-job-system/page_0.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/qvw9rzc6quzb/public_html/articles/building-a-job-system/page_0.php on line 5
+[04-Feb-2024 14:45:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function late_image() in /home/qvw9rzc6quzb/public_html/articles/building-a-job-system/page_0.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/qvw9rzc6quzb/public_html/articles/building-a-job-system/page_0.php on line 5
+[04-Feb-2024 14:45:32 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function late_image() in /home/qvw9rzc6quzb/public_html/articles/building-a-job-system/page_0.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/qvw9rzc6quzb/public_html/articles/building-a-job-system/page_0.php on line 5
+[04-Feb-2024 14:47:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function late_image() in /home/qvw9rzc6quzb/public_html/articles/building-a-job-system/page_0.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/qvw9rzc6quzb/public_html/articles/building-a-job-system/page_0.php on line 5
+[04-Feb-2024 14:53:32 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function late_image() in /home/qvw9rzc6quzb/public_html/articles/building-a-job-system/page_0.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/qvw9rzc6quzb/public_html/articles/building-a-job-system/page_0.php on line 5

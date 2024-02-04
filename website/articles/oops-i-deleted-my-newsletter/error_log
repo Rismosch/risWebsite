@@ -1,0 +1,24 @@
+[04-Feb-2024 14:44:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function late_image() in /home/qvw9rzc6quzb/public_html/articles/oops-i-deleted-my-newsletter/page_0.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/qvw9rzc6quzb/public_html/articles/oops-i-deleted-my-newsletter/page_0.php on line 11
+[04-Feb-2024 14:44:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function late_image() in /home/qvw9rzc6quzb/public_html/articles/oops-i-deleted-my-newsletter/page_0.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/qvw9rzc6quzb/public_html/articles/oops-i-deleted-my-newsletter/page_0.php on line 11
+[04-Feb-2024 14:45:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function late_image() in /home/qvw9rzc6quzb/public_html/articles/oops-i-deleted-my-newsletter/page_0.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/qvw9rzc6quzb/public_html/articles/oops-i-deleted-my-newsletter/page_0.php on line 11
+[04-Feb-2024 14:45:31 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function late_image() in /home/qvw9rzc6quzb/public_html/articles/oops-i-deleted-my-newsletter/page_0.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/qvw9rzc6quzb/public_html/articles/oops-i-deleted-my-newsletter/page_0.php on line 11
+[04-Feb-2024 14:47:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function late_image() in /home/qvw9rzc6quzb/public_html/articles/oops-i-deleted-my-newsletter/page_0.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/qvw9rzc6quzb/public_html/articles/oops-i-deleted-my-newsletter/page_0.php on line 11
+[04-Feb-2024 14:53:32 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function late_image() in /home/qvw9rzc6quzb/public_html/articles/oops-i-deleted-my-newsletter/page_0.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/qvw9rzc6quzb/public_html/articles/oops-i-deleted-my-newsletter/page_0.php on line 11

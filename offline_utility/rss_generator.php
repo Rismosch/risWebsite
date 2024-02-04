@@ -14,10 +14,8 @@ if($dbConn){
         SELECT
             Articles.id AS id,
             Articles.title AS title,
-            Articles.description AS description,
             Article_Categories.name AS category,
-            Articles.timestamp AS timestamp,
-            Articles.thumbnail_path AS thumbnail_path
+            Articles.timestamp AS timestamp
         FROM
             Articles,
             Article_Categories
@@ -38,7 +36,7 @@ if($dbConn){
 
         $rss = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>";
 
-        $rss .= "<rss version=\"2.0\">";
+        $rss .= "<rss version=\"2.0\" xmlns:media=\"http://search.yahoo.com/mrss/\">";
 
         $rss .= "<channel>";
         $rss .= "<title>Rismosch</title>";
@@ -66,7 +64,6 @@ if($dbConn){
 
             $title = $row['title'];
             $link = "https://www.rismosch.com/article?id={$id}";
-            $description = $row['description'];
             $category = $row['category'];
             $timestamp = $row['timestamp'];
             $datetime = strtotime($row['timestamp']);
@@ -74,26 +71,27 @@ if($dbConn){
 
             $rss .= "<title>{$title}</title>";
             $rss .= "<link>{$link}</link>";
-            $rss .= "<description>{$description}</description>";
             $rss .= "<author>Simon Sutoris</author>";
             $rss .= "<category>{$category}</category>";
             $rss .= "<guid>{$id}</guid>";
             $rss .= "<pubDate>{$date}</pubDate>";
 
-            $thumbnail_path = $row['thumbnail_path'];
-            if(is_null($thumbnail_path))
-            {
-                $thumbnail_path = "https://www.rismosch.com/articles/{$id}/thumbnail.webp";
-            } else {
-                $thumbnail_path = "https://www.rismosch.com/{$thumbnail_path}";
-            }
+            $rss .= "<description>";
+            $rss_content_url = "https://www.rismosch.com/articles/${id}/page_0.php";
+            
+            //$content = file_get_contents($rss_content_url);
+            $ch = curl_init($rss_content_url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $content = curl_exec($ch);
+            
+            $content = str_replace("&nbsp;", " ", $content);
 
-            $x = array_change_key_case(get_headers($thumbnail_path, 1),CASE_LOWER);
-            if ( strcasecmp($x[0], 'HTTP/1.1 200 OK') != 0 ) { $x = $x['content-length'][1]; }
-            else { $x = $x['content-length']; }
-            $rss .= "<enclosure url=\"{$thumbnail_path}\" type=\"image/webp\" length=\"{$x}\" />";
+            $rss .= $content;
+            $rss .= "</description>";
             
             $rss .= "</item>";
+
+            break;
         }
 
         $rss .= "</channel>";
