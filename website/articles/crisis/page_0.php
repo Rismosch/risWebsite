@@ -1,4 +1,4 @@
-<?php late_image(get_source("thumbnail.webp"),"pixel_image","display: block; margin: auto; width: 100%;");?>
+<img src="https://www.rismosch.com/articles/crisis/thumbnail.webp" style="display: block; margin: auto; width: 100%; image-rendering: -moz-crisp-edges; image-rendering: -o-crisp-edges; image-rendering: -webkit-optimize-contrast; image-rendering: pixelated; -ms-interpolation-mode: nearest-neighbor;" />
 
 <p style="font-style: italic; color:var(--pico-8-dark-grey);">Thumbnail credit: "VOID KING", found during the 2022 April fools event on r/place, reddit</p>
 
@@ -10,7 +10,7 @@
 
 <p>The worst thing however has nothing to do with ReSharper, and it has to do with the Linker and how it refuses to Link pdb files. It does fine linking them in my actual engine, but for whatever reason, it doesn't like to do that for my tests. This means that even though my tests compile and run, I can't debug and step through them.</p>
 
-<?php late_image(get_source("pic_2.webp"),"","display: block; margin: auto; max-width: 100%;");?>
+<img src="https://www.rismosch.com/articles/crisis/pic_2.webp" style="display: block; margin: auto; max-width: 100%;" />
 
 <p>With the books I've read, I feel like I have accumulated a lot of knowledge about C++ and the cool stuff you can do with it. But the things that I fight with most are not the concepts themselves, but the tools I am working with: The IDE and ReSharper.</p>
 
@@ -20,19 +20,19 @@
 
 <p>So, where do I go from here? As far as I can see, there are 3 paths for me to take: 2 painful ones and 1 very scary one. I could just bite the bullet and stick with Visual Studio + ReSharper, trying to find that hidden Linker setting to make everything work again. But considering that this wasn't the first time I had problems with the Linker, I don't think I will have much success with that approach. Thus, another option is to switch to a simple Text editor + CMake. Browsing r/cpp nowadays, it seems that this second option is very popular. But this requires me to learn CMake and I probably need to restructure my entire engine. And then there is also no guarantee that the Linker is still happy with the garbage I am throwing at it. These are the 2 painful solutions to my problem, but there is a third, and very scary one: Rewriting everything in another language.</p>
 
-<?php late_image(get_source("pic_3.svg"),"","display: block; margin: auto; max-width: 100%;");?>
+<img src="https://www.rismosch.com/articles/crisis/pic_3.svg" style="display: block; margin: auto; max-width: 100%;" />
 
 <p>Ever since I started this project, there is this nagging thought at the back of my head: What if C++ dies tomorrow? C++ is an established, successful and popular programming language, but it's no secret that it's old. As such, one disadvantage of C++ is the fact that it accumulated a lot of garbage over time. For big companies and century old code wizards this may be no issue, since they know what to use when and how. But for me as a beginner, sifting through all that garbage is cumbersome. Maybe the issues that I have laid down so far are actual non issues, but simply a result of my poor understanding of what is garbage and what is not. Though this begs the question: How do I know which of the stuff I am using is garbage? All of the books I've read talk about pointers and how the language works, not about how I need to set up my damn compiler.</p>
 
 <p>So, if one option is to face constant struggle via trial and error, and the other to rewrite potentially everything to make it magically work with CMake (which may not work btw), then why don't I just rewrite everything in a newer language? I don't know how long C++ will last. Maybe it doesn't die tomorrow and it will last for another 100 years. But switching languages feels like the safe bet. Though I have to mention that with my experience so far, everything that felt like a safe bet always found a way to hurt me in some way. Though considering my other options, switching languages may be the least painful one that I have.</p>
 
-<?php late_image(get_source("pic_4.webp"),"","display: block; margin: auto; width: 400px; max-width: 100%;");?>
+<img src="https://www.rismosch.com/articles/crisis/pic_4.webp" style="display: block; margin: auto; width: 400px; max-width: 100%;" />
 
 <p>And thus I want to take a shot at Rust. I've heard good things about it. What intrigues me most is that it's comparable in performance and low level to C++ (allegedly). But then Rust also provides a <a href="https://doc.rust-lang.org/nightly/rustc/platform-support.html" target="_blank" rel="noopener noreferrer">tier list</a> of supported platforms. This in itself is a deep relief for me. With C++, even writing a single line of code can sometimes feel very stressful, as you are aware that it may or may not work on all platforms. But Rust itself guarantees that my code definitely works on certain platforms. I hope that I simply don't need to have as much concern about platform independent code as with C++.</p>
 
 <p>So my plan is set: I try out Rust. I throw my bad code at it and see how it responds. In the worst-case scenario, Rust throws the garbage back at me and refuses to do what I want it to do. But in that case, I can then choose: Do I stick with it, or do I go back to my C++ code? What this means is, that in a couple of months down the line, I actually have options on what to do. And considering that the development stage of my engine is so early, I can afford to try out stuff and see what works.</p>
 
-<?php late_image(get_source("pic_5.png"),"pixel_image","display: block; margin: auto; width: 375px; max-width: 100%;");?>
+<img src="https://www.rismosch.com/articles/crisis/pic_5.png" style="display: block; margin: auto; width: 375px; max-width: 100%; image-rendering: -moz-crisp-edges; image-rendering: -o-crisp-edges; image-rendering: -webkit-optimize-contrast; image-rendering: pixelated; -ms-interpolation-mode: nearest-neighbor;" />
 
 <p>Okay, so it feels like I am attempting to do the job properly now, or how we say in German: "Ich versuche N&#228;gel mit K&#246;pfen zu machen." But there is one thing left, that I want to set straight: The state of my blog.</p>
 
@@ -42,7 +42,7 @@
 
 <p>I want to add to this world. But I did not study science. I studied IT. All of the stuff I know, both science and IT, I have learned from other people. And all these people are better at explaining than I could ever be. As a concrete example: This year I fully understood how Unicode works. I even implemented working(!) UTF-8 and UTF-16LE encoders into my engine. And I wrote a blogpost about it. But why would anyone read my crappy blog, when there are better explanations out there? For example <a href="http://www.joelonsoftware.com/articles/Unicode.html" target="_blank" rel="noopener noreferrer">this</a> blogpost, or <a href="https://youtu.be/_mZBa3sqTrI" target="_blank" rel="noopener noreferrer">this</a> talk on YouTube.</p>
 
-<?php late_image(get_source("pic_6.webp"),"","display: block; margin: auto; max-width: 100%;");?>
+<img src="https://www.rismosch.com/articles/crisis/pic_6.webp" style="display: block; margin: auto; max-width: 100%;" />
 
 <p>I concluded that my blog doesn't add anything. It has no value, neither to me, nor to anyone else. And as such, I decided to delete my blogposts about my engine. I will try to post stuff which actually has value. An example of something with value would be my blog about how I wrote this very website: <a href="https://www.rismosch.com/article?id=i-made-a-website-only-with-notepad-plus-plus" target="_blank" rel="noopener noreferrer">LINK</a></p>
 

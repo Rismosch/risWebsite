@@ -1,6 +1,6 @@
 <p>If you think about it, the internet is just computers which are connected to each other. The computers which make out the world wide web (www), are webservers. With a program called a browser (like the window you are using at this very moment to read this blogpost), you can request files from a webserver, which are then displayed in the browser.</p>
 
-<?php echo late_image(get_source("picture_1.webp"),"","max-width:100%; margin: auto; display: block;");?>
+<img src="https://www.rismosch.com/articles/hosting-a-webserver-and-money/picture_1.webp" style="max-width:100%; margin: auto; display: block;" />
 
 <p>So, if you want to make a website, you need a webserver. This webserver contains all files which build up your website. You will most likely use a hosting service for this, because they have the resources to run a server 24/7. I chose GoDaddy, for no particular reason. I have not tested any other hosts, so I can’t give an opinion if this is the best or if others are better. It was literally my first choice, and because I am satisfied at the moment, I don’t plan on changing my host.</p>
 

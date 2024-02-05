@@ -2,7 +2,7 @@
 
 <p>I have developed what I call "The 3 stages of competent enjoyment", a model of different stages that describes what most people will go through. So let's just jump straight into it.</p>
 
-<?php late_image(get_source("picture.png"), "pixel_image", "width:100%; margin:auto; display: block;");?>
+<img src="https://www.rismosch.com/articles/the-three-stages-of-competent-enjoyment/picture.png" style="width:100%; margin:auto; display: block; image-rendering: -moz-crisp-edges; image-rendering: -o-crisp-edges; image-rendering: -webkit-optimize-contrast; image-rendering: pixelated; -ms-interpolation-mode: nearest-neighbor;" />
 
 <h2>Stage 1: Incompetent Enjoyment</h2>
 

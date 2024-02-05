@@ -22,7 +22,8 @@ if($dbConn){
             Article_Categories
         WHERE
             Articles.category_id = Article_Categories.id AND
-            Articles.link IS NULL
+            Articles.link IS NULL AND
+            Articles.type_id = 0
         ORDER BY
             Articles.timestamp DESC
     ";
@@ -39,8 +40,13 @@ if($dbConn){
 
         $rss .= "<rss version=\"2.0\" ";
         $rss .= "xmlns:content=\"http://purl.org/rss/1.0/modules/content/\" ";
+        $rss .= "xmlns:wfw=\"http://wellformedweb.org/CommentAPI/\" ";
         $rss .= "xmlns:dc=\"http://purl.org/dc/elements/1.1/\" ";
         $rss .= "xmlns:atom=\"http://www.w3.org/2005/Atom\" ";
+        $rss .= "xmlns:sy=\"http://purl.org/rss/1.0/modules/syndication/\" ";
+        $rss .= "xmlns:slash=\"http://purl.org/rss/1.0/modules/slash/\" ";
+        $rss .= "xmlns:georss=\"http://www.georss.org/georss\" ";
+        $rss .= "xmlns:geo=\"http://www.w3.org/2003/01/geo/wgs84_pos#\" ";
         $rss .= ">";
 
         $rss .= "<channel>";
@@ -53,8 +59,7 @@ if($dbConn){
         $rss .= "<lastBuildDate>{$lastBuildDate}</lastBuildDate>";
 
         $rss .= "<image>";
-        $rss .= "<url>https://www.rismosch.com/assets/profile_pictures/favicon.png</url>";
-        //$rss .= "<url>https://rismosch.com/favicon.png</url>";
+        $rss .= "<url>https://rismosch.com/favicon.png</url>";
         $rss .= "<title>Rismosch</title>";
         $rss .= "<link>https://www.rismosch.com</link>";
         $rss .= "<width>32</width>";
@@ -98,17 +103,13 @@ if($dbConn){
             $rss .= "]]></content:encoded>";
             
             $rss .= "</item>";
-
-            if ($rowNumber >= 2) {
-                break;
-            }
         }
 
         $rss .= "</channel>";
         $rss .= "</rss>";
 
         echo "<br>saving file...<br>";
-        file_put_contents("rss.xml", $rss);
+        file_put_contents("index.xml", $rss);
 
         echo "<br>done<br>";
 

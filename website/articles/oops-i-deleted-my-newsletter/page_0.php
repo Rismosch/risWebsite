@@ -8,13 +8,13 @@
 
 <p>All this is pain. And it has led me to delete my newsletter. At the time of writing this post, all emails stored on my database are already eradicated. Maybe, if the development of <a href="https://github.com/Rismosch/ris_engine" target="_blank" rel="noopener noreferrer">my game engine</a> is far enough, such that I can release a working product, I may introduce a newsletter again. But then I am probably in a position where I would pay a professional service for that. There is no way I am ever touching something sensitive like storing user data ever again.</p>
 
-<?php late_image(get_source("image_0.webp"),"","display: block; margin: auto; max-width: 100%;");?>
+<img src="https://www.rismosch.com/articles/oops-i-deleted-my-newsletter/image_0.webp" style="display: block; margin: auto; max-width: 100%;" />
 
 <p>While cleaning up my legal mess, I used the opportunity to get rid of Disqus as well. I am proud to say that I don't use trackers or cookies. I think that's honorable, considering that tracking people has become the norm. And this non-tracking also allowed me to not show you an annoying popup whenever you visit my website. For Disqus however, I displayed a warning that they will track your data. I feel also very proud about this solution, as this thing doesn't even load Disqus, when you don't press the button.</p>
 
 <p>Unfortunately, no one uses the comments. Probably because I have no reach, but probably also because that warning deters that lone wanderer that found me. If this is an indicator for anything, then that people simply don't want to be tracked. Therefore, Disqus serves zero purpose, and I deleted it as well.</p>
 
-<?php late_image(get_source("image_1.webp"),"","display: block; margin: auto; max-width: 100%; border: 5px solid var(--pico-8-dark-grey);");?>
+<img src="https://www.rismosch.com/articles/oops-i-deleted-my-newsletter/image_1.webp" style="display: block; margin: auto; max-width: 100%; border: 5px solid var(--pico-8-dark-grey);" />
 
 <p>I also updated my <a href="https://www.rismosch.com/privacy" target="_blank" rel="noopener noreferrer">privacy policy</a>, to reflect these changes. And to make it more user friendly, I added a section at the top for non-lawyers. A less dry and quick summary of the whole document.</p>
 

@@ -1,8 +1,6 @@
 <p>One of my most favorite music albums of all time is Philosophy of the World, by The Shaggs. Though whenever I share this masterpiece from 1969, I always get the same responses: "Oh god, they are totally out of tune and the rhythm is all over the place! Can you even consider this music?"</p>
 
-<!--<div style="position: relative; padding-bottom: 56.25%; padding-top: 0; height: 0; overflow: hidden;"><iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/jQqK1CjE9bA" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>-->
-
-<?php late_image(get_source("shaggs.webp"), "", "max-width:100%; width: 500px; margin:auto; display: block;"); ?>
+<img src="https://www.rismosch.com/articles/why-people-love-bad-art/shaggs.webp" style="max-width:100%; width: 500px; margin:auto; display: block;" />
 
 <p style="font-style: italic; color:var(--pico-8-dark-grey);">Cover of Philosophy of the World, The Shaggs, <a href="https://www.youtube.com/watch?v=jQqK1CjE9bA" target="_blank" rel="noopener noreferrer">via YouTube</a><p>
 
@@ -15,11 +13,8 @@
 <p>The source of the Shaggs that I have linked above lead to a YouTube video, that is ultimately composed of just 1s and 0s, which eventually get turned into variable air pressure by your speakers. Leonardo da Vinci's Mona Lisa is just Oil on some wood. Michelangelo's David is just a rock, marble to be precise, in a specific shape. Every art piece in the world is nothing but some kind of material in some kind of format. And there is nothing inherently special about anything. To appreciate and to give art meaning, we have to put it into some kind of context. Without context, art ceases to exist.</p>
 
 <div style="margin: auto; display: block;">
-<?php
-	late_image(get_source("mona_lisa.webp"), "", "width:49%; margin:auto; display:inline_block;");
-	late_image(get_source("david.webp"), "", "width:49%; margin:auto; display:inline_block;");
-	/*late_image(get_source("mona_lisa_and_david.webp"), "", "width:100%; margin:auto;");*/
-?>
+<img src="https://www.rismosch.com/articles/why-people-love-bad-art/mona_lisa.webp" style="width:49%; margin:auto; display:inline_block;" />
+<img src="https://www.rismosch.com/articles/why-people-love-bad-art/david.webp" style="width:49%; margin:auto; display:inline_block;" />
 </div>
 
 <p style="font-style: italic; color:var(--pico-8-dark-grey);">
@@ -33,7 +28,7 @@
 
 <p>The intention of this story is to point out how modern art is nonsensical and indistinguishable from garbage. It's an attempt at proving how modern art is objectively bad. However, I don't think this is the correct takeaway. While it was nothing more but a dirty apron, it did in fact invoke emotional reactions in the students. The painting, being fake or not, managed to create a reaction. Not because there is something about it which makes it scream "I am art", but simply because the students were expecting it to be art. Simply by putting it into the context of "this is art", the dirty apron became art in itself.</p>
 
-<?php late_image(get_source("studio_apron.webp"),"","width:100%; margin:auto; display: block;");?>
+<img src="https://www.rismosch.com/articles/why-people-love-bad-art/studio_apron.webp" style="width:100%; margin:auto; display: block;" />
 
 
 <p style="font-style: italic; color:var(--pico-8-dark-grey);">Studio Apron, Robert Florczak, via <a href="https://youtu.be/lNI07egoefc?t=175" target="_blank" rel="noopener noreferrer">YouTube</a><p>
@@ -47,7 +42,7 @@
 
 <p>I've noticed a clear trend that people who create (e.g. other musicians, people who draw or paint, people who make videos, artists in general) usually fall under the type of person who would enjoy The Shaggs. People who are not artists, and thus consume more than they create, usually have a clear view of how art is supposed to be like. Anything that doesn't fit this view or dares to challenge it, is more often than not faced with negative feelings. Art, which has the only purpose to entertain the broadest range of people, plays into the expectations of the audience. I like to call the context this art falls into, as "consumer space". Art that doesn't fall into consumer space and is enjoyed by creators, consequently falls into what I like to call "creator space".</p>
 
-<?php late_image(get_source("creator_consumer.png"),"pixel_image","width:100%; margin:auto; display: block;");?>
+<img src="https://www.rismosch.com/articles/why-people-love-bad-art/creator_consumer.png" style="width:100%; margin:auto; display: block; image-rendering: -moz-crisp-edges; image-rendering: -o-crisp-edges; image-rendering: -webkit-optimize-contrast; image-rendering: pixelated; -ms-interpolation-mode: nearest-neighbor;" />
 
 <p style="font-style: italic; color:var(--pico-8-dark-grey);">A Venn diagram, showing consumer- and creator space, in which art can reside<p>
 
@@ -61,7 +56,7 @@
 
 <p>Thus comes the art which lives in both consumer- and creator space. Such art is experimental enough to break the blandness of the industry and to surprise the consumer, but it doesn't shock the consumer, because it isn't too experimental.</p>
 
-<?php late_image(get_source("prism.webp"),"","width:100%; margin:auto;");?>
+<img src="https://www.rismosch.com/articles/why-people-love-bad-art/prism.webp" style="width:100%; margin:auto;" />
 
 <p style="font-style: italic; color:var(--pico-8-dark-grey);">Imitation of the album cover art of The Dark Side of the Moon by Pink Floyd<p>
 

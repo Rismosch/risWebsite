@@ -20,7 +20,7 @@ function echo_head()
 	<meta name="msapplication-TileColor" content="#00aba9">
 	
 	'; if(!$isMobile) echo '<link rel="stylesheet" href="css/desktop.css">'; echo '
-	<link rel="stylesheet" href="css/main_dev.css">
+	<link rel="stylesheet" href="css/main_dev2.css">
 	
 	<script src="javascript/util.js"></script>
 	';
@@ -151,12 +151,12 @@ function echo_foot($uses_captcha)
 		</a>-->
 		
 		<div class="socials" id="socials">
+			<a title="RSS" href="https://rismosch.com/index.xml">
+				'; late_image("assets/icon_social/rss.webp", "social_icon", ""); echo '
+			</a>
 			<a title="YouTube" href="https://www.youtube.com/channel/UCrWSfmTaXTN_LzEsVRKNJTw">
 				'; late_image("assets/icon_social/youtube.webp", "social_icon", ""); echo '
 			</a>
-			<!--<a title="Twitter" href="https://twitter.com/rismosch">
-				'; /*late_image("assets/icon_social/twitter.webp", "social_icon", "");*/ echo '
-			</a>-->
 			<a title="Bandcamp" href="https://rismosch.bandcamp.com">
 				'; late_image("assets/icon_social/bandcamp.webp", "social_icon", ""); echo '
 			</a>

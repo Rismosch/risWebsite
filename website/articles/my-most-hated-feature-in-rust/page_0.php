@@ -1,14 +1,14 @@
 <blockquote style="background-color:var(--pico-8-white); border: 5px solid var(--pico-8-cyan); padding: 20px;"><p>There are only two kinds of languages: the ones people complain about and the ones nobody uses.</p><cite>Bjarne Stoustroup</cite></blockquote>
 
-<p>I use Rust and I plan to continue, so I've earned the right to complain about Rust. But this won't be your average Rust vs Go blogpost. (Why are there so many of those? What the hell?) I won't be complaining about the borrow checker. Neither about traits, lifetimes, macros or compile times. These are fine. No, I will be complaining about <strong>Result</strong>. That is right. I will be complaining about one of Rusts most beloved features.</p> 
+<p>I use Rust and I plan to continue, so I've earned the right to complain about Rust. But this won't be your average Rust vs Go blogpost. (Why are there so many of those? What the hell?) I won't be complaining about the borrow checker. Neither about traits, lifetimes, macros or compile times. These are fine. No, I will be complaining about <b>Result</b>. That is right. I will be complaining about one of Rusts most beloved features.</p> 
 
-<p>Rust prides itself on its robust and strong type system. If a function returns an object, you can be 99.99998...% sure that this object actually exists. (I am not saying 100%, because unsafe Rust exists. And who knows if some dependency you are using is doing some funky C++ shit under the hood.) If this object may not exist, it will be wrapped in an <strong>Option</strong>. Before you can access it however, you must first check, whether this <strong>Option</strong> actually holds your object. And if it doesn't, your object really doesn't exist and you cannot access it.</p>
+<p>Rust prides itself on its robust and strong type system. If a function returns an object, you can be 99.99998...% sure that this object actually exists. (I am not saying 100%, because unsafe Rust exists. And who knows if some dependency you are using is doing some funky C++ shit under the hood.) If this object may not exist, it will be wrapped in an <b>Option</b>. Before you can access it however, you must first check, whether this <b>Option</b> actually holds your object. And if it doesn't, your object really doesn't exist and you cannot access it.</p>
 
-<p><strong>Result</strong> is quite similar, but a notch above <strong>Option</strong>. Like in <strong>Option</strong>, your object may or may not exist, but if it doesn't, it holds an error. This error (hopefully&#8482;) describes why the function couldn't return your object. And just like <strong>Option</strong>, before you can access your object, you must first check whether it actually exists or not.</p>
+<p><b>Result</b> is quite similar, but a notch above <b>Option</b>. Like in <b>Option</b>, your object may or may not exist, but if it doesn't, it holds an error. This error (hopefully&#8482;) describes why the function couldn't return your object. And just like <b>Option</b>, before you can access your object, you must first check whether it actually exists or not.</p>
 
 <p>Everything is safe and sound.</p>
 
-<p>But then you start to use <strong>Result</strong>, and it turns out it's pretty clunky to use and just plain annoying.</p>
+<p>But then you start to use <b>Result</b>, and it turns out it's pretty clunky to use and just plain annoying.</p>
 
 <h2>The problems emerge</h2>
 
@@ -86,7 +86,7 @@
 
 <p><a href="https://github.com/Rismosch/ris_engine/blob/2c94f080fe45bf0f7d3fbd4da0fbc439e76a8717/crates/ris_util/src/error.rs" target="_blank" rel="noopener noreferrer">GitHub permalink</a></p>
 
-<p class="code code_block">
+<code class="code code_block">
 <span style="color:var(--pico-8-cyan)">use</span> <span style="color:var(--pico-8-washed-grey)">std</span>::<span style="color:var(--pico-8-washed-grey)">error</span>::<span style="color:var(--pico-8-washed-grey)">Error</span>;<br/>
 <br/>
 <span style="color:var(--pico-8-cyan)">pub type</span> <span style="color:var(--pico-8-washed-grey)">RisResult</span>&lt;<span style="color:var(--pico-8-washed-grey)">T</span>&gt; = <span style="color:var(--pico-8-washed-grey)">Result</span>&lt;<span style="color:var(--pico-8-washed-grey)">T</span>, <span style="color:var(--pico-8-washed-grey)">RisError</span>&gt;;<br/>
@@ -223,4 +223,4 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-green)">}</span>;<br/>
 <span style="color:var(--pico-8-cyan)">}</span><br/>
 
-</p>
+</code>

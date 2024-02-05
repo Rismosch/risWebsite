@@ -1,4 +1,5 @@
-<?php late_image("https://www.rismosch.com/assets/thumbnails/web_dev_crash_course.webp","pixel_image","width: 100%; display: block;");?>
+<img src="https://www.rismosch.com/assets/thumbnails/web_dev_crash_course.webp" style="width: 100%; display: block; image-rendering: -moz-crisp-edges; image-rendering: -o-crisp-edges; image-rendering: -webkit-optimize-contrast; image-rendering: pixelated; -ms-interpolation-mode: nearest-neighbor;
+" />
 
 <p>So here I am. I programmed this very website with nothing but Notepad++. While this may or may not have been a good idea, I did it and it taught me a lot about WebDev and how websites work. Now why would someone go trough the insanity and intentionally avoid website-builders or other (arguably easier) means of making a website? Well, as it turns out there are a multitude of reasons why:</p>
 

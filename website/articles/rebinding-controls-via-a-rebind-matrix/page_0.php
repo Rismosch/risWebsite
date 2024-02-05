@@ -1,12 +1,10 @@
 <p>Every now and then, I see a post pop up online, discussing why there are many games that don't implement rebindable controls. And usually, the problem is swept under the rug with the answer "well, it's just too difficult." Actually, in this blogpost, I am trying to prove that it's not.</p>
 
-<p style="background-color:var(--pico-8-white); border: 5px solid var(--pico-8-cyan); padding: 20px;"><i>&#34;Every problem in computer science can be solved with a level of indirection.&#34;</i><br><br>&nbsp;&nbsp;&nbsp;&nbsp;- Professor Jay Black of the University of Waterloo</p>
-
-<span style="color:var(--pico-8-dark-grey);"><i>Quote taken from: &#34;Game Engine Architecture&#34; by Jason Gregory, Third Edition, page 585</i></span>
+<blockquote style="background-color:var(--pico-8-white); border: 5px solid var(--pico-8-cyan); padding: 20px;"><p>Every problem in computer science can be solved with a level of indirection.<p><cite>Professor Jay Black of the University of Waterloo &#183; Quote taken from: &#34;Game Engine Architecture&#34; by Jason Gregory, Third Edition, page 585</cite></blockquote>
 
 <p>Ideally, your game does not care what controller is plugged into it. No matter if the controller is made by Microsoft, Sony or Nintendo, if it's a microwave or a banana. The player may want to play with any controller. You want to program against an interface that abstracts the inputs of the controller. What lies between the controller and this public interface, is your rebind system</p>
 
-<?php late_image(get_source("indirection_layer.gif"),"","display: block; margin: auto; max-width: 100%;");?>
+<img src="https://www.rismosch.com/articles/rebinding-controls-via-a-rebind-matrix/indirection_layer.gif" style="display: block; margin: auto; max-width: 100%;" />
 
 <p>The rebind system I am proposing here, is somewhat original. Or at least, it's so uncommon in games that I couldn't find it via a quick google. So even if you have a working rebind system in place, this blogpost may still be interesting for you. The system I am proposing is both easy to use, but also stupidly powerful, so buckle up!</p>
 
@@ -20,41 +18,41 @@
 
 <p>However, what if you want to be a bit more artistic? Maybe a pitch vibrato is boring. You want the vibrato to go to the amplitude of the sound instead. This would make something like a wah-wah-wah sound. If you are familiar with guitars, the tremolo-effect pedal works exactly like this. Or maybe you want the pitch of the sound to change, the harder you hit the key. This may be a little unconventional, but if you really want something like this, you need a rebind system. Things like LFO and velocity are called <i>modulation sources</i>, and things like pitch and amplitude are called <i>modulation destinations</i>, because the former can modulate the latter.</p>
 
-<?php late_image(get_source("rebind_modular.gif"),"pixel_image","display: block; margin: auto; width: 406px; max-width: 100%;");?>
+<img src="https://www.rismosch.com/articles/rebinding-controls-via-a-rebind-matrix/rebind_modular.gif" style="display: block; margin: auto; width: 406px; max-width: 100%; image-rendering: -moz-crisp-edges; image-rendering: -o-crisp-edges; image-rendering: -webkit-optimize-contrast; image-rendering: pixelated; -ms-interpolation-mode: nearest-neighbor;" />
 
 <p>The oldest synths where modular, where a single module would have a single function. So you would have one LFO module, one velocity module, one pitch module, one amplitude module, and you would connect them with cables. So, if you want a pitch-vibrato, you would patch a cable from the LFO to the pitch module. If you wanted an amplitude-vibrato, you would patch a cable from the LFO to the amplitude module. This gets the job done, but a lot of cables can get very messy very quickly. If you are a touring musician, such cables would only be a hassle, especially if one or more cables where to be unplugged accidently! So another solution was devised.</p>
 
 <p>Instead of using external cables to connect modules together, you would have all modules on a single circuit board and have them connected internally. Then with a switch, you can simply change where the modulation is being routed to. This avoids all messes, but it's quite limiting. Because now, the LFO can only go to either the pitch, or the amplitude, not both. If you tried to implement a switch for every single routing, you would end up with so many switches, that it becomes unpractical.</p>
 
-<?php late_image(get_source("rebind_switch.gif"),"pixel_image","display: block; margin: auto; width: 406px; max-width: 100%;");?>
+<img src="https://www.rismosch.com/articles/rebinding-controls-via-a-rebind-matrix/rebind_switch.gif" style="display: block; margin: auto; width: 406px; max-width: 100%; image-rendering: -moz-crisp-edges; image-rendering: -o-crisp-edges; image-rendering: -webkit-optimize-contrast; image-rendering: pixelated; -ms-interpolation-mode: nearest-neighbor;" />
 
 <p>Some synths tried to find balance between cables and switches. On one hand, they wanted the absolute freedom to patch every modulation source to every destination, but on the other hand the compactness of cable-less synths. And they came up with the ModMatrix. The idea is simple: On the left side, you have modulation sources, and on the top, you have modulation destinations. A source is routed to a destination, if the cell they both cross is activated. If the cell is not activated, the source is not routed to the destination.</p>
 
-<?php late_image(get_source("polybrute_1.webp"),"","display: block; margin: auto; width: 400px; max-width: 100%;");?>
+<img src="https://www.rismosch.com/articles/rebinding-controls-via-a-rebind-matrix/polybrute_1.webp" style="display: block; margin: auto; width: 400px; max-width: 100%;" />
 
 <p>The image above is a picture of the ModMatrix of my Arturia PolyBrute. A cell is activated if it is glowing blue. In the picture above, you see that LFO 1 is routed to (1) Pitch Global and Velocity is routed to (2) Vca (for our purposes, simply think amplitude). I added some arrows in the picture below to highlight it better:</p>
 
-<?php late_image(get_source("polybrute_1_sketch.webp"),"","display: block; margin: auto; width: 400px; max-width: 100%;");?>
+<img src="https://www.rismosch.com/articles/rebinding-controls-via-a-rebind-matrix/polybrute_1_sketch.webp" style="display: block; margin: auto; width: 400px; max-width: 100%;" />
 
 <p>Okay that's cool and all, but what if two cells are active in the same row or column? Well, if cells are in the same row, this one modulation source is routed to multiple destinations. If the cells are in the same column, then all these modulation sources are routed to the same destination.</p>
 
-<?php late_image(get_source("polybrute_2.webp"),"","display: block; margin: auto; width: 400px; max-width: 100%;");?>
+<img src="https://www.rismosch.com/articles/rebinding-controls-via-a-rebind-matrix/polybrute_2.webp" style="display: block; margin: auto; width: 400px; max-width: 100%;" />
 
 <p>In the picture above, Velocity is both being routed to (1) Pitch Global AND (2) Vca. And in the picture below, BOTH Velocity and LFO 1 are routed to (1) Pitch Global (think of it as logical OR).</p>
 
-<?php late_image(get_source("polybrute_3.webp"),"","display: block; margin: auto; width: 400px; max-width: 100%;");?>
+<img src="https://www.rismosch.com/articles/rebinding-controls-via-a-rebind-matrix/polybrute_3.webp" style="display: block; margin: auto; width: 400px; max-width: 100%;" />
 
 <h2>The na&#239;ve solution</h2>
 
 <p>So hopefully you understand the basics of a ModMatrix now. And maybe you know already how this applies to our rebind system. On the left of your <i>RebindMatrix</i>, we have the actual controls that come from our controller. And on the top, we have the interface that our game programs against. To route an actual control to the interface, we need to activate that specific cell.</p>
 
-<?php late_image(get_source("rebind_matrix.png"),"pixel_image","display: block; margin: auto; width: 375px; max-width: 100%;");?>
+<img src="https://www.rismosch.com/articles/rebinding-controls-via-a-rebind-matrix/rebind_matrix.png" style="display: block; margin: auto; width: 375px; max-width: 100%; image-rendering: -moz-crisp-edges; image-rendering: -o-crisp-edges; image-rendering: -webkit-optimize-contrast; image-rendering: pixelated; -ms-interpolation-mode: nearest-neighbor;" />
 
 <p>How do we actually program this?</p>
 
 <p>At first, I wanted to make an <i>all powerful</i> rebind matrix. Meaning every button of every controller maps to every other available button. After implementing the keyboard controls and starting with the mouse, I've realized that this may not be a good idea. That is because in SDL2, the mouse, keyboard and gamepad are similar, but not quite the same. Thus, I didn't just need a RebindMatrix from keyboard to keyboard, and mouse to mouse, but also mouse to keyboard and keyboard to mouse. Things get even more hairy with the gamepad. I needed unique logic, for every single RebindMatrix. This doesn't scale.</p>
 
-<?php late_image(get_source("controller_rebind_matrices.webp"),"","display: block; margin: auto; max-width: 100%;");?>
+<img src="https://www.rismosch.com/articles/rebinding-controls-via-a-rebind-matrix/controller_rebind_matrices.webp" style="display: block; margin: auto; max-width: 100%;" />
 
 <p>Disaster struck when I decided to remove the sleep statement in my main gameloop. You see, at this point of development of my engine, the console output is literally the only thing that I can interact with. Primitive, but it works. And to better read the output, I use a sleep statement to slow down the loop. When the sleep statement is removed, the loop is able to run at full speed. When I removed it, I was shocked to discover, that the loop ran about 300-400 fps. As a gamer, this may sound amazing to you, but for me it raised huge red flags. Literally everything my gameloop was doing at this point, is some event stuff, framebuffering and control rebinding. This is relatively nothing, and yet I <i>only</i> get a couple hundred fps. This is bad. Real bad. This was before I even started implementing the gamepad. So I went back to the drawing board.</p>
 
@@ -68,19 +66,19 @@
 
 <p>"Hold on a second!" you may ask, "Doesn't a keyboard have more than 32 keys?" Yes, you are correct. But remember 2 paragraphs ago that I don't need that many buttons to play my game. The keyboard will eventually expose all its keys, which I'll implement the moment I require text input into the game, but only 32 of the keys will be sent to the rebind system. Thus, we only need 4 rebind matrices: keyboard to keymask, keymask to general, mouse to general, and gamepad to general. And because every control system exposes the same u32, and the output is the same, 3 of these 4 rebind matrices can use the same logic.</p>
 
-<?php late_image(get_source("input_rebind_matrix.webp"),"","display: block; margin: auto; max-width: 100%;");?>
+<img src="https://www.rismosch.com/articles/rebinding-controls-via-a-rebind-matrix/input_rebind_matrix.webp" style="display: block; margin: auto; max-width: 100%;" />
 
 <p>Above is a diagram of the RebindMatrices. And below is a diagram of each input system, the values they expose, and how the data flows.</p>
 
-<?php late_image(get_source("input_system.webp"),"","display: block; margin: auto; max-width: 100%;");?>
+<img src="https://www.rismosch.com/articles/rebinding-controls-via-a-rebind-matrix/input_system.webp" style="display: block; margin: auto; max-width: 100%;" />
 
 <h2>Coding Keymasks and Buttons</h2>
 
 <p>I will now be starting to talk code. I am currently writing my engine in Rust, so some basic knowledge about Rust syntax may be helpful for you, the reader. Other than the bitwise logic, I won't use complicated stuff. So even if you have limited Rust experience, if you have <i>some</i> programming experience, I think you can follow along.</p>
 
-<p>Let's start with the keyboard keymask. The keymask routes a scancode to a button. A scancode is what SDL2 uses to identify a key on a keyboard. The type of a keymask is <span class="code">[Scancode; 32]</span>, which is simply an array of 32 scancodes. Consider the following example: The scancode for the A key is stored at index 13 in the array. That means, if the user presses the A-key, the keymask will set the 13th bit of the buttons to 1. The code to calculate a given button state from a keymask looks like this:</p>
+<p>Let's start with the keyboard keymask. The keymask routes a scancode to a button. A scancode is what SDL2 uses to identify a key on a keyboard. The type of a keymask is <code class="code">[Scancode; 32]</code>, which is simply an array of 32 scancodes. Consider the following example: The scancode for the A key is stored at index 13 in the array. That means, if the user presses the A-key, the keymask will set the 13th bit of the buttons to 1. The code to calculate a given button state from a keymask looks like this:</p>
 
-<p class="code code_block">
+<code class="code code_block">
 <span style="color:var(--pico-8-cyan);">impl</span> <span style="color:var(--pico-8-washed-grey);">Keyboard</span> <span style="color:var(--pico-8-cyan);">{</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-cyan);">pub fn</span> <span style="color:var(--pico-8-brown);">update_state</span><span style="color:var(--pico-8-washed-grey);">(</span>&<span style="color:var(--pico-8-cyan);">mut self</span>, keyboard_state: <span style="color:var(--pico-8-washed-grey);">sdl2</span>::<span style="color:var(--pico-8-washed-grey);">keyboard</span>::<span style="color:var(--pico-8-washed-grey);">KeyboardState</span><span style="color:var(--pico-8-washed-grey);">)</span> <span style="color:var(--pico-8-washed-grey);">{</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-cyan);">let mut</span> new_state = <span style="color:var(--pico-8-washed-grey);">0</span>;<br>
@@ -100,23 +98,23 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-cyan);">self</span>.buttons.<span style="color:var(--pico-8-brown);">update(</span>&new_state<span style="color:var(--pico-8-brown);">)</span>; <span style="color:var(--pico-8-green);">//&#127317;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-washed-grey);">}</span><br>
 <span style="color:var(--pico-8-cyan);">}</span><br>
-</p>
+</code>
 
-<p>We iterate over the entire <span class="code">keyboard_state</span> &#127312;. If the scancode is not pressed down &#127313;, the bit can stay 0 and we can continue to the next scancode. Then we iterate over <span class="code">self.keymask</span> &#127314;. If the keymask contains the scancode &#127315;, the according bit in the <span class="code">new_state</span> will be set to 1 &#127316;. After all iterations, <span class="code">buttons</span> will be updated &#127317;. More on &#127317; in an upcoming blogpost. I came up with a neat trick to easily compute <i>button down</i>, <i>button up</i> and <i>button hold</i> &#128521;</p>
+<p>We iterate over the entire <code class="code">keyboard_state</code> &#127312;. If the scancode is not pressed down &#127313;, the bit can stay 0 and we can continue to the next scancode. Then we iterate over <code class="code">self.keymask</code> &#127314;. If the keymask contains the scancode &#127315;, the according bit in the <code class="code">new_state</code> will be set to 1 &#127316;. After all iterations, <code class="code">buttons</code> will be updated &#127317;. More on &#127317; in an upcoming blogpost. I came up with a neat trick to easily compute <i>button down</i>, <i>button up</i> and <i>button hold</i> &#128521;</p>
 
 <p>The mouse is quite a bit easier:</p>
 
-<p class="code code_block">
+<code class="code code_block">
 <span style="color:var(--pico-8-green);">// somewhere in impl Mouse</span><br>
 <span style="color:var(--pico-8-cyan);">pub fn</span> <span style="color:var(--pico-8-brown);">update_state</span><span style="color:var(--pico-8-washed-grey);">(</span>&<span style="color:var(--pico-8-cyan);">mut self</span>, mouse_state: <span style="color:var(--pico-8-washed-grey);">sdl2</span>::<span style="color:var(--pico-8-washed-grey);">mouse</span>::<span style="color:var(--pico-8-washed-grey);">MouseState) {</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-cyan);">let</span> new_state = mouse_state.<span style="color:var(--pico-8-brown);">to_sdl_state()</span>;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-cyan);">self</span>.buttons.<span style="color:var(--pico-8-brown);">update(</span>&new_state<span style="color:var(--pico-8-brown);">)</span>;<br>
 <span style="color:var(--pico-8-washed-grey);">}</span><br>
-</p>
+</code>
 
-<p>We simply get the SDL2 state, change it to a <span class="code">u32</span> and then update its buttons. That's literally it. The gamepad is more complicated than the mouse, but compared to the keyboard it's a cakewalk:</p>
+<p>We simply get the SDL2 state, change it to a <code class="code">u32</code> and then update its buttons. That's literally it. The gamepad is more complicated than the mouse, but compared to the keyboard it's a cakewalk:</p>
 
-<p class="code code_block">
+<code class="code code_block">
 <span style="color:var(--pico-8-green);">// somewhere in gamepad.rs<br>
 // called by the gamepads update function</span><br>
 <span style="color:var(--pico-8-cyan);">fn</span> <span style="color:var(--pico-8-brown);">get_button_state</span><span style="color:var(--pico-8-cyan);">(</span>game_controller: &<span style="color:var(--pico-8-washed-grey);">GameController</span><span style="color:var(--pico-8-cyan);">)</span> -> <span style="color:var(--pico-8-washed-grey);">u32</span> <span style="color:var(--pico-8-cyan);">{</span><br>
@@ -129,17 +127,17 @@
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;new_state <span style="color:var(--pico-8-green);">//&#127315;</span><br>
 <span style="color:var(--pico-8-cyan);">}</span><br>
-</p>
+</code>
 
-<p><span class="code">ALL_BUTTONS</span> is a static array, which includes all gamepad buttons, and we simply iterate over it &#127312;. If it is pressed down &#127313;, we set the according bit to 1 &#127314;. Then we return <span class="code">new_state</span> &#127315;, so that the calling function can update the buttons afterwards.</p>
+<p><code class="code">ALL_BUTTONS</code> is a static array, which includes all gamepad buttons, and we simply iterate over it &#127312;. If it is pressed down &#127313;, we set the according bit to 1 &#127314;. Then we return <code class="code">new_state</code> &#127315;, so that the calling function can update the buttons afterwards.</p>
 
 <h2>Coding the RebindMatrix</h2>
 
 <p>Now that we have all the theory and preparation out of our way, we can finally implement the RebindMatrix. Are you ready? Let's do this:</p>
 
-<p>The general input system is simply a fourth one, beside mouse, keyboard and gamepad. However, it references the buttons of the other systems, such that it can generate a single button state from them. The type of RebindMatrix is simply <span class="code">[u32; 32]</span>, meaning an array of 32 unsigned 32 bit integers. The entire rebind logic is simply this:</p>
+<p>The general input system is simply a fourth one, beside mouse, keyboard and gamepad. However, it references the buttons of the other systems, such that it can generate a single button state from them. The type of RebindMatrix is simply <code class="code">[u32; 32]</code>, meaning an array of 32 unsigned 32 bit integers. The entire rebind logic is simply this:</p>
 
-<p class="code code_block">
+<code class="code code_block">
 <span style="color:var(--pico-8-cyan);">impl</span> <span style="color:var(--pico-8-washed-grey);">General</span> <span style="color:var(--pico-8-cyan);">{</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-cyan);">pub fn</span> <span style="color:var(--pico-8-brown);">update_state</span>(&<span style="color:var(--pico-8-cyan);">mut self</span>, mouse: &<span style="color:var(--pico-8-washed-grey);">Buttons</span>, keyboard: &<span style="color:var(--pico-8-washed-grey);">Buttons</span>, gamepad: &<span style="color:var(--pico-8-washed-grey);">Buttons) {</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-cyan);">let</span> rebound_mouse =<br>
@@ -171,9 +169,9 @@
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;result <span style="color:var(--pico-8-green);">//&#127320;</span><br>
 <span style="color:var(--pico-8-cyan);">}</span><br>
-</p>
+</code>
 
-<p>First, we apply the RebindMatrix of mouse &#127312;, keyboard &#127313;, and gamepad &#127314;, to rebind their inputs. Then we simply bitwise-OR them together &#127315; and update our button state &#127316;. To apply a rebind matrix, I use the trick that I learned in <a href=" https://lemire.me/blog/2018/02/21/iterating-over-set-bits-quickly/" target="_blank" rel="noopener noreferrer">this</a> blogpost. Essentially, the while loop and the bit magic &#127317; allow me to iterate through all bits that are set to 1, with their respective indices. For example, <span class="code">0b00101001</span> would fire 3 times, at index 0, 3 and 5. Then I simply take the row of the rebind matrix at that index &#127318;, and apply it to the result &#127319;. And then finally, we return the resulted output &#127320;, such that <span class="code">update_state()</span> can use it further.</p>
+<p>First, we apply the RebindMatrix of mouse &#127312;, keyboard &#127313;, and gamepad &#127314;, to rebind their inputs. Then we simply bitwise-OR them together &#127315; and update our button state &#127316;. To apply a rebind matrix, I use the trick that I learned in <a href=" https://lemire.me/blog/2018/02/21/iterating-over-set-bits-quickly/" target="_blank" rel="noopener noreferrer">this</a> blogpost. Essentially, the while loop and the bit magic &#127317; allow me to iterate through all bits that are set to 1, with their respective indices. For example, <code class="code">0b00101001</code> would fire 3 times, at index 0, 3 and 5. Then I simply take the row of the rebind matrix at that index &#127318;, and apply it to the result &#127319;. And then finally, we return the resulted output &#127320;, such that <code class="code">update_state()</code> can use it further.</p>
 
 <h2>Conclusion</h2>
 

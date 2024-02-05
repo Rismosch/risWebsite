@@ -1,10 +1,11 @@
-<?php late_image(get_source("gmtk_game_jam_2020_banner_2.webp"),"","width: 100%; display: block;");?>
+
+<img src="https://www.rismosch.com/articles/good-enough-is-sometimes-not-good-enough/gmtk_game_jam_2020_banner_2.webp" style="width: 100%; display: block;" />
 
 <p>Last year, Mark Brown, from the YouTube channel <a href="https://www.youtube.com/channel/UCqJ-Xo29CKyLTjn6z2XwYAw">Game Maker's Toolkit</a>, ran the GMTK Game Jam 2020, in which you had 48 hours to make a game. Like the Game Jams before it, this jam focused on a clever design idea, which challenged traditional games and forced you to think outside the box. This time, the idea was “out of control”. The theme was open for interpretation, and I wanted to make a game, where the player became faster over time, eventually becoming so fast that they are literally out of control.</p>
 
 <p>It was a multiplayer game, in which you controlled a bumper car. Goal of the game was to rack up points, by bumping into others. If you hit another car or a special cube in the center of the map, your car would increase its speed as well as its size. The game started slow and is rather easy to play, but as you rack up points, the gameplay became very fast and hectic.</p>
 
-<?php late_image(get_source("bad_game.webp"),"","margin:auto; max-width:100%; display: block;");?>
+<img src="https://www.rismosch.com/articles/good-enough-is-sometimes-not-good-enough/bad_game.webp" style="margin:auto; max-width:100%; display: block;" />
 
 <p>At its completion, I was really proud of it. It was fun to play with friends and family. And the absurd speed of the gameplay made people laugh out loud multiple times. But the other participants of Game Jam didn’t quite like it as much. As to my utter disbelief, the game was ranked to be in the worst 20% of all submitted games. And since over 5000 games were submitted, this was quite an accomplishment. It was then, when I realized that I was just so out of touch with reality and that good enough is sometimes just not good enough.</p>
 
@@ -18,7 +19,7 @@
 <li>To make the multiplayer thing so much worse, I did not program networking code. Instead, I mentioned in the tutorial (that no one read), to use an external program, which requires the players to make an extra account. No one will go out of their way and download arbitrary programs, just to play a bad game.</li>
 </ul>
 
-<?php late_image(get_source("bad_game_end.webp"),"","margin:auto; max-width:100%; display: block;");?>
+<img src="https://www.rismosch.com/articles/good-enough-is-sometimes-not-good-enough/bad_game_end.webp" style="margin:auto; max-width:100%; display: block;" />
 
 <p>Due to the 48-hour time limit, a lot of corners had to be cut to finish the game. As bad as these decisions were, at the time they actually didn’t seem that bad. They honestly seemed good enough. But in retrospect, it’s obvious how bad these decisions actually were.</p>
 

@@ -2,15 +2,15 @@
 
 <br>
 
-<p>Cargos test runner runs your tests concurrently. In a nutshell, that means <span class="code">cargo test</span> runs <b>multiple tests at the same time</b>. This is a double-edged sword though: On one hand, running all your tests may be significantly faster, because it literally runs more at less time. But the downside is, that your tests need to be 100% thread safe and they need to be completely independent from each other. Most of the time, tests you write in Rust should be independent from the get go, especially since <span class="code">cargo test</span> doesn't provide setup or teardown methods, which are commonly used in other testing frameworks in other languages. But there are a few cases, where even in Rust, data is shared between tests. Most notably: Statically mutable variables, files or database connections.</p>
+<p>Cargos test runner runs your tests concurrently. In a nutshell, that means <code class="code">cargo test</code> runs <b>multiple tests at the same time</b>. This is a double-edged sword though: On one hand, running all your tests may be significantly faster, because it literally runs more at less time. But the downside is, that your tests need to be 100% thread safe and they need to be completely independent from each other. Most of the time, tests you write in Rust should be independent from the get go, especially since <code class="code">cargo test</code> doesn't provide setup or teardown methods, which are commonly used in other testing frameworks in other languages. But there are a few cases, where even in Rust, data is shared between tests. Most notably: Statically mutable variables, files or database connections.</p>
 
 <br>
 
-<p>Here's how shared data creates problems with <span class="code">cargo test</span>: One test may set it up to "hoi" while another sets it up to "poi". Test one expects it to be "hoi" while the second expects it to be "poi". One possible concurrent execution of the tests may look like this: Test one sets it up to "hoi", but oh no, before it can check the data, test two sets it to "poi". Test two checks and sees the data is "poi" and succeeds. Now test one continues to execute, sees that the data is "poi" instead of "hoi", and the test fails. Even though we implemented our behaviour 100% correctly&#8482;, the test fails, because it has a <i>race condition</i> with another test.</p>
+<p>Here's how shared data creates problems with <code class="code">cargo test</code>: One test may set it up to "hoi" while another sets it up to "poi". Test one expects it to be "hoi" while the second expects it to be "poi". One possible concurrent execution of the tests may look like this: Test one sets it up to "hoi", but oh no, before it can check the data, test two sets it to "poi". Test two checks and sees the data is "poi" and succeeds. Now test one continues to execute, sees that the data is "poi" instead of "hoi", and the test fails. Even though we implemented our behaviour 100% correctly&#8482;, the test fails, because it has a <i>race condition</i> with another test.</p>
 
 <br>
 
-<?php late_image(get_source("failed.webp"),"","display: block; max-width: 100%;");?>
+<img src="https://www.rismosch.com/articles/running-test-in-series/failed.webp" style="display: block; max-width: 100%;" />
 
 <br>
 
@@ -38,7 +38,7 @@
 
 <br>
 
-<p>Now this is promising, but it still isn't perfect: What if the test fails? Most of the time, your test fails because some panic occurred, whether by some <span class="code">assert!()</span>, <span class="code">unwrap()</span> or because you deliberately throw it in your code. This is bad, because a panic leads to the code afterwards to not be executed. This means a test holding the flag doesn't reset it after it failed. This in turn means, that every waiting test will wait forever, because no one is going to reset the flag.</p>
+<p>Now this is promising, but it still isn't perfect: What if the test fails? Most of the time, your test fails because some panic occurred, whether by some <code class="code">assert!()</code>, <code class="code">unwrap()</code> or because you deliberately throw it in your code. This is bad, because a panic leads to the code afterwards to not be executed. This means a test holding the flag doesn't reset it after it failed. This in turn means, that every waiting test will wait forever, because no one is going to reset the flag.</p>
 
 <br>
 
@@ -56,7 +56,7 @@
 
 <a href="https://github.com/Rismosch/ris_engine/blob/6f210fc0956f446370ed752c6bb23354c3aac69d/crates/ris_util/src/test_lock.rs" target="_blank" rel="noopener noreferrer">View on GitHub</a>
 
-<p class="code code_block">
+<code class="code code_block">
 <span style="color:var(--pico-8-cyan)">use</span> <span style="color:var(--pico-8-washed-grey)">std</span>::<span style="color:var(--pico-8-cyan)">{</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-washed-grey)">sync</span>::<span style="color:var(--pico-8-washed-grey)">atomic</span>::<span style="color:var(--pico-8-lime)">{</span><span style="color:var(--pico-8-washed-grey)">AtomicBool</span>, <span style="color:var(--pico-8-washed-grey)">Ordering</span><span style="color:var(--pico-8-lime)">}</span>,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-washed-grey)">thread</span>,<br>
@@ -117,15 +117,15 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-brown)">drop(</span>lock<span style="color:var(--pico-8-brown)">)</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--pico-8-lime)">}</span><br>
 <span style="color:var(--pico-8-cyan)">}</span>
-</p>
+</code>
 
 <br>
 
-<p>Yes, it uses a spinlock. Yes, it uses <span class="code">Ordering::SeqCst</span>. But if I am honest, at this point I don't care. It is better than running the tests on one thread, and it gets the job done.</p>
+<p>Yes, it uses a spinlock. Yes, it uses <code class="code">Ordering::SeqCst</code>. But if I am honest, at this point I don't care. It is better than running the tests on one thread, and it gets the job done.</p>
 
 <br>
 
-<?php late_image(get_source("succeess.webp"),"","display: block; max-width: 100%;"); ?>
+<img src="https://www.rismosch.com/articles/running-test-in-series/succeess.webp" style="display: block; max-width: 100%;" />
 
 <br>
 
@@ -139,8 +139,8 @@
 <li>Atomics are variables that are thread safe.</li>
 <li>The while loop attempts to lock the AtomicBool.</li>
 <li>If another test holds the lock, setting the lock will fail and the loop executes again. This may happen very, very often. But unless we succeed on setting the lock, the code will never leave the loop. It effectively waits. We say it <i>spins</i>, and this programming pattern is called a <i>spinlock</i>.</li>
-<li>Rust is smart and drops values as soon as they are not used anymore. Thus, if we don't use the lock, it will immediately be dropped and the lock will be freed. The manual call <span class="code">drop(lock)</span> at the end of each test prevents the lock of being freed too early.</li>
-<li><span class="code">drop()</span> is called, whether because the value falls out of scope, or because of a panic. No matter what our code does, <span class="code">drop()</span> will be called guaranteed. Therefore, it is safe to put cleanup code into it, like freeing our lock. This pattern is called a <i>drop-guard</i>.</li>
+<li>Rust is smart and drops values as soon as they are not used anymore. Thus, if we don't use the lock, it will immediately be dropped and the lock will be freed. The manual call <code class="code">drop(lock)</code> at the end of each test prevents the lock of being freed too early.</li>
+<li><code class="code">drop()</code> is called, whether because the value falls out of scope, or because of a panic. No matter what our code does, <code class="code">drop()</code> will be called guaranteed. Therefore, it is safe to put cleanup code into it, like freeing our lock. This pattern is called a <i>drop-guard</i>.</li>
 </ul>
 
 <br>

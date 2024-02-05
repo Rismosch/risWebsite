@@ -8,7 +8,7 @@
 
 <h2>The Polybrute</h2>
 
-<?php late_image(get_source("polybrute.webp"),"","display: block; margin: auto; width: 100%;");?>
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/polybrute.webp" style="display: block; margin: auto; width: 100%;" />
 
 <p>Let's start with this baby, the work horse. It's responsible for the vast majority of sounds in the album. But god damn it, it is such a diva. If you are new to synths, there's this preconception that analog synths are "warmer", "better". I mean, sure the thing is much more fun than a VST on your computer, and the Polybrute definitely sounds different from anything out there, but this god damn thing just didn't want to stay in tune.</p>
 
@@ -49,7 +49,7 @@
 
 <p>While keeping the same project file for multiple songs reduced much mixing work, organization pretty much flew out the window. In the end, instruments weren't in the tracks they were supposed to go, and I had patterns named "solo #24" or something, or like 100 separate vocal recordings. It was insane. Nonetheless, with everything being mixed already, every new melody only had to be programmed, which saved a lot of time :)</p>
 
-<?php late_image(get_source("nightmare_flp_screenshot.webp"),"","display: block; margin: auto; width: 100%;");?>
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/nightmare_flp_screenshot.webp" style="display: block; margin: auto; width: 100%;" />
 
 <p>Let's talk about the other instruments. The instance of 3xOsc isn't remarkable. I used it for risers, because risers are trivially easy to make with sliding notes. But only internal FL Studio synths support sliding notes. Maybe if I would've been less lazy, I could've made some really sick risers with the Polybrute.</p>
 
@@ -57,7 +57,7 @@
 
 <p>The choir isn't remarkable either. It literally is the "Choir Ahh" preset of DirectWave. It doesn't sound good, but it doesn't sound particularly bad either. Again, I don't care about 100% authenticity. It sounds like a choir, and as such it is sufficient.</p>
 
-<?php late_image(get_source("choir.webp"),"","display: block; margin: auto; max-width: 100%;");?>
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/choir.webp" style="display: block; margin: auto; max-width: 100%;" />
 
 <p>But you know what also isn't remarkable?</p>
 
@@ -69,7 +69,7 @@
 
 <p>But the garbage I bought has the obvious benefit that I can move them around. A recording booth on the go. Even though the acoustics in my studio are now much better, I still have my PC in my studio, which my microphone picks up. So, instead I simply moved the absorbers into my bedroom and recorded my vocals there :D</p>
 
-<?php late_image(get_source("vocal_booth.webp"),"","display: block; margin: auto; width: 400px; max-width: 100%;");?>
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/vocal_booth.webp" style="display: block; margin: auto; width: 400px; max-width: 100%;" />
 
 <p>During the making of the first song "02 Insecurities", I didn't have these absorbers yet. Instead, I sang into my closet. If you pay attention, you can actually hear it. It sounds like I am singing into a wooden box :P</p>
 
@@ -78,7 +78,7 @@
 <p>With the acoustics taken care of, now I only had to actual sing. I simply programmed a piano to play the melody I wanted to sing. As a metronome, I used the 909 hi-hats, and that's it. Something like this:</p>
 
 <audio controls style="display: block; margin: auto;">
-  <source src="<?php echo get_source("nightmare_solo_2.mp3");?>" type="audio/mpeg">
+  <source src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/nightmare_solo_2.mp3" type="audio/mpeg">
   Your browser does not support mp3 &#128546;
 </audio>
 
@@ -123,26 +123,26 @@
 
 <p>Below is a selection of the thumbnails I generated. I left some out, due to them being very similar to the ones you already see here.</p>
 
-<?php late_image(get_source("DALL·E 2023-03-10 19.57.30 - drum and bass album cover, black noise.webp"),"","display: inline-block; margin: auto; width: 190px; max-width: 100%;");?>
-<?php late_image(get_source("DALL·E 2023-03-10 19.58.03 - drum and bass album cover, black noise.webp"),"","display: inline-block; margin: auto; width: 190px; max-width: 100%;");?>
-<?php late_image(get_source("DALL·E 2023-03-10 19.58.21 - drum and bass album cover, black noise, without text.webp"),"","display: inline-block; margin: auto; width: 190px; max-width: 100%;");?>
-<?php late_image(get_source("DALL·E 2023-03-10 19.58.25 - drum and bass album cover, black noise, without text.webp"),"","display: inline-block; margin: auto; width: 190px; max-width: 100%;");?>
-<?php late_image(get_source("DALL·E 2023-03-10 19.58.32 - black digital noise.webp"),"","display: inline-block; margin: auto; width: 190px; max-width: 100%;");?>
-<?php late_image(get_source("DALL·E 2023-03-10 19.58.42 - black digital noise.webp"),"","display: inline-block; margin: auto; width: 190px; max-width: 100%;");?>
-<?php late_image(get_source("DALL·E 2023-03-10 19.58.45 - black digital noise.webp"),"","display: inline-block; margin: auto; width: 190px; max-width: 100%;");?>
-<?php late_image(get_source("DALL·E 2023-03-10 19.58.47 - black digital noise.webp"),"","display: inline-block; margin: auto; width: 190px; max-width: 100%;");?>
-<?php late_image(get_source("DALL·E 2023-03-10 19.58.59 - corrupt noise, gloomy athmosphere, without color, abstract, cartoonish.webp"),"","display: inline-block; margin: auto; width: 190px; max-width: 100%;");?>
-<?php late_image(get_source("DALL·E 2023-03-10 19.59.02 - corrupt noise, gloomy athmosphere, without color, abstract, cartoonish.webp"),"","display: inline-block; margin: auto; width: 190px; max-width: 100%;");?>
-<?php late_image(get_source("DALL·E 2023-03-10 19.59.04 - corrupt noise, gloomy athmosphere, without color, abstract, cartoonish.webp"),"","display: inline-block; margin: auto; width: 190px; max-width: 100%;");?>
-<?php late_image(get_source("DALL·E 2023-03-10 19.59.12 - corrupt noise, gloomy athmosphere, without color, abstract, cartoonish.webp"),"","display: inline-block; margin: auto; width: 190px; max-width: 100%;");?>
-<?php late_image(get_source("DALL·E 2023-03-10 19.59.28 - speaker of a subwoofer, distorted, high contrast perlin noise, cell shaded 3d graphics.webp"),"","display: inline-block; margin: auto; width: 190px; max-width: 100%;");?>
-<?php late_image(get_source("DALL·E 2023-03-10 19.59.31 - speaker of a subwoofer, distorted, high contrast perlin noise, cell shaded 3d graphics.webp"),"","display: inline-block; margin: auto; width: 190px; max-width: 100%;");?>
-<?php late_image(get_source("DALL·E 2023-03-10 19.59.33 - speaker of a subwoofer, distorted, high contrast perlin noise, cell shaded 3d graphics.webp"),"","display: inline-block; margin: auto; width: 190px; max-width: 100%;");?>
-<?php late_image(get_source("DALL·E 2023-03-10 19.59.36 - speaker of a subwoofer, distorted, high contrast perlin noise, cell shaded 3d graphics.webp"),"","display: inline-block; margin: auto; width: 190px; max-width: 100%;");?>
-<?php late_image(get_source("DALL·E 2023-03-10 19.59.41 - the world through the eyes of a schizophrenic person, in black and white.webp"),"","display: inline-block; margin: auto; width: 190px; max-width: 100%;");?>
-<?php late_image(get_source("DALL·E 2023-03-10 19.59.45 - the world through the eyes of a schizophrenic person, in black and white.webp"),"","display: inline-block; margin: auto; width: 190px; max-width: 100%;");?>
-<?php late_image(get_source("DALL·E 2023-03-10 19.59.48 - the world through the eyes of a schizophrenic person, in black and white.webp"),"","display: inline-block; margin: auto; width: 190px; max-width: 100%;");?>
-<?php late_image(get_source("DALL·E 2023-03-10 19.59.52 - the world through the eyes of a schizophrenic person, in black and white.webp"),"","display: inline-block; margin: auto; width: 190px; max-width: 100%;");?>
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/DALL·E 2023-03-10 19.57.30 - drum and bass album cover, black noise.webp" style="display: inline-block; margin: auto; width: 190px; max-width: 100%;" />
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/DALL·E 2023-03-10 19.58.03 - drum and bass album cover, black noise.webp" style="display: inline-block; margin: auto; width: 190px; max-width: 100%;" />
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/DALL·E 2023-03-10 19.58.21 - drum and bass album cover, black noise, without text.webp" style="display: inline-block; margin: auto; width: 190px; max-width: 100%;" />
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/DALL·E 2023-03-10 19.58.25 - drum and bass album cover, black noise, without text.webp" style="display: inline-block; margin: auto; width: 190px; max-width: 100%;" />
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/DALL·E 2023-03-10 19.58.32 - black digital noise.webp" style="display: inline-block; margin: auto; width: 190px; max-width: 100%;" />
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/DALL·E 2023-03-10 19.58.42 - black digital noise.webp" style="display: inline-block; margin: auto; width: 190px; max-width: 100%;" />
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/DALL·E 2023-03-10 19.58.45 - black digital noise.webp" style="display: inline-block; margin: auto; width: 190px; max-width: 100%;" />
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/DALL·E 2023-03-10 19.58.47 - black digital noise.webp" style="display: inline-block; margin: auto; width: 190px; max-width: 100%;" />
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/DALL·E 2023-03-10 19.58.59 - corrupt noise, gloomy athmosphere, without color, abstract, cartoonish.webp" style="display: inline-block; margin: auto; width: 190px; max-width: 100%;" />
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/DALL·E 2023-03-10 19.59.02 - corrupt noise, gloomy athmosphere, without color, abstract, cartoonish.webp" style="display: inline-block; margin: auto; width: 190px; max-width: 100%;" />
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/DALL·E 2023-03-10 19.59.04 - corrupt noise, gloomy athmosphere, without color, abstract, cartoonish.webp" style="display: inline-block; margin: auto; width: 190px; max-width: 100%;" />
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/DALL·E 2023-03-10 19.59.12 - corrupt noise, gloomy athmosphere, without color, abstract, cartoonish.webp" style="display: inline-block; margin: auto; width: 190px; max-width: 100%;" />
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/DALL·E 2023-03-10 19.59.28 - speaker of a subwoofer, distorted, high contrast perlin noise, cell shaded 3d graphics.webp" style="display: inline-block; margin: auto; width: 190px; max-width: 100%;" />
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/DALL·E 2023-03-10 19.59.31 - speaker of a subwoofer, distorted, high contrast perlin noise, cell shaded 3d graphics.webp" style="display: inline-block; margin: auto; width: 190px; max-width: 100%;" />
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/DALL·E 2023-03-10 19.59.33 - speaker of a subwoofer, distorted, high contrast perlin noise, cell shaded 3d graphics.webp" style="display: inline-block; margin: auto; width: 190px; max-width: 100%;" />
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/DALL·E 2023-03-10 19.59.36 - speaker of a subwoofer, distorted, high contrast perlin noise, cell shaded 3d graphics.webp" style="display: inline-block; margin: auto; width: 190px; max-width: 100%;" />
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/DALL·E 2023-03-10 19.59.41 - the world through the eyes of a schizophrenic person, in black and white.webp" style="display: inline-block; margin: auto; width: 190px; max-width: 100%;" />
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/DALL·E 2023-03-10 19.59.45 - the world through the eyes of a schizophrenic person, in black and white.webp" style="display: inline-block; margin: auto; width: 190px; max-width: 100%;" />
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/DALL·E 2023-03-10 19.59.48 - the world through the eyes of a schizophrenic person, in black and white.webp" style="display: inline-block; margin: auto; width: 190px; max-width: 100%;" />
+<img src="https://www.rismosch.com/articles/how-i-made-the-world-between-my-mind-and-reality/DALL·E 2023-03-10 19.59.52 - the world through the eyes of a schizophrenic person, in black and white.webp" style="display: inline-block; margin: auto; width: 190px; max-width: 100%;" />
 
 <p>I was quite lucky actually, getting very good results on my 4th attempt or so. For example, the thumbnail for <a href="https://www.rismosch.com/assets/thumbnails/ris_engine.webp" target="_blank" rel="noopener noreferrer">my engine</a> required lots and lots of trial and error. I spent like 3/4 of my credits for colorful engine pictures, but only like 5 for my album :P</p>
 
