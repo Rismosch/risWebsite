@@ -2,3 +2,4 @@ secret*
 *.zip
 *.xlsx
 website/archive_files
+*error_log
