@@ -39,8 +39,8 @@ echo_head();
 				if($dbSelectConnection){
 					
 					$pageName = "projects";
-					printDropdown($dbSelectConnection, $pageName);
-					printArticles($dbSelectConnection, $pageName);
+					printDropdown($dbSelectConnection, $pageName, "Article_Categories");
+					printArticles($dbSelectConnection, $pageName, "category");
 					printSelector($dbSelectConnection, $pageName);
 					
 				}

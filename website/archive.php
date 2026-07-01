@@ -47,11 +47,8 @@ $sortBySizeDesc = $sort == 5;
 		
 		<div class="content" id="content">
             <h1>Archive</h1>
-            <p>With the exception of <span class="code">ris_engine</span>, every file in this archive is available free of charge and usable without restriction.</p>
-
-            <p><span class="code">ris_engine</span> is licensed under the <a href="https://www.rismosch.com/assets/gpl-3.0" target="_blank" rel="noopener noreferrer">GNU General Public License v3.0</a>, aka GPL-3.0. The reason for this is simply because it's a bigger project, and at the very least I want to get credited for the work. The GPL-3.0 is a strong copyleft license, that allows free use of any kind, with the restriction that you disclose the source and use the same license when modifying or redistributing it. Well, I am not stupid and I am fully aware that nothing stops you from copying the files and stripping the license from it, but at least you got the memo.</p>
-
-            <!--<p style="background-color:var(--pico-8-white); border: 5px solid var(--pico-8-cyan); padding: 20px;">THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>-->
+            
+            <p style="background-color:var(--pico-8-white); border: 5px solid var(--pico-8-cyan); padding: 20px;">Every file in this archive is available free of charge and usable without restriction. Go ham with it.</p>
 
             <?php
             $up = "&#9650;";
@@ -133,7 +130,7 @@ $sortBySizeDesc = $sort == 5;
                 $files[] = $file;
             }
             
-            $scanned_files = array_diff(scandir($outdated_directory, $scanDirSort), array('..','.'));
+            $scanned_files = array_diff(scandir($outdated_directory, $scanDirSort), array('..','.','bak'));
             
             foreach ($scanned_files as $scanned_file)
             {
@@ -238,7 +235,7 @@ $sortBySizeDesc = $sort == 5;
             
             <h2>Outdated</h2>
             
-            <p>The files below contain older versions of the files above.</p>
+            <p style="background-color:var(--pico-8-white); border: 5px solid var(--pico-8-cyan); padding: 20px;">The files below contain older versions of the files above.</p>
             
             <?php
             

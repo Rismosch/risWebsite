@@ -103,7 +103,7 @@ function echo_selector($active_tab)
 $img_sources = [];
 $img_styles = [];
 $img_count = 0;
-function late_image($source, $class, $style)
+function late_image($source, $class, $style, $alt = "")
 {
 	global
 		$img_sources,
@@ -127,13 +127,24 @@ function late_image($source, $class, $style)
 	</noscript>
 	";*/
 	
-	echo "
-	<img
-		src='{$source}'
-		class='{$class}'
-		style='{$style}'
-	>
-	";
+	if (isset($alt) && trim($alt) !== '') {
+    	echo "
+    	<img
+    		src='{$source}'
+    		class='{$class}'
+    		style='{$style}'
+    		alt='{$alt}'
+    	>
+    	";
+	} else {
+    	echo "
+    	<img
+    		src='{$source}'
+    		class='{$class}'
+    		style='{$style}'
+    	>
+    	";
+	}
 	
 	$img_sources[] = $source;
 	$img_styles[] = $style;
@@ -151,31 +162,34 @@ function echo_foot($uses_captcha)
 		</a>-->
 		
 		<div class="socials" id="socials">
+			<a title="Bluesky" href="https://bsky.app/profile/rismosch.bsky.social">
+				'; late_image("assets/icon_social/bluesky_128.webp", "social_icon", "", "Bluesky"); echo '
+			</a>
 			<a title="RSS" href="https://rismosch.com/index.xml">
-				'; late_image("assets/icon_social/rss.webp", "social_icon", ""); echo '
+				'; late_image("assets/icon_social/rss_128.webp", "social_icon", "", "RSS"); echo '
 			</a>
 			<a title="YouTube" href="https://www.youtube.com/channel/UCrWSfmTaXTN_LzEsVRKNJTw">
-				'; late_image("assets/icon_social/youtube.webp", "social_icon", ""); echo '
+				'; late_image("assets/icon_social/youtube_128.webp", "social_icon", "", "YouTube"); echo '
 			</a>
-			<a title="Bandcamp" href="https://rismosch.bandcamp.com">
-				'; late_image("assets/icon_social/bandcamp.webp", "social_icon", ""); echo '
+			<a title="Bandcamp" href="https://rismosch.bandcamp.com" style="padding-left: 10px;padding-right: 10px;">
+				'; late_image("assets/icon_social/bandcamp_128.webp", "social_icon", "", "Bandcamp"); echo '
 			</a>
 			<a title="itch.io" href="https://rismosch.itch.io/">
-				'; late_image("assets/icon_social/itch_io.webp", "social_icon", ""); echo '
+				'; late_image("assets/icon_social/itch_io_128.webp", "social_icon", "", "itch.io"); echo '
 			</a>
 			<a title="GitHub" href="https://github.com/Rismosch">
-				'; late_image("assets/icon_social/github.webp", "social_icon", ""); echo '
+				'; late_image("assets/icon_social/github_128.webp", "social_icon", "", "GitHub"); echo '
 			</a>
 		</div>
 		
-		<div class="foot_links">
+		<!--<div class="foot_links">
 			<p>
 				<a class="foot_link" href="https://www.rismosch.com/contact">Contact Me</a>
 			</p>
-		</div>
+		</div>-->
 		
 		<div class="foot_copyright">
-			<p>Copyright &#169; 2021 <span class="simon_sutoris">Simon Sutoris</span></p>
+			<p>Copyright &#169; 2026 <span class="simon_sutoris">Simon Sutoris</span></p>
 		</div>
 		
 	</div>

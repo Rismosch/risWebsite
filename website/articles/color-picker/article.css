@@ -1,0 +1,49 @@
+.canvas {
+    border: 1px solid var(--pico-8-dark-grey);
+}
+
+.centered {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+
+.label {
+    width: 17px;
+    margin: 0px 0px 0px 5px;
+    user-select: none;
+    border: 2px solid rgba(0, 0, 0, 0);
+    outline: 2px solid rgba(0, 0, 0, 0);
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+}
+
+.slider {
+    margin: 0px 10px 0px 10px;
+}
+
+.text_field {
+    width: 75px;
+}
+
+#background_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--pico-8-red);
+    color: var(--pico-8-red);
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.selectable {
+    cursor: pointer;
+}
+
+button.no-style {
+  all: revert; /* or all: revert */
+}

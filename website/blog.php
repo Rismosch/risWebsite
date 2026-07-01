@@ -39,8 +39,8 @@ echo_head();
 				if($dbSelectConnection){
 					
 					$pageName = "blog";
-					printDropdown($dbSelectConnection, $pageName);
-					printArticles($dbSelectConnection, $pageName);
+					printDropdown($dbSelectConnection, $pageName, "Blog_Types");
+					printArticles($dbSelectConnection, $pageName, "blog_type");
 					printSelector($dbSelectConnection, $pageName);
 					
 				}

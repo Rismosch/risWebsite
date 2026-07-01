@@ -57,12 +57,15 @@ if($dbConn){
 		$title = $articleData['title'];
 		$description = $articleData['description'];
 		$keywords = $articleData['keywords'];
+		$deprecated = $articleData['deprecated'];
 	}
 	else
 	{
 		$title = ':(';
 	}
 }
+
+$is_blog = $active_tab == 1;
 
 $thumbnail_path = GetThumbnailPath($articleData);
 
@@ -113,7 +116,7 @@ function get_source($file)
 				{
 					if(isset($articleData))
 					{
-						if($dbConn)
+						if($dbConn && $is_blog)
 						{
 							$sqlNext = GetNextPreviousSql("> '{$articleData['timestamp']}'","ASC");
 							$sqlRandom = GetRandomSql($articleData['id']);
@@ -138,6 +141,7 @@ function get_source($file)
 									'id' => $row['id'],
 									'type' => $row['type'],
 									'category' => $row['category'],
+									'blog_type' => $row['blog_type'],
 									'title' => $row['title'],
 									'timestamp' => $newTimestampFormat,
 									'link' => $link,
@@ -167,6 +171,7 @@ function get_source($file)
 										'id' => $row['id'],
 										'type' => $row['type'],
 										'category' => $row['category'],
+									    'blog_type' => $row['blog_type'],
 										'title' => $row['title'],
 										'timestamp' => $newTimestampFormat,
 										'link' => $link,
@@ -248,11 +253,31 @@ function get_source($file)
 						echo "</span></p>";
 						
 						// Title
-						echo "<noscript><br></noscript><h1>{$title}</h1><p>{$articleData['category']} &#183; {$newTimestampFormat}</p>";
+						$article_category_name = "???";
+						if ($articleData['type'] == "Blog") {
+						    $article_category_name = $articleData['blog_type'];
+						} else if ($articleData['type'] == "Project") {
+						    $article_category_name = $articleData['category'];
+						}
+						
+						echo "<noscript><br></noscript><h1>{$title}</h1><p>{$article_category_name} &#183; {$newTimestampFormat}</p>";
+					}
+					
+					// deprecated
+					if (isset($deprecated) && trim($deprecated) !== '') {
+					    echo "
+<blockquote style=\"background-color:var(--pico-8-white); border: 5px solid var(--pico-8-red); padding: 20px;\">
+    <h2>This post has been deprecated</h2>
+    <p>{$deprecated}</p>
+</blockquote>";
 					}
 					
 					// Content
+					echo "\n\n<!--content start-->\n\n";
+					
 					include $content;
+					
+					echo "\n\n<!--content end-->\n\n";
 					
 					// Foot Article Widgets
 					if(isset($footArticleData))
@@ -267,7 +292,7 @@ function get_source($file)
 										<td>
 											<div class=\"articles_thumbnail_wrapper_outside\">
 												<div class=\"articles_thumbnail_wrapper_inside\">
-													"; late_image($footArticleData['thumbnail_path'], "articles_thumbnail", ""); echo "
+													"; late_image($footArticleData['thumbnail_path'], "articles_thumbnail", "", "Thumbnail: {$footArticleData['title']}"); echo "
 												</div>
 											</div>
 										</td>
@@ -275,8 +300,9 @@ function get_source($file)
 									<tr>
 										<td>
 											<div class=\"articles_thumbnail_information\">
-												<h3>{$footArticlePrefix}: {$footArticleData['title']}</h3>
-												<p>{$footArticleData['category']} &#183; {$footArticleData['timestamp']}</p>
+												<!--<h3>{$footArticlePrefix}: {$footArticleData['title']}</h3>-->
+												<p style=\"font-size: 1.17em;\"><b>{$footArticlePrefix}: {$footArticleData['title']}</b></p>
+												<p>{$footArticleData['blog_type']} &#183; {$footArticleData['timestamp']}</p>
 											</div>
 										</td>
 									</tr>
@@ -287,14 +313,15 @@ function get_source($file)
 									<tr>
 										<td class=\"articles_thumbnail_row_desktop\">
 											<div class=\"articles_thumbnail_wrapper\">
-												"; late_image($footArticleData['thumbnail_path'], "articles_thumbnail", ""); echo "
+												"; late_image($footArticleData['thumbnail_path'], "articles_thumbnail", "", "Thumbnail: {$footArticleData['title']}"); echo "
 											</div>
 										</td>
 										<td>
 											<div class=\"articles_thumbnail_information\">
-												<h3>{$footArticlePrefix}: {$footArticleData['title']}</h3>
+												<!--<h3>{$footArticlePrefix}: {$footArticleData['title']}</h3>-->
+												<p style=\"font-size: 1.17em;\"><b>{$footArticlePrefix}: {$footArticleData['title']}</b></p>
 												<br>
-												<p>{$footArticleData['category']} &#183; {$footArticleData['timestamp']}</p>
+												<p>{$footArticleData['blog_type']} &#183; {$footArticleData['timestamp']}</p>
 											</div>
 										</td>
 									</tr>
@@ -319,13 +346,13 @@ function get_source($file)
 						";
 					}
 					
-					if(isset($articleData))
+					if(isset($articleData) && $is_blog)
 					{
 						echo "
 							<table style=\"margin-top:10px;\">
 								<tr>
 									<td>&#9654;</td>
-									<td><a title=\"Blog\" style=\"display:inline-block;\" href=\"https://www.rismosch.com/blog?category={$articleData['category_id']}\">More <b>{$articleData['category']}</b> related Posts</a></td>
+									<td><a title=\"Blog\" style=\"display:inline-block;\" href=\"https://www.rismosch.com/blog?bt={$articleData['blog_type_id']}\">Other {$articleData['blog_type']}s</a></td>
 								</tr>
 							</table>
 						";

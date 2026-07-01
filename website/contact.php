@@ -17,7 +17,8 @@ $errors = [];
 
 $contact_successful = false;
 
-if(!empty($_POST))
+//if(!empty($_POST))
+if(False)
 {
 	$nameUnsafe = $_POST['name'];
 	//$nameSanitized = filter_var($nameUnsafe,FILTER_SANITIZE_ENCODED);
@@ -199,9 +200,9 @@ echo_head();
 			
 			<h1>Contact Me</h1>
 
-			<!--<p>&#128119; Under Construction... &#128296;</p>-->
+			<p>&#128119; Under Construction... &#128296;</p>
 			
-			<div style="display:none" id="javascript_content">
+			<!--<div style="display:none" id="javascript_content">
 				
 				<form action="contact" method="POST" id="contact-form">
 					<div>
@@ -249,7 +250,7 @@ echo_head();
 
 			<noscript>
 				<p>Unfortunately, this page only works if JavaScript is enabled :(</p>
-			</noscript>
+			</noscript>-->
 			
 		</div>
 		

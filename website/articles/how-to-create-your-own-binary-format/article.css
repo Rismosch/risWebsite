@@ -1,0 +1,15 @@
+table.pointer {
+    width: 50%;
+    border-collapse: collapse;
+    margin: auto;
+}
+table.pointer th, table.pointer td {
+    background-color: var(--pico-8-white);
+    border: 1px solid var(--pico-8-black);
+    padding: 10px;
+    text-align: center;
+}
+table.pointer th {
+    color: var(--pico-8-white);
+    background-color: var(--pico-8-cyan);
+}

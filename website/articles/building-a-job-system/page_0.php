@@ -422,17 +422,11 @@ function playground_steal() {
 
 <p>This buffer is the core of my job system, which is the core of my game engine. So it must be <i>water tight</i>. I really can't afford this buffer to blow up, under any circumstance. As such, Anthony Williams recommended himself, to write as much tests as possible, to test every thinkable edge case, no matter how rare. What if one thread is pushing while another is stealing? What if 100 threads are stealing on an empty buffer? What if 1 thread is popping from an empty buffer? What if one thread is pushing and popping on a full buffer, while 100 threads are stealing?</p>
 
-<p>But the painful, repetitive work was absolutely worth it. To this day, I haven't encountered a single issue with the <code class="code">JobBuffer</code>, and it's been <?php
-
-$now = time();
-$your_date = strtotime("2022-09-18");
-$datediff = $now - $your_date;
-
-echo round($datediff / (60 * 60 * 24));
-
-?> days, since its implementation. And I am quite confident that it does its job properly. <i>Maybe</i> I will encounter a bug in the future, but I seriously don't think I will encounter a serious problem, ever.</p>
+<p>But the painful, repetitive work was absolutely worth it. To this day, I haven't encountered a single issue with the <code class="code">JobBuffer</code>, and it's been 530 days, since its implementation. And I am quite confident that it does its job properly. <i>Maybe</i> I will encounter a bug in the future, but I seriously don't think I will encounter a serious problem, ever.</p>
 
 <p style="color:var(--pico-8-dark-grey)"><i><b>Narrator:</b> The moment the buffer blows up, he will regret to have said this.</i></p>
+
+<p><b>EDIT</b> 17th March, 2024. The system did, in fact, blow up:<br><a href="https://www.rismosch.com/article?id=i-found-a-bug-in-my-job-system" target="_blank" rel="noopener noreferrer">https://www.rismosch.com/article?id=i-found-a-bug-in-my-job-system</a></p>
 
 <h2>JobSystem</h2>
 
