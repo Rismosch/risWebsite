@@ -154,7 +154,12 @@ function printDropdown($dbConn, $pageName, $tableName)
 		</div>
 	";
 	
-	echo "<p style=\"color:var(--pico-8-dark-grey);\">{$selectedCategoryName} &#183; ";
+	$namePostfix = "";
+	if ($selectedCategoryName != "All" && $tableName == "Blog_Types") {
+	    $namePostfix = "s";
+	}
+	
+	echo "<p style=\"color:var(--pico-8-dark-grey);\">{$selectedCategoryName}{$namePostfix} &#183; ";
 }
 
 function printArticles($dbConn, $pageName, $category_column_name)
